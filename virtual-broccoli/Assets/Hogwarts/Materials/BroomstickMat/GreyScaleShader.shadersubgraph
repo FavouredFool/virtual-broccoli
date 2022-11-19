@@ -12,7 +12,11 @@
     ],
     "m_Keywords": [],
     "m_Dropdowns": [],
-    "m_CategoryData": [],
+    "m_CategoryData": [
+        {
+            "m_Id": "44d7f47e58904b20af0f1d44544fab7f"
+        }
+    ],
     "m_Nodes": [
         {
             "m_Id": "cb1cd35f23554c1087fda0cc49cb9907"
@@ -438,7 +442,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector3MaterialSlot",
     "m_ObjectId": "28b0e79aac6d463886e394a7eee6abc2",
     "m_Id": 0,
-    "m_DisplayName": "greyscale",
+    "m_DisplayName": "greyscales",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -640,6 +644,21 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.CategoryData",
+    "m_ObjectId": "44d7f47e58904b20af0f1d44544fab7f",
+    "m_Name": "",
+    "m_ChildObjectList": [
+        {
+            "m_Id": "4091e0045a594f5297378b9d24e14c51"
+        },
+        {
+            "m_Id": "c6dfc2e978884a2babd5fa6780deb016"
+        }
+    ]
 }
 
 {
@@ -1329,10 +1348,10 @@
     "m_Guid": {
         "m_GuidSerialized": "25a418f8-fcca-4177-969c-ac7b8e6377b8"
     },
-    "m_Name": "greyscale",
+    "m_Name": "greyscales",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "greyscale",
-    "m_DefaultReferenceName": "_greyscale",
+    "m_RefNameGeneratedByDisplayName": "greyscales",
+    "m_DefaultReferenceName": "_greyscales",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
