@@ -6,9 +6,9 @@ public class OffsetGrab : XRGrabInteractable
     private Vector3 interactorPosition = Vector3.zero;
     private Quaternion interactorRotation = Quaternion.identity;
 
-    protected override void OnSelectEnter(XRBaseInteractor interactor)
+    protected override void OnSelectEntering(XRBaseInteractor interactor)
     {
-        base.OnSelectEnter(interactor);
+        base.OnSelectEntering(interactor);
         StoreInteractor(interactor);
         MatchAttachmentPoints(interactor);
     }
@@ -26,9 +26,9 @@ public class OffsetGrab : XRGrabInteractable
         interactor.attachTransform.rotation = hasAttach ? attachTransform.rotation : transform.rotation;
     }
 
-    protected override void OnSelectExit(XRBaseInteractor interactor)
+    protected override void OnSelectExiting(XRBaseInteractor interactor)
     {
-        base.OnSelectExit(interactor);
+        base.OnSelectExiting(interactor);
         ResetAttachmentPoint(interactor);
         ClearInteractor(interactor);
     }
