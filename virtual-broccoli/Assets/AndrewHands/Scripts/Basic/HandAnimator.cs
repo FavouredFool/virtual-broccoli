@@ -31,29 +31,11 @@ public class HandAnimator : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    private void OnEnable()
-    {
-        gripInputAction.action.performed += GripPressed;
-        triggerInputAction.action.performed += TriggerPressed;
-    }
-
-    private void OnDisable()
-    {
-        gripInputAction.action.performed -= GripPressed;
-        triggerInputAction.action.performed -= TriggerPressed;
-    }
-
-    private void TriggerPressed(InputAction.CallbackContext context)
-    {
-        SetFingerTargets(pointFingers, context.ReadValue<float>());
-    }
-    private void GripPressed(InputAction.CallbackContext context)
-    {
-        SetFingerTargets(gripFingers, context.ReadValue<float>());
-    }
-
     private void Update()
     {
+        SetFingerTargets(pointFingers, triggerInputAction.action.ReadValue<float>());
+        SetFingerTargets(gripFingers, gripInputAction.action.ReadValue<float>());
+
         // Smooth input values
         SmoothFinger(pointFingers);
         SmoothFinger(gripFingers);
