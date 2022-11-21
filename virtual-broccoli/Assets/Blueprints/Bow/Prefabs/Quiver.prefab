@@ -199,7 +199,7 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-  arrowPrefab: {fileID: 8542102953145869890, guid: 5c51937e899ec9443a1757aefe9d49cb,
+  arrowPrefab: {fileID: 8542102953145869890, guid: b60700b8c179eb743a3076dceac5ad44,
     type: 3}
 --- !u!135 &9043562450772434535
 SphereCollider:

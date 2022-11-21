@@ -113,7 +113,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 823
   m_InteractionLayers:
-    m_Bits: 4294967295
+    m_Bits: 2
   m_AttachTransform: {fileID: 1829499459514159683}
   m_KeepSelectedTargetValid: 1
   m_StartingSelectedInteractable: {fileID: 0}
@@ -365,7 +365,7 @@ MonoBehaviour:
   m_SmoothRotation: 0
   m_SmoothRotationAmount: 5
   m_TightenRotation: 0.5
-  m_ThrowOnDetach: 1
+  m_ThrowOnDetach: 0
   m_ThrowSmoothingDuration: 0.25
   m_ThrowSmoothingCurve:
     serializedVersion: 2
@@ -513,9 +513,9 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0.025, y: 1.5, z: -0.41499996}
-  - {x: 0.025, y: 1, z: -0.41499996}
-  - {x: 0.025, y: 0.45, z: -0.41499996}
+  - {x: -0.25, y: 1.5, z: -0.16499996}
+  - {x: -0.25, y: 1, z: -0.16499996}
+  - {x: -0.25, y: 0.45, z: -0.16499996}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.01
@@ -655,7 +655,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 2
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
