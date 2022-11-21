@@ -5,22 +5,45 @@ using UnityEngine;
 public class Recolor : MonoBehaviour
 {
     [SerializeField]
-    [Range(-1.5f,1.5f)]
+    [Range(0,1)]
     private float Flowpoint;
-    [SerializeField]
-    private Material GreyScale;
-    [SerializeField]
-    private Material NormColor;
+    Material mat;
+    float meshSize;
+    float diff;
 
     private void Start()
     {
-        //Minimum of Flowpoint
+        mat = this.gameObject.GetComponent<Renderer>().material;
+        Vector3 axisSelectionVector = new Vector3(mat.GetInt("_xAxis"), mat.GetInt("_yAxis"), mat.GetInt("_zAxis"));
+
+        Bounds meshBounds = this.gameObject.GetComponent<MeshRenderer>().localBounds;
+        Vector3 diffVector = meshBounds.center;
+        Vector3 meshSizeVector = meshBounds.size;
+
+        Debug.Log("min: " + meshBounds.min);
+        Debug.Log("max: " + meshBounds.max);
+        Debug.Log("center: " + meshBounds.center);
+        Debug.Log("meshSize: " + meshBounds.size);
+
+        // Skalarproduct, um Abweichung (Verschiebung des Center-punkts) auf entsprechend ausgewählter Achse festzustellen
+        diff = this.Scalar(axisSelectionVector, diffVector);
+
+        // Skalarproduct, um Abweichung (Verschiebung des Center-punkts) auf entsprechend ausgewählter Achse festzustellen
+        meshSize = this.Scalar(axisSelectionVector, meshSizeVector);
+        Debug.Log("Size: " + meshSize);
+    }
+
+    private float Scalar (Vector3 vecA, Vector3 vecB)
+    {
+        Vector3 multVector = Vector3.Scale(vecA, vecB);
+        float scalar = (multVector.x + multVector.y + multVector.z);
+        return scalar;
     }
 
     void Update()
     {
-        GreyScale.SetFloat("_Edge", Flowpoint);
-        NormColor.SetFloat("_Edge", Flowpoint);
+        
+        mat.SetFloat("_Edge", ((Flowpoint * meshSize)/2 + (1-Flowpoint)*diff));
     }
 
 }
