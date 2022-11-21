@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 2779800565803615915}
   - component: {fileID: 2779800565803615912}
   - component: {fileID: 2779800565803615913}
-  - component: {fileID: 2779800565803616086}
+  - component: {fileID: 1690550096}
   m_Layer: 0
   m_Name: Offset-Grab-Cube
   m_TagString: Untagged
@@ -282,7 +282,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 561
+  m_VersionIndex: 564
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -393,7 +393,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2779800565803616086
+--- !u!114 &1690550096
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -402,7 +402,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2779800565803615919}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddf84ce02545f5144b769b08f901cf2b, type: 3}
+  m_Script: {fileID: 11500000, guid: 72a9f73bc79d5b94a913a5bfd76ebbb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
@@ -474,7 +474,7 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-  m_AttachTransform: {fileID: 0}
+  m_AttachTransform: {fileID: 2779800564082329375}
   m_UseDynamicAttach: 0
   m_MatchAttachPosition: 1
   m_MatchAttachRotation: 1
