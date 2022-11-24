@@ -4,33 +4,42 @@ using UnityEngine;
 
 public class Recolor : MonoBehaviour
 {
+    const float endPoint = 1.5f;
+    const float startPoint = -0.1f;
+    private float currentStart;
+    private float currentEnd;
     [SerializeField]
-    [Range(0,1)]
-    private float Flowpoint;
+    [Range(startPoint, endPoint)]
+    private float flowPoint;
+    [SerializeField]
+    private float flowStep;
     Material mat;
     float meshSize;
     float diff;
+    [SerializeField]
+    bool forward;
+    [SerializeField]
+    bool backward;
+    bool inverted;
 
     private void Start()
     {
+        
         mat = this.gameObject.GetComponent<Renderer>().material;
         Vector3 axisSelectionVector = new Vector3(mat.GetInt("_xAxis"), mat.GetInt("_yAxis"), mat.GetInt("_zAxis"));
+        inverted = (mat.GetInt("_inverted") > 0);
+        Debug.Log(inverted);
 
         Bounds meshBounds = this.gameObject.GetComponent<MeshRenderer>().localBounds;
         Vector3 diffVector = meshBounds.center;
         Vector3 meshSizeVector = meshBounds.size;
-
-        Debug.Log("min: " + meshBounds.min);
-        Debug.Log("max: " + meshBounds.max);
-        Debug.Log("center: " + meshBounds.center);
-        Debug.Log("meshSize: " + meshBounds.size);
 
         // Skalarproduct, um Abweichung (Verschiebung des Center-punkts) auf entsprechend ausgewählter Achse festzustellen
         diff = this.Scalar(axisSelectionVector, diffVector);
 
         // Skalarproduct, um Abweichung (Verschiebung des Center-punkts) auf entsprechend ausgewählter Achse festzustellen
         meshSize = this.Scalar(axisSelectionVector, meshSizeVector);
-        Debug.Log("Size: " + meshSize);
+
     }
 
     private float Scalar (Vector3 vecA, Vector3 vecB)
@@ -43,7 +52,19 @@ public class Recolor : MonoBehaviour
     void Update()
     {
         
-        mat.SetFloat("_Edge", ((Flowpoint * meshSize)/2 + (1-Flowpoint)*diff));
+        mat.SetFloat("_Edge", ((flowPoint * meshSize)/2 + (1-flowPoint)*diff));
+
+        if(!inverted)
+        {
+            if (flowPoint <= endPoint && forward) flowPoint += flowStep;
+            if (flowPoint >= startPoint && backward) flowPoint -= flowStep;
+        } else
+        {
+            if (flowPoint <= endPoint && backward) flowPoint += flowStep;
+            if (flowPoint >= startPoint && forward) flowPoint -= flowStep;
+        }
+
+        
     }
 
 }
