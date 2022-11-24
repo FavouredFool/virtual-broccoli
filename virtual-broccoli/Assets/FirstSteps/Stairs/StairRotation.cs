@@ -12,6 +12,9 @@ public class StairRotation : MonoBehaviour
     [SerializeField]
     private float _speed = 0.1f;
 
+    [SerializeField]
+    private GameObject _stairVisual;
+
     private float _goalT;
     private float _t;
 
@@ -40,7 +43,7 @@ public class StairRotation : MonoBehaviour
 
         _t = Mathf.SmoothStep(_t, _goalT, _speed);
 
-        transform.localRotation = Quaternion.Slerp(Quaternion.Euler(0, -45, 0), Quaternion.Euler(0, 45, 0), _t);
+        _stairVisual.transform.localRotation = Quaternion.Slerp(Quaternion.Euler(0, -45, 0), Quaternion.Euler(0, 45, 0), _t);
     }
 
     public void ChangeRotation()
