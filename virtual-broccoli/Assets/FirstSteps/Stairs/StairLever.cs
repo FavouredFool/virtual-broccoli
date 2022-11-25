@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static StairRotation;
+using static StairManager;
 
 public class StairLever : MonoBehaviour
 {
@@ -9,10 +9,16 @@ public class StairLever : MonoBehaviour
     private bool _stairPos;
 
     [SerializeField]
-    private List<StairRotation> _affectedStairs;
+    private StairColor _color;
 
     [SerializeField]
     private GameObject _movableLever;
+
+    [SerializeField]
+    private MeshRenderer _marker;
+
+
+    private StairManager _stairManager;
 
     private bool _oldStairPos;
 
@@ -29,6 +35,8 @@ public class StairLever : MonoBehaviour
         }
 
         _oldStairPos = _stairPos;
+
+        _marker.material = _stairManager.StairColorToMaterial(_color);
     }
 
 
@@ -36,10 +44,13 @@ public class StairLever : MonoBehaviour
     private void ChangeStairPositions()
     {
         SetLeverVisual();
-
-        foreach (StairRotation stair in _affectedStairs)
+        
+        foreach (StairRotation stair in _stairManager.GetAllStairs())
         {
-            stair.ChangeRotation();
+            if (stair.GetFirstColor() == _color || stair.GetSecondColor() == _color)
+            {
+                stair.ChangeRotation();
+            }
         }
     }
 
@@ -58,5 +69,10 @@ public class StairLever : MonoBehaviour
         _movableLever.transform.rotation = rotation;
     }
 
-    
+    public void SetStairManager(StairManager stairManager)
+    {
+        _stairManager = stairManager;
+    }
+
+
 }

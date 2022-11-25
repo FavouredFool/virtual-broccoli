@@ -4736,10 +4736,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stairPos: 0
-  _affectedStairs:
-  - {fileID: 0}
-  - {fileID: 0}
+  _color: 0
   _movableLever: {fileID: 1031040528250063886}
+  _stairManager: {fileID: 0}
+  _marker: {fileID: 4790873727895654996}
 --- !u!1 &8813282538321860246
 GameObject:
   m_ObjectHideFlags: 0

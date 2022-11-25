@@ -8240,3 +8240,13 @@ MonoBehaviour:
   _goalRotationEnum: 0
   _speed: 0.1
   _stairVisual: {fileID: 1921162033728550957}
+  _firstColor: 0
+  _secondColor: 0
+  _materials:
+  - {fileID: 2100000, guid: 923d9149b3ea06746bd235ab4b5a97b3, type: 2}
+  - {fileID: 2100000, guid: 31629ec610811b24eb18c3cfe5f811bb, type: 2}
+  - {fileID: 2100000, guid: 47281a684af9fcd40a281df712374e2a, type: 2}
+  - {fileID: 2100000, guid: 34179686c5b69a84e8eb6ea70f97472c, type: 2}
+  - {fileID: 2100000, guid: 1b8c618e11dc95741b48d0e13fce53be, type: 2}
+  _firstMarker: {fileID: 1383881324}
+  _secondMarker: {fileID: 1814740890}
