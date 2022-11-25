@@ -66,7 +66,7 @@ public class StairLever : MonoBehaviour
         {
             rotation = Quaternion.Euler(new Vector3(0f, 0f, 45f));
         }
-        _movableLever.transform.rotation = rotation;
+        _movableLever.transform.localRotation = rotation;
     }
 
     public void SetStairManager(StairManager stairManager)
