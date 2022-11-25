@@ -248,7 +248,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 601
+  m_VersionIndex: 664
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -592,7 +592,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 598
+  m_VersionIndex: 661
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1182,7 +1182,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1838
+  m_VersionIndex: 1901
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1237,7 +1237,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 34179686c5b69a84e8eb6ea70f97472c, type: 2}
+  - {fileID: 2100000, guid: 1b8c618e11dc95741b48d0e13fce53be, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1775,7 +1775,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1841
+  m_VersionIndex: 1904
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1830,7 +1830,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31629ec610811b24eb18c3cfe5f811bb, type: 2}
+  - {fileID: 2100000, guid: 1b8c618e11dc95741b48d0e13fce53be, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1902,7 +1902,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1921162033728550957}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1913,7 +1913,7 @@ Transform:
   - {fileID: 1814740887}
   m_Father: {fileID: 1079659518934592585}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
 --- !u!114 &1303868232905375021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8092,7 +8092,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1584
+  m_VersionIndex: 1647
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -8242,11 +8242,5 @@ MonoBehaviour:
   _stairVisual: {fileID: 1921162033728550957}
   _firstColor: 0
   _secondColor: 0
-  _materials:
-  - {fileID: 2100000, guid: 923d9149b3ea06746bd235ab4b5a97b3, type: 2}
-  - {fileID: 2100000, guid: 31629ec610811b24eb18c3cfe5f811bb, type: 2}
-  - {fileID: 2100000, guid: 47281a684af9fcd40a281df712374e2a, type: 2}
-  - {fileID: 2100000, guid: 34179686c5b69a84e8eb6ea70f97472c, type: 2}
-  - {fileID: 2100000, guid: 1b8c618e11dc95741b48d0e13fce53be, type: 2}
   _firstMarker: {fileID: 1383881324}
   _secondMarker: {fileID: 1814740890}

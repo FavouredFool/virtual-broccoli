@@ -4277,7 +4277,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 935
+  m_VersionIndex: 959
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -4592,7 +4592,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 944
+  m_VersionIndex: 968
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -4738,7 +4738,6 @@ MonoBehaviour:
   _stairPos: 0
   _color: 0
   _movableLever: {fileID: 1031040528250063886}
-  _stairManager: {fileID: 0}
   _marker: {fileID: 4790873727895654996}
 --- !u!1 &8813282538321860246
 GameObject:
@@ -5096,7 +5095,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1468
+  m_VersionIndex: 1492
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -5148,7 +5147,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31629ec610811b24eb18c3cfe5f811bb, type: 2}
+  - {fileID: 2100000, guid: 1b8c618e11dc95741b48d0e13fce53be, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
