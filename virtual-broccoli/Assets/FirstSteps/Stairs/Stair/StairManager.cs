@@ -17,10 +17,8 @@ public class StairManager : MonoBehaviour
     [SerializeField]
     private List<Material> _materials;
 
-    public void Start()
+    public void Awake()
     {
-        Debug.Log(_stairParent);
-
         foreach (Transform stairRotationTransform in _stairParent)
         {
             StairRotation stairRotation = stairRotationTransform.GetComponent<StairRotation>();

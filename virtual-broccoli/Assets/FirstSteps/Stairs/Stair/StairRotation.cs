@@ -23,10 +23,10 @@ public class StairRotation : MonoBehaviour
     private StairColor _secondColor;
 
     [SerializeField]
-    private MeshRenderer _firstMarker;
+    private List<MeshRenderer> _leftMarkers;
 
     [SerializeField]
-    private MeshRenderer _secondMarker;
+    private List<MeshRenderer> _rightMarkers;
 
     private StairManager _stairManager;
 
@@ -46,6 +46,19 @@ public class StairRotation : MonoBehaviour
         }
     }
 
+    public void Start()
+    {
+        foreach(MeshRenderer renderer in _leftMarkers)
+        {
+            renderer.material = _stairManager.StairColorToMaterial(_firstColor);
+        }
+
+        foreach (MeshRenderer renderer in _rightMarkers)
+        {
+            renderer.material = _stairManager.StairColorToMaterial(_secondColor);
+        }
+    }
+
     public void Update()
     {
         if (_goalRotationEnum == Rotation.RIGHT)
@@ -59,9 +72,6 @@ public class StairRotation : MonoBehaviour
         _t = Mathf.SmoothStep(_t, _goalT, _speed);
 
         _stairVisual.transform.localRotation = Quaternion.Slerp(Quaternion.Euler(0, -45, 0), Quaternion.Euler(0, 45, 0), _t);
-
-        _firstMarker.material = _stairManager.StairColorToMaterial(_firstColor);
-        _secondMarker.material = _stairManager.StairColorToMaterial(_secondColor);
     }
 
     public void ChangeRotation()
