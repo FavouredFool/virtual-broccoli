@@ -28,6 +28,9 @@ public class StairRotation : MonoBehaviour
     [SerializeField]
     private List<MeshRenderer> _rightMarkers;
 
+    [SerializeField]
+    private List<MeshRenderer> _stairSegments;
+
     private StairManager _stairManager;
 
     private float _goalT;
@@ -48,15 +51,29 @@ public class StairRotation : MonoBehaviour
 
     public void Start()
     {
-        foreach(MeshRenderer renderer in _leftMarkers)
+        foreach(MeshRenderer renderer in _rightMarkers)
         {
             renderer.material = _stairManager.StairColorToMaterial(_firstColor);
         }
 
-        foreach (MeshRenderer renderer in _rightMarkers)
+        foreach (MeshRenderer renderer in _leftMarkers)
         {
             renderer.material = _stairManager.StairColorToMaterial(_secondColor);
         }
+
+        Material [] materialList = 
+        {
+            _stairManager.StairColorToMaterial(StairColor.WHITE),
+            _stairManager.StairColorToMaterial(_firstColor),
+            _stairManager.StairColorToMaterial(_secondColor)
+        };
+    
+        foreach (MeshRenderer renderer in _stairSegments)
+        {
+            renderer.sharedMaterials = materialList;
+        }
+
+
     }
 
     public void Update()
