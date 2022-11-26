@@ -84,7 +84,7 @@ public class StairLever : MonoBehaviour
                 float newPercentage = currentPercentage + fallSign * 0.01f;
 
                 Quaternion setRotation = Quaternion.Slerp(Quaternion.Euler(new Vector3(0f, 0f, 45f)), Quaternion.Euler(new Vector3(0f, 0f, -45f)), newPercentage);
-                _movableLever.transform.rotation = setRotation;
+                _movableLever.transform.localRotation = setRotation;
 
                 currentPercentage = Mathf.Clamp01(newPercentage);
             }
@@ -138,7 +138,7 @@ public class StairLever : MonoBehaviour
 
         Quaternion setRotation = Quaternion.Slerp(Quaternion.Euler(new Vector3(0f, 0f, 45f)), Quaternion.Euler(new Vector3(0f, 0f, -45f)), newPercentage);
 
-        _movableLever.transform.rotation = setRotation;
+        _movableLever.transform.localRotation = setRotation;
 
         currentPercentage = Mathf.Clamp01(newPercentage);
     }
