@@ -5,8 +5,6 @@ using static StairManager;
 
 public class StairRotation : MonoBehaviour
 {
-
-
     [SerializeField]
     private Rotation _goalRotationEnum;
 
@@ -61,17 +59,6 @@ public class StairRotation : MonoBehaviour
             renderer.material = _stairManager.StairColorToMaterial(_secondColor);
         }
 
-        Material [] materialList = 
-        {
-            _stairManager.StairColorToMaterial(StairColor.WHITE),
-            _stairManager.StairColorToMaterial(_firstColor),
-            _stairManager.StairColorToMaterial(_secondColor)
-        };
-    
-        foreach (MeshRenderer renderer in _stairSegments)
-        {
-            renderer.sharedMaterials = materialList;
-        }
 
 
     }
