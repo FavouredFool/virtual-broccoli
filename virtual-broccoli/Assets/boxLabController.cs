@@ -11,20 +11,22 @@ public class boxLabController : MonoBehaviour
     private GameObject _startPoint;
     [SerializeField]
     private Transform _holes;
+    [SerializeField]
+    private bool _startPosition;
 
     private void Awake()
     {
         foreach (Transform childTransform in _holes)
         {
-            childTransform.GetChild(0).GetComponent<HoleControl>().setController(this);
-            childTransform.GetChild(1).GetComponent<HoleControl>().setController(this);
+            childTransform.GetChild(0).GetComponent<ResetTrigger>().setController(this);
+            childTransform.GetChild(1).GetComponent<ResetTrigger>().setController(this);
         }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
+        if (_startPosition) sphereReset();
     }
 
     // Update is called once per frame
