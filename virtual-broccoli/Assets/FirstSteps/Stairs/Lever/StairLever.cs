@@ -14,15 +14,14 @@ public class StairLever : MonoBehaviour
     [SerializeField] private XRBaseInteractable handle = null;
     [SerializeField] private Transform start = null;
     [SerializeField] private Transform end = null;
+
+
     private Vector3 grabPosition = Vector3.zero;
     private float startingPercentage = 0.5f;
     private float currentPercentage = 0.0f;
 
     private StairManager _stairManager;
 
-    private bool _oldStairPos;
-
-    
     protected virtual void OnEnable()
     {
         handle.selectEntered.AddListener(StoreGrabInfo);
@@ -62,6 +61,7 @@ public class StairLever : MonoBehaviour
             UpdateLever();
         }
 
+        Debug.Log(currentPercentage);
 
 
         // thumb down to left or right
@@ -90,40 +90,15 @@ public class StairLever : MonoBehaviour
             }
         }
 
-        /*
-        if (_oldStairPos != _stairPos)
-        {
-            if (_stairPos)
-            {
-                currentPercentage = 0;
-            } 
-            else
-            {
-                currentPercentage = 1;
-            }
-        }
-        */
-
-        if (currentPercentage == 0)
-        {
-            if (_stairPos)
-            {
-                _stairPos = false;
-                ChangeStairPositions();
-            }
-        }
-        else if (currentPercentage == 1)
+        if (currentPercentage == 1)
         {
             if (!_stairPos)
             {
                 _stairPos = true;
+                Debug.Log("2");
                 ChangeStairPositions();
             }
         }
-
-
-
-        _oldStairPos = _stairPos;
 
         if (_stairManager)
         {
