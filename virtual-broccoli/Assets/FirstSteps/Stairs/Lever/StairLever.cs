@@ -61,9 +61,6 @@ public class StairLever : MonoBehaviour
             UpdateLever();
         }
 
-        Debug.Log(currentPercentage);
-
-
         // thumb down to left or right
         if (!handle.isSelected)
         {

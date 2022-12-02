@@ -49,6 +49,8 @@ public class CMYKManager : MonoBehaviour
 
     public void Update()
     {
+        return;
+
         _chosenColor = new Vector4(_cyan, _magenta, _yellow, _key);
 
         if (_matToChange == null)
@@ -68,7 +70,7 @@ public class CMYKManager : MonoBehaviour
 
         float[] lerpedColor = colorLerping.colorLerp(Vector4ToFloatArray(_oldColor), Vector4ToFloatArray(mixedColor), _lerpValue);
 
-        _matToChange.color = ConvertCmykToRgb(FloatArrayToVector4(lerpedColor));
+        _matToChange.color = ConvertCMYKToRGB(FloatArrayToVector4(lerpedColor));
 
         if (_lerpValue >= 1)
         {
@@ -76,12 +78,10 @@ public class CMYKManager : MonoBehaviour
             _blend = false;
             _lerpValue = 0;
         }
-
-
     }
 
 
-    public static Color ConvertCmykToRgb(Vector4 cmyk)
+    public static Color ConvertCMYKToRGB(Vector4 cmyk)
     {
         float r;
         float g;
@@ -92,6 +92,24 @@ public class CMYKManager : MonoBehaviour
         b = (1 - cmyk.z) * (1 - cmyk.w);
 
         return new Color(r, g, b, 1);
+    }
+
+    public static Vector4 ConvertRGBToCMYK(Color rgb)
+    {
+        if (rgb.r == 0 && rgb.g == 0 && rgb.b == 0)
+            return new Vector4(0, 0, 0, 1);
+        else if (rgb.r == 1 && rgb.g == 1 && rgb.b == 1)
+            return new Vector4 ( 0, 0, 0, 0 );
+
+        float cyan = 1 - rgb.r;
+        float magenta = 1 - rgb.g;
+        float yellow = 1 - rgb.b;
+        float black = Mathf.Min(cyan, magenta, yellow);
+        cyan = (cyan - black) / (1 - black);
+        magenta = (magenta - black) / (1 - black);
+        yellow = (yellow - black) / (1 - black);
+
+        return new Vector4(cyan, magenta, yellow, black);
     }
 
     public static Vector4 MixColorsCMYK(Vector4 color1, Vector4 color2)
@@ -114,4 +132,6 @@ public class CMYKManager : MonoBehaviour
         float[] floatArray = { vector4.x, vector4.y, vector4.z, vector4.w };
         return floatArray;
     }
+
+
 }
