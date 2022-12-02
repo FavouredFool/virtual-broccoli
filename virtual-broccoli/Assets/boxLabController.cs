@@ -12,6 +12,8 @@ public class boxLabController : MonoBehaviour
     [SerializeField]
     private Transform _holes;
     [SerializeField]
+    private Transform _finishHole;
+    [SerializeField]
     private bool _startPosition;
 
     private void Awake()
@@ -21,6 +23,9 @@ public class boxLabController : MonoBehaviour
             childTransform.GetChild(0).GetComponent<ResetTrigger>().setController(this);
             childTransform.GetChild(1).GetComponent<ResetTrigger>().setController(this);
         }
+
+        _finishHole.GetChild(0).GetComponent<FinishTrigger>().setController(this);
+
     }
 
     // Start is called before the first frame update
