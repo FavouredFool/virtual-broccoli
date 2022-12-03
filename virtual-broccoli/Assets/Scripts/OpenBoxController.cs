@@ -10,7 +10,7 @@ public class OpenBoxController : MonoBehaviour
     private Vector3 _rotation;
 
     private float _fullRotation;
-    private float _startRotation;
+    private Quaternion _startRotation;
     private float _endRotation;
     private float _currentRotation;
     private Vector3 _stepVektor;
@@ -18,9 +18,12 @@ public class OpenBoxController : MonoBehaviour
     private enum STATE {FORWARD, BACKWARD};
     private STATE _activeState;
 
+    private enum BLOCKED { TOP, BOT, NOT };
+    private BLOCKED _blocked;
+
     private void Start()
     {
-        _fullRotation = 360f;
+        /*_fullRotation = 360f;
         _startRotation = Mathf.Round(transform.localEulerAngles.z);
 
         if (_rotation.z > 0)
@@ -36,7 +39,10 @@ public class OpenBoxController : MonoBehaviour
         }
 
         _stepVektor = new Vector3(0, 0, 1f);
-        _rotateVektor = new Vector3(0, 0, 0);
+        _rotateVektor = new Vector3(0, 0, 0);*/
+
+        _startRotation = transform.localRotation;
+        _blocked = BLOCKED.NOT;
     }
 
     public void setOpen(bool open)
@@ -44,10 +50,28 @@ public class OpenBoxController : MonoBehaviour
         _rotate = open;
     }
 
+    public void callBlocked(string trigger)
+    {
+        switch (trigger)
+        {
+            case "topTrigger":
+                _blocked = BLOCKED.TOP;
+                break;
+
+            case "botTrigger":
+                _blocked = BLOCKED.BOT;
+                break;
+
+            default:
+                _blocked = BLOCKED.NOT;
+                break;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        _currentRotation = Mathf.Round(transform.localEulerAngles.z);
+        /*_currentRotation = Mathf.Round(transform.localEulerAngles.z);
         _rotateVektor *= 0;
 
 
@@ -163,7 +187,36 @@ public class OpenBoxController : MonoBehaviour
                 _rotateVektor = Vector3.zero;
                 break;
 
+        }*/
+
+        var step = _speed * Time.deltaTime;
+
+        switch (_blocked)
+        {
+            case BLOCKED.NOT:
+
+                if (_rotate)
+                {
+                    transform.localRotation = Quaternion.RotateTowards(transform.localRotation, _startRotation * Quaternion.AngleAxis(_rotation.z, Vector3.forward), step);
+                }
+                else
+                {
+                    transform.localRotation = Quaternion.RotateTowards(transform.localRotation, _startRotation, step);
+                }
+                break;
+
+            case BLOCKED.TOP:
+
+                if (!_rotate)
+                {
+                    transform.localRotation = Quaternion.RotateTowards(transform.localRotation, _startRotation, step);
+                }
+                break;
+
+            case BLOCKED.BOT:
+            default:
+
+                break;
         }
-        this.transform.Rotate(_rotateVektor);
     }
 }

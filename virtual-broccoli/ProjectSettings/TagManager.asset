@@ -8,6 +8,7 @@ TagManager:
   - Ventil
   - Pipe
   - PipeRotateOnly
+  - BoxDoor
   layers:
   - Default
   - TransparentFX
