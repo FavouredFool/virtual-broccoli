@@ -2,62 +2,94 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using colorKit;
-using lerpKit;
+using static ColorMachineSequence;
 
 public class CauldronScript : MonoBehaviour
 {
     [SerializeField]
     MeshRenderer _meshRenderer = null;
 
+    [SerializeField]
+    ColorMachineSequence _machineSequence;
+
     bool _blend = false;
 
     [SerializeField, Range(0f, 0.1f)]
     float _blendSpeed = 0.05f;
 
-    Vector4 _goalColor;
+    Vector4 _mixedColor;
     Vector4 _oldColor;
     float _lerpValue = 0;
 
+
     public void Start()
     {
-        _goalColor = CMYKManager.ConvertRGBToCMYK(_meshRenderer.material.color);
-        _oldColor = _goalColor;
+        _mixedColor = CMYKUtilites.ConvertRGBToCMYK(_meshRenderer.material.color);
+        _oldColor = _mixedColor;
     }
 
     private void Update()
     {
-        if (!_blend)
+        if (_machineSequence.GetMachineState() != MachineState.MIXING)
         {
             return;
         }
 
+        if (!_blend)
+        {
+            return;
+        }
+        
+
+        LerpColorOnBlend();
+    }
+
+    private void TestIfGoalColorReached()
+    {
+        if (_mixedColor == _machineSequence.GetGoalColor())
+        {
+            // End this part of the cycle
+            _machineSequence.MixComplete();
+        }
+    }
+
+    private void LerpColorOnBlend()
+    {
         _lerpValue += _blendSpeed;
 
-        Debug.Log(_oldColor);
-        Debug.Log(_goalColor);
-        float[] lerpedColor = colorLerping.colorLerp(CMYKManager.Vector4ToFloatArray(_oldColor), CMYKManager.Vector4ToFloatArray(_goalColor), _lerpValue);
+        float[] lerpedColor = colorLerping.colorLerp(CMYKUtilites.Vector4ToFloatArray(_oldColor), CMYKUtilites.Vector4ToFloatArray(_mixedColor), _lerpValue);
 
-        _meshRenderer.material.color = CMYKManager.ConvertCMYKToRGB(CMYKManager.FloatArrayToVector4(lerpedColor));
+        _meshRenderer.material.color = CMYKUtilites.ConvertCMYKToRGB(CMYKUtilites.FloatArrayToVector4(lerpedColor));
 
         if (_lerpValue >= 1)
         {
-            _oldColor = _goalColor;
+            _oldColor = _mixedColor;
             _blend = false;
             _lerpValue = 0;
+
+            Debug.Log(_mixedColor);
+            Debug.Log(CMYKUtilites.ConvertCMYKToRGB(_mixedColor));
+            TestIfGoalColorReached();
         }
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        Vector4 colorCMYK = CMYKManager.ConvertRGBToCMYK(other.GetComponent<MeshRenderer>().material.color);
+        Vector4 colorCMYK = CMYKUtilites.ConvertRGBToCMYK(other.GetComponent<MeshRenderer>().material.color);
 
-        Vector4 oldColor = CMYKManager.ConvertRGBToCMYK(_meshRenderer.material.color);
+        Vector4 oldColor = CMYKUtilites.ConvertRGBToCMYK(_meshRenderer.material.color);
 
-        _goalColor = CMYKManager.MixColorsCMYK(colorCMYK, oldColor);
+        _mixedColor = CMYKUtilites.MixColorsCMYK(colorCMYK, oldColor);
 
         _blend = true;
 
         Destroy(other.gameObject);
+    }
+
+    public void SetCauldronColorCMYK(Vector4 colorCMYK)
+    {
+        _meshRenderer.material.color = CMYKUtilites.ConvertCMYKToRGB(colorCMYK);
+        _oldColor = colorCMYK;
     }
 }
