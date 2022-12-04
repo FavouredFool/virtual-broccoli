@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ColorMachineSequence : MonoBehaviour
 {
@@ -12,6 +13,15 @@ public class ColorMachineSequence : MonoBehaviour
 
     [SerializeField]
     private CrystalColor _insertedCrystal;
+
+    [SerializeField]
+    private bool _resetMix;
+
+    [SerializeField]
+    private ScreenScript _screen;
+
+    [SerializeField]
+    private TMP_Text _cmykInfoText;
 
     public enum MachineState { AWAITCRYSTAL, MIXING, CLOSELID, FREECOLOR, RESETPUZZLE, RESETMACHINE };
     public enum CrystalColor { KEY, CYAN, YELLOW, MAGENTA };
@@ -32,6 +42,11 @@ public class ColorMachineSequence : MonoBehaviour
         new YellowInstruction(),
         new MagentaInstruction(),
     };
+
+    public void Start()
+    {
+        ResetMachine();
+    }
 
     public void Update()
     {
@@ -56,6 +71,28 @@ public class ColorMachineSequence : MonoBehaviour
                 break;
             case MachineState.RESETMACHINE:
                 break;
+        }
+
+        // Set actice color every frame for lerp
+        _cmykInfoText.text = _screen.ConvertCMYKToString(_cauldronScript.GetActiceCauldronColor());
+
+
+        if (_resetMix)
+        {
+            _resetMix = false;
+            if (_machineState == MachineState.AWAITCRYSTAL)
+            {
+                ResetMachine();
+            }
+            else if (_machineState == MachineState.MIXING)
+            {
+                ResetPuzzle();
+            }
+            else
+            {
+                Debug.LogWarning("BUTTON UNAVALIABLE");
+            }
+            
         }
     }
 
@@ -101,7 +138,8 @@ public class ColorMachineSequence : MonoBehaviour
 
 
         // Set Display
-        
+        _screen.SetColorAndText(_activeCrystalInstruction.GetGoalColors()[_mixIteration]);
+
         _machineState = MachineState.MIXING;
         MixInit();
     }
@@ -119,8 +157,8 @@ public class ColorMachineSequence : MonoBehaviour
 
     public void MixComplete()
     {
-        //_mixIteration += 1;
-        //_machineState = MachineState.FREECOLOR;
+        _mixIteration += 1;
+        _machineState = MachineState.FREECOLOR;
     }
 
 
@@ -131,6 +169,7 @@ public class ColorMachineSequence : MonoBehaviour
         _mixIteration = 1;
 
         // Empty display or: "Fill Crystal into slot"
+        _screen.ResetColorAndText();
 
         // Refill White in Cauldron
         _cauldronScript.SetCauldronColorCMYK(new Vector4(0, 0, 0, 0));

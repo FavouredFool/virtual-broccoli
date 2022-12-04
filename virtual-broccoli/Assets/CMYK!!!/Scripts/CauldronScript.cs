@@ -21,20 +21,20 @@ public class CauldronScript : MonoBehaviour
     Vector4 _oldColor;
     float _lerpValue = 0;
 
+    Vector4 _activeCauldronColor;
+
 
     public void Start()
     {
         _mixedColor = CMYKUtilites.ConvertRGBToCMYK(_meshRenderer.material.color);
         _oldColor = _mixedColor;
+        _activeCauldronColor = _mixedColor;
+
+        Debug.Log(CMYKUtilites.ConvertRGBToCMYK(new Color(0, 0.5f, 0.5f, 1)));
     }
 
     private void Update()
     {
-        if (_machineSequence.GetMachineState() != MachineState.MIXING)
-        {
-            return;
-        }
-
         if (!_blend)
         {
             return;
@@ -59,7 +59,9 @@ public class CauldronScript : MonoBehaviour
 
         float[] lerpedColor = colorLerping.colorLerp(CMYKUtilites.Vector4ToFloatArray(_oldColor), CMYKUtilites.Vector4ToFloatArray(_mixedColor), _lerpValue);
 
-        _meshRenderer.material.color = CMYKUtilites.ConvertCMYKToRGB(CMYKUtilites.FloatArrayToVector4(lerpedColor));
+        _activeCauldronColor = CMYKUtilites.FloatArrayToVector4(lerpedColor);
+
+        _meshRenderer.material.color = CMYKUtilites.ConvertCMYKToRGB(_activeCauldronColor);
 
         if (_lerpValue >= 1)
         {
@@ -67,8 +69,8 @@ public class CauldronScript : MonoBehaviour
             _blend = false;
             _lerpValue = 0;
 
-            Debug.Log(_mixedColor);
-            Debug.Log(CMYKUtilites.ConvertCMYKToRGB(_mixedColor));
+            Debug.Log(_mixedColor.ToString("F4"));
+            //Debug.Log(CMYKUtilites.ConvertCMYKToRGB(_mixedColor));
             TestIfGoalColorReached();
         }
     }
@@ -78,9 +80,9 @@ public class CauldronScript : MonoBehaviour
     {
         Vector4 colorCMYK = CMYKUtilites.ConvertRGBToCMYK(other.GetComponent<MeshRenderer>().material.color);
 
-        Vector4 oldColor = CMYKUtilites.ConvertRGBToCMYK(_meshRenderer.material.color);
+        //Vector4 oldColor = CMYKUtilites.ConvertRGBToCMYK(_meshRenderer.material.color);
 
-        _mixedColor = CMYKUtilites.MixColorsCMYK(colorCMYK, oldColor);
+        _mixedColor = CMYKUtilites.MixColorsCMYK(colorCMYK, _oldColor);
 
         _blend = true;
 
@@ -91,5 +93,12 @@ public class CauldronScript : MonoBehaviour
     {
         _meshRenderer.material.color = CMYKUtilites.ConvertCMYKToRGB(colorCMYK);
         _oldColor = colorCMYK;
+        _mixedColor = colorCMYK;
+        _activeCauldronColor = colorCMYK;
+    }
+
+    public Vector4 GetActiceCauldronColor()
+    {
+        return _activeCauldronColor;
     }
 }
