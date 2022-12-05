@@ -12,16 +12,24 @@ public class ColorMachineSequence : MonoBehaviour
     private CauldronScript _cauldronScript;
 
     [SerializeField]
+    private SlotScript _slot;
+
+    [SerializeField]
     private CrystalColor _insertedCrystal;
 
     [SerializeField]
     private bool _resetMix;
 
     [SerializeField]
+    private bool _resetMachine;
+
+    [SerializeField]
     private ScreenScript _screen;
 
     [SerializeField]
     private TMP_Text _cmykInfoText;
+
+
 
     public enum MachineState { AWAITCRYSTAL, MIXING, CLOSELID, FREECOLOR, RESETPUZZLE, RESETMACHINE };
     public enum CrystalColor { KEY, CYAN, YELLOW, MAGENTA };
@@ -70,6 +78,7 @@ public class ColorMachineSequence : MonoBehaviour
                 ResetPuzzle();
                 break;
             case MachineState.RESETMACHINE:
+                ResetMachine();
                 break;
         }
 
@@ -82,17 +91,22 @@ public class ColorMachineSequence : MonoBehaviour
             _resetMix = false;
             if (_machineState == MachineState.AWAITCRYSTAL)
             {
-                ResetMachine();
+                _machineState = MachineState.RESETMACHINE;
             }
             else if (_machineState == MachineState.MIXING)
             {
-                ResetPuzzle();
+                _machineState = MachineState.RESETPUZZLE;
             }
             else
             {
                 Debug.LogWarning("BUTTON UNAVALIABLE");
             }
-            
+        }
+
+        if (_resetMachine)
+        {
+            _resetMachine = false;
+            _machineState = MachineState.RESETMACHINE;
         }
     }
 
@@ -174,6 +188,9 @@ public class ColorMachineSequence : MonoBehaviour
         // Refill White in Cauldron
         _cauldronScript.SetCauldronColorCMYK(new Vector4(0, 0, 0, 0));
 
+        // Open Crystalhatch
+        _slot.ResetSlot();
+
         _machineState = MachineState.AWAITCRYSTAL;
     }
 
@@ -185,5 +202,20 @@ public class ColorMachineSequence : MonoBehaviour
     public MachineState GetMachineState()
     {
         return _machineState;
+    }
+
+    public void SetInsertedCrystal(CrystalColor color)
+    {
+        if (!_crystalInserted)
+        {
+            _crystalInserted = true;
+            _insertedCrystal = color;
+        }
+        else
+        {
+            Debug.LogWarning("MACHINE IN WRONG STATE TO PROCESS NEW CRYSTAL");
+        }
+        
+
     }
 }
