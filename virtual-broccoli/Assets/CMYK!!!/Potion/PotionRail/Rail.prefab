@@ -29,7 +29,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 113857420266308356}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &113857418584099617
 GameObject:
@@ -88,7 +88,7 @@ Transform:
   m_GameObject: {fileID: 113857418659259268}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.195, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.20000002, y: 0.2, z: 0.20000002}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 113857420266308356}
@@ -112,46 +112,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _potionBlueprint: {fileID: 7342904259030385795, guid: 187e6bb143f77bb4ea45ad58c55ea0fd,
     type: 3}
-  _potionMaterial: {fileID: 2100000, guid: 6ad5f116f11b5a34abdc8260a07bad8f, type: 2}
+  _potionMaterial: {fileID: 2100000, guid: b8caba5fada60984197ba8ce36e576a2, type: 2}
   _startTransform: {fileID: 113857418536293052}
   _endTransform: {fileID: 113857419277206494}
   _transformList:
   - {fileID: 113857420140059877}
   - {fileID: 113857419284860478}
   - {fileID: 113857419073910172}
-  - {fileID: 113857418765857868}
   _speed: 0.1
---- !u!1 &113857418765857867
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 113857418765857868}
-  m_Layer: 0
-  m_Name: Transform3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &113857418765857868
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 113857418765857867}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 113857420266308356}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &113857419073910171
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,7 +180,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 113857420266308356}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &113857419284860477
 GameObject:
@@ -307,7 +275,6 @@ Transform:
   - {fileID: 113857420140059877}
   - {fileID: 113857419284860478}
   - {fileID: 113857419073910172}
-  - {fileID: 113857418765857868}
   - {fileID: 113857418536293052}
   - {fileID: 113857419277206494}
   m_Father: {fileID: 113857418659259270}
@@ -1709,7 +1676,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1811
+  m_VersionIndex: 1817
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3205,7 +3172,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1814
+  m_VersionIndex: 1820
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
