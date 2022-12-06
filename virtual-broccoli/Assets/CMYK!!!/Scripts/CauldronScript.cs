@@ -22,6 +22,7 @@ public class CauldronScript : MonoBehaviour
     float _lerpValue = 0;
 
     Vector4 _activeCauldronColor;
+    Vector4 _oldCauldronColor;
 
 
     public void Start()
@@ -65,9 +66,10 @@ public class CauldronScript : MonoBehaviour
 
         if (_lerpValue >= 1)
         {
-            _oldColor = _mixedColor;
             _blend = false;
             _lerpValue = 0;
+
+            _oldColor = _activeCauldronColor;
 
             Debug.Log(_mixedColor.ToString("F4"));
             //Debug.Log(CMYKUtilites.ConvertCMYKToRGB(_mixedColor));
@@ -88,6 +90,7 @@ public class CauldronScript : MonoBehaviour
         Vector4 colorCMYK = CMYKUtilites.ConvertRGBToCMYK(potion.GetColor());
 
         _mixedColor = CMYKUtilites.MixColorsCMYK(colorCMYK, _oldColor);
+        _oldColor = _activeCauldronColor;
 
         _blend = true;
 
@@ -101,6 +104,7 @@ public class CauldronScript : MonoBehaviour
         _oldColor = colorCMYK;
         _mixedColor = colorCMYK;
         _activeCauldronColor = colorCMYK;
+        _oldCauldronColor = _activeCauldronColor;
     }
 
     public Vector4 GetActiceCauldronColor()
