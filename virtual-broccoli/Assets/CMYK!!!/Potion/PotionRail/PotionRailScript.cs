@@ -23,61 +23,58 @@ public class PotionRailScript : MonoBehaviour
     [SerializeField]
     private float _speed = 0.1f;
 
-    private float _customTime = 0;
+    [SerializeField]
+    private float _distanceToOtherPotion = 1f;
 
-    private void Start()
+    private void Awake()
     {
-        foreach (Transform transform in _transformList)
+        for (int i = 0; i < _transformList.Count; i++)
         {
-            InstantiatePotion(transform);
+            _transformList[i].localPosition = new Vector3(0, 0, _endTransform.localPosition.z - 0.1f - i * _distanceToOtherPotion + 0.1f);
+
+            InstantiatePotion(_transformList[i]);
         }
     }
 
     private void Update()
     {
-        List<Transform> transformListWithNoChildren = _transformList.Where(e => e.childCount != 0).ToList();
-        Transform frontTransformWithPotion = null;
-
-        if (transformListWithNoChildren.Count != 0)
-        {
-            frontTransformWithPotion = _transformList.Where(e => e.localPosition.z == transformListWithNoChildren.Max(e => e.localPosition.z)).FirstOrDefault();
-        }
-
+        Transform frontTransformWithPotion = _transformList.Where(e => e.localPosition.z == _transformList.Max(e => e.localPosition.z)).FirstOrDefault();
         
+        float endZ;
+        bool changeGrappable;
 
-
-        Transform lastTransform = _transformList.Where(e => e.localPosition.z == _transformList.Min(e => e.localPosition.z)).FirstOrDefault();
-
-        if (frontTransformWithPotion != null)
-        {
-            // TODO: THIS IS NOT PERFORMANT, DUNNO IF IT'S A BIG DEAL
-            if (frontTransformWithPotion.childCount > 0)
-            {
-                frontTransformWithPotion.GetChild(0).GetComponent<PotionScript>().ChangeGrabableState(true);
-            }
-
-
-            if (frontTransformWithPotion.localPosition.z > _endTransform.localPosition.z - 0.1f)
-            {
-                return;
-            }
-        }
-
-
-
-        _customTime += Time.deltaTime;
 
         for (int i = 0; i < _transformList.Count; i++)
         {
-            float basicRepeat = ((float)i) / (_transformList.Count);
-            float t = (basicRepeat + _customTime * _speed) % 1f;
+            if (frontTransformWithPotion.localPosition == _transformList[i].localPosition)
+            {
+                endZ = _endTransform.localPosition.z - 0.1f;
+                changeGrappable = true;
+            }
+            else
+            {
+                endZ = _endTransform.localPosition.z - _distanceToOtherPotion - 0.1f;
+                changeGrappable = false;
+            }
 
-            _transformList[i].localPosition = Vector3.Lerp(_startTransform.localPosition, _endTransform.localPosition, t);
-        }
+            if (_transformList[i].localPosition.z > endZ)
+            {
+                if (_transformList[i].childCount > 0)
+                {
+                    if (changeGrappable)
+                    {
+                        frontTransformWithPotion.GetChild(0).GetComponent<PotionScript>().ChangeGrabableState(true);
+                    }
+                }
+                else
+                {
+                    _transformList[i].localPosition = _startTransform.localPosition;
+                    InstantiatePotion(_transformList[i]);
+                }
 
-        if (lastTransform != null && lastTransform.childCount == 0)
-        {
-            InstantiatePotion(lastTransform);
+                continue;
+            }
+            _transformList[i].localPosition = Vector3.MoveTowards(_transformList[i].localPosition, _endTransform.localPosition, Time.deltaTime * _speed);
         }
 
     }
