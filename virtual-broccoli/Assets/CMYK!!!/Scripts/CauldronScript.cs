@@ -75,12 +75,17 @@ public class CauldronScript : MonoBehaviour
         }
     }
 
-
     private void OnTriggerEnter(Collider other)
     {
-        Vector4 colorCMYK = CMYKUtilites.ConvertRGBToCMYK(other.GetComponent<MeshRenderer>().material.color);
+        PotionScript potion = other.GetComponent<PotionScript>();
 
-        //Vector4 oldColor = CMYKUtilites.ConvertRGBToCMYK(_meshRenderer.material.color);
+        if (potion == null)
+        {
+            Debug.Log("inserted wrong item in cauldron");
+            return;
+        }
+
+        Vector4 colorCMYK = CMYKUtilites.ConvertRGBToCMYK(potion.GetColor());
 
         _mixedColor = CMYKUtilites.MixColorsCMYK(colorCMYK, _oldColor);
 
@@ -88,6 +93,7 @@ public class CauldronScript : MonoBehaviour
 
         Destroy(other.gameObject);
     }
+
 
     public void SetCauldronColorCMYK(Vector4 colorCMYK)
     {
