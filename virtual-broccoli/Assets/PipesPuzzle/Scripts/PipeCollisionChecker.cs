@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class PipeCollisionChecker : MonoBehaviour
@@ -11,18 +10,25 @@ public class PipeCollisionChecker : MonoBehaviour
     }
     private void OnTriggerEnter(Collider collider)
     {
-        if ((collider.gameObject.CompareTag("Ventil") || collider.gameObject.CompareTag("Pipe")) && (!_pipe.IsDragged() || !collider.gameObject.GetComponent<Pipe>().IsDragged()))
+        if (CanEnterOrLeave(collider))
         {
-            _pipe.AddNeighbor(this.name, collider.gameObject);
+            _pipe.AddNeighbor(name, collider.gameObject);
         }
     }
 
     private void OnTriggerExit(Collider collider)
     {
-        if ((collider.gameObject.CompareTag("Ventil") || collider.gameObject.CompareTag("Pipe")) && (_pipe.IsDragged() ^ collider.gameObject.GetComponent<Pipe>().IsDragged()))
+        if (CanEnterOrLeave(collider))
         {
-            _pipe.RemoveNeighbor(this.name);
+            _pipe.RemoveNeighbor(name, collider.gameObject);
         }
+    }
+
+    private bool CanEnterOrLeave(Collider collider)
+    {
+        return collider.gameObject.CompareTag("Ventil") ||
+            ((collider.gameObject.CompareTag("PipeRotateOnly") || collider.gameObject.CompareTag("Pipe"))
+            && (!_pipe.IsDragged() || !collider.gameObject.GetComponent<Pipe>().IsDragged()));
     }
 
 }

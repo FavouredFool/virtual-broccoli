@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +13,8 @@ public class Pipe : MonoBehaviour
     private void Start()
     {
         _neighborPipeBorders = new Dictionary<string, GameObject>();
-        _blueprint = transform.childCount > 2 ? transform.GetChild(2).gameObject : null;
+        Transform blueprintTransform = transform.parent.gameObject.transform.Find("Blueprint");
+        _blueprint = blueprintTransform != null ? blueprintTransform.gameObject : null;
     }
 
     public void SetPlaceGrid(Collider gridPlacement)
@@ -29,7 +29,7 @@ public class Pipe : MonoBehaviour
 
     public bool IsDragged()
     {
-        return !CompareTag("Ventil") && ( CompareTag("Pipe") && GetComponent<Rigidbody>().isKinematic && GetComponent<Rigidbody>().useGravity);
+        return !CompareTag("Ventil") && (CompareTag("PipeRotateOnly") || CompareTag("Pipe")) && GetComponent<Rigidbody>().isKinematic && GetComponent<Rigidbody>().useGravity;
     }
 
     public Dictionary<string, GameObject> GetNeighbors()
@@ -37,14 +37,22 @@ public class Pipe : MonoBehaviour
         return _neighborPipeBorders;
     }
 
-    public bool AddNeighbor(string key, GameObject gameObject)
+    public void AddNeighbor(string key, GameObject gameObject)
     {
-        return _neighborPipeBorders.TryAdd(key, gameObject);
+        _neighborPipeBorders.TryAdd(key, gameObject);
     }
 
-    public bool RemoveNeighbor(string key)
+    public void RemoveNeighbor(string key, GameObject gameObject)
     {
-        return _neighborPipeBorders.Remove(key);
+        if (_neighborPipeBorders.ContainsValue(gameObject))
+        {
+            _neighborPipeBorders.Remove(key);
+        }
+    }
+
+    public void RemoveNeighbors()
+    {
+        _neighborPipeBorders.Clear();
     }
 
     public GameObject GetBlueprint()

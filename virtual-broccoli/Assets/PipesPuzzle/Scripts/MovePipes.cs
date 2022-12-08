@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,11 +20,7 @@ public class MovePipes : MonoBehaviour
 
     private GameObject _selectedObject;
 
-    private Vector3 _preferredRotationAngles;
-
     private bool _validRotation = false;
-
-    private Quaternion _preparedPositionRotation;
 
     private readonly int _comparisonValue = 45;
 
@@ -41,7 +36,7 @@ public class MovePipes : MonoBehaviour
 
                 if (hit.collider != null)
                 {
-                    if (!hit.collider.CompareTag("Pipe"))
+                    if (!(hit.collider.CompareTag("Pipe") || hit.collider.CompareTag("PipeRotateOnly")))
                     {
                         return;
                     }
@@ -49,17 +44,28 @@ public class MovePipes : MonoBehaviour
                     _validRotation = false;
                     _selectedObject = hit.collider.gameObject;
                     //set depth for mouse movement (not needed in VR)
-                    _selectedObject.transform.position = new Vector3(
-                        _selectedObject.transform.position.x,
-                        _selectedObject.transform.position.y,
-                        -1f);
+                    if (_selectedObject.CompareTag("Pipe"))
+                    {
+                        _selectedObject.transform.position = new Vector3(
+                            _selectedObject.transform.position.x,
+                            _selectedObject.transform.position.y,
+                            -1f);
+                    }
 
                     _selectedObject.GetComponent<Rigidbody>().useGravity = true;
                     _selectedObject.GetComponent<Rigidbody>().isKinematic = true;
 
-                    Quaternion startRotation = Quaternion.Euler(0, 90, 0);
+                    Quaternion startRotation = Quaternion.Euler(_selectedObject.transform.rotation.eulerAngles.x, 90, 0);
                     _selectedObject.transform.rotation = startRotation;
-                    _selectedObject.GetComponent<Pipe>().GetBlueprint().transform.rotation = startRotation;
+                    GameObject blueprint = _selectedObject.GetComponent<Pipe>().GetBlueprint();
+                    blueprint.transform.rotation = startRotation;
+                    blueprint.GetComponent<MeshRenderer>().enabled = true;
+                    if (_selectedObject.CompareTag("PipeRotateOnly"))
+                    {
+                        blueprint.SetActive(true);
+                    }
+
+                    //Check end state because of pickup
                     if (_solved)
                     {
                         CheckFinalState();
@@ -68,15 +74,15 @@ public class MovePipes : MonoBehaviour
             } else
             {
                 Pipe pipeComponent = _selectedObject.GetComponent<Pipe>();
-                Collider gridPlacement = pipeComponent.GetPlaceGrid();
-                if (gridPlacement != null)
+                if (pipeComponent.GetPlaceGrid() != null)
                 {
                     if (_validRotation)
                     {
-                        _selectedObject.transform.SetPositionAndRotation(gridPlacement.transform.position,
+                        GameObject blueprint = pipeComponent.GetBlueprint();
+                        _selectedObject.transform.SetPositionAndRotation(blueprint.transform.position,
                             pipeComponent.GetBlueprint().transform.rotation);
-                        //UpdateRotation(gridPlacement);
                         _selectedObject.GetComponent<Rigidbody>().useGravity = false;
+                        blueprint.GetComponent<MeshRenderer>().enabled = false;
                     }
                     else
                     {
@@ -84,11 +90,13 @@ public class MovePipes : MonoBehaviour
                     }
                 } else
                 {
-                    _selectedObject.GetComponent<Rigidbody>().useGravity = true;
+                    if (_selectedObject.CompareTag("Pipe"))
+                    {
+                        _selectedObject.GetComponent<Rigidbody>().useGravity = true;
+                    }
                     _selectedObject.GetComponent<Rigidbody>().isKinematic = false;
                 }
 
-                pipeComponent.GetBlueprint().SetActive(false);
                 CheckFinalState();
                 _selectedObject = null;
             }
@@ -106,6 +114,7 @@ public class MovePipes : MonoBehaviour
         {
             foreach (KeyValuePair<string, GameObject> pair in startNeighbors)
             {
+                Debug.Log("Start gefunden");
                 current = pair.Value;
                 checkedPipes.Add(current);
                 break;
@@ -121,9 +130,9 @@ public class MovePipes : MonoBehaviour
         foreach (KeyValuePair<string, GameObject> pair in current.GetComponent<Pipe>().GetNeighbors())
         {
             checkedNeighborPipe = pair.Value;
-            Debug.Log(checkedNeighborPipe.name);
-            if (checkedNeighborPipe != current && !checkedPipes.Contains(checkedNeighborPipe))
+            if (!checkedPipes.Contains(checkedNeighborPipe))
             {
+                Debug.Log("Pipe: " + current.name + " -> neighbor: " + checkedNeighborPipe.name);
                 if (checkedNeighborPipe.CompareTag("Ventil"))
                 {
                     _solved = true;
@@ -136,38 +145,26 @@ public class MovePipes : MonoBehaviour
         }
     }
 
-    private void UpdateRotation(Collider collider)
+    private float GetRotationAngle()
     {
-        if (collider != null && _selectedObject != null)
+        float angleRight = Vector3.Angle(_selectedObject.transform.InverseTransformDirection(Vector3.right), Vector3.up);
+        float angleTop = Vector3.Angle(_selectedObject.transform.InverseTransformDirection(Vector3.up), Vector3.up);
+
+        if (angleTop < 45)
         {
-            float rotationX;
-
-            float angleRight = Vector3.Angle(_selectedObject.transform.InverseTransformDirection(Vector3.right), Vector3.up);
-            float angleTop = Vector3.Angle(_selectedObject.transform.InverseTransformDirection(Vector3.up), Vector3.up);
-
-            //Debug.Log("Angle horizontal: " + angleRight);
-            //Debug.Log("Angle vertical: " + angleTop);
-
-            if (angleTop < 45)
-            {
-                Debug.Log("Top");
-                rotationX = 0;
-            }
-            else if (angleTop > 135)
-            {
-                Debug.Log("Bottom");
-                rotationX = 180;
-            }
-            else if (angleRight < 45)
-            {
-                Debug.Log("Right");
-                rotationX = 90;
-            }
-            else {
-                Debug.Log("Left");
-                rotationX = 270;
-            }
-            _selectedObject.transform.rotation = Quaternion.Euler(rotationX, 90, 0);
+            return 0;
+        }
+        else if (angleTop > 135)
+        {
+            return 180;
+        }
+        else if (angleRight < 45)
+        {
+            return 90;
+        }
+        else
+        {
+            return 270;
         }
     }
 
@@ -195,22 +192,9 @@ public class MovePipes : MonoBehaviour
     {
         if (_selectedObject != null)
         {
-
-            if (Input.GetKeyDown(KeyCode.Y))
-            {
-                Vector3 res = _selectedObject.transform.InverseTransformDirection(Vector3.up);
-                _selectedObject.transform.rotation *= Quaternion.AngleAxis(6, res);
-            }
-            if (Input.GetKeyDown(KeyCode.Z))
-            {
-                Vector3 res = _selectedObject.transform.InverseTransformDirection(Vector3.right);
-                _selectedObject.transform.rotation *= Quaternion.AngleAxis(6, res);
-            }
-
             if (Input.GetKeyDown(KeyCode.R))
             {
                 _moving = _moving == 1 ? 0 : 1;
-
             }
             if (Input.GetKeyDown(KeyCode.T))
             {
@@ -223,38 +207,28 @@ public class MovePipes : MonoBehaviour
                 _selectedObject.transform.rotation *= Quaternion.AngleAxis(_moving * _rotationAngle, res);
             }
 
-            Vector3 pos = new(Input.mousePosition.x,
-                Input.mousePosition.y,
-                Camera.main.WorldToScreenPoint(_selectedObject.transform.position).z);
-            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(pos);
-            _selectedObject.transform.position = new Vector3(worldPosition.x, worldPosition.y, _selectedObject.transform.position.z);
 
-            if (!CheckValidRotation())
+            if (_selectedObject.CompareTag("Pipe"))
             {
-                _validRotation = false;
-            } else
+                Vector3 pos = new(Input.mousePosition.x, Input.mousePosition.y,
+                    Camera.main.WorldToScreenPoint(_selectedObject.transform.position).z);
+                Vector3 worldPosition = Camera.main.ScreenToWorldPoint(pos);
+                _selectedObject.transform.position = new Vector3(worldPosition.x, worldPosition.y, _selectedObject.transform.position.z);
+            }
+
+            if (CheckValidRotation())
             {
-                Debug.Log("rotation: " + _preferredRotationAngles);
-                float x = _preferredRotationAngles.x;
-                if (x < 45)
-                {
-                    x = 0;
-                } else if (x < 135) 
-                {
-                    x = 90;
-                } else if (x < 225)
-                {
-                    x = 180;
-                } else
-                {
-                    x = 270;
-                }
-                Quaternion newPositionRotation = Quaternion.Euler(x, _preferredRotationAngles.y, _preferredRotationAngles.z);
+                _validRotation = true;
+                Quaternion newPositionRotation = Quaternion.Euler(GetRotationAngle(), 90, 0);
                 GameObject blueprint = _selectedObject.GetComponent<Pipe>().GetBlueprint();
                 if (!blueprint.transform.rotation.Equals(newPositionRotation))
                 {
                     blueprint.transform.rotation = newPositionRotation;
                 }
+                
+            } else
+            {
+                _validRotation = false;
             }
         }
     }
@@ -280,8 +254,7 @@ public class MovePipes : MonoBehaviour
         }
 
         int correctedY = (int) (restAngleY <= _threshold ? y - restAngleY : _comparisonValue * ((((int)y) / _comparisonValue) + 1));
-        int correctedZ = (int) (restAngleZ <= _threshold ? z - restAngleZ : _comparisonValue * ((((int)y) / _comparisonValue) + 1));
-
+        int correctedZ = (int) (restAngleZ <= _threshold ? z - restAngleZ : _comparisonValue * ((((int)z) / _comparisonValue) + 1));
         return CheckAbsoluteAngleDifference(correctedY, correctedZ);
     }
 
@@ -295,18 +268,6 @@ public class MovePipes : MonoBehaviour
             secondAngle = secondAngle >= 180 ? secondAngle -= 360 : secondAngle;
         }
 
-        float difference = Mathf.Abs(firstAngle - secondAngle);
-        if (difference != 90)
-        {
-            return false;
-        }
-
-        Vector3 preferredAngles = new(_selectedObject.transform.localEulerAngles.x, firstAngle, secondAngle);
-        _validRotation = true;
-        if (!Equals(preferredAngles, _preferredRotationAngles))
-        {
-            _preferredRotationAngles = preferredAngles;
-        }
-        return true;
+        return Mathf.Abs(firstAngle - secondAngle) == 90;
     }
 }
