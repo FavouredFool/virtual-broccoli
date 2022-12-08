@@ -22,26 +22,37 @@ public class GridPlacementDetector : MonoBehaviour
             {
                 bool centerIsInside = _gridBox.bounds.Contains(colliderObject.transform.position);
                 GameObject blueprint = pipeComponent.GetBlueprint();
-                //Pipe entered this grid placement during first check and no other pipe is placed already inside
-                if (centerIsInside && pipeComponent.GetPlaceGrid() == null)
-                {
-                    if (_placedPipe == null)
-                    {
-                        pipeComponent.SetPlaceGrid(_gridBox);
-                        blueprint.SetActive(true);
-                        blueprint.transform.position = transform.position;
-                        _placedPipe = pipeComponent;
-                    }
-                }
                 //Pipe left this grid placement (second check needed because of update by other grid placements)
-                else if (!centerIsInside && pipeComponent.GetPlaceGrid() == _gridBox)
+                if (!centerIsInside && pipeComponent.GetPlaceGrid() == gameObject)
                 {
                     pipeComponent.SetPlaceGrid(null);
                     pipeComponent.RemoveNeighbors();
                     blueprint.SetActive(false);
                     _placedPipe = null;
                 }
+                //Pipe entered this grid placement during first check
+                else if (centerIsInside && pipeComponent.GetPlaceGrid() != gameObject)
+                {
+                    //Pipe was in another grid placement before and was not removed right
+                    if (pipeComponent.GetPlaceGrid() != null)
+                    {
+                        pipeComponent.GetPlaceGrid().GetComponent<GridPlacementDetector>().RemovePipeReference();
+                    }
+
+                    if (_placedPipe == null)
+                    {
+                        pipeComponent.SetPlaceGrid(this.gameObject);
+                        blueprint.SetActive(true);
+                        blueprint.transform.position = transform.position;
+                        _placedPipe = pipeComponent;
+                    }
+                }
             }
         }
+    }
+
+    public void RemovePipeReference()
+    {
+        _placedPipe = null;
     }
 }

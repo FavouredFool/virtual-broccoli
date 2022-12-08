@@ -213,7 +213,14 @@ public class MovePipes : MonoBehaviour
                 Vector3 pos = new(Input.mousePosition.x, Input.mousePosition.y,
                     Camera.main.WorldToScreenPoint(_selectedObject.transform.position).z);
                 Vector3 worldPosition = Camera.main.ScreenToWorldPoint(pos);
-                _selectedObject.transform.position = new Vector3(worldPosition.x, worldPosition.y, _selectedObject.transform.position.z);
+                if (Input.GetKeyDown(KeyCode.Z))
+                {
+                    _selectedObject.transform.position = new Vector3(worldPosition.x, worldPosition.y, _selectedObject.transform.position.z - 3);
+                }
+                else
+                {
+                    _selectedObject.transform.position = new Vector3(worldPosition.x, worldPosition.y, _selectedObject.transform.position.z);
+                }
             }
 
             if (CheckValidRotation())

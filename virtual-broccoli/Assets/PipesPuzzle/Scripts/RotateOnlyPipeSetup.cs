@@ -13,7 +13,7 @@ public class RotateOnlyPipeSetup : MonoBehaviour
             if (child.CompareTag("PipeRotateOnly"))
             {
                 Pipe pipeComponent = child.gameObject.GetComponent<Pipe>();
-                pipeComponent.SetPlaceGrid(boxAround.GetComponent<Collider>());
+                pipeComponent.SetPlaceGrid(boxAround);
             }
         }
     }

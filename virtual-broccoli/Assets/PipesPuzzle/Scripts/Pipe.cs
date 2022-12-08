@@ -6,7 +6,7 @@ public class Pipe : MonoBehaviour
     [SerializeField]
     private Dictionary<string, GameObject> _neighborPipeBorders;
 
-    private Collider _placedGrid = null;
+    private GameObject _placedGrid = null;
 
     private GameObject _blueprint;
 
@@ -17,12 +17,12 @@ public class Pipe : MonoBehaviour
         _blueprint = blueprintTransform != null ? blueprintTransform.gameObject : null;
     }
 
-    public void SetPlaceGrid(Collider gridPlacement)
+    public void SetPlaceGrid(GameObject gridPlacement)
     {
         _placedGrid = gridPlacement;
     }
 
-    public Collider GetPlaceGrid()
+    public GameObject GetPlaceGrid()
     {
         return _placedGrid;
     }
