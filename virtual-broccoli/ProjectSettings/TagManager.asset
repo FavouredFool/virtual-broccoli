@@ -9,6 +9,8 @@ TagManager:
   - Pipe
   - PipeRotateOnly
   - BoxDoor
+  - IndexRegulator
+  - MovableTower
   layers:
   - Default
   - TransparentFX
