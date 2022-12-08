@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Hogwarts/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/CMYK!!!/Scenes/AddedAlchemy.unity
+    guid: 55d58fed09492354699d6420cb9a031e
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 53f69b55dcb18f94c886dcb99f41502c,
       type: 2}

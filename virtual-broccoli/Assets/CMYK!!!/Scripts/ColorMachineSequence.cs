@@ -218,4 +218,9 @@ public class ColorMachineSequence : MonoBehaviour
         
 
     }
+
+    public void SetResetButton()
+    {
+        _resetMix = true;
+    }
 }
