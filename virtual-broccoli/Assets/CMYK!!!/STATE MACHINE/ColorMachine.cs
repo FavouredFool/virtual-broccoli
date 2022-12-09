@@ -57,12 +57,6 @@ public class ColorMachine : StateMachine
         }
     }
 
-    public void MixComplete()
-    {
-        _mixIteration += 1;
-
-        SetState(new FreeColorState(this));
-    }
 
     public CrystalColor GetActiveCrystal()
     {
@@ -106,16 +100,6 @@ public class ColorMachine : StateMachine
     public ScreenScript GetScreen()
     {
         return _screen;
-    }
-
-    public Vector4 GetGoalColor()
-    {
-        return _goalColor;
-    }
-
-    public void SetGoalColor(Vector4 goalColor)
-    {
-        _goalColor = goalColor;
     }
 
     public void SetActiveCrystal(CrystalColor activeCrystal)

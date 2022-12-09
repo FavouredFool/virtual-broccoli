@@ -11,7 +11,6 @@ public class ProcessCrystalState : State
 
     public override void Start()
     {
-        Debug.Log("process Start");
     }
 
     public override void Update()

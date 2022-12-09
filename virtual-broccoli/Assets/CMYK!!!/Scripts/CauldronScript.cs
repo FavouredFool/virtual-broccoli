@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using colorKit;
-using static ColorMachineSequence;
 
 public class CauldronScript : MonoBehaviour
 {
@@ -18,7 +15,7 @@ public class CauldronScript : MonoBehaviour
     float _blendSpeed = 5f;
 
     Vector4 _mixedColor;
-    Vector4 _oldColor;
+    Vector4 _oldMixedColor;
     float _lerpValue = 0;
 
     Vector4 _activeCauldronColor;
@@ -28,11 +25,9 @@ public class CauldronScript : MonoBehaviour
     public void Start()
     {
         _mixedColor = CMYKUtilites.ConvertRGBToCMYK(_meshRenderer.material.color);
-        _oldColor = _mixedColor;
+        _oldMixedColor = _mixedColor;
         _activeCauldronColor = _mixedColor;
         _oldActiveCauldronColor = _mixedColor;
-
-        Debug.Log(CMYKUtilites.ConvertRGBToCMYK(new Color(0, 0.5f, 0.5f, 1)));
     }
 
     private void Update()
@@ -45,23 +40,14 @@ public class CauldronScript : MonoBehaviour
         LerpColorOnBlend();
     }
 
-    private void TestIfGoalColorReached()
-    {
-        if (_machine.GetState() is MixingState && _mixedColor == _machine.GetGoalColor())
-        {
-            // End this part of the cycle
-            _machine.MixComplete();
-        }
-    }
-
     private void LerpColorOnBlend()
     {
         _lerpValue += (_blendSpeed * Time.deltaTime);
+        Debug.Log(_lerpValue);
 
         float[] lerpedColor = colorLerping.colorLerp(CMYKUtilites.Vector4ToFloatArray(_oldActiveCauldronColor), CMYKUtilites.Vector4ToFloatArray(_mixedColor), _lerpValue);
 
         _activeCauldronColor = CMYKUtilites.FloatArrayToVector4(lerpedColor);
-
         _meshRenderer.material.color = CMYKUtilites.ConvertCMYKToRGB(_activeCauldronColor);
 
         if (_lerpValue >= 1)
@@ -69,10 +55,8 @@ public class CauldronScript : MonoBehaviour
             _blend = false;
             _lerpValue = 0;
 
-            _oldColor = _mixedColor;
+            _oldMixedColor = _mixedColor;
             _oldActiveCauldronColor = _activeCauldronColor;
-
-            TestIfGoalColorReached();
         }
     }
 
@@ -82,17 +66,17 @@ public class CauldronScript : MonoBehaviour
 
         if (potion == null)
         {
-            Debug.Log("inserted wrong item in cauldron");
             return;
         }
 
         Vector4 colorCMYK = CMYKUtilites.ConvertRGBToCMYK(potion.GetColor());
 
-        _mixedColor = CMYKUtilites.MixColorsCMYK(colorCMYK, _oldColor);
-        _oldColor = _mixedColor;
-        _oldActiveCauldronColor = _activeCauldronColor;
-        _lerpValue = 0;
+        _mixedColor = CMYKUtilites.MixColorsCMYK(colorCMYK, _oldMixedColor);
 
+        _oldMixedColor = _mixedColor;
+        _oldActiveCauldronColor = _activeCauldronColor;
+
+        _lerpValue = 0;
         _blend = true;
 
         Destroy(other.gameObject);
@@ -101,9 +85,11 @@ public class CauldronScript : MonoBehaviour
 
     public void SetCauldronColorCMYK(Vector4 colorCMYK)
     {
-        _meshRenderer.material.color = CMYKUtilites.ConvertCMYKToRGB(colorCMYK);
-        _oldColor = colorCMYK;
+        _oldMixedColor = colorCMYK;
         _mixedColor = colorCMYK;
+        _oldActiveCauldronColor = _activeCauldronColor;
+
+        _lerpValue = 0;
         _blend = true;
     }
 

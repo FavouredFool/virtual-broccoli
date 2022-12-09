@@ -12,7 +12,6 @@ public class MixingState : State
     public override void Start()
     {
         _colorMachine.SetResetMix(false);
-        _colorMachine.SetGoalColor(_colorMachine.GetActiveCrystalInstruction().GetGoalColors()[_colorMachine.GetMixIteration()]);
     }
 
     public override void Update()
@@ -21,6 +20,13 @@ public class MixingState : State
         {
             _colorMachine.SetResetMix(false);
             _colorMachine.SetState(new ResetPuzzleState(_colorMachine));
+        }
+
+        if (_colorMachine.GetCauldron().GetActiceCauldronColor() == _colorMachine.GetActiveCrystalInstruction().GetGoalColors()[_colorMachine.GetMixIteration()])
+        {
+            _colorMachine.SetMixIteration(_colorMachine.GetMixIteration() + 1);
+
+            _colorMachine.SetState(new FreeColorState(_colorMachine));
         }
 
     }

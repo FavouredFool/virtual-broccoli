@@ -13,11 +13,13 @@ public abstract class State
 
     public virtual void Start()
     {
-        Debug.Log("Abstract Start");
     }
 
     public virtual void Update()
     {
-        Debug.Log("Abstract Update");
+    }
+
+    public virtual void End()
+    {
     }
 }

@@ -17,7 +17,7 @@ public class ResetMachineState : State
 
         _colorMachine.GetScreen().ResetColorAndText();
 
-        _colorMachine.GetCauldron().SetCauldronColorCMYK(new Vector4(0, 0, 0, 0));
+        _colorMachine.GetCauldron().SetCauldronColorCMYK(Vector4.zero);
 
         _colorMachine.GetSlot().ResetSlot();
 
