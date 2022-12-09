@@ -28,7 +28,6 @@ public class HandButton : XRBaseInteractable
         SetMinMax();
     }
 
-
     private void OnDestory()
     {
         hoverEntered.RemoveListener(StartPress);
@@ -58,11 +57,6 @@ public class HandButton : XRBaseInteractable
         
         _yMin = transform.localPosition.y - (localBounds.y * 0.75f);
         _yMax = transform.localPosition.y;
-
-        Debug.Log(gameObject.name);
-        Debug.Log("min: " + _yMin);
-        Debug.Log("max: " + _yMax);
-
     }
 
     public override void ProcessInteractable(XRInteractionUpdateOrder.UpdatePhase updatePhase)

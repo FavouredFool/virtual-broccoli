@@ -1,7 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class ColorMachineSequence : MonoBehaviour
 {
@@ -27,7 +26,15 @@ public class ColorMachineSequence : MonoBehaviour
     private ScreenScript _screen;
 
     [SerializeField]
-    private TMP_Text _cmykInfoText;
+    private ColorPipeScript _colorPipe;
+
+    [SerializeField]
+    private float _delayTimeForColorReleaseInSeconds = 3f;
+
+    [SerializeField]
+    private float _delayTimeForCaudronRefillInSeconds = 1.5f;
+
+    float _timeStartInSeconds = float.PositiveInfinity;
 
 
 
@@ -82,19 +89,17 @@ public class ColorMachineSequence : MonoBehaviour
                 break;
         }
 
-        // Set actice color every frame for lerp
-        _cmykInfoText.text = _screen.ConvertCMYKToString(_cauldronScript.GetActiceCauldronColor());
-
-
         if (_resetMix)
         {
             _resetMix = false;
             if (_machineState == MachineState.AWAITCRYSTAL)
             {
+                ResetTimer();
                 _machineState = MachineState.RESETMACHINE;
             }
             else if (_machineState == MachineState.MIXING)
             {
+                ResetTimer();
                 _machineState = MachineState.RESETPUZZLE;
             }
             else
@@ -125,26 +130,54 @@ public class ColorMachineSequence : MonoBehaviour
 
     private void CloseLid()
     {
-        Debug.Log("LidClosed");
-        _machineState = MachineState.FREECOLOR;
+        bool slotIsClosed = _slot.CloseLidPerFrame();
+
+        if (slotIsClosed)
+        {
+            Debug.Log("CLOSED");
+            ResetTimer();
+            _machineState = MachineState.FREECOLOR;
+        }
+    }
+
+    private void ResetTimer()
+    {
+        _timeStartInSeconds = Time.time;
     }
 
     private void FreeColor()
     {
-        Debug.Log("Freeing Color: " + _activeCrystalInstruction.GetGoalColors()[_mixIteration - 1]);
+        //StartCoroutine(_colorPipe.ReleaseColor(_activeCrystalInstruction.GetGoalColors()[_mixIteration - 1]));
+        if (Time.time - _timeStartInSeconds < _delayTimeForColorReleaseInSeconds)
+        {
+            // PARTICLES
+            return;
+        }
+
+        Debug.Log("Color Freed");
 
         if (_activeCrystalInstruction.GetGoalColors().Count > _mixIteration)
         {
+            ResetTimer();
             _machineState = MachineState.RESETPUZZLE;
         }
         else
         {
-            ResetMachine();
-        }        
+            ResetTimer();
+            _machineState = MachineState.RESETMACHINE;
+        }
     }
 
     private void ResetPuzzle()
     {
+        _cauldronScript.SetCauldronColorCMYK(Vector4.zero);
+
+        if (Time.time - _timeStartInSeconds < _delayTimeForCaudronRefillInSeconds)
+        {
+            // PARTICLES
+            return;
+        }
+
         Debug.Log("Resetting Puzzle");
 
         // Refill Color in Cauldron
@@ -172,13 +205,13 @@ public class ColorMachineSequence : MonoBehaviour
     public void MixComplete()
     {
         _mixIteration += 1;
+        ResetTimer();
         _machineState = MachineState.FREECOLOR;
     }
 
 
     private void ResetMachine()
     {
-        Debug.Log("ResetMachine");
         _crystalInserted = false;
         _mixIteration = 1;
 

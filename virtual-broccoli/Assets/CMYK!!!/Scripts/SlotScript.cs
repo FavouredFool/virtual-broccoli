@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using static ColorMachineSequence;
 
 public class SlotScript : MonoBehaviour
 {
@@ -17,9 +18,14 @@ public class SlotScript : MonoBehaviour
     [SerializeField]
     private float _speed = 100f;
 
+    [SerializeField]
+    private bool _insertCrystal = false;
+
     Quaternion _openRotation;
 
     Quaternion _closeRotation;
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -33,41 +39,39 @@ public class SlotScript : MonoBehaviour
         }
     }
 
+    public void Update()
+    {
+        if (_insertCrystal)
+        {
+            _insertCrystal = false;
+            _machine.SetInsertedCrystal(CrystalColor.KEY);
+        }
+    }
+
     public void CrystalEntered()
     {
+        if (_machine.GetMachineState() != MachineState.AWAITCRYSTAL)
+        {
+            Debug.LogWarning("MACHINE IS IN WRONG STATE");
+            return;
+        }
+
         Debug.Log("CRYSTAL ENTERED");
         IXRSelectInteractable crystalXR = _socket.GetOldestInteractableSelected();
 
         CrystalObject crystal = crystalXR.transform.GetComponent<CrystalObject>();
 
-        StartCoroutine(ProcessCrystal(crystal));
-    }
-
-    public IEnumerator ProcessCrystal(CrystalObject crystal)
-    {
         Destroy(crystal.gameObject);
 
-        yield return new WaitForSeconds(0.25f);
-
-        StartCoroutine(CloseHatch());
-
-        yield return new WaitForSeconds(1f);
-
         _machine.SetInsertedCrystal(crystal.GetCrystalColor());
-
-        
-
     }
 
-    public IEnumerator CloseHatch()
+
+    public bool CloseLidPerFrame()
     {
-        while (_hatch.transform.localRotation != _closeRotation)
-        {
-            yield return null;
-            _hatch.transform.localRotation = Quaternion.RotateTowards(_hatch.transform.localRotation, _closeRotation, _speed * Time.deltaTime);
-        }
-        
-        Debug.Log("Hatch closed");
+        _hatch.transform.localRotation = Quaternion.RotateTowards(_hatch.transform.localRotation, _closeRotation, _speed * Time.deltaTime);
+
+        return _hatch.transform.localRotation == _closeRotation;
     }
 
     public void ResetSlot()

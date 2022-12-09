@@ -14,8 +14,8 @@ public class CauldronScript : MonoBehaviour
 
     bool _blend = false;
 
-    [SerializeField, Range(0f, 0.1f)]
-    float _blendSpeed = 0.05f;
+    [SerializeField, Range(1f, 10f)]
+    float _blendSpeed = 5f;
 
     Vector4 _mixedColor;
     Vector4 _oldColor;
@@ -57,7 +57,8 @@ public class CauldronScript : MonoBehaviour
 
     private void LerpColorOnBlend()
     {
-        _lerpValue += _blendSpeed;
+        _lerpValue += (_blendSpeed * Time.deltaTime);
+        Debug.Log(_lerpValue);
 
         float[] lerpedColor = colorLerping.colorLerp(CMYKUtilites.Vector4ToFloatArray(_oldActiveCauldronColor), CMYKUtilites.Vector4ToFloatArray(_mixedColor), _lerpValue);
 
@@ -107,8 +108,7 @@ public class CauldronScript : MonoBehaviour
         _meshRenderer.material.color = CMYKUtilites.ConvertCMYKToRGB(colorCMYK);
         _oldColor = colorCMYK;
         _mixedColor = colorCMYK;
-        _activeCauldronColor = colorCMYK;
-        _oldActiveCauldronColor = _activeCauldronColor;
+        _blend = true;
     }
 
     public Vector4 GetActiceCauldronColor()
