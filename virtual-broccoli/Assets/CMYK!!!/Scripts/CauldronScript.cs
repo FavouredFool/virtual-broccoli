@@ -10,7 +10,7 @@ public class CauldronScript : MonoBehaviour
     MeshRenderer _meshRenderer = null;
 
     [SerializeField]
-    ColorMachineSequence _machineSequence;
+    ColorMachine _machine;
 
     bool _blend = false;
 
@@ -41,24 +41,22 @@ public class CauldronScript : MonoBehaviour
         {
             return;
         }
-        
 
         LerpColorOnBlend();
     }
 
     private void TestIfGoalColorReached()
     {
-        if (_machineSequence.GetMachineState() == MachineState.MIXING && _mixedColor == _machineSequence.GetGoalColor())
+        if (_machine.GetState() is MixingState && _mixedColor == _machine.GetGoalColor())
         {
             // End this part of the cycle
-            _machineSequence.MixComplete();
+            _machine.MixComplete();
         }
     }
 
     private void LerpColorOnBlend()
     {
         _lerpValue += (_blendSpeed * Time.deltaTime);
-        Debug.Log(_lerpValue);
 
         float[] lerpedColor = colorLerping.colorLerp(CMYKUtilites.Vector4ToFloatArray(_oldActiveCauldronColor), CMYKUtilites.Vector4ToFloatArray(_mixedColor), _lerpValue);
 
@@ -74,8 +72,6 @@ public class CauldronScript : MonoBehaviour
             _oldColor = _mixedColor;
             _oldActiveCauldronColor = _activeCauldronColor;
 
-            Debug.Log(_mixedColor.ToString("F4"));
-            //Debug.Log(CMYKUtilites.ConvertCMYKToRGB(_mixedColor));
             TestIfGoalColorReached();
         }
     }

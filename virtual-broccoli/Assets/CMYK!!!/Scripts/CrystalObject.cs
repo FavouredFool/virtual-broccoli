@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static ColorMachineSequence;
+using static ColorMachine;
 
 public class CrystalObject : MonoBehaviour
 {

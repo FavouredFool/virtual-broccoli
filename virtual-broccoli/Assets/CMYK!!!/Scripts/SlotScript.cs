@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
-using static ColorMachineSequence;
+using static ColorMachine;
 
 public class SlotScript : MonoBehaviour
 {
@@ -13,7 +13,7 @@ public class SlotScript : MonoBehaviour
     private Transform _hatch;
 
     [SerializeField]
-    private ColorMachineSequence _machine;
+    private ColorMachine _machine;
 
     [SerializeField]
     private float _speed = 100f;
@@ -44,26 +44,25 @@ public class SlotScript : MonoBehaviour
         if (_insertCrystal)
         {
             _insertCrystal = false;
-            _machine.SetInsertedCrystal(CrystalColor.KEY);
+            _machine.SetActiveCrystal(CrystalColor.KEY);
         }
     }
 
     public void CrystalEntered()
     {
-        if (_machine.GetMachineState() != MachineState.AWAITCRYSTAL)
+        if (_machine.GetState() is not AwaitCrystalState)
         {
             Debug.LogWarning("MACHINE IS IN WRONG STATE");
             return;
         }
 
-        Debug.Log("CRYSTAL ENTERED");
         IXRSelectInteractable crystalXR = _socket.GetOldestInteractableSelected();
 
         CrystalObject crystal = crystalXR.transform.GetComponent<CrystalObject>();
 
         Destroy(crystal.gameObject);
 
-        _machine.SetInsertedCrystal(crystal.GetCrystalColor());
+        _machine.SetActiveCrystal(crystal.GetCrystalColor());
     }
 
 
@@ -76,7 +75,6 @@ public class SlotScript : MonoBehaviour
 
     public void ResetSlot()
     {
-        Debug.Log("Reset Slot");
         StartCoroutine(OpenHatch());
     }
 
@@ -87,7 +85,5 @@ public class SlotScript : MonoBehaviour
             yield return null;
             _hatch.transform.localRotation = Quaternion.RotateTowards(_hatch.transform.localRotation, _openRotation, _speed * Time.deltaTime);
         }
-
-        Debug.Log("Hatch opened");
     }
 }
