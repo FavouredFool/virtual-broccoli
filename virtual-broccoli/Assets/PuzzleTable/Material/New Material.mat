@@ -109,7 +109,7 @@ Material:
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
-    - _ProgressValue: 1.1
+    - _ProgressValue: 0
     - _Progressline_Count: 4
     - _Progressline_Height: 0.02
     - _Progressline_Length: 0.8

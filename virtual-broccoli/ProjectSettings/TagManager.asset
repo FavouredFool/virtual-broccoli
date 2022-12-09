@@ -11,6 +11,7 @@ TagManager:
   - BoxDoor
   - IndexRegulator
   - MovableTower
+  - HeightIndex
   layers:
   - Default
   - TransparentFX
