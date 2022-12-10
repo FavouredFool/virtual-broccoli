@@ -14,6 +14,7 @@ public class FreeColorState : State
     public override void Start()
     {
         _startTimeInSeconds = Time.time;
+        _colorMachine.GetSmokeEmittor().ReleaseSmoke(_colorMachine.GetActiveCrystalInstruction().GetGoalColors()[_colorMachine.GetMixIteration() - 1]);
     }
 
     public override void Update()
@@ -23,8 +24,6 @@ public class FreeColorState : State
             // PARTICLES
             return;
         }
-
-        Debug.Log("Color Freed");
 
         if (_colorMachine.GetActiveCrystalInstruction().GetGoalColors().Count > _colorMachine.GetMixIteration())
         {

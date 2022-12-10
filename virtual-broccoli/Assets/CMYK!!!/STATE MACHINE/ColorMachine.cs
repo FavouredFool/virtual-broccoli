@@ -29,6 +29,9 @@ public class ColorMachine : StateMachine
     [SerializeField]
     private ScreenScript _screen;
 
+    [SerializeField]
+    private SmokeEmittor _emittor;
+
     int _mixIteration = 1;
 
     Vector4 _goalColor = Vector4.zero;
@@ -120,5 +123,10 @@ public class ColorMachine : StateMachine
     public void SetResetMix(bool resetMix)
     {
         _resetMix = resetMix;
+    }
+
+    public SmokeEmittor GetSmokeEmittor()
+    {
+        return _emittor;
     }
 }

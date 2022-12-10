@@ -10,27 +10,28 @@ public class ResetPuzzleState : State
     }
 
     private float _startTimeInSeconds;
+    private bool _shouldResetToWhite;
 
     public override void Start()
     {
         _startTimeInSeconds = Time.time;
-        _colorMachine.GetCauldron().SetCauldronColorCMYK(Vector4.zero);
+
+        _shouldResetToWhite = _colorMachine.GetCauldron().GetActiceCauldronColor() != Vector4.zero;
+
+        if (_shouldResetToWhite)
+        {
+            _colorMachine.GetCauldron().SetCauldronColorCMYK(Vector4.zero);
+        }
     }
 
     public override void Update()
     {
-        
-
-        if (Time.time - _startTimeInSeconds < _colorMachine.GetCauldronRefillTime())
+        if (_shouldResetToWhite && Time.time - _startTimeInSeconds < _colorMachine.GetCauldronRefillTime())
         {
-            // PARTICLES
             return;
         }
 
-        Debug.Log("Resetting Puzzle");
-
         _colorMachine.SetState(new MixingState(_colorMachine));
-
     }
 
     public override void End()
