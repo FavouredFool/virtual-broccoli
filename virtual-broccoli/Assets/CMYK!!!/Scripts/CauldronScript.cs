@@ -9,9 +9,12 @@ public class CauldronScript : MonoBehaviour
     [SerializeField]
     ColorMachine _machine;
 
+    [SerializeField]
+    FluidPipe _pipe;
+
     bool _blend = false;
 
-    [SerializeField, Range(1f, 10f)]
+    [SerializeField, Range(0.1f, 10f)]
     float _blendSpeed = 5f;
 
     Vector4 _mixedColor;
@@ -43,7 +46,6 @@ public class CauldronScript : MonoBehaviour
     private void LerpColorOnBlend()
     {
         _lerpValue += (_blendSpeed * Time.deltaTime);
-        Debug.Log(_lerpValue);
 
         float[] lerpedColor = colorLerping.colorLerp(CMYKUtilites.Vector4ToFloatArray(_oldActiveCauldronColor), CMYKUtilites.Vector4ToFloatArray(_mixedColor), _lerpValue);
 
@@ -52,6 +54,8 @@ public class CauldronScript : MonoBehaviour
 
         if (_lerpValue >= 1)
         {
+            _pipe.SetDesiresPour(false);
+
             _blend = false;
             _lerpValue = 0;
 
@@ -70,7 +74,6 @@ public class CauldronScript : MonoBehaviour
         }
 
         Vector4 colorCMYK = CMYKUtilites.ConvertRGBToCMYK(potion.GetColor());
-
         _mixedColor = CMYKUtilites.MixColorsCMYK(colorCMYK, _oldMixedColor);
 
         _oldMixedColor = _mixedColor;
@@ -85,6 +88,14 @@ public class CauldronScript : MonoBehaviour
 
     public void SetCauldronColorCMYK(Vector4 colorCMYK)
     {
+        if (_activeCauldronColor == colorCMYK)
+        {
+            return;
+        }
+
+        _pipe.SetDesiresPour(true);
+        _pipe.SetColorRGB(CMYKUtilites.ConvertCMYKToRGB(colorCMYK));
+
         _oldMixedColor = colorCMYK;
         _mixedColor = colorCMYK;
         _oldActiveCauldronColor = _activeCauldronColor;
