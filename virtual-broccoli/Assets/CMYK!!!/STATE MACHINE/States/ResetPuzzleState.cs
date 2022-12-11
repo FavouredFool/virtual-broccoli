@@ -12,7 +12,7 @@ public class ResetPuzzleState : State
     private float _startTimeInSeconds;
     private bool _shouldResetToWhite;
 
-    public override void Start()
+    public override void StartState()
     {
         _startTimeInSeconds = Time.time;
 
@@ -24,7 +24,7 @@ public class ResetPuzzleState : State
         }
     }
 
-    public override void Update()
+    public override void UpdateState()
     {
         if (_shouldResetToWhite && Time.time - _startTimeInSeconds < _colorMachine.GetCauldronRefillTime())
         {
@@ -34,7 +34,7 @@ public class ResetPuzzleState : State
         _colorMachine.SetState(new MixingState(_colorMachine));
     }
 
-    public override void End()
+    public override void EndState()
     {
         _colorMachine.GetCauldron().SetCauldronColorCMYK(_colorMachine.GetActiveCrystalInstruction().GetGoalColors()[0]);
 

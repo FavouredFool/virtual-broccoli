@@ -10,14 +10,20 @@ public class FreeColorState : State
     }
 
     private float _startTimeInSeconds;
+    private bool _initialFree = true;
 
-    public override void Start()
+    public override void StartState()
     {
         _startTimeInSeconds = Time.time;
-        _colorMachine.GetSmokeEmittor().ReleaseSmoke(_colorMachine.GetActiveCrystalInstruction().GetGoalColors()[_colorMachine.GetMixIteration() - 1]);
+
+        int iteration = _colorMachine.GetMixIteration();
+
+        _initialFree = _colorMachine.GetActiveCrystalInstruction().GetGoalColors().Count > iteration;
+
+        _colorMachine.GetSmokeEmittor().ReleaseSmoke(_colorMachine.GetActiveCrystalInstruction().GetGoalColors()[0]);
     }
 
-    public override void Update()
+    public override void UpdateState()
     {
         if (Time.time - _startTimeInSeconds < _colorMachine.GetColorReleaseTime())
         {
@@ -25,7 +31,7 @@ public class FreeColorState : State
             return;
         }
 
-        if (_colorMachine.GetActiveCrystalInstruction().GetGoalColors().Count > _colorMachine.GetMixIteration())
+        if (_initialFree)
         {
             _colorMachine.SetState(new ResetPuzzleState(_colorMachine));
 
@@ -33,7 +39,20 @@ public class FreeColorState : State
         else
         {
             _colorMachine.SetState(new ResetMachineState(_colorMachine));
-
         }
+    }
+
+    public override void EndState()
+    {
+        if (_initialFree)
+        {
+            _colorMachine.GetColorManager().ColorPrimaryMaterialOfColor(_colorMachine.GetActiveCrystal());
+        }
+        else
+        {
+            _colorMachine.GetColorManager().ColorOtherMaterialsOfColor(_colorMachine.GetActiveCrystal());
+        }
+        
+
     }
 }

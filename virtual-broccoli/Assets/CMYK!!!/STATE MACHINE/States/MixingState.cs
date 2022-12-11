@@ -9,12 +9,12 @@ public class MixingState : State
     {
     }
 
-    public override void Start()
+    public override void StartState()
     {
         _colorMachine.SetResetMix(false);
     }
 
-    public override void Update()
+    public override void UpdateState()
     {
         if (_colorMachine.GetResetMix())
         {
@@ -26,7 +26,17 @@ public class MixingState : State
         {
             _colorMachine.SetMixIteration(_colorMachine.GetMixIteration() + 1);
 
-            _colorMachine.SetState(new FreeColorState(_colorMachine));
+
+            if (_colorMachine.GetActiveCrystalInstruction().GetGoalColors().Count > _colorMachine.GetMixIteration())
+            {
+                _colorMachine.SetState(new ResetPuzzleState(_colorMachine));
+            }
+            else
+            {
+                _colorMachine.SetState(new FreeColorState(_colorMachine));
+            }
+
+            
         }
 
     }

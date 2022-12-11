@@ -11,15 +11,15 @@ public abstract class State
         _colorMachine = colorMachine;
     }
 
-    public virtual void Start()
+    public virtual void StartState()
     {
     }
 
-    public virtual void Update()
+    public virtual void UpdateState()
     {
     }
 
-    public virtual void End()
+    public virtual void EndState()
     {
     }
 }

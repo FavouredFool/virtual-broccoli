@@ -9,11 +9,11 @@ public class ProcessCrystalState : State
     {
     }
 
-    public override void Start()
+    public override void StartState()
     {
     }
 
-    public override void Update()
+    public override void UpdateState()
     {
         bool slotIsClosed = _colorMachine.GetSlot().CloseLidPerFrame();
 

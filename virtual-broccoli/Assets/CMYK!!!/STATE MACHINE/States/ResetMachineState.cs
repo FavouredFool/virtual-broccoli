@@ -9,7 +9,7 @@ public class ResetMachineState : State
     {
     }
 
-    public override void Start()
+    public override void StartState()
     {
         _colorMachine.SetActiveCrystal(CrystalColor.NONE);
 
@@ -24,7 +24,7 @@ public class ResetMachineState : State
         _colorMachine.SetState(new AwaitCrystalState(_colorMachine));
     }
 
-    public override void Update()
+    public override void UpdateState()
     {
 
     }

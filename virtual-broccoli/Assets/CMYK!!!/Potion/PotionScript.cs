@@ -28,7 +28,7 @@ public class PotionScript : MonoBehaviour
 
     public void SetFluidMaterial(Material mat)
     {
-        _fluidMeshRenderer.sharedMaterial = mat;
+        _fluidMeshRenderer.material = mat;
     }
 
     public void ChangeGrabableState(bool state)

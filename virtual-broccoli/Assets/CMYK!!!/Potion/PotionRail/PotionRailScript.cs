@@ -26,6 +26,9 @@ public class PotionRailScript : MonoBehaviour
     [SerializeField]
     private float _distanceToOtherPotion = 1f;
 
+    [SerializeField]
+    ColorManager _colorManager;
+
     private void Awake()
     {
         for (int i = 0; i < _transformList.Count; i++)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class ColorMachine : StateMachine
 {
-    public enum CrystalColor { KEY, CYAN, YELLOW, MAGENTA, NONE };
+    public enum CrystalColor { KEY, CYAN, MAGENTA, YELLOW, NONE };
 
     [SerializeField]
     private CrystalColor _activeCrystal = CrystalColor.NONE;
@@ -21,6 +21,9 @@ public class ColorMachine : StateMachine
     private float _cauldronRefillTimeInSeconds = 1.5f;
 
     [SerializeField]
+    private ColorManager _colorManager;
+
+    [SerializeField]
     private CauldronScript _cauldronScript;
 
     [SerializeField]
@@ -34,14 +37,12 @@ public class ColorMachine : StateMachine
 
     int _mixIteration = 1;
 
-    Vector4 _goalColor = Vector4.zero;
-
     readonly List<CrystalInstruction> _crystalInstructions = new()
     {
         new KeyInstruction(),
         new CyanInstruction(),
-        new YellowInstruction(),
         new MagentaInstruction(),
+        new YellowInstruction(),
     };
 
     private void Start()
@@ -128,5 +129,10 @@ public class ColorMachine : StateMachine
     public SmokeEmittor GetSmokeEmittor()
     {
         return _emittor;
+    }
+
+    public ColorManager GetColorManager()
+    {
+        return _colorManager;
     }
 }

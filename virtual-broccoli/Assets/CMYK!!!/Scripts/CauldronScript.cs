@@ -27,7 +27,7 @@ public class CauldronScript : MonoBehaviour
 
     public void Start()
     {
-        _mixedColor = CMYKUtilites.ConvertRGBToCMYK(_meshRenderer.material.color);
+        _mixedColor = CMYKUtilites.ConvertRGBToCMYK(_meshRenderer.sharedMaterial.color);
         _oldMixedColor = _mixedColor;
         _activeCauldronColor = _mixedColor;
         _oldActiveCauldronColor = _mixedColor;
@@ -50,7 +50,7 @@ public class CauldronScript : MonoBehaviour
         float[] lerpedColor = colorLerping.colorLerp(CMYKUtilites.Vector4ToFloatArray(_oldActiveCauldronColor), CMYKUtilites.Vector4ToFloatArray(_mixedColor), _lerpValue);
 
         _activeCauldronColor = CMYKUtilites.FloatArrayToVector4(lerpedColor);
-        _meshRenderer.material.color = CMYKUtilites.ConvertCMYKToRGB(_activeCauldronColor);
+        _meshRenderer.sharedMaterial.color = CMYKUtilites.ConvertCMYKToRGB(_activeCauldronColor);
 
         if (_lerpValue >= 1)
         {

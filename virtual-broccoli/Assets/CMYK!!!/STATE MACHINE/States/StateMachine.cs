@@ -8,11 +8,11 @@ public abstract class StateMachine : MonoBehaviour
     {
         if (_state != null)
         {
-            _state.End();
+            _state.EndState();
         }
         
         _state = state;
-        _state.Start();
+        _state.StartState();
     }
 
     public State GetState()
@@ -22,7 +22,7 @@ public abstract class StateMachine : MonoBehaviour
 
     public void UpdateState()
     {
-        _state.Update();
+        _state.UpdateState();
     }
 
 }

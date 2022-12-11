@@ -120,6 +120,7 @@ MonoBehaviour:
   - {fileID: 113857419284860478}
   _speed: 1
   _distanceToOtherPotion: 1
+  _colorManager: {fileID: 0}
 --- !u!1 &113857419277206493
 GameObject:
   m_ObjectHideFlags: 0
@@ -1644,7 +1645,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1838
+  m_VersionIndex: 1850
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3140,7 +3141,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1841
+  m_VersionIndex: 1847
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
