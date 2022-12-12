@@ -12,6 +12,7 @@ TagManager:
   - IndexRegulator
   - MovableTower
   - HeightIndex
+  - Plate
   layers:
   - Default
   - TransparentFX
