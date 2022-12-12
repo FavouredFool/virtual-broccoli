@@ -6,7 +6,7 @@ public class StairManager : MonoBehaviour
 {
     public enum Rotation { RIGHT, LEFT };
 
-    public enum StairColor { GREEN, CYAN, MAGENTA, YELLOW, WHITE };
+    public enum StairColor { KEY, CYAN, MAGENTA, YELLOW, WHITE };
 
     [SerializeField]
     private Transform _stairParent;
@@ -72,7 +72,7 @@ public class StairManager : MonoBehaviour
     {
         switch (color)
         {
-            case StairColor.GREEN:
+            case StairColor.KEY:
                 return _materials[0];
             case StairColor.CYAN:
                 return _materials[1];

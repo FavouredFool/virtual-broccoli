@@ -51,12 +51,12 @@ public class StairRotation : MonoBehaviour
     {
         foreach(MeshRenderer renderer in _rightMarkers)
         {
-            renderer.material = _stairManager.StairColorToMaterial(_firstColor);
+            renderer.sharedMaterial = _stairManager.StairColorToMaterial(_firstColor);
         }
 
         foreach (MeshRenderer renderer in _leftMarkers)
         {
-            renderer.material = _stairManager.StairColorToMaterial(_secondColor);
+            renderer.sharedMaterial = _stairManager.StairColorToMaterial(_secondColor);
         }
 
 

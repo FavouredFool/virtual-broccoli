@@ -9,7 +9,6 @@ public class StairLever : MonoBehaviour
     [SerializeField] private bool _stairPos;
     [SerializeField] private StairColor _color;
     [SerializeField] private GameObject _movableLever;
-    [SerializeField] private MeshRenderer _marker;
 
     [SerializeField] private XRBaseInteractable handle = null;
     [SerializeField] private Transform start = null;
@@ -92,16 +91,9 @@ public class StairLever : MonoBehaviour
             if (!_stairPos)
             {
                 _stairPos = true;
-                Debug.Log("2");
                 ChangeStairPositions();
             }
         }
-
-        if (_stairManager)
-        {
-            _marker.material = _stairManager.StairColorToMaterial(_color);
-        }
-
     }
 
     private void UpdateLever()

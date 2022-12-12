@@ -4466,7 +4466,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 968
+  m_VersionIndex: 974
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -4782,7 +4782,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 977
+  m_VersionIndex: 983
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -4927,9 +4927,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stairPos: 1
-  _color: 0
+  _color: 1
   _movableLever: {fileID: 1031040528250063886}
-  _marker: {fileID: 4790873727895654996}
   handle: {fileID: 1489268242}
   start: {fileID: 855125057}
   end: {fileID: 1441557240}
@@ -5289,7 +5288,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1501
+  m_VersionIndex: 1504
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -5341,7 +5340,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1b8c618e11dc95741b48d0e13fce53be, type: 2}
+  - {fileID: 2100000, guid: b4dbcee567a2dcb4d847e04abdbd11a9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
