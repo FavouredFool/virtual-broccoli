@@ -34,7 +34,7 @@ public class SphereDisplay : MonoBehaviour
 
         string valueString = (Mathf.Round(_fillValue * 1000f) / 10f).ToString("F1");
         _text.text = valueString + "%";
-        _meshRenderer.material.SetFloat("_Fill", _fillValue);
+        _meshRenderer.sharedMaterial.SetFloat("_Fill", _fillValue);
     }
 
 

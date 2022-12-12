@@ -89,7 +89,7 @@ public class Stream : MonoBehaviour
 
     public void SetStreamColor(Color color)
     {
-        _lr.material.color = color;
+        _lr.sharedMaterial.color = color;
     }
 
     public void AnimateToPosition(int index, Vector3 targetPosition)

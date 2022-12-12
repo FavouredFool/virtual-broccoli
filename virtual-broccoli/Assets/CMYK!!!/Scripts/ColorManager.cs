@@ -40,19 +40,22 @@ public class ColorManager : MonoBehaviour
         {
             for (int j = 0; j < _fluidMaterialLists[i].Count; j++)
             {
-                _fluidMaterialLists[i][j].SetColor("_Color", _fluidColors[i*j]);
+                _fluidMaterialLists[i][j].SetColor("_Color", _fluidColors[i*_fluidMaterialLists.Count + j]);
             }
         }
     }
 
     public void ColorPrimaryMaterialOfColor(CrystalColor crystalColor)
     {
-        ColorMaterialByIndex((int)crystalColor, 0);
+        for (int i = 0; i < 2; i++)
+        {
+            ColorMaterialByIndex((int)crystalColor, i);
+        }
     }
 
     public void ColorOtherMaterialsOfColor(CrystalColor crystalColor)
     {
-        for(int i = 1; i < _fluidMaterialLists[(int)crystalColor].Count; i++)
+        for(int i = 2; i < _fluidMaterialLists[(int)crystalColor].Count; i++)
         {
             ColorMaterialByIndex((int)crystalColor, i);
         }
@@ -60,11 +63,6 @@ public class ColorManager : MonoBehaviour
 
     public void ColorMaterialByIndex(int listIndex, int elementIndex)
     {
-        _fluidMaterialLists[listIndex][elementIndex].SetColor("_Color", _fluidColors[listIndex * elementIndex]);
-    }
-
-    public Material GetBlack()
-    {
-        return _fluidMaterialLists[0][0];
+        _fluidMaterialLists[listIndex][elementIndex].SetColor("_Color", _fluidColors[listIndex * _fluidMaterialLists.Count + elementIndex]);
     }
 }

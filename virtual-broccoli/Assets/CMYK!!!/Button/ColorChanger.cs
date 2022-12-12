@@ -15,7 +15,7 @@ public class ColorChanger : MonoBehaviour
     private void Awake()
     {
         _meshRenderer = GetComponent<MeshRenderer>();
-        _originalMaterial = _meshRenderer.material;
+        _originalMaterial = _meshRenderer.sharedMaterial;
 
         _interactable = GetComponent<XRBaseInteractable>();
         _interactable.hoverEntered.AddListener(SetSelectMaterial);
@@ -31,11 +31,11 @@ public class ColorChanger : MonoBehaviour
     
     private void SetSelectMaterial(HoverEnterEventArgs args)
     {
-        _meshRenderer.material = _selectMaterial;
+        _meshRenderer.sharedMaterial = _selectMaterial;
     }
 
     private void SetOriginalMaterial(HoverExitEventArgs args)
     {
-        _meshRenderer.material = _originalMaterial;
+        _meshRenderer.sharedMaterial = _originalMaterial;
     }
 }

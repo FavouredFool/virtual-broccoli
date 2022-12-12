@@ -28,7 +28,7 @@ public class PotionScript : MonoBehaviour
 
     public void SetFluidMaterial(Material mat)
     {
-        _fluidMeshRenderer.material = mat;
+        _fluidMeshRenderer.sharedMaterial = mat;
     }
 
     public void ChangeGrabableState(bool state)
@@ -38,6 +38,6 @@ public class PotionScript : MonoBehaviour
 
     public Color GetColor()
     {
-        return _fluidMeshRenderer.material.GetColor("_TopColor");
+        return _fluidMeshRenderer.sharedMaterial.GetColor("_Color");
     }
 }
