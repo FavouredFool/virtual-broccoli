@@ -65,11 +65,13 @@ public class SlotScript : MonoBehaviour
 
         bool closed = _hatch.transform.localRotation == _closeRotation;
 
-        if (closed)
+        if (_crystal != null && closed)
         {
             Destroy(_crystal.gameObject);
+
             _crystal = null;
         }
+        
 
         return closed;
 

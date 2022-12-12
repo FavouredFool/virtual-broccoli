@@ -40,7 +40,7 @@ public class ColorManager : MonoBehaviour
         {
             for (int j = 0; j < _fluidMaterialLists[i].Count; j++)
             {
-                _fluidMaterialLists[i][j].SetColor("_Color", _fluidColors[i*_fluidMaterialLists.Count + j]);
+                ColorMaterialByIndex(i, j);
             }
         }
     }
@@ -63,6 +63,6 @@ public class ColorManager : MonoBehaviour
 
     public void ColorMaterialByIndex(int listIndex, int elementIndex)
     {
-        _fluidMaterialLists[listIndex][elementIndex].SetColor("_Color", _fluidColors[listIndex * _fluidMaterialLists.Count + elementIndex]);
+        _fluidMaterialLists[listIndex][elementIndex].SetColor("_Color", _fluidColors[listIndex * _fluidMaterialLists[listIndex].Count + elementIndex]);
     }
 }

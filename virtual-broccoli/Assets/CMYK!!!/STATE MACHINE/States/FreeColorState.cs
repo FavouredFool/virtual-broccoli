@@ -21,6 +21,16 @@ public class FreeColorState : State
         _initialFree = _colorMachine.GetActiveCrystalInstruction().GetGoalColors().Count > iteration;
 
         _colorMachine.GetSmokeEmittor().ReleaseSmoke(_colorMachine.GetActiveCrystalInstruction().GetGoalColors()[0]);
+
+        if (_initialFree)
+        {
+            _colorMachine.GetColorManager().ColorPrimaryMaterialOfColor(_colorMachine.GetActiveCrystal());
+        }
+        else
+        {
+            _colorMachine.GetColorManager().ColorOtherMaterialsOfColor(_colorMachine.GetActiveCrystal());
+        }
+
     }
 
     public override void UpdateState()
@@ -44,14 +54,7 @@ public class FreeColorState : State
 
     public override void EndState()
     {
-        if (_initialFree)
-        {
-            _colorMachine.GetColorManager().ColorPrimaryMaterialOfColor(_colorMachine.GetActiveCrystal());
-        }
-        else
-        {
-            _colorMachine.GetColorManager().ColorOtherMaterialsOfColor(_colorMachine.GetActiveCrystal());
-        }
+
         
 
     }
