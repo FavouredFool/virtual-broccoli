@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,6 +28,11 @@ public class RotateManager : MonoBehaviour
         {
             Debug.Log("Wheels not assigned");
         }
+
+        _rotatingAxis = transform.InverseTransformDirection(Vector3.back);
+        _rotatingAxis = new Vector3(Mathf.Round(_rotatingAxis.x),
+             Mathf.Round(_rotatingAxis.y),
+             Mathf.Round(_rotatingAxis.z));
     }
 
     private void Update()
@@ -50,10 +54,10 @@ public class RotateManager : MonoBehaviour
             int movement = _wheelMovements[i];
             if (movement != 0)
             {
-                _rotatingWheels[i].transform.rotation *= Quaternion.Euler(movement * _rotatingAxis);
+                _rotatingWheels[i].transform.rotation *= Quaternion.Euler(movement * 0.5f * _rotatingAxis);
                 foreach (Transform symbol in _rotatingWheels[i].transform)
                 {
-                    symbol.rotation *= Quaternion.Euler(-movement * _rotatingAxis);
+                    symbol.rotation *= Quaternion.Euler(-movement * 0.5f * _rotatingAxis);
                 }
             }
         }
