@@ -6,7 +6,7 @@ using static StairManager;
 
 public class StairLever : MonoBehaviour
 {
-    [SerializeField] private bool _stairPos;
+    [SerializeField] private bool _stairLeft;
     [SerializeField] private StairColor _color;
     [SerializeField] private GameObject _movableLever;
 
@@ -14,10 +14,10 @@ public class StairLever : MonoBehaviour
     [SerializeField] private Transform start = null;
     [SerializeField] private Transform end = null;
 
-
     private Vector3 grabPosition = Vector3.zero;
     private float startingPercentage = 0.5f;
     private float currentPercentage = 0.0f;
+    private float _prevPercentage = 0.0f;
 
     private StairManager _stairManager;
 
@@ -41,13 +41,17 @@ public class StairLever : MonoBehaviour
 
     public void Start()
     {
-        if (_stairPos)
+        if (!_stairLeft)
         {
             currentPercentage = 1.0f;
+            _prevPercentage = 1.0f;
+            startingPercentage = 1.0f;
         }
         else
         {
             currentPercentage = 0.0f;
+            _prevPercentage = 0.0f;
+            startingPercentage = 0.0f;
         }
 
         SetLeverVisual();
@@ -88,9 +92,17 @@ public class StairLever : MonoBehaviour
 
         if (currentPercentage == 1)
         {
-            if (!_stairPos)
+            if (_prevPercentage != 1)
             {
-                _stairPos = true;
+                _prevPercentage = 1;
+                ChangeStairPositions();
+            }
+        }
+        else if (currentPercentage == 0)
+        {
+            if (_prevPercentage != 0)
+            {
+                _prevPercentage = 0;
                 ChangeStairPositions();
             }
         }
@@ -99,6 +111,7 @@ public class StairLever : MonoBehaviour
     private void UpdateLever()
     {
         float newPercentage = startingPercentage + FindPercentageDifference();
+        Debug.Log(newPercentage);
 
         Quaternion setRotation = Quaternion.Slerp(Quaternion.Euler(new Vector3(0f, 0f, 45f)), Quaternion.Euler(new Vector3(0f, 0f, -45f)), newPercentage);
 
@@ -128,8 +141,6 @@ public class StairLever : MonoBehaviour
 
     private void ChangeStairPositions()
     {
-        Debug.Log("CHange Stairs");
-
         if (!_stairManager)
         {
             return;
@@ -148,14 +159,15 @@ public class StairLever : MonoBehaviour
     {
         Quaternion rotation;
 
-        if (_stairPos)
-        {
-            rotation = Quaternion.Euler(new Vector3(0f, 0f, -45f));
-        }
-        else
+        if (currentPercentage == 0.0f)
         {
             rotation = Quaternion.Euler(new Vector3(0f, 0f, 45f));
         }
+        else
+        {
+            rotation = Quaternion.Euler(new Vector3(0f, 0f, -45f));
+        }
+
         _movableLever.transform.localRotation = rotation;
     }
 
