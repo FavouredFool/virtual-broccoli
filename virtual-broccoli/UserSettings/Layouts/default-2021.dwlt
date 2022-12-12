@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Game
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -73,7 +73,7 @@ MonoBehaviour:
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
-  m_LastLoadedLayoutName: Default
+  m_LastLoadedLayoutName: 
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 15357
+  controlID: 16
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 15333
+  controlID: 17
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 15334
+  controlID: 18
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: SceneView
+  m_Name: GameView
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -217,12 +217,12 @@ MonoBehaviour:
     height: 699
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 14}
+  m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 14}
   - {fileID: 12}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -403,9 +403,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: fa89f8ff
-      m_LastClickedID: -488966
-      m_ExpandedIDs: 948af8ffd08bf8ffcc8ef8ff8893f8ff5e97f8ff2298f8ff0c9df8ff7ea2f8ffa61cfaffcc42feffb0caffff96e6ffff1ce7ffff42fbffff04970000169700002497000022ce000042ce0000
+      m_SelectedIDs: a47c0000
+      m_LastClickedID: 31908
+      m_ExpandedIDs: 9cf3ffff28fbffff7e7c0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -688,9 +688,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 5.1023436, y: -10.256097, z: 12.343838}
+    m_Target: {x: -0.022693694, y: -3.923374, z: 17.588043}
     speed: 2
-    m_Value: {x: 5.1023436, y: -10.256097, z: 12.343838}
+    m_Value: {x: -0.022693694, y: -3.923374, z: 17.588043}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -737,13 +737,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.3571768, y: 0.058789004, z: -0.0225321, w: 0.9319239}
+    m_Target: {x: 0.16240321, y: 0.06654956, z: -0.010980408, w: 0.98442876}
     speed: 2
-    m_Value: {x: 0.35713884, y: 0.060186185, z: -0.023067595, w: 0.9318248}
+    m_Value: {x: 0.16387768, y: 0.0665322, z: -0.01108009, w: 0.9841721}
   m_Size:
-    m_Target: 11.254172
+    m_Target: 1.3480562
     speed: 2
-    m_Value: 10.769543
+    m_Value: 1.4115772
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -810,22 +810,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/FirstSteps/Scenes
+    - Assets/Hogwarts/Scenes
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/FirstSteps/Scenes
+  - Assets/Hogwarts/Scenes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Users\Timo\Documents\GitHub\virtual-broccoli\virtual-broccoli
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 175}
-    m_SelectedIDs: 22c60000
-    m_LastClickedID: 50722
-    m_ExpandedIDs: ffffffff000000000e9a0000109a0000129a0000b89a0000ba9a0000c49a000060c30000a8cc000000ca9a3b
+    scrollPos: {x: 0, y: 97}
+    m_SelectedIDs: 6a790000
+    m_LastClickedID: 31082
+    m_ExpandedIDs: 000000006479000066790000687900006a790000b87b0000ba7b000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -853,7 +853,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff000000000e9a0000109a0000129a000000ca9a3b
+    m_ExpandedIDs: 000000006479000066790000687900006a790000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1021,7 +1021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c262c1329a02fa49b5cb4c297106f3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MinSize: {x: 136, y: 30}
+  m_MinSize: {x: 129, y: 28}
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
     m_Text: ProBuilder
