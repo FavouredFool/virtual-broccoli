@@ -18,8 +18,7 @@ public class SlotScript : MonoBehaviour
     [SerializeField]
     private float _speed = 100f;
 
-    [SerializeField]
-    private bool _insertCrystal = false;
+    CrystalObject _crystal = null;
 
     Quaternion _openRotation;
 
@@ -39,15 +38,6 @@ public class SlotScript : MonoBehaviour
         }
     }
 
-    public void Update()
-    {
-        if (_insertCrystal)
-        {
-            _insertCrystal = false;
-            _machine.SetActiveCrystal(CrystalColor.KEY);
-        }
-    }
-
     public void CrystalEntered()
     {
         if (_machine.GetState() is not AwaitCrystalState)
@@ -58,11 +48,14 @@ public class SlotScript : MonoBehaviour
 
         IXRSelectInteractable crystalXR = _socket.GetOldestInteractableSelected();
 
-        CrystalObject crystal = crystalXR.transform.GetComponent<CrystalObject>();
+        _crystal = crystalXR.transform.GetComponent<CrystalObject>();
 
-        Destroy(crystal.gameObject);
+        XRGrabInteractable grabInteractable = _crystal.GetComponent<XRGrabInteractable>();
+        grabInteractable.enabled = false;
 
-        _machine.SetActiveCrystal(crystal.GetCrystalColor());
+        
+
+        _machine.SetActiveCrystal(_crystal.GetCrystalColor());
     }
 
 
@@ -70,7 +63,16 @@ public class SlotScript : MonoBehaviour
     {
         _hatch.transform.localRotation = Quaternion.RotateTowards(_hatch.transform.localRotation, _closeRotation, _speed * Time.deltaTime);
 
-        return _hatch.transform.localRotation == _closeRotation;
+        bool closed = _hatch.transform.localRotation == _closeRotation;
+
+        if (closed)
+        {
+            Destroy(_crystal.gameObject);
+            _crystal = null;
+        }
+
+        return closed;
+
     }
 
     public void ResetSlot()

@@ -9,6 +9,10 @@ public class MixingState : State
     {
     }
 
+    private float _startTime = float.NaN;
+    private float _delay = 2;
+    private bool _break = false;
+
     public override void StartState()
     {
         _colorMachine.SetResetMix(false);
@@ -16,16 +20,17 @@ public class MixingState : State
 
     public override void UpdateState()
     {
-        if (_colorMachine.GetResetMix())
+        if (_break)
         {
-            _colorMachine.SetResetMix(false);
-            _colorMachine.SetState(new ResetPuzzleState(_colorMachine));
-        }
+            if (float.IsNaN(_startTime))
+            {
+                _startTime = Time.time;
+            }
 
-        if (_colorMachine.GetCauldron().GetActiceCauldronColor() == _colorMachine.GetActiveCrystalInstruction().GetGoalColors()[_colorMachine.GetMixIteration()])
-        {
-            _colorMachine.SetMixIteration(_colorMachine.GetMixIteration() + 1);
-
+            if (Time.time - _startTime < _delay)
+            {
+                return;
+            }
 
             if (_colorMachine.GetActiveCrystalInstruction().GetGoalColors().Count > _colorMachine.GetMixIteration())
             {
@@ -36,7 +41,21 @@ public class MixingState : State
                 _colorMachine.SetState(new FreeColorState(_colorMachine));
             }
 
-            
+            return;
+
+        }
+
+        if (_colorMachine.GetResetMix())
+        {
+            _colorMachine.SetResetMix(false);
+            _colorMachine.SetState(new ResetPuzzleState(_colorMachine));
+        }
+
+        if (_colorMachine.GetCauldron().GetActiceCauldronColor() == _colorMachine.GetActiveCrystalInstruction().GetGoalColors()[_colorMachine.GetMixIteration()])
+        {
+            _colorMachine.SetMixIteration(_colorMachine.GetMixIteration() + 1);
+
+            _break = true;
         }
 
     }
