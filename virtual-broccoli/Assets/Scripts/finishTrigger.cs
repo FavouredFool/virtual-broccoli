@@ -8,9 +8,9 @@ public class FinishTrigger : MonoBehaviour
     [SerializeField]
     private OpenBoxController _openBoxController;
 
-    private boxLabController _controller;
+    private BoxLabController _controller;
 
-    public void setController(boxLabController controller)
+    public void setController(BoxLabController controller)
     {
         _controller = controller;
     }
@@ -19,7 +19,8 @@ public class FinishTrigger : MonoBehaviour
     {
         if (other.gameObject.Equals(_controller.getSphere()))
         {
-            //_openBoxController.setOpen(true);
+            _openBoxController.setOpen(true);
+            _controller.sphereReset();
         }
     }
 }

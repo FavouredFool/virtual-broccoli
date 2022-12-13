@@ -55,6 +55,7 @@ public class PuzzleTableManager: MonoBehaviour
         _gamestate = state;
     }
 
+    // Is called at the Start methode and at the Start of the game (after the first interaction).
     protected virtual void ResetComponents() { }
 
     protected virtual bool CheckStarted()
@@ -64,8 +65,12 @@ public class PuzzleTableManager: MonoBehaviour
 
     private void StartGame()
     {
+        StartGameExtend();
         SwitchState(STATE.STARTED);
     }
+
+    // Extends the Method called at the start of the game (after the first interaction
+    protected virtual void StartGameExtend() { }
 
     protected virtual void GameProgressing() { }
 

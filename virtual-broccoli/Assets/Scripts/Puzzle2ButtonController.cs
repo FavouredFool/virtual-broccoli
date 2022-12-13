@@ -1,0 +1,45 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Puzzle2ButtonController : MonoBehaviour
+{
+    [SerializeField]
+    private ProgressMovementController _controller;
+
+    [SerializeField]
+    private bool _active;
+
+    private bool _triggered;
+
+    private void Start()
+    {
+        _active = false;
+        _triggered = false;
+    }
+
+    public bool GetActive()
+    {
+        return _active;
+    }
+
+    private void Activate(bool active)
+    {
+        _controller.ToggleButton(name, active);
+    }
+
+    private void Update()
+    {
+        if(!_triggered && _active)
+        {
+            Activate(_active);
+            _triggered = true;
+        }
+
+        if (!_active && _triggered)
+        {
+            _triggered = false;
+            Activate(_active);
+        }
+    }
+}

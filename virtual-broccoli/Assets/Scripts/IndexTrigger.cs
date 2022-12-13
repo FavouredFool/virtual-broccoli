@@ -15,7 +15,7 @@ public class IndexTrigger : MonoBehaviour
         {
             other.attachedRigidbody.velocity.Set(0f, 0f, 0f);
             other.gameObject.transform.position = this.gameObject.transform.position;
-            if (_progressController) _progressController.setHoldValue(name);
+            if (_progressController) _progressController.SetHoldValue(name);
         }
     }
 }

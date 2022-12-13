@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ResetTrigger : MonoBehaviour
 {
-    private boxLabController _controller;
+    private BoxLabController _controller;
 
-    public void setController(boxLabController controller)
+    public void setController(BoxLabController controller)
     {
         _controller = controller;
     }
