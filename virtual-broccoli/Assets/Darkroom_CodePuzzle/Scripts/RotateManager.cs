@@ -5,30 +5,16 @@ public class RotateManager : MonoBehaviour
 {
     [SerializeField]
     private Vector3 _rotatingAxis;
-
+    [SerializeField]
+    private List<float> _rotationAngles;
+    [SerializeField]
     private List<GameObject> _rotatingWheels;
-    private List<int> _wheelMovements;
+
+    private readonly List<int> _wheelMovements = new();
 
     private void Start()
     {
-        _wheelMovements = new List<int>();
-        _rotatingWheels = new List<GameObject>();
-        if (_rotatingWheels.Count == 0)
-        {
-            GameObject[] foundWheels = GameObject.FindGameObjectsWithTag("Wheel");
-            foreach (GameObject wheel in foundWheels)
-            {
-                Debug.Log("Add " + wheel.name);
-                _rotatingWheels.Add(wheel);
-                _wheelMovements.Add(0);
-            }
-        }
-
-        if (_rotatingWheels.Count != 3)
-        {
-            Debug.Log("Wheels not assigned");
-        }
-
+        _rotatingWheels.ForEach(wheel => _wheelMovements.Add(0));
         _rotatingAxis = transform.InverseTransformDirection(Vector3.back);
         _rotatingAxis = new Vector3(Mathf.Round(_rotatingAxis.x),
              Mathf.Round(_rotatingAxis.y),
@@ -48,19 +34,6 @@ public class RotateManager : MonoBehaviour
         {
             ChangeMovement(2, reverse);
         }
-
-        for (int i = 0; i < _wheelMovements.Count; i++)
-        {
-            int movement = _wheelMovements[i];
-            if (movement != 0)
-            {
-                _rotatingWheels[i].transform.rotation *= Quaternion.Euler(movement * 0.5f * _rotatingAxis);
-                foreach (Transform symbol in _rotatingWheels[i].transform)
-                {
-                    symbol.rotation *= Quaternion.Euler(-movement * 0.5f * _rotatingAxis);
-                }
-            }
-        }
     }
 
 
@@ -69,5 +42,14 @@ public class RotateManager : MonoBehaviour
         int current = _wheelMovements[wheelIndex];
         int requested = reverse ? -1 : 1;
         _wheelMovements[wheelIndex] = current == requested ? 0 : requested;
+
+        int movement = _wheelMovements[wheelIndex];
+        if (movement != 0) {
+            _rotatingWheels[wheelIndex].transform.rotation *= Quaternion.Euler(movement * _rotationAngles[wheelIndex] * _rotatingAxis);
+            foreach (Transform symbol in _rotatingWheels[wheelIndex].transform)
+            {
+               symbol.rotation *= Quaternion.Euler(-movement * _rotationAngles[wheelIndex] * _rotatingAxis);
+            }
+        }
     }
 }
