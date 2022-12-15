@@ -59,4 +59,4 @@ sysinfo.txt
 crashlytics-build.properties
 
 # UserSettings folder
-[Uu]serSettings/
+virtual-broccoli/UserSettings/*
