@@ -97,7 +97,6 @@ MonoBehaviour:
   - {fileID: 5767386564941391011}
   - {fileID: 3359128850668761208}
   - {fileID: 9166259737186177304}
-  - {fileID: -3262597197541997699}
   - {fileID: 6708838685994060134}
   - {fileID: 962327039156430713}
   - {fileID: 733367954666620950}
@@ -143,7 +142,22 @@ MonoBehaviour:
   Values:
   - {fileID: -1043377885815766819}
   - {fileID: 8456537649440205281}
-  - {fileID: -2755684781911898596}
+  - {fileID: 344275992102283140}
+--- !u!114 &344275992102283140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5a1f07dc5afe854f9f12a4194aca3fb, type: 3}
+  m_Name: WebGL
+  m_EditorClassIdentifier: 
+  features: []
+  m_renderMode: 1
+  m_depthSubmissionMode: 0
 --- !u!114 &733367954666620950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,6 +322,28 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
+--- !u!114 &4350645950141429674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ef793c31862a37448e907829482ef80, type: 3}
+  m_Name: OculusQuestFeature Android
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: Oculus Quest Support
+  version: 1.0.0
+  featureIdInternal: com.unity.openxr.feature.oculusquest
+  openxrExtensionStrings: XR_OCULUS_android_initialize_loader
+  company: Unity
+  priority: 0
+  required: 0
+  targetQuest: 1
+  targetQuest2: 1
 --- !u!114 &5767386564941391011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,7 +463,7 @@ MonoBehaviour:
   - {fileID: -574941653404841338}
   - {fileID: 4035868710521976179}
   - {fileID: 7009633364022290919}
-  - {fileID: -6691325625503221175}
+  - {fileID: 4350645950141429674}
   - {fileID: 3989334193554634540}
   - {fileID: 3310574095550883110}
   m_renderMode: 1
