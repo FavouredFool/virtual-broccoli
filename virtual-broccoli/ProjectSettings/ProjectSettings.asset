@@ -138,6 +138,11 @@ PlayerSettings:
   preloadedAssets:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 4f2729427b7c1b14ea07d78780b6c17f, type: 2}
+  - {fileID: -6757586534160202209, guid: 9fd15c57e65c2164d93013f37b1a33b4, type: 2}
+  - {fileID: 0}
+  - {fileID: 3965140621505873679, guid: 53f69b55dcb18f94c886dcb99f41502c, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -157,12 +162,13 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
+    Android: com.DefaultCompany.virtualbroccoli
     Standalone: com.UnityTechnologies.com.unity.template-starter-kit
   buildNumber:
     Standalone: 0
     iPhone: 0
     tvOS: 0
-  overrideDefaultApplicationIdentifier: 1
+  overrideDefaultApplicationIdentifier: 0
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 25
   AndroidTargetSdkVersion: 29
@@ -777,7 +783,7 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Android: PROBUILDER_EXPERIMENTAL_FEATURES;VIU_XR_GENERAL_SETTINGS;VIU_XR_PACKAGE_METADATA_STORE;VIU_OPENXR_PLUGIN_POSE_CONTROL;VIU_UIS_POSE_CONTROL;VIU_WAVEVR_HAND_TRACKING_CHECK;VIU_WAVEVR_TRACKER_CHECK;VIU_PLUGIN;VIU_PACKAGE
+    Android: PROBUILDER_EXPERIMENTAL_FEATURES;VIU_XR_GENERAL_SETTINGS;VIU_XR_PACKAGE_METADATA_STORE;VIU_OPENXR_PLUGIN_POSE_CONTROL;VIU_UIS_POSE_CONTROL;VIU_WAVEVR_HAND_TRACKING_CHECK;VIU_WAVEVR_TRACKER_CHECK;VIU_PLUGIN;VIU_PACKAGE;USE_VIVE_OPENXR_ANDROID_1_0_4
     EmbeddedLinux: PROBUILDER_EXPERIMENTAL_FEATURES
     GameCoreXboxOne: PROBUILDER_EXPERIMENTAL_FEATURES
     Lumin: PROBUILDER_EXPERIMENTAL_FEATURES
@@ -801,7 +807,7 @@ PlayerSettings:
   allowUnsafeCode: 0
   useDeterministicCompilation: 1
   enableRoslynAnalyzers: 1
-  selectedPlatform: 0
+  selectedPlatform: 2
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 1
   gcIncremental: 0
