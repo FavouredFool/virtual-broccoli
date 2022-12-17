@@ -1,25 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
-using static StairManager;
 
-public class StairLever : MonoBehaviour
+public class WheelLever : MonoBehaviour
 {
-    [SerializeField] private bool _stairLeft;
-    [SerializeField] private StairColor _color;
     [SerializeField] private GameObject _movableLever;
+    [SerializeField] private GameObject _wheelPart;
 
     [SerializeField] private XRBaseInteractable handle = null;
     [SerializeField] private Transform start = null;
     [SerializeField] private Transform end = null;
+    [SerializeField] private bool _startPosition;
 
     private Vector3 grabPosition = Vector3.zero;
     private float startingPercentage = 0.5f;
     private float currentPercentage = 0.0f;
     private float _prevPercentage = 0.0f;
-
-    private StairManager _stairManager;
 
     protected virtual void OnEnable()
     {
@@ -41,17 +36,17 @@ public class StairLever : MonoBehaviour
 
     public void Start()
     {
-        if (!_stairLeft)
-        {
-            currentPercentage = 1.0f;
-            _prevPercentage = 1.0f;
-            startingPercentage = 1.0f;
-        }
-        else
+        if (_startPosition)
         {
             currentPercentage = 0.0f;
             _prevPercentage = 0.0f;
             startingPercentage = 0.0f;
+        }
+        else
+        {
+            currentPercentage = 1.0f;
+            _prevPercentage = 1.0f;
+            startingPercentage = 1.0f;
         }
 
         SetLeverVisual();
@@ -65,21 +60,9 @@ public class StairLever : MonoBehaviour
         }
 
         // thumb down to left or right
-        if (!handle.isSelected)
+        if (!handle.isSelected && currentPercentage != 0 && currentPercentage != 1)
         {
-            if (currentPercentage != 0 && currentPercentage != 1)
-            {
-                int fallSign;
-
-                if (currentPercentage > 0.5f)
-                {
-                    fallSign = 1;
-                }
-                else
-                {
-                    fallSign = -1;
-                }
-
+                int fallSign = currentPercentage > 0.5f ? 1 : -1;
 
                 float newPercentage = currentPercentage + fallSign * 0.01f;
 
@@ -87,24 +70,17 @@ public class StairLever : MonoBehaviour
                 _movableLever.transform.localRotation = setRotation;
 
                 currentPercentage = Mathf.Clamp01(newPercentage);
-            }
         }
 
-        if (currentPercentage == 1)
+        if (currentPercentage == 1 && _prevPercentage != 1)
         {
-            if (_prevPercentage != 1)
-            {
-                _prevPercentage = 1;
-                ChangeStairPositions();
-            }
+           _prevPercentage = 1;
+           ChangeStairPositions();
         }
-        else if (currentPercentage == 0)
+        else if (currentPercentage == 0 && _prevPercentage != 0)
         {
-            if (_prevPercentage != 0)
-            {
-                _prevPercentage = 0;
-                ChangeStairPositions();
-            }
+           _prevPercentage = 0;
+           ChangeStairPositions();
         }
     }
 
@@ -137,51 +113,23 @@ public class StairLever : MonoBehaviour
         return Vector3.Dot(pullDirection, targetDirection) / length;
     }
 
-
-
     private void ChangeStairPositions()
     {
-        if (!_stairManager)
-        {
-            return;
-        }
-
-        foreach (StairRotationScript stair in _stairManager.GetAllStairs())
-        {
-            if (stair.GetFirstColor() == _color || stair.GetSecondColor() == _color)
-            {
-                stair.ChangeRotation();
-            }
-        }
+        //TODO: rotate _wheelPart
     }
 
     private void SetLeverVisual()
     {
-        Quaternion rotation;
-
-        if (currentPercentage == 0.0f)
-        {
-            rotation = Quaternion.Euler(new Vector3(0f, 0f, 45f));
-        }
-        else
-        {
-            rotation = Quaternion.Euler(new Vector3(0f, 0f, -45f));
-        }
-
-        _movableLever.transform.localRotation = rotation;
-    }
-
-    public void SetStairManager(StairManager stairManager)
-    {
-        _stairManager = stairManager;
+        int rotationZ = currentPercentage == 0.0f ? 45 : -45;
+        _movableLever.transform.localRotation = Quaternion.Euler(new Vector3(0f, 0f, rotationZ));
     }
 
     private void OnDrawGizmos()
     {
         /*Shows the general direction of the interaction*/
         if (start && end)
+        {
             Gizmos.DrawLine(start.position, end.position);
+        }
     }
-
-
 }

@@ -1,12 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static StairManager;
 
-public class StairRotation : MonoBehaviour
+public class StairRotationScript : MonoBehaviour
 {
     [SerializeField]
-    private Rotation _goalRotationEnum;
+    private StairRotation _goalRotationEnum;
 
     [SerializeField]
     private float _speed = 0.1f;
@@ -37,7 +36,7 @@ public class StairRotation : MonoBehaviour
 
     public void Awake()
     {
-        if (_goalRotationEnum == Rotation.RIGHT)
+        if (_goalRotationEnum == StairRotation.RIGHT)
         {
             _t = 1f;
         }
@@ -65,7 +64,7 @@ public class StairRotation : MonoBehaviour
 
     public void Update()
     {
-        if (_goalRotationEnum == Rotation.RIGHT)
+        if (_goalRotationEnum == StairRotation.RIGHT)
         {
             _goalT = 1f;
         } else
@@ -80,12 +79,12 @@ public class StairRotation : MonoBehaviour
 
     public void ChangeRotation()
     {
-        if (_goalRotationEnum == Rotation.RIGHT)
+        if (_goalRotationEnum == StairRotation.RIGHT)
         {
-            _goalRotationEnum = Rotation.LEFT;
+            _goalRotationEnum = StairRotation.LEFT;
         } else
         {
-            _goalRotationEnum = Rotation.RIGHT;
+            _goalRotationEnum = StairRotation.RIGHT;
         }
     }
 

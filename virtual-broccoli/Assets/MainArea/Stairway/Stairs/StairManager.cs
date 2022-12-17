@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StairManager : MonoBehaviour
 {
-    public enum Rotation { RIGHT, LEFT };
+    public enum StairRotation { RIGHT, LEFT };
 
     public enum StairColor { KEY, CYAN, MAGENTA, YELLOW, WHITE };
 
@@ -21,7 +21,7 @@ public class StairManager : MonoBehaviour
     {
         foreach (Transform stairRotationTransform in _stairParent)
         {
-            StairRotation stairRotation = stairRotationTransform.GetComponent<StairRotation>();
+            global::StairRotationScript stairRotation = stairRotationTransform.GetComponent<global::StairRotationScript>();
 
             if (stairRotation == null)
             {
@@ -47,13 +47,13 @@ public class StairManager : MonoBehaviour
     }
 
 
-    public List<StairRotation> GetAllStairs()
+    public List<global::StairRotationScript> GetAllStairs()
     {
-        List<StairRotation> stairList = new();
+        List<global::StairRotationScript> stairList = new();
 
         foreach (Transform stairRotationTransform in _stairParent)
         {
-            StairRotation stairRotation = stairRotationTransform.GetComponent<StairRotation>();
+            global::StairRotationScript stairRotation = stairRotationTransform.GetComponent<global::StairRotationScript>();
 
             if (stairRotation == null)
             {
