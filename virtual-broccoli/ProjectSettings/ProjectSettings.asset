@@ -8,7 +8,7 @@ PlayerSettings:
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
-  defaultScreenOrientation: 4
+  defaultScreenOrientation: 3
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
@@ -164,8 +164,8 @@ PlayerSettings:
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
   AndroidBundleVersionCode: 1
-  AndroidMinSdkVersion: 22
-  AndroidTargetSdkVersion: 0
+  AndroidMinSdkVersion: 25
+  AndroidTargetSdkVersion: 29
   AndroidPreferredInstallLocation: 1
   aotOptions: 
   stripEngineCode: 1
@@ -247,7 +247,7 @@ PlayerSettings:
   useCustomBaseGradleTemplate: 0
   useCustomGradlePropertiesTemplate: 0
   useCustomProguardFile: 0
-  AndroidTargetArchitectures: 1
+  AndroidTargetArchitectures: 2
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
@@ -508,14 +508,17 @@ PlayerSettings:
     m_APIs: 10000000
     m_Automatic: 1
   - m_BuildTarget: AndroidPlayer
-    m_APIs: 0b00000008000000
+    m_APIs: 0b000000
     m_Automatic: 0
-  m_BuildTargetVRSettings: []
+  m_BuildTargetVRSettings:
+  - m_BuildTarget: Android
+    m_Enabled: 0
+    m_Devices: []
   m_DefaultShaderChunkSizeInMB: 16
   m_DefaultShaderChunkCount: 0
-  openGLRequireES31: 0
-  openGLRequireES31AEP: 0
-  openGLRequireES32: 0
+  openGLRequireES31: 1
+  openGLRequireES31AEP: 1
+  openGLRequireES32: 1
   m_TemplateCustomTags: {}
   mobileMTRendering:
     Android: 1
@@ -774,7 +777,7 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Android: PROBUILDER_EXPERIMENTAL_FEATURES
+    Android: PROBUILDER_EXPERIMENTAL_FEATURES;VIU_XR_GENERAL_SETTINGS;VIU_XR_PACKAGE_METADATA_STORE;VIU_OPENXR_PLUGIN_POSE_CONTROL;VIU_UIS_POSE_CONTROL;VIU_WAVEVR_HAND_TRACKING_CHECK;VIU_WAVEVR_TRACKER_CHECK;VIU_PLUGIN;VIU_PACKAGE
     EmbeddedLinux: PROBUILDER_EXPERIMENTAL_FEATURES
     GameCoreXboxOne: PROBUILDER_EXPERIMENTAL_FEATURES
     Lumin: PROBUILDER_EXPERIMENTAL_FEATURES
@@ -789,7 +792,8 @@ PlayerSettings:
     tvOS: PROBUILDER_EXPERIMENTAL_FEATURES
   additionalCompilerArguments: {}
   platformArchitecture: {}
-  scriptingBackend: {}
+  scriptingBackend:
+    Android: 1
   il2cppCompilerConfiguration: {}
   managedStrippingLevel: {}
   incrementalIl2cppBuild: {}

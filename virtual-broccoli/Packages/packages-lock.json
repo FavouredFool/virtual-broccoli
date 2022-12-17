@@ -1,5 +1,21 @@
 {
   "dependencies": {
+    "com.htc.upm.vive-input-utility": {
+      "version": "1.17.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://npm-registry.vive.com"
+    },
+    "com.htc.upm.wave.xrsdk": {
+      "version": "5.0.3-r.5",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.xr.management": "3.0.6"
+      },
+      "url": "https://npm-registry.vive.com"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 1,
@@ -221,6 +237,28 @@
       "dependencies": {
         "com.unity.ugui": "1.0.0",
         "com.unity.modules.jsonserialize": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.xr.arcore": {
+      "version": "4.2.7",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.xr.arsubsystems": "4.2.7",
+        "com.unity.xr.management": "4.0.1",
+        "com.unity.modules.androidjni": "1.0.0",
+        "com.unity.modules.unitywebrequest": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.xr.arsubsystems": {
+      "version": "4.2.7",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.subsystemregistration": "1.1.0",
+        "com.unity.xr.management": "4.0.1"
       },
       "url": "https://packages.unity.com"
     },
