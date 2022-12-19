@@ -146,7 +146,7 @@ public class StairLever : MonoBehaviour
             return;
         }
 
-        foreach (StairRotation stair in _stairManager.GetAllStairs())
+        foreach (StairRotationScript stair in _stairManager.GetAllStairs())
         {
             if (stair.GetFirstColor() == _color || stair.GetSecondColor() == _color)
             {
