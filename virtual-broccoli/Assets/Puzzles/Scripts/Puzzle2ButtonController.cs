@@ -5,7 +5,7 @@ using UnityEngine;
 public class Puzzle2ButtonController : MonoBehaviour
 {
     [SerializeField]
-    private ProgressMovementController _controller;
+    private ProgressMovementController _progressController;
 
     [SerializeField]
     private bool _active;
@@ -25,7 +25,7 @@ public class Puzzle2ButtonController : MonoBehaviour
 
     private void Activate(bool active)
     {
-        _controller.ToggleButton(name, active);
+        _progressController.ToggleButton(name, active);
     }
 
     private void Update()
