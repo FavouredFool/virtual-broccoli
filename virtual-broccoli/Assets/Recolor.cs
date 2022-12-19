@@ -10,9 +10,9 @@ public class Recolor : MonoBehaviour
     private float currentEnd;
     [SerializeField]
     [Range(startPoint, endPoint)]
-    private float flowPoint;
+    private float flowPoint = startPoint;
     [SerializeField]
-    private float flowStep;
+    private float flowStep = 0.0015f;
     Material mat;
     float meshSize;
     float diff;
@@ -28,7 +28,6 @@ public class Recolor : MonoBehaviour
         mat = this.gameObject.GetComponent<Renderer>().material;
         Vector3 axisSelectionVector = new Vector3(mat.GetInt("_xAxis"), mat.GetInt("_yAxis"), mat.GetInt("_zAxis"));
         inverted = (mat.GetInt("_inverted") > 0);
-        Debug.Log(inverted);
 
         Bounds meshBounds = this.gameObject.GetComponent<MeshRenderer>().localBounds;
         Vector3 diffVector = meshBounds.center;
