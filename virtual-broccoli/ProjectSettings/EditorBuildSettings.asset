@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/MainArea/Scenes/MainArea.unity
     guid: 55d58fed09492354699d6420cb9a031e
   - enabled: 1
-    path: Assets/Puzzles/Darkroom_CodePuzzle/DarkRoom_CodePuzzle.unity
+    path: Assets/Puzzles/YellowRoom/YellowRoom.unity
     guid: 373093f3f947f9b428be5895a1101316
   m_configObjects:
     com.htc.upm.wave.xrsdk.xrsettings: {fileID: 11400000, guid: 4f2729427b7c1b14ea07d78780b6c17f,
