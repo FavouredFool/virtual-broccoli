@@ -127,6 +127,6 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 4, g: 4, b: 4, a: 1}
-    - _ProgressionColor: {r: 0.6363407, g: 0.043476693, b: 0, a: 0}
+    - _ProgressionColor: {r: 0.42745098, g: 0.011764706, b: 0.12156863, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
