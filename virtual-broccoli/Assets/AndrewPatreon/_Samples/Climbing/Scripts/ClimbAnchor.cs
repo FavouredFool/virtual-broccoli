@@ -20,6 +20,7 @@ public class ClimbAnchor : XRBaseInteractable
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         base.OnSelectEntered(args);
+
         TryAdd(args.interactorObject);
     }
 
