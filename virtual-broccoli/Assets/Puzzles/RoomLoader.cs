@@ -9,6 +9,7 @@ public class RoomLoader : MonoBehaviour
     {
         StartCoroutine(LoadSceneAsync(1));
         StartCoroutine(LoadSceneAsync(2));
+        StartCoroutine(LoadSceneAsync(3));
     }
 
 
