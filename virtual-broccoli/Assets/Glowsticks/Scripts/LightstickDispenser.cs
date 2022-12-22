@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class Quiver : XRBaseInteractable
+public class LightstickDispenser : XRBaseInteractable
 {
     [SerializeField] private GameObject arrowPrefab;
 

@@ -536,26 +536,11 @@ PrefabInstance:
     - target: {fileID: 2179614927706237426, guid: 2297a0d4384c54d498c8698be5a51c16,
         type: 3}
       propertyPath: m_Name
-      value: Quiver
+      value: LightstickDispenser
       objectReference: {fileID: 0}
     - target: {fileID: 2179614927706237429, guid: 2297a0d4384c54d498c8698be5a51c16,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2179614927706237429, guid: 2297a0d4384c54d498c8698be5a51c16,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2179614927706237429, guid: 2297a0d4384c54d498c8698be5a51c16,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2179614927706237429, guid: 2297a0d4384c54d498c8698be5a51c16,
-        type: 3}
-      propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2179614927706237429, guid: 2297a0d4384c54d498c8698be5a51c16,
@@ -607,11 +592,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2179614927706237429, guid: 2297a0d4384c54d498c8698be5a51c16,
-        type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2297a0d4384c54d498c8698be5a51c16, type: 3}
@@ -2708,7 +2688,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh32144
+  m_Name: pb_Mesh54822
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
