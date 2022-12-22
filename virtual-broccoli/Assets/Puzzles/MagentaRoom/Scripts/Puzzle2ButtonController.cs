@@ -23,6 +23,11 @@ public class Puzzle2ButtonController : MonoBehaviour
         return _active;
     }
 
+    public void SetActive(bool active)
+    {
+        _active = active;
+    }
+
     private void Activate(bool active)
     {
         _progressController.ToggleButton(name, active);

@@ -8,6 +8,8 @@ public class HandButton : XRBaseInteractable
 {
     [SerializeField]
     private UnityEvent OnPress = null;
+    [SerializeField]
+    private UnityEvent OnRelease = null;
 
     private float _yMin = 0.0f;
     private float _yMax = 0.0f;
@@ -47,6 +49,7 @@ public class HandButton : XRBaseInteractable
 
         _previousPress = false;
         SetYPosition(_yMax);
+        if (OnRelease != null) OnRelease.Invoke();
     }
 
     private void SetMinMax()
