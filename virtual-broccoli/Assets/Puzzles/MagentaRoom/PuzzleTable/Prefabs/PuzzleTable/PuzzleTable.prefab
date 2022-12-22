@@ -202,7 +202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8200915868267326810}
   m_Layer: 0
-  m_Name: Pins
+  m_Name: Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
