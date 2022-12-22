@@ -12,17 +12,16 @@ public class WheelLever : MonoBehaviour
     [SerializeField] private XRBaseInteractable handle = null;
     [SerializeField] private Transform start = null;
     [SerializeField] private Transform end = null;
-    [SerializeField] private bool _startPosition;
 
-    private Vector3 _rotatingAxis;
     private Vector3 grabPosition = Vector3.zero;
-    private float startingPercentage = 0.5f;
-    private float currentPercentage = 0.0f;
-    private float _prevPercentage = 0.0f;
+    private Vector3 _rotatingAxis;
+    private float startingPercentage;
+    private float currentPercentage;
+    private float _prevPercentage;
 
     public void Start()
     {
-        currentPercentage = _prevPercentage = startingPercentage = _startPosition ? 0.0f : 1.0f;
+        currentPercentage = _prevPercentage = startingPercentage = 0.0f;
 
         _rotatingAxis = transform.TransformDirection(Vector3.up);
         _rotatingAxis = new Vector3(Mathf.Round(_rotatingAxis.x),
@@ -55,37 +54,30 @@ public class WheelLever : MonoBehaviour
         if (handle.isSelected)
         {
             UpdateLever();
+            if (currentPercentage == 1 && _prevPercentage != 1)
+            {
+                _prevPercentage = 1;
+                ChangeWheelRotation();
+            }
         }
-
-        // thumb down to left or right
-        if (!handle.isSelected && currentPercentage != 0 && currentPercentage != 1)
+        else if (currentPercentage != 0)
         {
-                int fallSign = currentPercentage > 0.5f ? 1 : -1;
+            _prevPercentage = currentPercentage;
+            float newPercentage = currentPercentage -0.05f;
 
-                float newPercentage = currentPercentage + fallSign * 0.01f;
+            Quaternion setRotation = Quaternion.Slerp(
+                Quaternion.Euler(new Vector3(0f, 0f, 45f)), 
+                Quaternion.Euler(new Vector3(0f, 0f, -45f)), 
+                newPercentage);
+            _movableLever.transform.localRotation = setRotation;
 
-                Quaternion setRotation = Quaternion.Slerp(Quaternion.Euler(new Vector3(0f, 0f, 45f)), Quaternion.Euler(new Vector3(0f, 0f, -45f)), newPercentage);
-                _movableLever.transform.localRotation = setRotation;
-
-                currentPercentage = Mathf.Clamp01(newPercentage);
-        }
-
-        if (currentPercentage == 1 && _prevPercentage != 1)
-        {
-           _prevPercentage = 1;
-           ChangeStairPositions();
-        }
-        else if (currentPercentage == 0 && _prevPercentage != 0)
-        {
-           _prevPercentage = 0;
-           ChangeStairPositions();
+            currentPercentage = Mathf.Clamp01(newPercentage);
         }
     }
 
     private void UpdateLever()
     {
         float newPercentage = startingPercentage + FindPercentageDifference();
-        Debug.Log(newPercentage);
 
         Quaternion setRotation = Quaternion.Slerp(Quaternion.Euler(new Vector3(0f, 0f, 45f)), Quaternion.Euler(new Vector3(0f, 0f, -45f)), newPercentage);
 
@@ -111,7 +103,7 @@ public class WheelLever : MonoBehaviour
         return Vector3.Dot(pullDirection, targetDirection) / length;
     }
 
-    private void ChangeStairPositions()
+    private void ChangeWheelRotation()
     {
         _wheelPart.transform.rotation *= Quaternion.Euler(_wheelRotation * _rotatingAxis);
         foreach (Transform symbol in _wheelPart.transform)
