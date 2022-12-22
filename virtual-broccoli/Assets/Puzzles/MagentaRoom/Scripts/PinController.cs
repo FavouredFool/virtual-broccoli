@@ -20,7 +20,6 @@ public class PinController : MonoBehaviour
         return _active;
     }
 
-    [SerializeField]
     public void setActive(bool active)
     {
         _active = active;
@@ -30,6 +29,17 @@ public class PinController : MonoBehaviour
     private void activateLight(bool activate)
     {
         _light.SetActive(activate);
+
+        Material mat = gameObject.GetComponent<MeshRenderer>().material;
+        if (activate)
+        {
+            mat.EnableKeyword("_EMISSION");
+        }
+        else
+        {
+            mat.DisableKeyword("_EMISSION");
+        }
+        DynamicGI.UpdateEnvironment();
     }
 
     private void OnTriggerEnter(Collider other)
