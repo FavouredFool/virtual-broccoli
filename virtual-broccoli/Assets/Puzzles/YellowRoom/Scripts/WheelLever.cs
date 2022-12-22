@@ -3,18 +3,33 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class WheelLever : MonoBehaviour
 {
-    [SerializeField] private GameObject _movableLever;
+    [Header("Wheel settings")]
     [SerializeField] private GameObject _wheelPart;
+    [SerializeField] private float _wheelRotation;
 
+    [Header("Lever settings")]
+    [SerializeField] private GameObject _movableLever;
     [SerializeField] private XRBaseInteractable handle = null;
     [SerializeField] private Transform start = null;
     [SerializeField] private Transform end = null;
-    [SerializeField] private bool _startPosition;
 
     private Vector3 grabPosition = Vector3.zero;
-    private float startingPercentage = 0.5f;
-    private float currentPercentage = 0.0f;
-    private float _prevPercentage = 0.0f;
+    private Vector3 _rotatingAxis;
+    private float startingPercentage;
+    private float currentPercentage;
+    private float _prevPercentage;
+
+    public void Start()
+    {
+        currentPercentage = _prevPercentage = startingPercentage = 0.0f;
+
+        _rotatingAxis = transform.TransformDirection(Vector3.up);
+        _rotatingAxis = new Vector3(Mathf.Round(_rotatingAxis.x),
+             Mathf.Round(_rotatingAxis.y),
+             Mathf.Round(_rotatingAxis.z));
+
+        SetLeverVisual();
+    }
 
     protected virtual void OnEnable()
     {
@@ -34,60 +49,35 @@ public class WheelLever : MonoBehaviour
         grabPosition = args.interactorObject.transform.position;
     }
 
-    public void Start()
-    {
-        if (_startPosition)
-        {
-            currentPercentage = 0.0f;
-            _prevPercentage = 0.0f;
-            startingPercentage = 0.0f;
-        }
-        else
-        {
-            currentPercentage = 1.0f;
-            _prevPercentage = 1.0f;
-            startingPercentage = 1.0f;
-        }
-
-        SetLeverVisual();
-    }
-
     public void Update()
     {
         if (handle.isSelected)
         {
             UpdateLever();
+            if (currentPercentage == 1 && _prevPercentage != 1)
+            {
+                _prevPercentage = 1;
+                ChangeWheelRotation();
+            }
         }
-
-        // thumb down to left or right
-        if (!handle.isSelected && currentPercentage != 0 && currentPercentage != 1)
+        else if (currentPercentage != 0)
         {
-                int fallSign = currentPercentage > 0.5f ? 1 : -1;
+            _prevPercentage = currentPercentage;
+            float newPercentage = currentPercentage -0.05f;
 
-                float newPercentage = currentPercentage + fallSign * 0.01f;
+            Quaternion setRotation = Quaternion.Slerp(
+                Quaternion.Euler(new Vector3(0f, 0f, 45f)), 
+                Quaternion.Euler(new Vector3(0f, 0f, -45f)), 
+                newPercentage);
+            _movableLever.transform.localRotation = setRotation;
 
-                Quaternion setRotation = Quaternion.Slerp(Quaternion.Euler(new Vector3(0f, 0f, 45f)), Quaternion.Euler(new Vector3(0f, 0f, -45f)), newPercentage);
-                _movableLever.transform.localRotation = setRotation;
-
-                currentPercentage = Mathf.Clamp01(newPercentage);
-        }
-
-        if (currentPercentage == 1 && _prevPercentage != 1)
-        {
-           _prevPercentage = 1;
-           ChangeStairPositions();
-        }
-        else if (currentPercentage == 0 && _prevPercentage != 0)
-        {
-           _prevPercentage = 0;
-           ChangeStairPositions();
+            currentPercentage = Mathf.Clamp01(newPercentage);
         }
     }
 
     private void UpdateLever()
     {
         float newPercentage = startingPercentage + FindPercentageDifference();
-        Debug.Log(newPercentage);
 
         Quaternion setRotation = Quaternion.Slerp(Quaternion.Euler(new Vector3(0f, 0f, 45f)), Quaternion.Euler(new Vector3(0f, 0f, -45f)), newPercentage);
 
@@ -113,9 +103,13 @@ public class WheelLever : MonoBehaviour
         return Vector3.Dot(pullDirection, targetDirection) / length;
     }
 
-    private void ChangeStairPositions()
+    private void ChangeWheelRotation()
     {
-        //TODO: rotate _wheelPart
+        _wheelPart.transform.rotation *= Quaternion.Euler(_wheelRotation * _rotatingAxis);
+        foreach (Transform symbol in _wheelPart.transform)
+        {
+            symbol.rotation *= Quaternion.Euler(-_wheelRotation * _rotatingAxis);
+        }
     }
 
     private void SetLeverVisual()
