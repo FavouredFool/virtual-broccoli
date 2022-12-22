@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Wheel
+  - Ventil
+  - Pipe
+  - PipeRotateOnly
+  - BoxDoor
+  - IndexRegulator
+  - MovableTower
+  - HeightIndex
+  - Plate
   layers:
   - Default
   - TransparentFX
@@ -11,9 +20,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Fluid
+  - Interactable
+  - Noninteractable
   - 
   - 
   - 

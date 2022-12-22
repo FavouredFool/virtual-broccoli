@@ -6,9 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Hogwarts/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/MainArea/Scenes/MainArea.unity
+    guid: 55d58fed09492354699d6420cb9a031e
+  - enabled: 1
+    path: Assets/Puzzles/YellowRoom/YellowRoom.unity
+    guid: 373093f3f947f9b428be5895a1101316
+  - enabled: 1
+    path: Assets/Puzzles/CyanRoom/CyanRoom.unity
+    guid: 0b4c8d67cf2f3064ba27aabbec595e95
+  - enabled: 1
+    path: Assets/Puzzles/MagentaRoom/MagentaRoom.unity
+    guid: 4b100abac72df054ba2ef1ed2c561b01
   m_configObjects:
+    com.htc.upm.wave.xrsdk.xrsettings: {fileID: 11400000, guid: 4f2729427b7c1b14ea07d78780b6c17f,
+      type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 53f69b55dcb18f94c886dcb99f41502c,
       type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 9fd15c57e65c2164d93013f37b1a33b4,
