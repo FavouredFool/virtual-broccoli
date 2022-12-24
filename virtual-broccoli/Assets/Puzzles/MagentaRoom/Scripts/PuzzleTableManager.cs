@@ -8,6 +8,9 @@ public class PuzzleTableManager: MonoBehaviour
     [SerializeField]
     protected Transform _finishBox;
 
+    [SerializeField]
+    protected GameObject[] _letterChips = new GameObject[2];
+
     protected enum STATE { AWAITINTERACTION, STARTED, FINISHED };
     protected STATE _gamestate;
 
@@ -16,6 +19,10 @@ public class PuzzleTableManager: MonoBehaviour
         ResetComponents();
         StartExtend();
         SwitchState(STATE.AWAITINTERACTION);
+        foreach (GameObject chip in _letterChips)
+        {
+            if (chip) chip.SetActive(false);
+        }
     }
 
     protected virtual void StartExtend() { }
@@ -84,5 +91,9 @@ public class PuzzleTableManager: MonoBehaviour
     protected void FinishGame()
     {
         _finishBox.GetChild(0).GetComponent<OpenBoxController>().setOpen(true);
+        foreach(GameObject chip in _letterChips)
+        {
+            if (chip) chip.SetActive(true);
+        }
     }
 }

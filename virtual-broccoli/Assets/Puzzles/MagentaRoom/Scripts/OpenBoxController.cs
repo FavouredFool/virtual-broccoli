@@ -105,4 +105,9 @@ public class OpenBoxController : MonoBehaviour
     {
         return _closing;
     }
+
+    public bool getClosed()
+    {
+        return _state == STATE.CLOSED;
+    }
 }

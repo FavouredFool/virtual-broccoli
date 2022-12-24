@@ -10,6 +10,9 @@ public class PinController : MonoBehaviour
     [SerializeField]
     private bool _active;
 
+    [SerializeField]
+    private OpenBoxController _openController;
+
     private void Awake()
     {
         setActive(false);
@@ -44,6 +47,6 @@ public class PinController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        setActive(!_active);
+        if(!_openController.getClosed()) setActive(!_active);
     }
 }
