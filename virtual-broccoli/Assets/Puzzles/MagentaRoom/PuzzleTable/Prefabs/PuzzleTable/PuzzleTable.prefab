@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7276332661598389170}
   - component: {fileID: 4570263855170721823}
   - component: {fileID: 2957014800943483541}
+  - component: {fileID: 6365925532340727102}
   m_Layer: 0
   m_Name: Trigger 3
   m_TagString: HeightIndex
@@ -59,6 +60,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _compareTag: MovableTower
+--- !u!114 &6365925532340727102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67758966051000505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9eb94d4bf944254f9b71c5f69c0f083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _compareTag: 
+  _progressController: {fileID: 0}
 --- !u!1 &144366631079215572
 GameObject:
   m_ObjectHideFlags: 0
@@ -10066,6 +10081,7 @@ GameObject:
   - component: {fileID: 5213835033172950329}
   - component: {fileID: 964320048662226132}
   - component: {fileID: 6752774630211562253}
+  - component: {fileID: 306275637406801310}
   m_Layer: 0
   m_Name: Trigger 4
   m_TagString: HeightIndex
@@ -10127,6 +10143,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _compareTag: MovableTower
+--- !u!114 &306275637406801310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3172709494493152014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9eb94d4bf944254f9b71c5f69c0f083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _compareTag: 
+  _progressController: {fileID: 0}
 --- !u!1 &3357480857053210863
 GameObject:
   m_ObjectHideFlags: 0
@@ -16754,6 +16784,7 @@ GameObject:
   - component: {fileID: 2099264907182527832}
   - component: {fileID: 2980373523278592913}
   - component: {fileID: 9074712532377518801}
+  - component: {fileID: 502882036313616048}
   m_Layer: 0
   m_Name: Trigger 1
   m_TagString: HeightIndex
@@ -16802,6 +16833,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _compareTag: MovableTower
+--- !u!114 &502882036313616048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4161954073641118719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9eb94d4bf944254f9b71c5f69c0f083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _compareTag: 
+  _progressController: {fileID: 0}
 --- !u!1 &4204103171789525517
 GameObject:
   m_ObjectHideFlags: 0
@@ -30227,7 +30272,6 @@ GameObject:
   - component: {fileID: 5073052729997178288}
   - component: {fileID: 3144228058749759065}
   - component: {fileID: 2364012296597601050}
-  - component: {fileID: 7406951528489737714}
   - component: {fileID: 3696403444604216402}
   m_Layer: 0
   m_Name: IndexRing
@@ -33124,7 +33168,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &7406951528489737714
+--- !u!114 &3696403444604216402
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -33133,7 +33177,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5073052729997178302}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
+  m_Script: {fileID: 11500000, guid: 02fe8f48e43d3a041884fb7b0e2de9e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
@@ -33142,7 +33186,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 2
+    m_Bits: 1
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
@@ -33216,7 +33260,7 @@ MonoBehaviour:
   m_VelocityScale: 1
   m_AngularVelocityDamping: 1
   m_AngularVelocityScale: 1
-  m_TrackPosition: 1
+  m_TrackPosition: 0
   m_SmoothPosition: 0
   m_SmoothPositionAmount: 5
   m_TightenPosition: 0.5
@@ -33249,20 +33293,7 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
---- !u!114 &3696403444604216402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5073052729997178302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02fe8f48e43d3a041884fb7b0e2de9e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  positionTrigger: {fileID: 0}
-  _openController: {fileID: 0}
+  _positionTrigger: {fileID: 2672407241536361124}
 --- !u!1 &5073052730050752600
 GameObject:
   m_ObjectHideFlags: 0
@@ -44734,6 +44765,7 @@ GameObject:
   - component: {fileID: 8790384858332268335}
   - component: {fileID: 9218113054540236282}
   - component: {fileID: 1109161004111128106}
+  - component: {fileID: 954201572081395713}
   m_Layer: 0
   m_Name: Trigger 0
   m_TagString: HeightIndex
@@ -44782,6 +44814,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _compareTag: MovableTower
+--- !u!114 &954201572081395713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7843332916126400864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9eb94d4bf944254f9b71c5f69c0f083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _compareTag: 
+  _progressController: {fileID: 0}
 --- !u!1 &7941081782026490561
 GameObject:
   m_ObjectHideFlags: 0
@@ -50058,6 +50104,7 @@ GameObject:
   - component: {fileID: 2972165429282571797}
   - component: {fileID: 1552603977304131307}
   - component: {fileID: 1567654575867707203}
+  - component: {fileID: 8235313193829054616}
   m_Layer: 0
   m_Name: Trigger 2
   m_TagString: HeightIndex
@@ -50106,6 +50153,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _compareTag: MovableTower
+--- !u!114 &8235313193829054616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8672693223575112180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9eb94d4bf944254f9b71c5f69c0f083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _compareTag: 
+  _progressController: {fileID: 0}
 --- !u!1 &8809987010581922385
 GameObject:
   m_ObjectHideFlags: 0
@@ -50874,6 +50935,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2925400685438117029}
     m_Modifications:
+    - target: {fileID: 136989000819512597, guid: bbaa77e9dd2d73a49ac2add6f1e8f29d,
+        type: 3}
+      propertyPath: _positionTrigger
+      value: 
+      objectReference: {fileID: 8530238022266058760}
     - target: {fileID: 3221041352184506025, guid: bbaa77e9dd2d73a49ac2add6f1e8f29d,
         type: 3}
       propertyPath: m_IsKinematic
@@ -50892,7 +50958,7 @@ PrefabInstance:
     - target: {fileID: 8928771102076088534, guid: bbaa77e9dd2d73a49ac2add6f1e8f29d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 5810
+      value: 5825
       objectReference: {fileID: 0}
     - target: {fileID: 8928771102076089128, guid: bbaa77e9dd2d73a49ac2add6f1e8f29d,
         type: 3}
@@ -50977,7 +51043,7 @@ PrefabInstance:
     - target: {fileID: 8928771102356514427, guid: bbaa77e9dd2d73a49ac2add6f1e8f29d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 3990
+      value: 4005
       objectReference: {fileID: 0}
     - target: {fileID: 8928771102356514431, guid: bbaa77e9dd2d73a49ac2add6f1e8f29d,
         type: 3}
@@ -51501,6 +51567,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2925400685438117029}
     m_Modifications:
+    - target: {fileID: 136989000819512597, guid: bbaa77e9dd2d73a49ac2add6f1e8f29d,
+        type: 3}
+      propertyPath: _positionTrigger
+      value: 
+      objectReference: {fileID: 8530238022266058760}
     - target: {fileID: 3221041352184506025, guid: bbaa77e9dd2d73a49ac2add6f1e8f29d,
         type: 3}
       propertyPath: m_IsKinematic
@@ -51519,7 +51590,7 @@ PrefabInstance:
     - target: {fileID: 8928771102076088534, guid: bbaa77e9dd2d73a49ac2add6f1e8f29d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 5888
+      value: 5903
       objectReference: {fileID: 0}
     - target: {fileID: 8928771102076089128, guid: bbaa77e9dd2d73a49ac2add6f1e8f29d,
         type: 3}
@@ -51604,7 +51675,7 @@ PrefabInstance:
     - target: {fileID: 8928771102356514427, guid: bbaa77e9dd2d73a49ac2add6f1e8f29d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 4068
+      value: 4083
       objectReference: {fileID: 0}
     - target: {fileID: 8928771102356514431, guid: bbaa77e9dd2d73a49ac2add6f1e8f29d,
         type: 3}
@@ -51811,6 +51882,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2925400685438117029}
     m_Modifications:
+    - target: {fileID: 136989000819512597, guid: bbaa77e9dd2d73a49ac2add6f1e8f29d,
+        type: 3}
+      propertyPath: _positionTrigger
+      value: 
+      objectReference: {fileID: 8530238022266058760}
     - target: {fileID: 3221041352184506025, guid: bbaa77e9dd2d73a49ac2add6f1e8f29d,
         type: 3}
       propertyPath: m_IsKinematic
@@ -51829,7 +51905,7 @@ PrefabInstance:
     - target: {fileID: 8928771102076088534, guid: bbaa77e9dd2d73a49ac2add6f1e8f29d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 5774
+      value: 5789
       objectReference: {fileID: 0}
     - target: {fileID: 8928771102076089128, guid: bbaa77e9dd2d73a49ac2add6f1e8f29d,
         type: 3}
@@ -51914,7 +51990,7 @@ PrefabInstance:
     - target: {fileID: 8928771102356514427, guid: bbaa77e9dd2d73a49ac2add6f1e8f29d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 3951
+      value: 3966
       objectReference: {fileID: 0}
     - target: {fileID: 8928771102356514431, guid: bbaa77e9dd2d73a49ac2add6f1e8f29d,
         type: 3}
@@ -52731,6 +52807,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2925400685438117029}
     m_Modifications:
+    - target: {fileID: 136989000819512597, guid: bbaa77e9dd2d73a49ac2add6f1e8f29d,
+        type: 3}
+      propertyPath: _positionTrigger
+      value: 
+      objectReference: {fileID: 8530238022266058760}
     - target: {fileID: 3221041352184506025, guid: bbaa77e9dd2d73a49ac2add6f1e8f29d,
         type: 3}
       propertyPath: m_IsKinematic
@@ -52749,7 +52830,7 @@ PrefabInstance:
     - target: {fileID: 8928771102076088534, guid: bbaa77e9dd2d73a49ac2add6f1e8f29d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 5783
+      value: 5798
       objectReference: {fileID: 0}
     - target: {fileID: 8928771102076089128, guid: bbaa77e9dd2d73a49ac2add6f1e8f29d,
         type: 3}
@@ -52834,7 +52915,7 @@ PrefabInstance:
     - target: {fileID: 8928771102356514427, guid: bbaa77e9dd2d73a49ac2add6f1e8f29d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 3966
+      value: 3981
       objectReference: {fileID: 0}
     - target: {fileID: 8928771102356514431, guid: bbaa77e9dd2d73a49ac2add6f1e8f29d,
         type: 3}

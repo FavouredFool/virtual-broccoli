@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8928771102076089130}
   - component: {fileID: 3221041352184506025}
   - component: {fileID: 8393135447309700066}
-  - component: {fileID: 1530910203719032841}
+  - component: {fileID: 136989000819512597}
   m_Layer: 0
   m_Name: Movable Tower
   m_TagString: MovableTower
@@ -737,7 +737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startPosition: {fileID: 0}
---- !u!114 &1530910203719032841
+--- !u!114 &136989000819512597
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -746,7 +746,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8928771102076089128}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
+  m_Script: {fileID: 11500000, guid: 02fe8f48e43d3a041884fb7b0e2de9e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
@@ -755,7 +755,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 2
+    m_Bits: 1
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
@@ -824,12 +824,12 @@ MonoBehaviour:
   m_MatchAttachRotation: 1
   m_SnapToColliderVolume: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 2
+  m_MovementType: 1
   m_VelocityDamping: 1
   m_VelocityScale: 1
   m_AngularVelocityDamping: 1
   m_AngularVelocityScale: 1
-  m_TrackPosition: 1
+  m_TrackPosition: 0
   m_SmoothPosition: 0
   m_SmoothPositionAmount: 5
   m_TightenPosition: 0.5
@@ -862,6 +862,7 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+  _positionTrigger: {fileID: 0}
 --- !u!1 &8928771102356514429
 GameObject:
   m_ObjectHideFlags: 0
