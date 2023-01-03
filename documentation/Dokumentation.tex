@@ -1,0 +1,19 @@
+\documentclass[
+12pt]{scrreprt}
+
+\input{config.tex}
+
+\begin{document}	
+	\pagenumbering{Roman}
+	\tableofcontents
+	%    \listoffigures
+	%    \listoftables
+	
+	\clearpage
+	\pagenumbering{arabic}  % Arabische Seitenzahlen
+	
+	\input{TechnischesKonzept}
+	\input{Interaktionskonzept}
+	\input{Umsetzungskonzept}
+	
+\end{document}
