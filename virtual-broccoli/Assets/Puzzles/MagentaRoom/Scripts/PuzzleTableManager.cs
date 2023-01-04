@@ -93,7 +93,7 @@ public class PuzzleTableManager: MonoBehaviour
         _finishBox.GetChild(0).GetComponent<OpenBoxController>().setOpen(true);
         foreach(GameObject chip in _letterChips)
         {
-            if (chip) chip.SetActive(true);
+            if (chip) chip.SetActive(!chip.activeSelf);
         }
     }
 }
