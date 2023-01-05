@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Pipe : MonoBehaviour
+using UnityEngine.XR.Interaction.Toolkit;
+public class Pipe : XRGrabInteractable
 {
     [SerializeField]
     private Dictionary<string, GameObject> _neighborPipeBorders;
@@ -10,11 +10,78 @@ public class Pipe : MonoBehaviour
 
     private GameObject _blueprint;
 
+    private bool _validRotation;
+
     private void Start()
     {
         _neighborPipeBorders = new Dictionary<string, GameObject>();
         Transform blueprintTransform = transform.parent.gameObject.transform.Find("Blueprint");
         _blueprint = blueprintTransform != null ? blueprintTransform.gameObject : null;
+    }
+
+    public bool IsDragged()
+    {
+        return !CompareTag("Ventil") && (CompareTag("PipeRotateOnly") || CompareTag("Pipe")) && isSelected;
+    }
+
+    protected override void OnSelectEntered(SelectEnterEventArgs args)
+    {
+        base.OnSelectEntered(args);
+        Quaternion startRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, 90, 0);
+        _blueprint.transform.rotation = startRotation;
+        transform.rotation = startRotation;
+        _blueprint.GetComponent<MeshRenderer>().enabled = true;
+        _validRotation = false;
+        GetComponent<Rigidbody>().useGravity = true;
+        
+        if (CompareTag("PipeRotateOnly"))
+        {
+            _blueprint.SetActive(true);
+        }
+        MovePipes.CheckFinalState();
+    }
+
+    protected override void OnSelectExited(SelectExitEventArgs args)
+    {
+        base.OnSelectExited(args);
+        if (_placedGrid != null)
+        {
+            if (_validRotation)
+            {
+                transform.SetPositionAndRotation(_blueprint.transform.position,
+                    _blueprint.transform.rotation);
+                GetComponent<Rigidbody>().useGravity = false;
+                _blueprint.GetComponent<MeshRenderer>().enabled = false;
+            }
+        } else
+        {
+            if (CompareTag("Pipe"))
+            {
+                GetComponent<Rigidbody>().useGravity = true;
+            }
+        }
+        MovePipes.CheckFinalState();
+    }
+
+    public override void ProcessInteractable(XRInteractionUpdateOrder.UpdatePhase updatePhase)
+    {
+        base.ProcessInteractable(updatePhase);
+        if (isSelected)
+        {
+            if (MovePipes.CheckValidRotation(gameObject))
+            {
+                _validRotation = true;
+                Quaternion newPositionRotation = Quaternion.Euler(GetRotationAngle(), 90, 0);
+                if (!_blueprint.transform.rotation.Equals(newPositionRotation))
+                {
+                    _blueprint.transform.rotation = newPositionRotation;
+                }
+            }
+            else
+            {
+                _validRotation = false;
+            }
+        }
     }
 
     public void SetPlaceGrid(GameObject gridPlacement)
@@ -25,11 +92,6 @@ public class Pipe : MonoBehaviour
     public GameObject GetPlaceGrid()
     {
         return _placedGrid;
-    }
-
-    public bool IsDragged()
-    {
-        return !CompareTag("Ventil") && (CompareTag("PipeRotateOnly") || CompareTag("Pipe")) && GetComponent<Rigidbody>().isKinematic && GetComponent<Rigidbody>().useGravity;
     }
 
     public Dictionary<string, GameObject> GetNeighbors()
@@ -58,5 +120,28 @@ public class Pipe : MonoBehaviour
     public GameObject GetBlueprint()
     {
         return _blueprint;
+    }
+
+    private float GetRotationAngle()
+    {
+        float angleRight = Vector3.Angle(transform.InverseTransformDirection(Vector3.right), Vector3.up);
+        float angleTop = Vector3.Angle(transform.InverseTransformDirection(Vector3.up), Vector3.up);
+
+        if (angleTop < 45)
+        {
+            return 0;
+        }
+        else if (angleTop > 135)
+        {
+            return 180;
+        }
+        else if (angleRight < 45)
+        {
+            return 90;
+        }
+        else
+        {
+            return 270;
+        }
     }
 }
