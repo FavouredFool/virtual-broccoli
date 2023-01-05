@@ -29,7 +29,7 @@ public class IndexTrigger : MonoBehaviour
         if (other.TryGetComponent<XRController>(out XRController controller))
         {
             SetTriggered(true);
-        } else if (_compareTag != null && other.CompareTag(_compareTag))
+        } else if (!string.IsNullOrEmpty(_compareTag) && other.CompareTag(_compareTag))
         {
            _progressController.SetHoldValue(name);
         }

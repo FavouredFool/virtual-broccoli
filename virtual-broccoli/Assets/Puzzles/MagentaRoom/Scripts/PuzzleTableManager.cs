@@ -32,12 +32,10 @@ public class PuzzleTableManager: MonoBehaviour
         switch (_gamestate)
         {
             case STATE.AWAITINTERACTION:
-                Debug.Log("awaiting");
                 if (CheckStarted()) StartGame();
                 break;
 
             case STATE.STARTED:
-                Debug.Log("started");
                 GameProgressing();
                 if (CheckFinished())
                 {
@@ -46,8 +44,7 @@ public class PuzzleTableManager: MonoBehaviour
                 }
                 break;
 
-            case STATE.FINISHED:
-                Debug.Log("finished");
+            case STATE.FINISHED:;
                 break;
 
             default:
