@@ -1,0 +1,22 @@
+\documentclass[
+12pt]{scrreprt}
+
+\input{config.tex}
+
+\begin{document}	
+	\pagenumbering{Roman}
+	\tableofcontents
+	%    \listoffigures
+	%    \listoftables
+	
+	\clearpage
+	\pagenumbering{arabic}  % Arabische Seitenzahlen
+
+	% Geplantes Ziel, Genutzte Technik
+	\input{Umsetzungskonzept}
+	% Aufbau, Funktionales, Interaktion	
+	\input{Interaktionskonzept}
+	% Nicht-funktionale Anforderungen, Erklärung von Algorithmen und technischen Entscheidungen
+	\input{TechnischesKonzept}
+	
+\end{document}

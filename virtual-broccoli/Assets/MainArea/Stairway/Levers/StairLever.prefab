@@ -4926,9 +4926,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e710df1e17b11c4aacf27169ec450e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stairPos: 1
+  _stairLeft: 0
   _color: 1
   _movableLever: {fileID: 1031040528250063886}
+  _markerRenderer: {fileID: 4790873727895654996}
   handle: {fileID: 1489268242}
   start: {fileID: 855125057}
   end: {fileID: 1441557240}
