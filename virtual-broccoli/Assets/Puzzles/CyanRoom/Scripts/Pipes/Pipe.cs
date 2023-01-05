@@ -21,7 +21,7 @@ public class Pipe : XRGrabInteractable
 
     public bool IsDragged()
     {
-        return !CompareTag("Ventil") && (CompareTag("PipeRotateOnly") || CompareTag("Pipe")) && isSelected;
+        return isSelected && (CompareTag("PipeRotateOnly") || CompareTag("Pipe"));
     }
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
@@ -33,7 +33,8 @@ public class Pipe : XRGrabInteractable
         _blueprint.GetComponent<MeshRenderer>().enabled = true;
         _validRotation = false;
         GetComponent<Rigidbody>().useGravity = true;
-        
+        GetComponent<Rigidbody>().isKinematic = true;
+
         if (CompareTag("PipeRotateOnly"))
         {
             _blueprint.SetActive(true);
@@ -51,6 +52,7 @@ public class Pipe : XRGrabInteractable
                 transform.SetPositionAndRotation(_blueprint.transform.position,
                     _blueprint.transform.rotation);
                 GetComponent<Rigidbody>().useGravity = false;
+                GetComponent<Rigidbody>().isKinematic = true;
                 _blueprint.GetComponent<MeshRenderer>().enabled = false;
             }
         } else
@@ -59,6 +61,7 @@ public class Pipe : XRGrabInteractable
             {
                 GetComponent<Rigidbody>().useGravity = true;
             }
+            GetComponent<Rigidbody>().isKinematic = false;
         }
         MovePipes.CheckFinalState();
     }

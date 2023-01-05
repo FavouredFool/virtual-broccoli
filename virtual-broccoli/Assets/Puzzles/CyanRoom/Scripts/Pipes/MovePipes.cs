@@ -99,6 +99,7 @@ public class MovePipes : MonoBehaviour
             secondAngle = secondAngle >= 180 ? secondAngle -= 360 : secondAngle;
         }
 
-        return Mathf.Abs(firstAngle - secondAngle) == 90;
+        //return Mathf.Abs(firstAngle - secondAngle) == 90;
+        return true;
     }
 }
