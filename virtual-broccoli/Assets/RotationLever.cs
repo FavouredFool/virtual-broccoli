@@ -74,7 +74,6 @@ public class RotationLever : MonoBehaviour
                 _movableLever.transform.localRotation = setRotation;
 
                 currentPercentage = Mathf.Round(Mathf.Clamp01(newPercentage) * 100f) / 100f;
-                Debug.Log(currentPercentage);
             } else
             {
                 _rotate = false;

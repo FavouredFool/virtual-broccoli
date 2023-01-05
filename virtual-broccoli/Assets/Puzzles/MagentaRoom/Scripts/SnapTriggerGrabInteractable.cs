@@ -9,27 +9,43 @@ public class SnapTriggerGrabInteractable : XRGrabInteractable
     [SerializeField]
     private Transform _positionTrigger;
 
+    private IXRSelectInteractor _interactor;
+
     protected override void Awake()
     {
         base.Awake();
         trackPosition = false;
-        selectEntered.AddListener(SnapMove);
+        selectEntered.AddListener(SetInteractor);
     }
 
-    private void OnDestory()
+    protected void OnDestory()
     {
-        selectEntered.RemoveListener(SnapMove);
+        selectEntered.RemoveListener(SetInteractor);
     }
 
-    private void SnapMove(SelectEnterEventArgs args)
+    private void SetInteractor(SelectEnterEventArgs args)
     {
-        foreach (Transform trigger in _positionTrigger)
+        _interactor = args.interactorObject;
+    }
+
+    private void Update()
+    {
+        if(this.isSelected)
         {
-            IndexTrigger triggerScript = trigger.GetComponent<IndexTrigger>();
-            if (triggerScript.GetTriggered())
+            foreach (Transform trigger in _positionTrigger)
             {
-                transform.position = trigger.transform.position;
-                triggerScript.SetTriggered(false);
+                /*IndexTrigger triggerScript = trigger.GetComponent<IndexTrigger>();
+                if (triggerScript.GetTriggered())
+                {
+                    transform.position = trigger.transform.position;
+                    triggerScript.SetTriggered(false);
+                }*/
+                if (_interactor.transform.GetComponent<Collider>().bounds.Intersects(trigger.GetComponent<Collider>().bounds))
+                {
+                    Vector3 triggerPos = trigger.transform.position;
+                    Vector3 transformPos = transform.position;
+                    transform.position = new Vector3(transformPos.x, triggerPos.y, transformPos.z);
+                }
             }
         }
     }

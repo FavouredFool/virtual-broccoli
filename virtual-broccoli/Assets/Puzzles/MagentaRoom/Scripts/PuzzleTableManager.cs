@@ -21,7 +21,7 @@ public class PuzzleTableManager: MonoBehaviour
         SwitchState(STATE.AWAITINTERACTION);
         foreach (GameObject chip in _letterChips)
         {
-            if (chip) chip.SetActive(false);
+            if (chip) chip.SetActive(!chip.activeSelf);
         }
     }
 

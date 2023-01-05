@@ -26,20 +26,9 @@ public class IndexTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<XRController>(out XRController controller))
-        {
-            SetTriggered(true);
-        } else if (!string.IsNullOrEmpty(_compareTag) && other.CompareTag(_compareTag))
+        if (!string.IsNullOrEmpty(_compareTag) && other.CompareTag(_compareTag))
         {
            _progressController.SetHoldValue(name);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.TryGetComponent<XRController>(out XRController controller))
-        {
-            SetTriggered(false);
         }
     }
 }
