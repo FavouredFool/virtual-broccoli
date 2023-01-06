@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class LightstickDispenser : XRBaseInteractable
 {
     [SerializeField] private GameObject lightstickPrefab;
-    [SerializeField] private TextMesh textMesh;
+    [SerializeField] private TMP_Text textMesh;
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {

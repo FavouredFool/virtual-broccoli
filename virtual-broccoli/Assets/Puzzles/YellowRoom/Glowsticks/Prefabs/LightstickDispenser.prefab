@@ -196,8 +196,9 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-  arrowPrefab: {fileID: 6777839334604411642, guid: 202630c892cd85c428a084dfd6afc84b,
+  lightstickPrefab: {fileID: 6777839334604411642, guid: 202630c892cd85c428a084dfd6afc84b,
     type: 3}
+  textMesh: {fileID: 6095921979397503367}
 --- !u!1 &1250896105894488659
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,7 +227,7 @@ Transform:
   m_GameObject: {fileID: 1250896105894488659}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: -0.25, z: 0}
-  m_LocalScale: {x: 0.6, y: 1.2, z: 0.6}
+  m_LocalScale: {x: 0.6, y: 1.8, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1005183827259130112}
@@ -324,7 +325,7 @@ RectTransform:
   m_GameObject: {fileID: 2051258326913962281}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.503}
-  m_LocalScale: {x: 1.6666658, y: 0.8333333, z: 1.6666658}
+  m_LocalScale: {x: 1.5, y: 0.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8578845186100206775}
@@ -443,7 +444,7 @@ GameObject:
   - component: {fileID: 3043524423670292743}
   - component: {fileID: 895743146698281915}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: InfoText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -497,7 +498,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Light is inside
+  m_text: 'Lights inside
 
 
     Remaining:'
@@ -527,8 +528,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.06
-  m_fontSizeBase: 0.06
+  m_fontSize: 0.1
+  m_fontSizeBase: 0.1
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -581,7 +582,7 @@ GameObject:
   - component: {fileID: 123388057997376243}
   - component: {fileID: 6095921979397503367}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: LightsRemaining
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -604,7 +605,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.25}
+  m_AnchoredPosition: {x: 0, y: -0.35}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &123388057997376243
