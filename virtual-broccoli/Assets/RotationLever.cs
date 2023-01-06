@@ -80,7 +80,7 @@ public class RotationLever : MonoBehaviour
             }
         }
 
-        if (_rotate) RotateBox();
+        RotateBox();
     }
 
     private void UpdateLever()
@@ -118,14 +118,15 @@ public class RotationLever : MonoBehaviour
     {
         Vector3 boxRot = movingBox.transform.localRotation.eulerAngles;
         float leverRotation = _movableLever.transform.eulerAngles.z;
-        Quaternion newRotation = Quaternion.Euler(Vector3.zero);
-        Debug.Log(xAxis);
+        if (leverRotation > 180) leverRotation -= 360;
+        Quaternion newRotation;
+        float rotationReduction = 0.1f;
         if (xAxis)
         {
-            newRotation = Quaternion.Euler(new Vector3(-leverRotation, boxRot.y, boxRot.z));
+            newRotation = Quaternion.Euler(new Vector3(leverRotation * rotationReduction, boxRot.y, boxRot.z));
         } else
         {
-            newRotation = Quaternion.Euler(new Vector3(boxRot.x, boxRot.y, -leverRotation));
+            newRotation = Quaternion.Euler(new Vector3(boxRot.x, boxRot.y, leverRotation * rotationReduction));
         }
         movingBox.transform.localRotation = newRotation;
     }

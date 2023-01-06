@@ -11,19 +11,6 @@ public class IndexTrigger : MonoBehaviour
     [SerializeField]
     private ProgressMovementController _progressController;
 
-    private bool _triggered = false;
-
-    public bool GetTriggered()
-    {
-        return _triggered;
-    }
-
-    public void SetTriggered(bool triggered)
-    {
-        _triggered = triggered;
-        Debug.Log(_triggered);
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (!string.IsNullOrEmpty(_compareTag) && other.CompareTag(_compareTag))

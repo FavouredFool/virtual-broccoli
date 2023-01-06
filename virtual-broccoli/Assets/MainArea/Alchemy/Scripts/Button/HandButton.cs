@@ -55,10 +55,9 @@ public class HandButton : XRBaseInteractable
     private void SetMinMax()
     {
         Collider collider = GetComponent<Collider>();
-
         Vector3 localBounds = transform.InverseTransformVector(collider.bounds.size);
-        
-        _yMin = transform.localPosition.y - (localBounds.y * 0.75f);
+
+        _yMin = transform.localPosition.y - (Mathf.Abs(localBounds.y) * 0.75f);
         _yMax = transform.localPosition.y;
     }
 

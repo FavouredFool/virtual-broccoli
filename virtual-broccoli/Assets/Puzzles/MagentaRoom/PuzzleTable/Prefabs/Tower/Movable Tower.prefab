@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8928771102076089130}
   - component: {fileID: 3221041352184506025}
   - component: {fileID: 136989000819512597}
+  - component: {fileID: 6156162561964550376}
   m_Layer: 0
   m_Name: Movable Tower
   m_TagString: MovableTower
@@ -849,6 +850,19 @@ MonoBehaviour:
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
   _positionTrigger: {fileID: 0}
+--- !u!114 &6156162561964550376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8928771102076089128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 622f919007101ed4fa71f96eaa1c38a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startPosition: {fileID: 0}
 --- !u!1 &8928771102356514429
 GameObject:
   m_ObjectHideFlags: 0
