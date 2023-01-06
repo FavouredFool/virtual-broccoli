@@ -13,6 +13,7 @@ TagManager:
   - MovableTower
   - HeightIndex
   - Plate
+  - Wood
   layers:
   - Default
   - TransparentFX
