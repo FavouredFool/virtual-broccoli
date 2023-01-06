@@ -1,0 +1,51 @@
+% !TEX root = Bericht.tex
+
+\usepackage[
+%showframe,
+top=2.5cm,
+right=2.5cm,
+left=2.5cm,
+bottom=2.5cm
+]{geometry} % Randabstand
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}     % German language
+\usepackage[german=quotes]{csquotes}     % correct quotes using \enquote{}
+\usepackage{chngcntr}
+\usepackage{listings}    %Format Listings properly
+\usepackage{color}
+\usepackage{pdfpages}
+\usepackage[justification=centering]{caption}
+
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+
+\renewcommand{\lstlistingname}{Quelltext} 
+\renewcommand{\lstlistlistingname}{Quelltextverzeichnis}
+\usepackage{graphicx, wrapfig} % use various graphics formats
+\usepackage[german]{varioref}     % nicer references \vref
+\usepackage[singlelinecheck=false]{caption}    %better Captions
+\captionsetup[table]{skip=10pt}
+\usepackage{bicaption}
+\usepackage{tabularx}
+
+\usepackage{booktabs} %nicer Tabs
+\usepackage{array}
+\usepackage{makecell} %better cells
+\renewcommand\theadalign{bc}
+\renewcommand\theadfont{\bfseries}
+\renewcommand\theadgape{\Gape[4pt]}
+\renewcommand\cellgape{\Gape[4pt]}
+\renewcommand*{\familydefault}{\sfdefault} %default fontfamily
+
+%Font:
+\usepackage[scaled]{uarial}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black,      
+	urlcolor=cyan,
+	pdfborder={0 0 0}
+}
+
+\usepackage[nobiblatex]{xurl}
+\renewcommand*{\chapterheadstartvskip}{\vspace*{-0.35cm}}

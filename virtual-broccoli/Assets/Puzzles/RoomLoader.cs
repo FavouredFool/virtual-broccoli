@@ -7,19 +7,24 @@ public class RoomLoader : MonoBehaviour
 
     public void Start()
     {
-        StartCoroutine(LoadSceneAsync(1));
-        StartCoroutine(LoadSceneAsync(2));
-        StartCoroutine(LoadSceneAsync(3));
+        StartCoroutine(LoadSceneAsync("CyanRoom"));
+        StartCoroutine(LoadSceneAsync("MagentaRoom"));
+        StartCoroutine(LoadSceneAsync("YellowRoom"));
     }
 
 
-    IEnumerator LoadSceneAsync(int index)
+    IEnumerator LoadSceneAsync(string name)
     {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(index, LoadSceneMode.Additive);
-
-        while (!asyncLoad.isDone)
+        Scene loadingScene = SceneManager.GetSceneByName(name);
+  
+        if (loadingScene.buildIndex == -1 || !loadingScene.isLoaded)
         {
-            yield return null;
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(name, LoadSceneMode.Additive);
+
+            while (!asyncLoad.isDone)
+            {
+                yield return null;
+            }
         }
     }
 

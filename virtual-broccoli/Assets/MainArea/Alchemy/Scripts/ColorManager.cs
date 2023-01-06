@@ -19,6 +19,26 @@ public class ColorManager : MonoBehaviour
 
     public void Awake()
     {
+
+        // Due to float-point imprecisions we need to manually reset some colors. This is a terrible hack buuut we don't have the time for a better solution.
+        // grey
+        _keyMaterials[3].SetColor("_Color", new Color(0.5f, 0.5f, 0.5f));
+
+        // Light cyan
+        _cyanMaterials[2].SetColor("_Color", new Color(0.5f, 1f, 1f));
+        // Dark cyan
+        _cyanMaterials[3].SetColor("_Color", new Color(0.25f, 0.5f, 0.5f));
+
+        // Light magenta
+        _magentaMaterials[2].SetColor("_Color", new Color(1f, 0.5f, 1f));
+        // Dark Magenta
+        _magentaMaterials[3].SetColor("_Color", new Color(0.5f, 0.25f, 0.5f));
+
+        // Light Yellow
+        _yellowMaterials[2].SetColor("_Color", new Color(1f, 1f, 0.5f));
+        // Dark Yellow
+        _yellowMaterials[3].SetColor("_Color", new Color(0.5f, 0.5f, 0.25f));
+
         _fluidMaterialLists.Add(_keyMaterials);
         _fluidMaterialLists.Add(_cyanMaterials);
         _fluidMaterialLists.Add(_magentaMaterials);
