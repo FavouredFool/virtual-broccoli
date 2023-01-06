@@ -7,6 +7,12 @@ public class LightstickDispenser : XRBaseInteractable
     [SerializeField] private GameObject lightstickPrefab;
     [SerializeField] private TMP_Text textMesh;
 
+    private void Start()
+    {
+        //if emission may be deactivated
+        GetComponent<MeshRenderer>().material.EnableKeyword("_EMISSION");
+    }
+
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         base.OnSelectEntered(args);
@@ -15,9 +21,9 @@ public class LightstickDispenser : XRBaseInteractable
         {
             lightCount -= 1;
             CreateAndSelectArrow(args, lightCount);
-            if(lightCount == 0)
+            if (lightCount == 0)
             {
-                this.GetComponent<MeshRenderer>().material.DisableKeyword("_EMISSION");
+                GetComponent<MeshRenderer>().material.DisableKeyword("_EMISSION");
             }
         }
     }
@@ -32,8 +38,8 @@ public class LightstickDispenser : XRBaseInteractable
 
     private LightStick CreateLightStick(Transform orientation)
     {
-            // Create lightstick, and get lightstick component
-            GameObject lightstickObject = Instantiate(lightstickPrefab, orientation.position, orientation.rotation);
-            return lightstickObject.GetComponent<LightStick>();
+        // Create lightstick, and get lightstick component
+        GameObject lightstickObject = Instantiate(lightstickPrefab, orientation.position, orientation.rotation);
+        return lightstickObject.GetComponent<LightStick>();
     }
 }

@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 126676933}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.125, z: 0}
+  m_LocalPosition: {x: 0, y: 0.175, z: 0}
   m_LocalScale: {x: 0.5, y: 1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a6915b0c1412ae34988d7cc09c725224, type: 2}
+  - {fileID: 2100000, guid: 9287444c033e5ed479a0d63821a8a801, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-  lightstickPrefab: {fileID: 6777839334604411642, guid: 202630c892cd85c428a084dfd6afc84b,
+  lightstickPrefab: {fileID: 5151301406389622985, guid: d93ebfe6c72c21e45893ea89a672b2ef,
     type: 3}
   textMesh: {fileID: 6095921979397503367}
 --- !u!1 &1250896105894488659

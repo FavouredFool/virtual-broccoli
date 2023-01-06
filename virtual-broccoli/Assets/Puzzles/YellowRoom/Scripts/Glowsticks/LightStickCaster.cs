@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class LightStickCaster : MonoBehaviour
 {
-    [SerializeField] private Transform tip;
     [SerializeField] private LayerMask layerMask = ~0;
 
     private Vector3 lastPosition = Vector3.zero;
@@ -10,10 +9,10 @@ public class LightStickCaster : MonoBehaviour
     public bool CheckForCollision(out RaycastHit hit)
     {
         if (lastPosition == Vector3.zero)
-            lastPosition = tip.position;
+            lastPosition = transform.position;
 
-        bool collided = Physics.Linecast(lastPosition, tip.position, out hit, layerMask);
-        lastPosition = collided ? lastPosition : tip.position;
+        bool collided = Physics.Linecast(lastPosition, transform.position, out hit, layerMask);
+        lastPosition = collided ? lastPosition : transform.position;
 
         return collided;
     }

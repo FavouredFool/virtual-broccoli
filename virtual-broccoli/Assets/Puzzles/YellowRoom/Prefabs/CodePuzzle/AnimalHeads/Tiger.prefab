@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2549057179045610561}
   - component: {fileID: 1818805476211865679}
-  - component: {fileID: 6372522157525058004}
   - component: {fileID: 4670092867776203039}
+  - component: {fileID: 1431229588339716288}
   m_Layer: 0
   m_Name: Tiger
   m_TagString: Untagged
@@ -52,7 +52,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6372522157525058004
+--- !u!65 &4670092867776203039
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4220895592690008674}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 3, z: 1.5}
+  m_Center: {x: 0, y: 0, z: 0.38}
+--- !u!114 &1431229588339716288
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -61,7 +74,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4220895592690008674}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
+  m_Script: {fileID: 11500000, guid: 72a9f73bc79d5b94a913a5bfd76ebbb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
@@ -171,25 +184,12 @@ MonoBehaviour:
     m_RotationOrder: 4
   m_ThrowVelocityScale: 1.5
   m_ThrowAngularVelocityScale: 1
-  m_ForceGravityOnDetach: 0
+  m_ForceGravityOnDetach: 1
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
---- !u!65 &4670092867776203039
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4220895592690008674}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 3, z: 1.5}
-  m_Center: {x: 0, y: 0, z: 0.38}
 --- !u!1001 &5181466389109910005
 PrefabInstance:
   m_ObjectHideFlags: 0
