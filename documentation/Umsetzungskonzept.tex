@@ -1,11 +1,38 @@
 % !TEX root = Konzept.tex
-\chapter{Einleitung}
-Das Ziel des Projekts \dq Spielname \dq besteht darin, eine interaktive Software zu entwickeln, welche auf VR-Plattformen ausgelegt ist. In dieser sollen sogenannte \dq Haptic Gloves \dq verwendet werden, um verschiedene haptische Interaktionsmöglichkeiten anhand von unterschiedlichen spielerisch aufgezogenen Situationen in Form von Minispielen zu erforschen und deren Auswirkung auf die Erfahrung eines Nutzers zu verschriftlichen.\\
+\chapter{Umsetzungskonzept}
+Im Folgenden wird genauer auf die Spezifizierung und Realisierung der bereits erläuterten Idee eingegangen.
+
+
 \section{Technischer Hintergrund}
-Die technische Umsetzung des Projekts erfolgt in der Game Engine Unity. Dies ist eine der derzeit populärsten und vermutlich auch leistungsfähigsten Game Engines auf dem Markt. Sie bietet eine Vielzahl an Herangehensweisen zur Entwicklung von Spielen und ist durch die zugängliche Anbindung an die virtuelle Realität für das geplante Ziel gut geeignet. Zusätzlich ist Unity als Freeware für jeden Studenten kostenlos nutzbar.
-\subsection{Git}
-Um die gemeinsame Arbeit am Projekt besser zu organisieren, verwenden wir das Versionskontrollsystem Git, da wir den Umgang damit bereits gewohnt sind und es das mit Abstand am weitesten verbreitete moderne Versionskontrollsystem der Welt ist.
+
+\subsection{Genutzte Software}
+
+\subsubsection{Entwicklungsengine}
+Die technische Umsetzung des Projekts erfolgte in der Game Engine \dq Unity\dq. Dies ist eine der derzeit populärsten Game Engines auf dem Markt und stellt den Industrie-Standard für Spieleentwicklung in virtueller Realität dar. Darüber hinaus bietet Unity eine offiziell unterstützte Erweiterung names \dq XR Interaction Toolkit\dq an, welche viele grundlegende VR-Funktionalitäten in ein Unity Projekt integriert und somit den Entwicklungsprozess deutlich beschleunigt. Des Weiteren unterstützt das XR Interaction Toolkit die externe Software \dq Open XR\dq.
+
+\subsubsection{Open XR}
+OpenXR stellt eine allgemeine Schnittstelle für eine Vielzahl von VR-Brillen dar, indem es allgemeine Aktionen definitiert mit welchen das XR Interaction Toolkit und weitere Software arbeiten kann. Die device-basierten Mappings werden von OpenXR übernommen. 
+
+\subsubsection{Versionskontrollsystem}
+Um die gemeinsame Arbeit am Projekt besser zu organisieren, wurde das Versionskontrollsystem \dq Git\dq verwendet.
+
+\subsubsection{Miro}
+Um Ideen zu sammeln, speichern und spezifieren, wurden Miro-Boards verwendet. Diese Software bietet ein digitales Whiteboard an, welches in Echtzeit von Gruppenmitgliedern bearbeitet werden kann.
+
 \subsection{Genutzte Hardware}
-HTC VIVE Focus 3 + Haptic Gloves...
-\subsection{Miro}
-Damit wir Ideen zu spezifischeren Spielideen direkt visualisieren und gemeinsam besprechen können, nutzen wir im Projekt Miro. Mithilfe dieser Open-Source Software ist die gleichzeitige Bearbeitung von Grafiken wie Mindmaps oder Tabellen auf einem digitalen Whiteboard möglich.
+
+\subsubsection{VR-Headmount}
+Es wurden die beiden VR-Brillen \dq HTC VIVE Focus 3\dq und \dq Valve Index\dq genutzt.
+
+\subsubsection{Haptic Gloves}
+Um haptisches Feedback zu ermöglichen wurden \dq SenseGloves \dq verwendet. Diese Handschuhe bieten eigene Software an um die virtuelle Realität mit haptischem Feedback zu untermalen. Die Software ist nur schlecht kompatibel mit Unitys XR Interaction Toolkit. Die daraus folgenden Probleme werden in späteren Abschnitten genauer erläutert. 
+
+\subsubsection{Tracker}
+Die Sensegloves sind nur in der Lage die relative Position zu sich selbst zu bestimmen. Um die Position und Rotation der Handschuhe im Raum zu erkennen und sie somit für unseren Anwendungszweck nutzbar zu machen, mussten externe Tracker installiert werden. Dafür wurden die \dq HTC VIVE Tracker 3.0\dq genutzt, welche durch ein Verbindungsstück auf die Haptic Gloves gesetzt werden können.
+
+\section{Ziel}
+Das Ziel, welches wir mit dem Projekt angestrebt haben (kinda wie die Einleitung?)
+
+\section{Herrn Berdux fragen}
+Was genau kommt hier noch hin? Was ist alles Teil des Umsetzungskonzepts?
+Außerdem: In welcher Reihenfolge sollten Umsetzungskonzept, Technisches Konzept und Interaktionskonzept stehen?
