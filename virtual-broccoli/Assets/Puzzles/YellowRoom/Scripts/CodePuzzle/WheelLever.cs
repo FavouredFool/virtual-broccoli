@@ -5,7 +5,12 @@ public class WheelLever : MonoBehaviour
 {
     [Header("Wheel settings")]
     [SerializeField] private GameObject _wheelPart;
-    [SerializeField] private float _wheelRotation;
+    [SerializeField] private int _wheelRotationStep;
+    [SerializeField] private float _wheelRotationUpdate = 0.5f;
+    [SerializeField] private int _delayTimeInSeconds;
+    private int _blockedPeriodEnd = 0;
+    private bool _rotating;
+    private float _rotationEnd;
 
     [Header("Lever settings")]
     [SerializeField] private GameObject _movableLever;
@@ -19,6 +24,8 @@ public class WheelLever : MonoBehaviour
     private float currentPercentage;
     private float _prevPercentage;
 
+
+
     public void Start()
     {
         currentPercentage = _prevPercentage = startingPercentage = 0.0f;
@@ -29,6 +36,8 @@ public class WheelLever : MonoBehaviour
              Mathf.Round(_rotatingAxis.z));
 
         SetLeverVisual();
+
+        _rotationEnd = _wheelPart.transform.localEulerAngles.y;
     }
 
     protected virtual void OnEnable()
@@ -57,22 +66,45 @@ public class WheelLever : MonoBehaviour
             if (currentPercentage == 1 && _prevPercentage != 1)
             {
                 _prevPercentage = 1;
-                ChangeWheelRotation();
+
+                _rotationEnd = (_rotationEnd + _wheelRotationStep) % 360;
+
+                if (!_rotating)
+                {
+                    _blockedPeriodEnd = Mathf.FloorToInt(Time.time + _delayTimeInSeconds);
+                }
             }
         }
         else if (currentPercentage != 0)
         {
             _prevPercentage = currentPercentage;
-            float newPercentage = currentPercentage -0.05f;
+            float newPercentage = currentPercentage - 0.05f;
 
             Quaternion setRotation = Quaternion.Slerp(
-                Quaternion.Euler(new Vector3(0f, 0f, 45f)), 
-                Quaternion.Euler(new Vector3(0f, 0f, -45f)), 
+                Quaternion.Euler(new Vector3(0f, 0f, 45f)),
+                Quaternion.Euler(new Vector3(0f, 0f, -45f)),
                 newPercentage);
             _movableLever.transform.localRotation = setRotation;
 
             currentPercentage = Mathf.Clamp01(newPercentage);
         }
+
+        //wait for delay
+        if (Time.time >= _blockedPeriodEnd)
+        {
+            if (Mathf.RoundToInt(_wheelPart.transform.localEulerAngles.y) != _rotationEnd)
+            {
+                _wheelPart.transform.rotation *= Quaternion.Euler(_wheelRotationUpdate * _rotatingAxis);
+                foreach (Transform symbol in _wheelPart.transform)
+                {
+                    symbol.rotation *= Quaternion.Euler(-_wheelRotationUpdate * _rotatingAxis);
+                }
+            } else if (_rotating)
+            {
+                _rotating = false;
+            }
+        }
+
     }
 
     private void UpdateLever()
@@ -101,15 +133,6 @@ public class WheelLever : MonoBehaviour
         directions with its original length. Thus, we get an actual combination of the distance/direction 
         similarity, then dividing by the length, gives us a value between 0 and 1.*/
         return Vector3.Dot(pullDirection, targetDirection) / length;
-    }
-
-    private void ChangeWheelRotation()
-    {
-        _wheelPart.transform.rotation *= Quaternion.Euler(_wheelRotation * _rotatingAxis);
-        foreach (Transform symbol in _wheelPart.transform)
-        {
-            symbol.rotation *= Quaternion.Euler(-_wheelRotation * _rotatingAxis);
-        }
     }
 
     private void SetLeverVisual()
