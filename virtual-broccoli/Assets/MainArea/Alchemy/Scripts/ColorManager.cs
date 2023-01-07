@@ -83,6 +83,15 @@ public class ColorManager : MonoBehaviour
 
     public void ColorMaterialByIndex(int listIndex, int elementIndex)
     {
-        _fluidMaterialLists[listIndex][elementIndex].SetColor("_Color", _fluidColors[listIndex * _fluidMaterialLists[listIndex].Count + elementIndex]);
+        int index = 0;
+
+        for (int i = 0; i < listIndex; i++)
+        {
+            index += _fluidMaterialLists[i].Count;
+        }
+
+        index += elementIndex;
+
+        _fluidMaterialLists[listIndex][elementIndex].SetColor("_Color", _fluidColors[index]);
     }
 }
