@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 2549057179045610561}
   - component: {fileID: 1818805476211865679}
   - component: {fileID: 4670092867776203039}
-  - component: {fileID: 1431229588339716288}
+  - component: {fileID: 7006392522456045514}
   m_Layer: 0
   m_Name: Tiger
   m_TagString: Untagged
@@ -97,7 +97,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 3, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0.38}
---- !u!114 &1431229588339716288
+--- !u!114 &7006392522456045514
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4220895592690008674}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72a9f73bc79d5b94a913a5bfd76ebbb9, type: 3}
+  m_Script: {fileID: 11500000, guid: 61651af2c2152b44b9a0c8a5c99230cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
@@ -115,7 +115,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 2
+    m_Bits: 1
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_SmoothRotation: 0
   m_SmoothRotationAmount: 5
   m_TightenRotation: 0.5
-  m_ThrowOnDetach: 0
+  m_ThrowOnDetach: 1
   m_ThrowSmoothingDuration: 0.25
   m_ThrowSmoothingCurve:
     serializedVersion: 2
