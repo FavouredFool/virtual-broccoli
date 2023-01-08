@@ -26,6 +26,10 @@ public class Pipe : XRGrabInteractable
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
+        if (CompareTag("Ventil"))
+        {
+            return;
+        }
         base.OnSelectEntered(args);
         Quaternion startRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, 90, 0);
         _blueprint.transform.rotation = startRotation;
