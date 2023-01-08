@@ -3,16 +3,45 @@
 %Es zeigt sowohl den inhaltlichen und strukturellen Aufbau einer Anwendung als auch dessen Funktionsumfang. Wichtige Inhalte sind dabei die Informations- und Navigationsstruktur, das Verhalten und die Reaktionsweise von Interaktionselementen und Fehlermeldungen sowie grundlegende Interaktionsprinzipien.
 
 \section{Interaktionstypen}
-Gemäß des definitierten Ziels ist die Interaktion innerhalb von VR der Schwerpunkt der Software. Um auf die einzelnen Interaktionstypen einzugehen, wurden sie in 3 Subgruppen aufgeteilt:
+Gemäß des definitierten Ziels ist die Interaktion innerhalb von VR der Schwerpunkt der Software. Um auf die einzelnen Interaktionstypen einzugehen, wurden sie in 3 Subgruppen aufgeteilt.
 
 \subsection{Haptische Interaktion}
-Rätseltisch
+
+\subsubsection{Erläuterung}
+Haptische Interaktion spricht den Tastsinn an. Durch diese Interaktion wirken virtuelle Gegenstände, Wände, und weitere abtastbare Objekte deutlich realer und die Immersion in die virtuelle Welt wird gestärkt. Wenn eine virtuelle Welt sich realistisch anfühlt, kann ein Nutzer schnell vergessen, dass man sich nicht in der Realität befindet.
+
+Das Gefühl haptischer Interaktion kann mit verschiedenen Wegen hervorgerufen werden. Letztendlich sind alle Wege zurückzuführen auf Stimulierungen auf der Haut. Dabei werden die Finger als primäre Körperteile für Interaktion am häufigsten angesprochen. Vibration, Druck, Elektrizität, Hitze und Kälte, aber auch das physische festsetzen der einzelnen Finger kann genutzt werden um die virtuelle Welt darzustellen. Diese Gefühle können auf verschiedene Teile des Körpers übertragen werden. Selbst die Temperatur eines Raumes zu verringern, kann dabei helfen die Immersion in eine virtuelle Eislandschaft zu erhöhen. An diesem Beispiel zeigt sich, dass diese haptischen Erfahrungen nicht nur positiver Natur sein müssen, um die Realität darzustellen.
+
+\subsubsection{Nutzung}
+Haptische Interaktion wurde in diesem Projekt besonders durch die \dq SenseGloves\dq realisiert. Diese Handschuhe sind in der Lage die Bewegung der Finger einer Hand festzusetzen. Diese Eigenschaft wurde in unserem Spiel in verschiedenen Weisen genutzt. Besonders der Rätseltisch profitierte stark von den Fähigkeiten der haptischen Handschuhe, indem... TODO: HIER NOCH MEHR ZUM RÄTSELTISCH WENN ER FINALISIERT IST.
+
+TODO: AUCH NOCH WAS ZUM RÖHRENPUZZLE
+
 
 \subsection{Visuelle Interaktion}
-Licht/Dunkelraum
+
+\subsubsection{Erläuterung}
+Ein Nutzer interagiert immer visuell mit der Welt, solange die Sicht in der VR-Brille nicht deutlich eingeschränkt wird. Während Sicht in VR als selbstverständlich angesehen wird, kann sie genutzt werden um die Erfahrung eines Nutzers deutlich zu verändern. 
+
+Durch Verbesserungen in Bildschirmauflösung, Sichtweite und weitere Hardware-spezifische Eigenschaften einer VR-Brille, jedoch auch an softwarespezifischen Gegebenheiten wie der Eigenart der Renderpipeline oder Qualität von 3D-Modellen, wird versucht die Erfahrung innerhalb einer virtuellen Welt möglichst realistisch darzustellen. Jedoch ist der Spielraum an Veränderungen jeglicher Form in einer virtuellen Welt deutlich weitreichender als in der Realität. Dies bietet ein großes Repertoire an visuellen Interaktionsmöglichkeiten. Im Bereich der Augmented-Reality (AR) wird geforscht um die Flexibilität der virtuellen Welt in die echte Welt einzubinden. Die Interaktionsmöglichkeiten sind dabei deutlich geringer als in einer virtuellen Welt, jedoch wurden in diese Branche bereits sehr interessante und hilfreiche Features entwickelt.
+
+\subsubsection{Nutzung}
+Ein sehr simples Beispiel visueller Interaktion ist eine Darstellung von enormer Höhe. In unserem Projekt muss ein Spieler einen Turm erklimmen und somit höher und höher steigen. Besonders wenn ein Spieler nahe dem höchsten Punkt des Turms auf eine dünne Planke steigen muss und somit ein sehr freies Sichtfeld auf die Tiefe unter ihm hat, kommt der Effekt dieser Interaktionsform zum Vorschein. Wie genau die Reaktion auf solch eine Höhe ist, ist sehr individuell, jedoch erzeugt solch eine Höhe starke Emotionen.
+
+Wie bereits erwähnt ist die Einschränkung der Sicht ein gutes Interaktionsmittel. Der dritte Puzzleraum legt die Verantwortung der Sicht auf den Spieler. Der Spieler muss Lichtquellen in den Raum werfen und somit die allumfassende Dunkelheit des Raumes punktuell durchbrechen um verschiedene Tipps zu finden und die Hebel im Raum so zu ziehen, dass sich der korrekte Code ergibt. So etwas fundamentales wie die Lichtverhältnisse eines Raumes in die Hand eines Spielers zu legen, führt zu einer deutlichen Erhöhung der Konzentration und immersion. Es fiel auf, dass ein Spieler, welcher damit beschäftigt war seinen Sichtsinn aufrecht zu erhalten, deutlich stärker in das Spiel investiert war.
+
+// TODO: Sicherstellen, dass die obrige Aussage korrekt ist
+
+Ein weiterer Punkt der visuellen Interaktion fiel eher zufällig auf als ein geplantes Feature des Spiels zu sein. Durch die SenseGloves werden die Hände in der echten Welt exakt auf die virtuelle Realität abgebildet. Wegen der in Abschnitt \dq Technisches Konzept\dq beschriebenen technischen Schwierigkeiten, muss ein Spieler gleichzeitig einen SenseGlove-Handschuh und einen VR-Controller in jeweils einer Hand halten. Die Unterschiede in der Darstellung der Hände durch diese zwei verschiedenen Geräte wird sehr schnell deutlich. Die Hand-Augen-Koordination, die die SenseGloves einem Spieler bieten, führen zu deutlicher stärkerer Immersion als die grobe Annäherung, welche ein einfacher VR-Controller bietet. Besonders bei Aufgaben die Fingerfertigkeit benötigten, wie der bereits beschriebene Rätseltisch, war neben dem haptischen Feedback das visuelle Feedback der virtuellen Hände ein wichtiges Merkmal für verstärkte Immersion.
 
 \subsection{Interaktion mit der Umgebung}
-Treppen, Farbe in die Welt bringen
+\subsubsection{Erläuterung}
+Dieser Interaktionstyp basiert auf jegliches Feedback, mit welchem die umliegende Welt auf direkte Aktionen eines Nutzers reagiert. Dies zeigt sich in subtilen Details, wie die Fußabdrücke die ein Charakter in einer Schneedecke hinterlässt, oder in offensichtlichen Auswirkungen auf die virtuelle Umgebung, beispielsweise ein umfallender Baum, nachdem ein Charakter ihn fällte. Wichtig ist hierbei, dass dieser Interaktionstyp nicht den Akt des Baum-fällens begutachtet, sondern sich vielmehr auf die darauf folgende Reaktion der Spielwelt (der Baum fällt um) fokussiert. Diese Interaktion ist nicht auf eine virtuelle Umgebung beschränkt, wird jedoch von dem Gefühl verstärkt selbst in dieser lebendigen Welt zu stehen, anstatt sie nur auf einem 2D-Bildschirm zu sehen.
+
+\subsubsection{Nutzung}
+Das thematische Konzept des Spiels basiert auf dieser Veränderung der Umgebung. Im Verlaufe des Spiels wird ein Spieler verschiedene Rätsel lösen und damit mehr und mehr Farbe in eine zuvor ausschließlich weiße Welt einführen. Dieses Feedback bietet dem Spieler eine grobe Darstellung des Spielfortschritts, führt aber ebenso zu einem Gefühl von stärkerem Ziel und Zweck, ein Teil dieser Welt zu sein. Dies wird weiter dadurch verstärkt, dass Rätsel des Spiels nur mit den richtigen Farben lösbar sind und der Zweck somit nicht nur subtil in der Umgebung dargesellt wird, sondern spürbar in den darauf folgenden Rätseln ist.
+
+Eines dieser Rätsel ist das Treppenhaus. Treppen haben verschiedene Farben und nur wenn diese Farben in die Welt zurückgebracht wurden, kann eine Treppe bewegt werden um den Weg nach oben zu ermöglichen. Darüber hinaus zeigt sich in diesem Rätsel eine simplere Form dieses Interaktionskonzepts. Die Aktion des ziehens eines farbigen Hebels führt direkt zu der Reaktion einer Auswahl gleichfarbiger Treppen, welche im Treppenhaus zu neuen Positionen rotieren. Hier zeigt sich die Stärke dieses Interaktionskonzepts in einer VR-Umgebung besonders, da ein Spieler nach dem benutzen eines Hebels direkt um ihn herum die Auswirkungen dieser Aktion spürt.
 
 
 \section{Erkenntnisse}

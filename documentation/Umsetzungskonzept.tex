@@ -1,23 +1,13 @@
 % !TEX root = Konzept.tex
 \chapter{Umsetzungskonzept}
-Im Folgenden wird genauer auf die Spezifizierung und Realisierung der bereits erläuterten Idee eingegangen.
+
+\section{Erstellungsprozess}
+Um eine Umgebung zu schaffen in welcher Interaktionskonzepte ausprobiert werden können, wurde es angestrebt ein Videospiel in virtueller Realität zu erstellen. Ein Videospiel birgt viele verschiedene Arten von Interaktionskonzepten, ohne diese für einen Nutzer zu offenbaren. Ein Nutzer hat persönliches Interesse das Spiel zu spielen und bemerkt in den meisten Fällen nicht einmal, entlang welchen Interaktionskonzepten er geleitet wird.
+
+Um die Wahl der Konzepte nicht im Vorhinein stark zu beschränken, wurde eine sehr offene und frei entfaltbare Spielform, in Form eines \dq Escape Rooms\dq als Grundlage gewählt. Diese Idee wurde im Verlaufe der Entwicklung spezifiert und stark verändert, jedoch blieb erhalten, dass - ähnlich wie in einem Escape Room - ein Spieler Puzzle und Aufgaben verschiedenster Arten lösen muss um das Ende zu erreichen. Dies bot die Freiheit mit vielen verschiedenen Ideen zu arbeiten, welche verschiedene Grundkonzepte der Interaktion ansprachen.
 
 
 \section{Technischer Hintergrund}
-
-\subsection{Genutzte Software}
-
-\subsubsection{Entwicklungsengine}
-Die technische Umsetzung des Projekts erfolgte in der Game Engine \dq Unity\dq. Dies ist eine der derzeit populärsten Game Engines auf dem Markt und stellt den Industrie-Standard für Spieleentwicklung in virtueller Realität dar. Darüber hinaus bietet Unity eine offiziell unterstützte Erweiterung names \dq XR Interaction Toolkit\dq an, welche viele grundlegende VR-Funktionalitäten in ein Unity Projekt integriert und somit den Entwicklungsprozess deutlich beschleunigt. Des Weiteren unterstützt das XR Interaction Toolkit die externe Software \dq Open XR\dq.
-
-\subsubsection{Open XR}
-OpenXR stellt eine allgemeine Schnittstelle für eine Vielzahl von VR-Brillen dar, indem es allgemeine Aktionen definitiert mit welchen das XR Interaction Toolkit und weitere Software arbeiten kann. Die device-basierten Mappings werden von OpenXR übernommen. 
-
-\subsubsection{Versionskontrollsystem}
-Um die gemeinsame Arbeit am Projekt besser zu organisieren, wurde das Versionskontrollsystem \dq Git\dq verwendet.
-
-\subsubsection{Miro}
-Um Ideen zu sammeln, speichern und spezifieren, wurden Miro-Boards verwendet. Diese Software bietet ein digitales Whiteboard an, welches in Echtzeit von Gruppenmitgliedern bearbeitet werden kann.
 
 \subsection{Genutzte Hardware}
 
@@ -30,9 +20,29 @@ Um haptisches Feedback zu ermöglichen wurden \dq SenseGloves \dq verwendet. Die
 \subsubsection{Tracker}
 Die Sensegloves sind nur in der Lage die relative Position zu sich selbst zu bestimmen. Um die Position und Rotation der Handschuhe im Raum zu erkennen und sie somit für unseren Anwendungszweck nutzbar zu machen, mussten externe Tracker installiert werden. Dafür wurden die \dq HTC VIVE Tracker 3.0\dq genutzt, welche durch ein Verbindungsstück auf die Haptic Gloves gesetzt werden können.
 
-\section{Ziel}
-Das Ziel, welches wir mit dem Projekt angestrebt haben (kinda wie die Einleitung?)
+\subsection{Genutzte Software}
+
+\subsubsection{Entwicklungsengine}
+Die technische Umsetzung des Projekts erfolgte in der Game Engine \dq Unity\dq. Dies ist eine der derzeit populärsten Game Engines auf dem Markt und stellt den Industrie-Standard für Spieleentwicklung in virtueller Realität dar. Darüber hinaus bietet Unity eine offiziell unterstützte Erweiterung names \dq XR Interaction Toolkit\dq an, welche viele grundlegende VR-Funktionalitäten in ein Unity Projekt integriert und somit den Entwicklungsprozess deutlich beschleunigt. Des Weiteren unterstützt das XR Interaction Toolkit die externe Software \dq Open XR\dq.
+
+\subsubsection{Open XR}
+OpenXR stellt eine allgemeine Schnittstelle für eine Vielzahl von VR-Brillen dar, indem es allgemeine Aktionen definitiert mit welchen das XR Interaction Toolkit und weitere Software arbeiten kann. Die device-basierten Mappings werden von OpenXR übernommen. 
+
+\subsubsection{SteamVR}
+Die Videospiel-Vertriebsplattform \dq Steam\dq bietet eine eigene Softwarelösung \dq SteamVR\dq an, welche es ermöglicht verschiedene Geräte miteinander zu verbinden, damit diese beim Ausführen einer Software zusammenarbeiten. Es muss SteamVR genutzt werden, da dies die einzige Softwarelösung ist, die die HTC VIVE Tracker 3.0 unterstützt, welche genutzt werden um die SenseGloves im realen Raum zu tracken.
+
+\subsubsection{SenseCom}
+Um die SenseGloves zu nutzen muss erst eine Bluetooth-Verbindung mit einem Computer aufgebaut werden. Wenn auf diesem Computer eine Anwendung, welche die SenseGloves unterstützt, ausgeführt wird, wird automatisch die \dq SenseCom\dq Software ausgeführt, welche es ermöglicht die SenseGloves zu kalibrieren und daraufhin in der Anwendung zu nutzen. 
+
+\subsubsection{Versionskontrollsystem}
+Um die gemeinsame Arbeit am Projekt besser zu organisieren, wurde das Versionskontrollsystem \dq Git\dq verwendet.
+
+\subsubsection{Miro}
+Um Ideen zu sammeln, speichern und spezifieren, wurden Miro-Boards verwendet. Diese Software bietet ein digitales Whiteboard an, welches in Echtzeit von Gruppenmitgliedern bearbeitet werden kann.
+
+
+\section{Miro-Brainstorming}
+Zu was einer Idee sind wir gekommen und wie?
 
 \section{Herrn Berdux fragen}
-Was genau kommt hier noch hin? Was ist alles Teil des Umsetzungskonzepts?
-Außerdem: In welcher Reihenfolge sollten Umsetzungskonzept, Technisches Konzept und Interaktionskonzept stehen?
+Was kommt noch in's Umsetzungskonzept?
