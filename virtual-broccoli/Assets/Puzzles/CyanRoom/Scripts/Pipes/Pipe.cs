@@ -6,6 +6,8 @@ public class Pipe : XRGrabInteractable
     [SerializeField]
     private Dictionary<string, GameObject> _neighborPipeBorders;
 
+    private Material _materialStart;
+
     private GameObject _placedGrid = null;
 
     private GameObject _blueprint;
@@ -17,6 +19,7 @@ public class Pipe : XRGrabInteractable
         _neighborPipeBorders = new Dictionary<string, GameObject>();
         Transform blueprintTransform = transform.parent.gameObject.transform.Find("Blueprint");
         _blueprint = blueprintTransform != null ? blueprintTransform.gameObject : null;
+        _materialStart = GetComponent<Renderer>().material;
     }
 
     public bool IsDragged()
@@ -44,6 +47,7 @@ public class Pipe : XRGrabInteractable
             _blueprint.SetActive(true);
         }
         MovePipes.CheckFinalState();
+        ResetMaterial();
     }
 
     protected override void OnSelectExited(SelectExitEventArgs args)
@@ -88,6 +92,14 @@ public class Pipe : XRGrabInteractable
             {
                 _validRotation = false;
             }
+        }
+    }
+
+    public void ResetMaterial()
+    {
+        if (GetComponent<MeshRenderer>().material != _materialStart)
+        {
+            GetComponent<MeshRenderer>().material = _materialStart;
         }
     }
 
