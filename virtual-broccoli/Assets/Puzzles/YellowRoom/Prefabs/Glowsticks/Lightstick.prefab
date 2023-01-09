@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3278689453957611919}
   - component: {fileID: 3278689453957611912}
   - component: {fileID: 3278689453957611920}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Light Mid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 3278689453957611904}
   - component: {fileID: 3278689453957611913}
   - component: {fileID: 3278689453957611925}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Light Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 3278689453957611905}
   - component: {fileID: 3278689453957611926}
   - component: {fileID: 3278689453957611922}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Light Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,9 +358,9 @@ GameObject:
   - component: {fileID: 8271202322075049307}
   - component: {fileID: 2127512690967005797}
   - component: {fileID: 3615766221683706338}
-  - component: {fileID: 7678732348132890456}
   - component: {fileID: 1392204730397610872}
-  m_Layer: 0
+  - component: {fileID: 776430510841359762}
+  m_Layer: 2
   m_Name: Lightstick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -376,7 +376,7 @@ Transform:
   m_GameObject: {fileID: 5151301406389622985}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.5, z: 0.1}
+  m_LocalScale: {x: 0.05, y: 0.25, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3278689453957611904}
@@ -465,7 +465,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7678732348132890456
+--- !u!114 &1392204730397610872
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -474,7 +474,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 5151301406389622985}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f69292c078862334a8641f24e309d95a, type: 3}
+  m_Script: {fileID: 11500000, guid: 98446216a179cb949b6a41de0c2c3be7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &776430510841359762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5151301406389622985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 424344c631ccc7c47ae2329ad0603de4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
@@ -551,7 +566,7 @@ MonoBehaviour:
   m_MatchAttachPosition: 1
   m_MatchAttachRotation: 1
   m_SnapToColliderVolume: 1
-  m_AttachEaseInTime: 0.3
+  m_AttachEaseInTime: 0.15
   m_MovementType: 2
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -583,29 +598,14 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   m_ThrowVelocityScale: 1.5
-  m_ThrowAngularVelocityScale: 0.25
-  m_ForceGravityOnDetach: 1
-  m_RetainTransformParent: 0
+  m_ThrowAngularVelocityScale: 1
+  m_ForceGravityOnDetach: 0
+  m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
-  speed: 1500
---- !u!114 &1392204730397610872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5151301406389622985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98446216a179cb949b6a41de0c2c3be7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
+  speed: 2000
 --- !u!1 &6182765564293349685
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,7 +615,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4232240385441902052}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Attachment
   m_TagString: Untagged
   m_Icon: {fileID: 0}

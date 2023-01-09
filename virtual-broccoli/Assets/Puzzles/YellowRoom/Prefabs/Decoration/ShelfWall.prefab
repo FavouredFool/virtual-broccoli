@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7529074227755862421}
   - component: {fileID: 5262775937144566287}
   - component: {fileID: 6525811200460266853}
-  - component: {fileID: 2602090649118269083}
+  - component: {fileID: 5485269814501949931}
   m_Layer: 0
   m_Name: ShelfWall
   m_TagString: Untagged
@@ -330,8 +330,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5765700722458558696}
   m_Mesh: {fileID: 0}
---- !u!64 &2602090649118269083
-MeshCollider:
+--- !u!65 &5485269814501949931
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -340,7 +340,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 2
+  m_Size: {x: 0.5000002, y: 1.9999999, z: 1.0000002}
+  m_Center: {x: 0.0000075101852, y: 0, z: -0.0000014305115}
