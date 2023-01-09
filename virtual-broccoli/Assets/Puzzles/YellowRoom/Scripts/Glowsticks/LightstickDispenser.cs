@@ -31,15 +31,15 @@ public class LightstickDispenser : XRBaseInteractable
     private void CreateAndSelectArrow(SelectEnterEventArgs args, int lightCount)
     {
         // Create lightstick, force into interacting hand
-        LightStick lightstick = CreateLightStick(args.interactorObject.transform);
+        OffsetInteractorLightstick lightstick = CreateLightStick(args.interactorObject.transform);
         interactionManager.SelectEnter(args.interactorObject, lightstick);
         textMesh.text = (lightCount).ToString();
     }
 
-    private LightStick CreateLightStick(Transform orientation)
+    private OffsetInteractorLightstick CreateLightStick(Transform orientation)
     {
         // Create lightstick, and get lightstick component
         GameObject lightstickObject = Instantiate(lightstickPrefab, orientation.position, orientation.rotation);
-        return lightstickObject.GetComponent<LightStick>();
+        return lightstickObject.GetComponent<OffsetInteractorLightstick>();
     }
 }
