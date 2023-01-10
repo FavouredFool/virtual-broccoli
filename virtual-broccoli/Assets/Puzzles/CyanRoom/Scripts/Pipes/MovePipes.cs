@@ -17,13 +17,13 @@ public class MovePipes : MonoBehaviour
 
     private static GameObject puzzleStart;
     private static GameObject puzzleEnd;
-    private static Material materialInvalid;
+    private static Color colorInvalid;
 
     private void Start()
     {
         puzzleStart = _puzzleStart;
         puzzleEnd = _puzzleEnd;
-        materialInvalid = _materialInvalid;
+        colorInvalid = _materialInvalid.color;
         CheckFinalState();
     }
     public static void CheckFinalState()
@@ -47,13 +47,16 @@ public class MovePipes : MonoBehaviour
 
     private static bool TraversePipeNeighbors(GameObject current, List<GameObject> checkedPipes)
     {
-        current.GetComponent<Pipe>().ResetMaterial();
+        bool foundNewNeighbor = false;
         GameObject checkedNeighborPipe;
+
+        current.GetComponent<Pipe>().ResetMaterial();
         foreach (KeyValuePair<string, GameObject> pair in current.GetComponent<Pipe>().GetNeighbors())
         {
             checkedNeighborPipe = pair.Value;
             if (!checkedPipes.Contains(checkedNeighborPipe))
             {
+                foundNewNeighbor = true;
                 Debug.Log("Pipe: " + current.name + " -> neighbor: " + checkedNeighborPipe.name);
                 if (puzzleEnd.Equals(checkedNeighborPipe))
                 {
@@ -65,7 +68,10 @@ public class MovePipes : MonoBehaviour
             }
         }
 
-        current.GetComponent<MeshRenderer>().material = materialInvalid;
+        if (!foundNewNeighbor)
+        {
+            current.GetComponent<MeshRenderer>().material.color = colorInvalid;
+        }
         return false;
     }
 
