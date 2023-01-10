@@ -67,7 +67,11 @@ public class PipeManager : MonoBehaviour
                     return true;
                 }
                 checkedPipes.Add(checkedNeighborPipe);
-                TraversePipeNeighbors(checkedNeighborPipe, checkedPipes);
+
+                if (TraversePipeNeighbors(checkedNeighborPipe, checkedPipes))
+                {
+                    return true;
+                }
             }
         }
 
