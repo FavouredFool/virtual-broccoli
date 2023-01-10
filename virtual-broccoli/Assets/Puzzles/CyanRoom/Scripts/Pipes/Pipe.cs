@@ -3,14 +3,15 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 public class Pipe : XRGrabInteractable
 {
-    [SerializeField]
-    private Dictionary<string, GameObject> _neighborPipeBorders;
+    [SerializeField] private Dictionary<string, GameObject> _neighborPipeBorders;
 
-    private Color _colorStart;
+    [SerializeField] private GameObject _light;
+
 
     private GameObject _placedGrid = null;
 
     private GameObject _blueprint;
+
 
     private bool _validRotation;
 
@@ -19,7 +20,7 @@ public class Pipe : XRGrabInteractable
         _neighborPipeBorders = new Dictionary<string, GameObject>();
         Transform blueprintTransform = transform.parent.gameObject.transform.Find("Blueprint");
         _blueprint = blueprintTransform != null ? blueprintTransform.gameObject : null;
-        _colorStart = GetComponent<Renderer>().material.color;
+        _light.SetActive(false);
     }
 
     public bool IsDragged()
@@ -46,8 +47,7 @@ public class Pipe : XRGrabInteractable
         {
             _blueprint.SetActive(true);
         }
-        MovePipes.CheckFinalState();
-        ResetMaterial();
+        ChangeLightState(false);
     }
 
     protected override void OnSelectExited(SelectExitEventArgs args)
@@ -71,7 +71,7 @@ public class Pipe : XRGrabInteractable
             }
             GetComponent<Rigidbody>().isKinematic = false;
         }
-        MovePipes.CheckFinalState();
+        PipeManager.CheckFinalState();
     }
 
     public override void ProcessInteractable(XRInteractionUpdateOrder.UpdatePhase updatePhase)
@@ -79,7 +79,7 @@ public class Pipe : XRGrabInteractable
         base.ProcessInteractable(updatePhase);
         if (isSelected)
         {
-            if (MovePipes.CheckValidRotation(gameObject))
+            if (PipeManager.CheckValidRotation(gameObject))
             {
                 _validRotation = true;
                 Quaternion newPositionRotation = Quaternion.Euler(GetRotationAngle(), 90, 0);
@@ -95,11 +95,11 @@ public class Pipe : XRGrabInteractable
         }
     }
 
-    public void ResetMaterial()
+    public void ChangeLightState(bool newLightState)
     {
-        if (GetComponent<MeshRenderer>().material.color != _colorStart)
+        if (_light.activeSelf != newLightState)
         {
-            GetComponent<MeshRenderer>().material.color = _colorStart;
+            _light.SetActive(newLightState);
         }
     }
 

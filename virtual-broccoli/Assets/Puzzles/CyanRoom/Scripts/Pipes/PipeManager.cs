@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovePipes : MonoBehaviour
+public class PipeManager : MonoBehaviour
 {
     [SerializeField] private GameObject _puzzleStart;
 
     [SerializeField] private GameObject _puzzleEnd;
 
-    [SerializeField] private Material _materialInvalid;
+    [SerializeField] private GameObject _crystal;
 
     private static bool _solved = false;
 
@@ -17,15 +17,16 @@ public class MovePipes : MonoBehaviour
 
     private static GameObject puzzleStart;
     private static GameObject puzzleEnd;
-    private static Color colorInvalid;
+    private static GameObject crystal;
 
     private void Start()
     {
         puzzleStart = _puzzleStart;
         puzzleEnd = _puzzleEnd;
-        colorInvalid = _materialInvalid.color;
-        CheckFinalState();
+        crystal = _crystal;
+        crystal.SetActive(false);
     }
+
     public static void CheckFinalState()
     {
         List<GameObject> checkedPipes = new() { puzzleStart };
@@ -35,13 +36,17 @@ public class MovePipes : MonoBehaviour
         {
             foreach (KeyValuePair<string, GameObject> pair in startNeighbors)
             {
-                Debug.Log("Start gefunden");
                 current = pair.Value;
                 checkedPipes.Add(current);
                 break;
             }
             _solved = TraversePipeNeighbors(current, checkedPipes);
-            Debug.Log("________________________________________________________________________________________________");
+            
+            if (_solved && !crystal.activeSelf)
+            {
+                Debug.Log("Solved cyan room");
+                crystal.SetActive(true);
+            }
         }
     }
 
@@ -50,17 +55,15 @@ public class MovePipes : MonoBehaviour
         bool foundNewNeighbor = false;
         GameObject checkedNeighborPipe;
 
-        current.GetComponent<Pipe>().ResetMaterial();
         foreach (KeyValuePair<string, GameObject> pair in current.GetComponent<Pipe>().GetNeighbors())
         {
             checkedNeighborPipe = pair.Value;
             if (!checkedPipes.Contains(checkedNeighborPipe))
             {
                 foundNewNeighbor = true;
-                Debug.Log("Pipe: " + current.name + " -> neighbor: " + checkedNeighborPipe.name);
+                current.GetComponent<Pipe>().ChangeLightState(true);
                 if (puzzleEnd.Equals(checkedNeighborPipe))
                 {
-                    Debug.Log("Ende");
                     return true;
                 }
                 checkedPipes.Add(checkedNeighborPipe);
@@ -70,7 +73,7 @@ public class MovePipes : MonoBehaviour
 
         if (!foundNewNeighbor)
         {
-            current.GetComponent<MeshRenderer>().material.color = colorInvalid;
+            current.GetComponent<Pipe>().ChangeLightState(false);
         }
         return false;
     }
