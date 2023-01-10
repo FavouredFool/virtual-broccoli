@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1025645283824826896}
   - component: {fileID: 4431647960931017296}
   - component: {fileID: 1119903838795154129}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tarot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,9 +28,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046888246168956723}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.5}
+  m_LocalScale: {x: 0.015, y: 0.015, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9187896524467928574}
@@ -190,7 +190,7 @@ MonoBehaviour:
   m_MatchAttachRotation: 1
   m_SnapToColliderVolume: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 2
+  m_MovementType: 0
   m_VelocityDamping: 1
   m_VelocityScale: 1
   m_AngularVelocityDamping: 1
@@ -250,7 +250,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9187896524467928574}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Attachment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
