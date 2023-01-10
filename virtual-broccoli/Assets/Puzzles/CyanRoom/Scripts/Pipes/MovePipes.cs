@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class MovePipes : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject _puzzleStart;
+    [SerializeField] private GameObject _puzzleStart;
 
-    [SerializeField]
-    private GameObject _puzzleEnd;
+    [SerializeField] private GameObject _puzzleEnd;
+
+    [SerializeField] private Material _materialInvalid;
 
     private static bool _solved = false;
 
@@ -17,18 +17,20 @@ public class MovePipes : MonoBehaviour
 
     private static GameObject puzzleStart;
     private static GameObject puzzleEnd;
+    private static Color colorInvalid;
 
-    public void OnAfterDeserialize()
+    private void Start()
     {
         puzzleStart = _puzzleStart;
         puzzleEnd = _puzzleEnd;
+        colorInvalid = _materialInvalid.color;
+        CheckFinalState();
     }
-
     public static void CheckFinalState()
     {
         List<GameObject> checkedPipes = new() { puzzleStart };
         GameObject current = null;
-        Dictionary<string, GameObject> startNeighbors = puzzleEnd.GetComponent<Pipe>().GetNeighbors();
+        Dictionary<string, GameObject> startNeighbors = puzzleStart.GetComponent<Pipe>().GetNeighbors();
         if (startNeighbors.Count == 1)
         {
             foreach (KeyValuePair<string, GameObject> pair in startNeighbors)
@@ -45,12 +47,16 @@ public class MovePipes : MonoBehaviour
 
     private static bool TraversePipeNeighbors(GameObject current, List<GameObject> checkedPipes)
     {
+        bool foundNewNeighbor = false;
         GameObject checkedNeighborPipe;
+
+        current.GetComponent<Pipe>().ResetMaterial();
         foreach (KeyValuePair<string, GameObject> pair in current.GetComponent<Pipe>().GetNeighbors())
         {
             checkedNeighborPipe = pair.Value;
             if (!checkedPipes.Contains(checkedNeighborPipe))
             {
+                foundNewNeighbor = true;
                 Debug.Log("Pipe: " + current.name + " -> neighbor: " + checkedNeighborPipe.name);
                 if (puzzleEnd.Equals(checkedNeighborPipe))
                 {
@@ -60,6 +66,11 @@ public class MovePipes : MonoBehaviour
                 checkedPipes.Add(checkedNeighborPipe);
                 TraversePipeNeighbors(checkedNeighborPipe, checkedPipes);
             }
+        }
+
+        if (!foundNewNeighbor)
+        {
+            current.GetComponent<MeshRenderer>().material.color = colorInvalid;
         }
         return false;
     }
