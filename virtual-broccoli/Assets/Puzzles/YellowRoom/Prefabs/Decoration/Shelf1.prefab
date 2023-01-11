@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4516753683747122}
   - component: {fileID: 33785122669943960}
   - component: {fileID: 23412983081953848}
-  - component: {fileID: 3154456283822490407}
+  - component: {fileID: 1891989833}
   m_Layer: 0
   m_Name: Shelf1
   m_TagString: Untagged
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1086850529231838}
-  m_LocalRotation: {x: -0.00000003774895, y: 0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3154456283822490407
-MeshCollider:
+--- !u!65 &1891989833
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,7 +94,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: fbb905d7d31b6bd4f8e4b7f7d31b17b3, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.38696268, y: 0.19772248, z: 1.253271}
+  m_Center: {x: -0.010745473, y: -0.065034576, z: 0.000005722046}
