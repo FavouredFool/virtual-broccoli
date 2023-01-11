@@ -104,11 +104,11 @@ GameObject:
   - component: {fileID: 6261435350214746041}
   - component: {fileID: 1875155481596591729}
   - component: {fileID: 6281110598669568776}
-  - component: {fileID: 3150355861514106698}
   - component: {fileID: 4276008287158655711}
   - component: {fileID: 9214232739838801574}
+  - component: {fileID: 2728344281071400471}
   m_Layer: 0
-  m_Name: StraightPipe
+  m_Name: StraightPipe 1
   m_TagString: Pipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21761,7 +21761,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 635
+  m_VersionIndex: 707
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -21847,20 +21847,6 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3912172475998338454}
-  m_Mesh: {fileID: 0}
---- !u!64 &3150355861514106698
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3912172475998338454}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!114 &4276008287158655711
 MonoBehaviour:
@@ -22003,6 +21989,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &2728344281071400471
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3912172475998338454}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.0000005
+  m_Height: 7.7711105
+  m_Direction: 1
+  m_Center: {x: -0.000007663454, y: -0.0071016946, z: 0.00000028383164}
 --- !u!1 &6638072452851270947
 GameObject:
   m_ObjectHideFlags: 0
@@ -43668,7 +43668,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 551
+  m_VersionIndex: 554
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
