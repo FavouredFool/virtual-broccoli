@@ -24,7 +24,7 @@ public class Pipe : XRGrabInteractable
 
     public bool IsDragged()
     {
-        return isSelected && (CompareTag("PipeRotateOnly") || CompareTag("Pipe"));
+        return isSelected && (CompareTag("StraightPipeRotateOnly") || CompareTag("AngledPipeRotateOnly") || CompareTag("StraightPipe") || CompareTag("AngledPipe"));
     }
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
@@ -34,7 +34,7 @@ public class Pipe : XRGrabInteractable
             return;
         }
         base.OnSelectEntered(args);
-        Quaternion startRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, 90, 0);
+        Quaternion startRotation = transform.rotation;
         _blueprint.transform.rotation = startRotation;
         transform.rotation = startRotation;
         _blueprint.GetComponent<MeshRenderer>().enabled = true;
@@ -42,7 +42,7 @@ public class Pipe : XRGrabInteractable
         GetComponent<Rigidbody>().useGravity = true;
         GetComponent<Rigidbody>().isKinematic = true;
 
-        if (CompareTag("PipeRotateOnly"))
+        if (CompareTag("AngledPipeRotateOnly") || CompareTag("StraightPipeRotateOnly"))
         {
             _blueprint.SetActive(true);
         }
@@ -65,7 +65,7 @@ public class Pipe : XRGrabInteractable
             }
         } else
         {
-            if (CompareTag("Pipe"))
+            if (CompareTag("AngledPipe") || CompareTag("StraightPipe"))
             {
                 GetComponent<Rigidbody>().useGravity = true;
             }
@@ -143,24 +143,57 @@ public class Pipe : XRGrabInteractable
 
     private float GetRotationAngle()
     {
-        float angleRight = Vector3.Angle(transform.InverseTransformDirection(Vector3.right), Vector3.up);
-        float angleTop = Vector3.Angle(transform.InverseTransformDirection(Vector3.up), Vector3.up);
 
-        if (angleTop < 45)
+        // Schritt 1: Herausfinden ob gespiegelt oder nicht
+
+        bool angleSwitch = Vector3.SignedAngle(transform.right, Vector3.right, Vector3.up) > 0;
+
+        float angleTop = Vector3.SignedAngle(transform.up, Vector3.up, Vector3.forward);
+
+        Debug.Log(angleTop);
+        // Works for angled pipes but not normal ones.
+        if (angleSwitch)
         {
-            return 0;
-        }
-        else if (angleTop > 135)
-        {
-            return 180;
-        }
-        else if (angleRight < 45)
-        {
-            return 90;
+            if (angleTop < -135 || angleTop > 135)
+            {
+                return 270;
+            }
+            else if (angleTop < -45)
+            {
+                return 0;
+            }
+            else if (angleTop < 45)
+            {
+                return 90;
+            }
+            else
+            {
+                return 180;
+            }
         }
         else
         {
-            return 270;
+            if (angleTop < -135 || angleTop > 135)
+            {
+                return 180;
+            }
+            else if (angleTop < -45)
+            {
+                return 270;
+            }
+            else if (angleTop < 45)
+            {
+                return 0;
+            }
+            else
+            {
+                return 90;
+            }
         }
+
+        
+
+
+
     }
 }
