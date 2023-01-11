@@ -30225,6 +30225,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tarot
       objectReference: {fileID: 0}
+    - target: {fileID: 2046888246168956723, guid: 805cdffdbfa8e5940973c4e0a13dc9b5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7124181678428044296, guid: 805cdffdbfa8e5940973c4e0a13dc9b5,
         type: 3}
       propertyPath: m_RootOrder
@@ -30294,6 +30299,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9093071639359060801, guid: 805cdffdbfa8e5940973c4e0a13dc9b5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 805cdffdbfa8e5940973c4e0a13dc9b5, type: 3}

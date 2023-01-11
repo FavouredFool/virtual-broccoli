@@ -19476,6 +19476,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 124112462}
     m_Modifications:
+    - target: {fileID: 5612599416177099433, guid: 9c45367740b7b5a4dbdc768f00f8d53c,
+        type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612599416177099433, guid: 9c45367740b7b5a4dbdc768f00f8d53c,
+        type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612599416177099433, guid: 9c45367740b7b5a4dbdc768f00f8d53c,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7044307339197028360, guid: 9c45367740b7b5a4dbdc768f00f8d53c,
         type: 3}
       propertyPath: m_RootOrder
@@ -19535,6 +19550,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Golf_ball_HighPOly
+      objectReference: {fileID: 0}
+    - target: {fileID: 7676870034936054450, guid: 9c45367740b7b5a4dbdc768f00f8d53c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c45367740b7b5a4dbdc768f00f8d53c, type: 3}
@@ -24475,8 +24495,8 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
@@ -24537,7 +24557,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-443170
+  m_Name: pb_Mesh-480524
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -32026,7 +32046,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh246368
+  m_Name: pb_Mesh289684
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
