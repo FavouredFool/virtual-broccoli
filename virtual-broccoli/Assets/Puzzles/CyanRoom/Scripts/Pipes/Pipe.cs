@@ -152,7 +152,7 @@ public class Pipe : XRGrabInteractable
 
         Debug.Log(angleTop);
 
-        if (CompareTag("StraightPipe"))
+        if (CompareTag("StraightPipe") || CompareTag("StraightPipeRotateOnly"))
         {
             if (angleTop < -135 || angleTop > 135)
             {
