@@ -151,49 +151,66 @@ public class Pipe : XRGrabInteractable
         float angleTop = Vector3.SignedAngle(transform.up, Vector3.up, Vector3.forward);
 
         Debug.Log(angleTop);
-        // Works for angled pipes but not normal ones.
-        if (angleSwitch)
+
+        if (CompareTag("StraightPipe"))
         {
             if (angleTop < -135 || angleTop > 135)
             {
-                return 270;
+                return 0;
             }
             else if (angleTop < -45)
             {
-                return 0;
+                return 90;
             }
             else if (angleTop < 45)
             {
-                return 90;
+                return 180;
             }
             else
             {
-                return 180;
+                return 270;
             }
         }
         else
         {
-            if (angleTop < -135 || angleTop > 135)
+            if (angleSwitch)
             {
-                return 180;
-            }
-            else if (angleTop < -45)
-            {
-                return 270;
-            }
-            else if (angleTop < 45)
-            {
-                return 0;
+                if (angleTop < -135 || angleTop > 135)
+                {
+                    return 270;
+                }
+                else if (angleTop < -45)
+                {
+                    return 0;
+                }
+                else if (angleTop < 45)
+                {
+                    return 90;
+                }
+                else
+                {
+                    return 180;
+                }
             }
             else
             {
-                return 90;
+                if (angleTop < -135 || angleTop > 135)
+                {
+                    return 180;
+                }
+                else if (angleTop < -45)
+                {
+                    return 270;
+                }
+                else if (angleTop < 45)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 90;
+                }
             }
         }
-
-        
-
-
-
     }
 }
