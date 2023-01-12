@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4730157031230354658}
   - component: {fileID: 8505961965930298183}
   - component: {fileID: 5904157669934157709}
-  - component: {fileID: 357944019207359433}
   - component: {fileID: 1506729115563576666}
   - component: {fileID: 8301308928268704123}
+  - component: {fileID: 2579147340538052858}
   m_Layer: 0
   m_Name: Ventil
   m_TagString: Ventil
@@ -28,9 +28,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5399592128260959832}
-  m_LocalRotation: {x: 0.00000008146034, y: 0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 306981043316936495}
@@ -87,20 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &357944019207359433
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5399592128260959832}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -3830261752569226273, guid: 8c4172d77f1961a4fbfe0a6bd18ed90f, type: 3}
 --- !u!114 &1506729115563576666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,6 +212,7 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+  _light: {fileID: 0}
 --- !u!54 &8301308928268704123
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -242,6 +229,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &2579147340538052858
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5399592128260959832}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.1559935, y: 3.6850517, z: 3}
+  m_Center: {x: 2.1267443, y: 0, z: 6.8}
 --- !u!1 &7967174482439952827
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,7 +268,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7967174482439952827}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.64, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -287,7 +287,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2, y: 4, z: 4}
-  m_Center: {x: 3.63, y: 0, z: 6.62}
+  m_Center: {x: 3.6, y: 0, z: 6.62}
 --- !u!114 &5200238822458001202
 MonoBehaviour:
   m_ObjectHideFlags: 0

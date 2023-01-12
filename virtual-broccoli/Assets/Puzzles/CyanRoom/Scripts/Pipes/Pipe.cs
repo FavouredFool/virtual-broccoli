@@ -3,28 +3,29 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 public class Pipe : XRGrabInteractable
 {
-    [SerializeField]
-    private Dictionary<string, GameObject> _neighborPipeBorders;
+    [SerializeField] private Dictionary<string, GameObject> _neighborPipeBorders;
 
-    private Color _colorStart;
+    [SerializeField] private GameObject _light = null;
+
 
     private GameObject _placedGrid = null;
 
     private GameObject _blueprint;
-
-    private bool _validRotation;
 
     private void Start()
     {
         _neighborPipeBorders = new Dictionary<string, GameObject>();
         Transform blueprintTransform = transform.parent.gameObject.transform.Find("Blueprint");
         _blueprint = blueprintTransform != null ? blueprintTransform.gameObject : null;
-        _colorStart = GetComponent<Renderer>().material.color;
+        if (_light != null)
+        {
+            _light.SetActive(false);
+        }
     }
 
     public bool IsDragged()
     {
-        return isSelected && (CompareTag("PipeRotateOnly") || CompareTag("Pipe"));
+        return isSelected && tag.Contains("Pipe");
     }
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
@@ -34,20 +35,19 @@ public class Pipe : XRGrabInteractable
             return;
         }
         base.OnSelectEntered(args);
-        Quaternion startRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, 90, 0);
+        Quaternion startRotation = transform.rotation;
         _blueprint.transform.rotation = startRotation;
         transform.rotation = startRotation;
         _blueprint.GetComponent<MeshRenderer>().enabled = true;
-        _validRotation = false;
         GetComponent<Rigidbody>().useGravity = true;
         GetComponent<Rigidbody>().isKinematic = true;
 
-        if (CompareTag("PipeRotateOnly"))
+        if (CompareTag("AngledPipeRotateOnly") || CompareTag("StraightPipeRotateOnly"))
         {
             _blueprint.SetActive(true);
         }
-        MovePipes.CheckFinalState();
-        ResetMaterial();
+        ChangeLightState(false);
+        PipeManager.CheckFinalState();
     }
 
     protected override void OnSelectExited(SelectExitEventArgs args)
@@ -55,23 +55,20 @@ public class Pipe : XRGrabInteractable
         base.OnSelectExited(args);
         if (_placedGrid != null)
         {
-            if (_validRotation)
-            {
-                transform.SetPositionAndRotation(_blueprint.transform.position,
-                    _blueprint.transform.rotation);
-                GetComponent<Rigidbody>().useGravity = false;
-                GetComponent<Rigidbody>().isKinematic = true;
-                _blueprint.GetComponent<MeshRenderer>().enabled = false;
-            }
+            transform.SetPositionAndRotation(_blueprint.transform.position,
+                _blueprint.transform.rotation);
+            GetComponent<Rigidbody>().useGravity = false;
+            GetComponent<Rigidbody>().isKinematic = true;
+            _blueprint.GetComponent<MeshRenderer>().enabled = false;
         } else
         {
-            if (CompareTag("Pipe"))
+            if (CompareTag("AngledPipe") || CompareTag("StraightPipe"))
             {
                 GetComponent<Rigidbody>().useGravity = true;
             }
             GetComponent<Rigidbody>().isKinematic = false;
         }
-        MovePipes.CheckFinalState();
+        PipeManager.CheckFinalState();
     }
 
     public override void ProcessInteractable(XRInteractionUpdateOrder.UpdatePhase updatePhase)
@@ -79,27 +76,19 @@ public class Pipe : XRGrabInteractable
         base.ProcessInteractable(updatePhase);
         if (isSelected)
         {
-            if (MovePipes.CheckValidRotation(gameObject))
+            Quaternion newPositionRotation = Quaternion.Euler(GetRotationAngle(), 90, 0);
+            if (!_blueprint.transform.rotation.Equals(newPositionRotation))
             {
-                _validRotation = true;
-                Quaternion newPositionRotation = Quaternion.Euler(GetRotationAngle(), 90, 0);
-                if (!_blueprint.transform.rotation.Equals(newPositionRotation))
-                {
-                    _blueprint.transform.rotation = newPositionRotation;
-                }
-            }
-            else
-            {
-                _validRotation = false;
+                _blueprint.transform.rotation = newPositionRotation;
             }
         }
     }
 
-    public void ResetMaterial()
+    public void ChangeLightState(bool newLightState)
     {
-        if (GetComponent<MeshRenderer>().material.color != _colorStart)
+        if (_light != null && _light.activeSelf != newLightState)
         {
-            GetComponent<MeshRenderer>().material.color = _colorStart;
+            _light.SetActive(newLightState);
         }
     }
 
@@ -143,24 +132,73 @@ public class Pipe : XRGrabInteractable
 
     private float GetRotationAngle()
     {
-        float angleRight = Vector3.Angle(transform.InverseTransformDirection(Vector3.right), Vector3.up);
-        float angleTop = Vector3.Angle(transform.InverseTransformDirection(Vector3.up), Vector3.up);
+        // Schritt 1: Herausfinden ob gespiegelt oder nicht
 
-        if (angleTop < 45)
+        bool angleSwitch = Vector3.SignedAngle(transform.right, Vector3.right, Vector3.up) > 0;
+
+        float angleTop = Vector3.SignedAngle(transform.up, Vector3.up, Vector3.forward);
+
+        Debug.Log(angleTop);
+
+        if (CompareTag("StraightPipe") || CompareTag("StraightPipeRotateOnly"))
         {
-            return 0;
-        }
-        else if (angleTop > 135)
-        {
-            return 180;
-        }
-        else if (angleRight < 45)
-        {
-            return 90;
+            if (angleTop < -135 || angleTop > 135)
+            {
+                return 0;
+            }
+            else if (angleTop < -45)
+            {
+                return 90;
+            }
+            else if (angleTop < 45)
+            {
+                return 180;
+            }
+            else
+            {
+                return 270;
+            }
         }
         else
         {
-            return 270;
+            if (angleSwitch)
+            {
+                if (angleTop < -135 || angleTop > 135)
+                {
+                    return 270;
+                }
+                else if (angleTop < -45)
+                {
+                    return 0;
+                }
+                else if (angleTop < 45)
+                {
+                    return 90;
+                }
+                else
+                {
+                    return 180;
+                }
+            }
+            else
+            {
+                if (angleTop < -135 || angleTop > 135)
+                {
+                    return 180;
+                }
+                else if (angleTop < -45)
+                {
+                    return 270;
+                }
+                else if (angleTop < 45)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 90;
+                }
+            }
         }
     }
 }
