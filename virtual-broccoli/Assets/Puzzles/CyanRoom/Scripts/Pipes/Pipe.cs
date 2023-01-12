@@ -5,7 +5,7 @@ public class Pipe : XRGrabInteractable
 {
     [SerializeField] private Dictionary<string, GameObject> _neighborPipeBorders;
 
-    [SerializeField] private GameObject _light;
+    [SerializeField] private GameObject _light = null;
 
 
     private GameObject _placedGrid = null;
@@ -20,12 +20,15 @@ public class Pipe : XRGrabInteractable
         _neighborPipeBorders = new Dictionary<string, GameObject>();
         Transform blueprintTransform = transform.parent.gameObject.transform.Find("Blueprint");
         _blueprint = blueprintTransform != null ? blueprintTransform.gameObject : null;
-        _light.SetActive(false);
+        if (_light != null)
+        {
+            _light.SetActive(false);
+        }
     }
 
     public bool IsDragged()
     {
-        return isSelected && (CompareTag("StraightPipeRotateOnly") || CompareTag("AngledPipeRotateOnly") || CompareTag("StraightPipe") || CompareTag("AngledPipe"));
+        return isSelected && tag.Contains("Pipe");
     }
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
@@ -97,7 +100,7 @@ public class Pipe : XRGrabInteractable
 
     public void ChangeLightState(bool newLightState)
     {
-        if (_light.activeSelf != newLightState)
+        if (_light != null && _light.activeSelf != newLightState)
         {
             _light.SetActive(newLightState);
         }
@@ -143,7 +146,6 @@ public class Pipe : XRGrabInteractable
 
     private float GetRotationAngle()
     {
-
         // Schritt 1: Herausfinden ob gespiegelt oder nicht
 
         bool angleSwitch = Vector3.SignedAngle(transform.right, Vector3.right, Vector3.up) > 0;

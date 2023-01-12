@@ -118,12 +118,12 @@ GameObject:
   - component: {fileID: 6261435350214746041}
   - component: {fileID: 1875155481596591729}
   - component: {fileID: 6281110598669568776}
-  - component: {fileID: 3150355861514106698}
   - component: {fileID: 4276008287158655711}
   - component: {fileID: 9214232739838801574}
+  - component: {fileID: 7714199409170444171}
   m_Layer: 0
   m_Name: StraightPipe
-  m_TagString: PipeRotateOnly
+  m_TagString: StraightPipeRotateOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21865,20 +21865,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3912172475998338454}
   m_Mesh: {fileID: 0}
---- !u!64 &3150355861514106698
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3912172475998338454}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!114 &4276008287158655711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22021,6 +22007,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &7714199409170444171
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3912172475998338454}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 8, z: 3.978087}
+  m_Center: {x: 0.000022828579, y: -0.00000047683713, z: -0.00003027916}
 --- !u!1 &4231899237900469549
 GameObject:
   m_ObjectHideFlags: 0

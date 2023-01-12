@@ -275,7 +275,7 @@ GameObject:
   - component: {fileID: 2728344281071400471}
   m_Layer: 0
   m_Name: StraightPipe 1
-  m_TagString: Pipe
+  m_TagString: StraightPipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
