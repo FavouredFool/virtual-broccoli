@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class SoundTrigger : MonoBehaviour
 {
-    [SerializeField] string name;
+    [SerializeField] string roomName;
     [SerializeField] bool ambient;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !string.IsNullOrEmpty(name))
+        
+
+        if (other.CompareTag("Player") && !string.IsNullOrEmpty(roomName))
         {
-            AudioManager.Instance.PlayBackground(name);
+            Debug.Log("Entered " + roomName);
+
+            AudioManager.Instance.PlayBackground(roomName);
 
             if(ambient) RenderSettings.ambientLight = Color.black;
         }
@@ -19,6 +23,13 @@ public class SoundTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (ambient) RenderSettings.ambientLight = Color.white;
+        
+
+        if (other.CompareTag("Player") && ambient)
+        {
+            Debug.Log("Exited " + roomName);
+            RenderSettings.ambientLight = Color.white;
+        }
+        
     }
 }
