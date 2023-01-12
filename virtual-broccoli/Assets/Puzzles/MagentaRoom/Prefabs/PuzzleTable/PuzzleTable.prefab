@@ -51177,6 +51177,16 @@ PrefabInstance:
       propertyPath: m_VersionIndex
       value: 7733
       objectReference: {fileID: 0}
+    - target: {fileID: 3814549385450736865, guid: b8b07284bed99104dbff58a6d7777bff,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.0676049
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814549385450736865, guid: b8b07284bed99104dbff58a6d7777bff,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.66666615
+      objectReference: {fileID: 0}
     - target: {fileID: 4212480209738493231, guid: b8b07284bed99104dbff58a6d7777bff,
         type: 3}
       propertyPath: m_Mesh
@@ -51231,6 +51241,18 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212899969523521768, guid: b8b07284bed99104dbff58a6d7777bff,
+        type: 3}
+      propertyPath: m_text
+      value: 'Use the wood
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212899969523521768, guid: b8b07284bed99104dbff58a6d7777bff,
+        type: 3}
+      propertyPath: m_margin.z
+      value: -1.6126341
       objectReference: {fileID: 0}
     - target: {fileID: 7542178195261214633, guid: b8b07284bed99104dbff58a6d7777bff,
         type: 3}
