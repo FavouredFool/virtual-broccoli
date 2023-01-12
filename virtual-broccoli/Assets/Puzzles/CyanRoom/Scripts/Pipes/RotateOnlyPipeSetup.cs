@@ -10,7 +10,7 @@ public class RotateOnlyPipeSetup : MonoBehaviour
         foreach (Transform child in transform)
         {
             child.transform.position = boxAround.transform.position;
-            if (child.CompareTag("PipeRotateOnly"))
+            if (child.CompareTag("StraightPipeRotateOnly") || child.CompareTag("AngledPipeRotateOnly"))
             {
                 Pipe pipeComponent = child.gameObject.GetComponent<Pipe>();
                 pipeComponent.SetPlaceGrid(boxAround);

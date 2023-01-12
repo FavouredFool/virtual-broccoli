@@ -26,9 +26,7 @@ public class PipeCollisionChecker : MonoBehaviour
 
     private bool CanEnterOrLeave(Collider collider)
     {
-        return collider.gameObject.CompareTag("Ventil") ||
-            ((collider.gameObject.CompareTag("PipeRotateOnly") || collider.gameObject.CompareTag("Pipe"))
+        return collider.gameObject.CompareTag("Ventil") || (collider.gameObject.tag.Contains("Pipe")
             && (!_pipe.IsDragged() || !collider.gameObject.GetComponent<Pipe>().IsDragged()));
     }
-
 }
