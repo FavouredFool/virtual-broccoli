@@ -5,7 +5,6 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class LightstickDispenser : XRBaseInteractable
 {
     [SerializeField] private GameObject lightstickPrefab;
-    [SerializeField] private TMP_Text textMesh;
 
     private void Start()
     {
@@ -16,30 +15,21 @@ public class LightstickDispenser : XRBaseInteractable
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         base.OnSelectEntered(args);
-        int lightCount = int.Parse(textMesh.text);
-        if (lightCount > 0)
-        {
-            lightCount -= 1;
-            CreateAndSelectArrow(args, lightCount);
-            if (lightCount == 0)
-            {
-                GetComponent<MeshRenderer>().material.DisableKeyword("_EMISSION");
-            }
-        }
+
+        CreateAndSelectArrow(args);        
     }
 
-    private void CreateAndSelectArrow(SelectEnterEventArgs args, int lightCount)
+    private void CreateAndSelectArrow(SelectEnterEventArgs args)
     {
         // Create lightstick, force into interacting hand
-        LightStick lightstick = CreateLightStick(args.interactorObject.transform);
+        OffsetInteractorLightstick lightstick = CreateLightStick(args.interactorObject.transform);
         interactionManager.SelectEnter(args.interactorObject, lightstick);
-        textMesh.text = (lightCount).ToString();
     }
 
-    private LightStick CreateLightStick(Transform orientation)
+    private OffsetInteractorLightstick CreateLightStick(Transform orientation)
     {
         // Create lightstick, and get lightstick component
         GameObject lightstickObject = Instantiate(lightstickPrefab, orientation.position, orientation.rotation);
-        return lightstickObject.GetComponent<LightStick>();
+        return lightstickObject.GetComponent<OffsetInteractorLightstick>();
     }
 }

@@ -6,14 +6,17 @@ TagManager:
   tags:
   - Wheel
   - Ventil
-  - Pipe
-  - PipeRotateOnly
   - BoxDoor
   - IndexRegulator
   - MovableTower
   - HeightIndex
   - Plate
   - Wood
+  - Drag
+  - AngledPipeRotateOnly
+  - StraightPipeRotateOnly
+  - AngledPipe
+  - StraightPipe
   layers:
   - Default
   - TransparentFX
@@ -24,7 +27,7 @@ TagManager:
   - Fluid
   - Interactable
   - Noninteractable
-  - 
+  - Hands
   - 
   - 
   - 

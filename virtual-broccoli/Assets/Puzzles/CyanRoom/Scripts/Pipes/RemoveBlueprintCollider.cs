@@ -4,7 +4,7 @@ public class RemoveBlueprintCollider : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Pipe"))
+        if (other.CompareTag("StraightPipe") || other.CompareTag("AngledPipe"))
         {
             Pipe pipeComponent = other.gameObject.GetComponent<Pipe>();
             if (pipeComponent.GetPlaceGrid() != null)

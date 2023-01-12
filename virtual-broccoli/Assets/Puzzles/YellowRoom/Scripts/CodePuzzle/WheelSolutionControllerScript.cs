@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +9,7 @@ public class WheelSolutionControllerScript : MonoBehaviour
     private List<Collider> _partsPositionedCorrectly = new();
 
     [SerializeField]
-    private bool _solved = false;
+    private GameObject arrowMarker;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -34,7 +33,14 @@ public class WheelSolutionControllerScript : MonoBehaviour
 
     private void CheckCurrentState()
     {
-        _solved = _solutionParts.Count == _partsPositionedCorrectly.Count;
+        bool solved = _solutionParts.Count == _partsPositionedCorrectly.Count;
+        Material arrowMaterial = arrowMarker.GetComponent<MeshRenderer>().material;
+        if (solved && !arrowMaterial.IsKeywordEnabled("_EMISSION"))
+        {
+            arrowMaterial.EnableKeyword("_EMISSION");
+        } else if (!solved && arrowMaterial.IsKeywordEnabled("_EMISSION"))
+        {
+            arrowMaterial.DisableKeyword("_EMISSION");
+        }
     }
-
 }

@@ -80,7 +80,7 @@ public class RotationLever : MonoBehaviour
             }
         }
 
-        RotateBox();
+        if (_rotate) RotateBox();
     }
 
     private void UpdateLever()

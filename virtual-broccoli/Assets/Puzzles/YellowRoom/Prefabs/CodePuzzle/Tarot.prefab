@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 8875671280067387862}
   - component: {fileID: 1025645283824826896}
   - component: {fileID: 4431647960931017296}
-  - component: {fileID: 3294744984755988436}
-  m_Layer: 0
+  - component: {fileID: 1119903838795154129}
+  m_Layer: 8
   m_Name: Tarot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,9 +28,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046888246168956723}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.5}
+  m_LocalScale: {x: 0.015, y: 0.015, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9187896524467928574}
@@ -102,7 +102,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &4431647960931017296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,7 +190,7 @@ MonoBehaviour:
   m_MatchAttachRotation: 1
   m_SnapToColliderVolume: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 2
+  m_MovementType: 0
   m_VelocityDamping: 1
   m_VelocityScale: 1
   m_AngularVelocityDamping: 1
@@ -228,8 +228,8 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
---- !u!64 &3294744984755988436
-MeshCollider:
+--- !u!65 &1119903838795154129
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -238,10 +238,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2432090755550338912, guid: a08563b21ec033944851775bf2e385c9, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 6.9851093, y: 12.064948, z: 0.100004025}
+  m_Center: {x: 0.0002412796, y: -0.00024414062, z: 0.000664741}
 --- !u!1 &9093071639359060801
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,7 +250,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9187896524467928574}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Attachment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
