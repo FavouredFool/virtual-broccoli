@@ -7,7 +7,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance;
 
     [SerializeField] private Sound[] background, sfx;
-    [SerializeField] private AudioSource sourceBG, sourceSFX;
+    [SerializeField] private AudioSource sourceBG; //sourceSFX;
 
     private void Awake()
     {
@@ -36,7 +36,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlaySFX(string name)
+    /*public void PlaySFX(string name)
     {
         Sound sound = System.Array.Find(sfx, x => x.name == name);
 
@@ -48,6 +48,6 @@ public class AudioManager : MonoBehaviour
         {
             sourceSFX.PlayOneShot(sound.clip);
         }
-    }
+    }*/
 }
  
