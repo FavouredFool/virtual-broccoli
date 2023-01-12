@@ -13,7 +13,7 @@ public class Hover : MonoBehaviour
 
     void Start()
     {
-        _startPosition = transform.position;
+        SetStart();
     }
 
     void Update()
@@ -28,8 +28,14 @@ public class Hover : MonoBehaviour
         }
     }
 
+    private void SetStart()
+    {
+        _startPosition = transform.position;
+    }
+
     public void SetStop(bool stop)
     {
         _stop = stop;
+        if (_stop) SetStart();
     }
 }

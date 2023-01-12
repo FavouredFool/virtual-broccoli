@@ -34,12 +34,6 @@ public class SnapTriggerGrabInteractable : XRGrabInteractable
         {
             foreach (Transform trigger in _positionTrigger)
             {
-                /*IndexTrigger triggerScript = trigger.GetComponent<IndexTrigger>();
-                if (triggerScript.GetTriggered())
-                {
-                    transform.position = trigger.transform.position;
-                    triggerScript.SetTriggered(false);
-                }*/
                 if (_interactor.transform.GetComponent<Collider>().bounds.Intersects(trigger.GetComponent<Collider>().bounds))
                 {
                     Vector3 triggerPos = trigger.transform.position;
