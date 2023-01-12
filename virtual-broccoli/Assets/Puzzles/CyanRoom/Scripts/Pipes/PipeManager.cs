@@ -11,10 +11,6 @@ public class PipeManager : MonoBehaviour
 
     private static bool _solved = false;
 
-    private static readonly int _threshold = 10;
-
-    private static readonly int _comparisonValue = 45;
-
     private static GameObject puzzleStart;
     private static GameObject puzzleEnd;
     private static GameObject crystal;
@@ -75,49 +71,7 @@ public class PipeManager : MonoBehaviour
             }
         }
 
-        if (!foundNewNeighbor)
-        {
-            current.GetComponent<Pipe>().ChangeLightState(false);
-        }
+        current.GetComponent<Pipe>().ChangeLightState(foundNewNeighbor);
         return false;
-    }
-
-    public static bool CheckValidRotation(GameObject selectedPipe)
-    {
-        float y = selectedPipe.transform.localEulerAngles.y;
-        float z = selectedPipe.transform.localEulerAngles.z;
-
-        float restAngleY = y % _comparisonValue;
-        float restAngleZ = z % _comparisonValue;
-
-        /*if (!(restAngleY <= _threshold || restAngleY >= (_comparisonValue - _threshold)))
-        {
-            Debug.Log("invalid Y: " + y);
-            return false;
-        }
-
-        if (!(restAngleZ <= _threshold || restAngleZ >= (_comparisonValue - _threshold)))
-        {
-            Debug.Log("invalid Z: " + z);
-            return false;
-        }*/
-
-        int correctedY = (int)(restAngleY <= _threshold ? y - restAngleY : _comparisonValue * ((((int)y) / _comparisonValue) + 1));
-        int correctedZ = (int)(restAngleZ <= _threshold ? z - restAngleZ : _comparisonValue * ((((int)z) / _comparisonValue) + 1));
-        return CheckAbsoluteAngleDifference(correctedY, correctedZ);
-    }
-
-    private static bool CheckAbsoluteAngleDifference(int firstAngle, int secondAngle)
-    {
-        int max = Mathf.Max(firstAngle, secondAngle);
-        int min = Mathf.Min(firstAngle, secondAngle);
-        if (max <= 180 || min < 90)
-        {
-            firstAngle = firstAngle >= 180 ? firstAngle -= 360 : firstAngle;
-            secondAngle = secondAngle >= 180 ? secondAngle -= 360 : secondAngle;
-        }
-
-        //return Mathf.Abs(firstAngle - secondAngle) == 90;
-        return true;
     }
 }
