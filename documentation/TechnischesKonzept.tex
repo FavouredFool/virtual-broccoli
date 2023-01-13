@@ -1,5 +1,5 @@
 % !TEX root = Konzept.tex
-\chapter{Realisierung}
+\chapter{Technisches Konzept}
 %Es enthält Aussagen über Informationen, Regeln, Funktionen und Verarbeitungsschritte, die das zukünftige System enthalten muss. Es können auch nichtfunktionale Anforderungen wie Gebrauchstauglichkeit, Bedienbarkeit, Nachvollziehbarkeit der Verarbeitungsschritte und Testbarkeit gestellt werden.
 
 \section{Vorbereitung}
@@ -57,3 +57,23 @@ Die snapping-Option dreht den Blick eines Spielers in der virtuellen Welt auf Kn
 
 \subsection{Anforderung an Locomotion}
 Unser Projekt legt keinen Wert auf schnelle Bewegung, sondern vielmehr auf ein gutes Spielgefühl und das Lösen von Rätseln ohne Zeitdruck. Deswegen haben wir uns bei der Entwicklung für die Teleport-Fortbewegung und das Snap-Drehen entschieden. Des Weiteren wurden die teleportierbaren Bereiche stark reduziert um die Bewegung eines Spielers durch die jeweiligen Räume zu kontrollieren und somit sicherzustellen, dass ein Spieler die relevanten Bereiche eines Raumes erkennt und nicht zu stark von der Umgebung abgelenkt und verwirrt wird.
+
+
+
+
+
+% Nicht-funktionale Anforderungen, Erklärung von Algorithmen und technischen Entscheidungen
+\subsection{Technologie}
+\subsection{Technische Entscheidungen und ggf. Probleme / Umgang?}
+
+\subsubsection{Entwicklungsengine}
+Die technische Umsetzung des Projekts erfolgte in der Game Engine \dq Unity\dq. Dies ist eine der derzeit populärsten Game Engines auf dem Markt und stellt den Industrie-Standard für Spielentwicklung in virtueller Realität dar. Darüber hinaus bietet Unity eine offiziell unterstützte Erweiterung namens \dq XR Interaction Toolkit\dq an, welche viele grundlegende VR-Funktionalitäten in ein Unity Projekt integriert und somit den Entwicklungsprozess deutlich beschleunigt. Des Weiteren unterstützt das XR Interaction Toolkit die externe Software \dq OpenXR\dq.
+
+\subsubsection{Open XR}
+OpenXR stellt eine allgemeine Schnittstelle für eine Vielzahl von VR-Brillen dar, indem es allgemeine Aktionen definiert mit welchen das XR Interaction Toolkit und weitere Software arbeiten kann. Die device-basierten Mappings werden von OpenXR übernommen.
+
+\subsubsection{SteamVR}
+Die Videospiel-Vertriebsplattform \dq Steam\dq bietet eine eigene Softwarelösung \dq SteamVR\dq an, welche es ermöglicht verschiedene Geräte miteinander zu verbinden, damit diese beim Ausführen einer Software zusammenarbeiten. Es muss SteamVR genutzt werden, da dies die einzige Softwarelösung ist, die die HTC VIVE Tracker 3.0 unterstützt, welche genutzt werden um die SenseGloves im realen Raum zu tracken.
+
+\subsubsection{SenseCom}
+Um die SenseGloves zu nutzen muss erst eine Bluetooth-Verbindung mit einem Computer aufgebaut werden. Wenn auf diesem Computer eine Anwendung, welche die SenseGloves unterstützt, ausgeführt wird, wird automatisch die \dq SenseCom\dq Software ausgeführt, welche es ermöglicht die SenseGloves zu kalibrieren und daraufhin in der Anwendung zu nutzen.
