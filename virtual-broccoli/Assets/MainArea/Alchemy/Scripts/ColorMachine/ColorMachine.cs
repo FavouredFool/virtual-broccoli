@@ -63,7 +63,7 @@ public class ColorMachine : StateMachine
 
     public void ResetMixButton()
     {
-        if (_state is MixingState)
+        if (_state is not AwaitCrystalState)
         {
             SetResetMix(true);
         }
