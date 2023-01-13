@@ -3,13 +3,12 @@ using UnityEngine;
 
 public class WheelSolutionControllerScript : MonoBehaviour
 {
-    [SerializeField]
-    private List<Collider> _solutionParts;
+    [SerializeField] private List<Collider> _solutionParts;
 
     private List<Collider> _partsPositionedCorrectly = new();
 
-    [SerializeField]
-    private GameObject arrowMarker;
+    [SerializeField] private GameObject arrowMarker;
+    [SerializeField] private CrystalHideoutController crystalHideoutController;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -38,6 +37,7 @@ public class WheelSolutionControllerScript : MonoBehaviour
         if (solved && !arrowMaterial.IsKeywordEnabled("_EMISSION"))
         {
             arrowMaterial.EnableKeyword("_EMISSION");
+            crystalHideoutController.ActivateMovement(true);
         } else if (!solved && arrowMaterial.IsKeywordEnabled("_EMISSION"))
         {
             arrowMaterial.DisableKeyword("_EMISSION");
