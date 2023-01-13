@@ -50,9 +50,9 @@ public class OpenBoxController : MonoBehaviour
     {
         var step = _speed * Time.deltaTime;
         Quaternion localRotation = transform.localRotation;
-        switch (_blocked)
+        /*switch (_blocked)
         {
-            case BLOCKED.NOT:
+            case BLOCKED.NOT:*/
 
                 if (_rotate)
                 {
@@ -62,7 +62,7 @@ public class OpenBoxController : MonoBehaviour
                 {
                     transform.localRotation = Quaternion.RotateTowards(localRotation, _startRotation, step);
                 }
-                break;
+                /*break;
 
             case BLOCKED.TOP:
 
@@ -76,23 +76,23 @@ public class OpenBoxController : MonoBehaviour
             default:
 
                 break;
-        }
+        }*/
 
 
 
         switch (_state)
         {
             case STATE.OPEN:
-                if (localRotation == _startRotation) _state = STATE.CLOSING;
+                if (localRotation == _startRotation) _state = STATE.CLOSED;
                 break;
 
-            case STATE.CLOSING:
+            /* STATE.CLOSING:
                 _closing = true;
                 _state = STATE.CLOSED;
-                break;
+                break;*/
 
             case STATE.CLOSED:
-                _closing = false;
+                //_closing = false;
                 if (localRotation != _startRotation) _state = STATE.OPEN;
                 break;
 
@@ -101,10 +101,10 @@ public class OpenBoxController : MonoBehaviour
         }
     }
 
-    public bool getClosing()
+    /*public bool getClosing()
     {
         return _closing;
-    }
+    }*/
 
     public bool getClosed()
     {

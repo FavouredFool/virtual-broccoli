@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 8928771102076088533}
   - component: {fileID: 8928771102076088532}
   - component: {fileID: 8928771102076089131}
-  - component: {fileID: 8928771102076089130}
   - component: {fileID: 3221041352184506025}
   - component: {fileID: 136989000819512597}
   - component: {fileID: 6156162561964550376}
+  - component: {fileID: 5836878087105694254}
   m_Layer: 0
   m_Name: Movable Tower
   m_TagString: MovableTower
@@ -694,20 +694,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8928771102076089128}
   m_Mesh: {fileID: 0}
---- !u!64 &8928771102076089130
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8928771102076089128}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!54 &3221041352184506025
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -863,6 +849,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startPosition: {fileID: 0}
+--- !u!65 &5836878087105694254
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8928771102076089128}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2500002, y: 0.2500003, z: 1.2500002}
+  m_Center: {x: 0.000003814697, y: 0.0000001490116, z: 0.0000019073486}
 --- !u!1 &8928771102356514429
 GameObject:
   m_ObjectHideFlags: 0

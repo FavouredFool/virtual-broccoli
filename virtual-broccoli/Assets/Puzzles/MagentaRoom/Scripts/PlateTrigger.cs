@@ -18,6 +18,7 @@ public class PlateTrigger : MonoBehaviour
 
     private void SendCompareInfo(string comparement)
     {
+        Debug.Log(comparement);
         GetComponentInParent<SequenceController>().CompareTriggerPlate(name, comparement);
     }
 }
