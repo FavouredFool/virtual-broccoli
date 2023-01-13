@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 397304055}
   - component: {fileID: 397304054}
   - component: {fileID: 397304053}
+  - component: {fileID: 3515166885871856802}
   m_Layer: 0
   m_Name: Controller_Right
   m_TagString: Untagged
@@ -389,6 +390,31 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3515166885871856802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397304051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad7c899299aef714aa2a302a0c8de7ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocityInput:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Velocity Input
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 1b109811-df6a-4d5b-8085-3c9431734342
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -7216936193531243820, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
 --- !u!1 &414993803
 GameObject:
   m_ObjectHideFlags: 0
@@ -1385,6 +1411,7 @@ GameObject:
   - component: {fileID: 56449464}
   - component: {fileID: 1161819501}
   - component: {fileID: 1161819500}
+  - component: {fileID: 1275277407787733650}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1495,6 +1522,24 @@ CapsuleCollider:
   m_Radius: 0.1
   m_Height: 0.5
   m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!143 &1275277407787733650
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222842301175430420}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1222842301358957098
 GameObject:
@@ -1735,6 +1780,7 @@ GameObject:
   - component: {fileID: 958094709}
   - component: {fileID: 958094708}
   - component: {fileID: 1124186153}
+  - component: {fileID: 27740970814868632}
   m_Layer: 0
   m_Name: Controller_Left
   m_TagString: Untagged
@@ -2064,6 +2110,31 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &27740970814868632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086175677175061432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad7c899299aef714aa2a302a0c8de7ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocityInput:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Velocity Input
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: b36d4ff7-ed13-4818-9a03-840575944735
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 2405082450937095223, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
 --- !u!1 &2512307878863893897
 GameObject:
   m_ObjectHideFlags: 0
@@ -2813,6 +2884,7 @@ GameObject:
   - component: {fileID: 4088888618463088872}
   - component: {fileID: 1158375244760847455}
   - component: {fileID: 226402906}
+  - component: {fileID: 3360016762568726061}
   m_Layer: 0
   m_Name: Locomotion
   m_TagString: Untagged
@@ -2907,6 +2979,20 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: -8525429354371678379, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
+--- !u!114 &3360016762568726061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4290316254662350561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae6e43ff00c49994eb2d169a4832c5a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_System: {fileID: 4088888618463088872}
+  characterController: {fileID: 1275277407787733650}
 --- !u!1 &5383111837271854455
 GameObject:
   m_ObjectHideFlags: 0
