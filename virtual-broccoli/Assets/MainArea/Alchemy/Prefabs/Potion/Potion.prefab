@@ -34177,6 +34177,7 @@ GameObject:
   - component: {fileID: 7342904258424848357}
   - component: {fileID: 7342904258424848356}
   - component: {fileID: 7342904258424848347}
+  - component: {fileID: 5917173015087920379}
   m_Layer: 0
   m_Name: Neck
   m_TagString: Untagged
@@ -39853,6 +39854,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7342904258424848344}
   m_Mesh: {fileID: 0}
+--- !u!136 &5917173015087920379
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7342904258424848344}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.2038419
+  m_Height: 0.62316835
+  m_Direction: 1
+  m_Center: {x: -0.00066012144, y: 0.080282986, z: -0.0032064319}
 --- !u!1 &7342904258991917662
 GameObject:
   m_ObjectHideFlags: 0
@@ -42675,6 +42690,8 @@ GameObject:
   - component: {fileID: -1054091493021803425}
   - component: {fileID: -4082701224268283061}
   - component: {fileID: -4999548303797396161}
+  - component: {fileID: 4377998429924135969}
+  - component: {fileID: 348250651257705789}
   m_Layer: 0
   m_Name: Potion
   m_TagString: Untagged
@@ -42870,6 +42887,50 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &4377998429924135969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7342904259030385795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aeddf9e1ae3cd74e9a853213bd6c691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseTransform: {fileID: 0}
+  physicsBody: {fileID: 0}
+  allowedHands: 0
+  debugTxt: {fileID: 0}
+  ObjectGrabbed:
+    m_PersistentCalls:
+      m_Calls: []
+  ObjectReleased:
+    m_PersistentCalls:
+      m_Calls: []
+  moveSpeed: 100
+  rotateSpeed: 900
+  snapOptions: {fileID: 0}
+  alwaysTrackVelocity: 0
+--- !u!114 &348250651257705789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7342904259030385795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb79c54106a7c8f42bbd7e30991b639a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialProperties: {fileID: 11400000, guid: 3d02f076c5716794eb4889492f1f53ef, type: 2}
+  breakable: 0
+  yieldDistance: 0.03
+  mustBeGrabbed: 0
+  requiresThumb: 0
+  minimumFingers: 1
 --- !u!1 &7342904259196359431
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,6 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class ClimbingProvider : LocomotionProvider
 {
-    [SerializeField] private CharacterController characterController;
 
     private bool IsClimbing = false;
     private List<VelocityContainer> activeVelocities = new List<VelocityContainer>();
@@ -12,12 +11,6 @@ public class ClimbingProvider : LocomotionProvider
     protected override void Awake()
     {
         base.Awake();
-        FindCharacterController();
-    }
-
-    private void FindCharacterController()
-    {
-        characterController = system.xrOrigin.GetComponent<CharacterController>();
     }
 
     public void AddProvider(VelocityContainer provider)
@@ -67,14 +60,8 @@ public class ClimbingProvider : LocomotionProvider
         velocity = origin.TransformDirection(velocity);
         velocity *= Time.deltaTime;
 
-        if (characterController)
-        {
-            characterController.Move(-velocity);
-        }
-        else
-        {
-            origin.position -= velocity;
-        }
+        origin.position -= velocity;
+        
     }
 
     private Vector3 CollectControllerVelocity()

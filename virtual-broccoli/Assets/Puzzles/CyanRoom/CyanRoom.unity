@@ -17556,18 +17556,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1233484814}
     m_Modifications:
-    - target: {fileID: 1115483422, guid: 79fee2343f1069945991d15dbe3c0fa1, type: 3}
-      propertyPath: m_Height
-      value: 1.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 1115483422, guid: 79fee2343f1069945991d15dbe3c0fa1, type: 3}
-      propertyPath: m_Radius
-      value: 0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 1115483422, guid: 79fee2343f1069945991d15dbe3c0fa1, type: 3}
-      propertyPath: m_Center.y
-      value: -0.44
-      objectReference: {fileID: 0}
     - target: {fileID: 1392808335547785910, guid: 79fee2343f1069945991d15dbe3c0fa1,
         type: 3}
       propertyPath: m_Mesh
@@ -17578,11 +17566,6 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1133624183}
-    - target: {fileID: 4047232725668244747, guid: 79fee2343f1069945991d15dbe3c0fa1,
-        type: 3}
-      propertyPath: m_VersionIndex
-      value: 3764
-      objectReference: {fileID: 0}
     - target: {fileID: 5772118130745736690, guid: 79fee2343f1069945991d15dbe3c0fa1,
         type: 3}
       propertyPath: m_RootOrder
@@ -17643,11 +17626,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: fairways
       objectReference: {fileID: 0}
-    - target: {fileID: 7976935777259694775, guid: 79fee2343f1069945991d15dbe3c0fa1,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 1133624183}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79fee2343f1069945991d15dbe3c0fa1, type: 3}
 --- !u!4 &1115483418 stripped
@@ -17662,7 +17640,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-700606
+  m_Name: pb_Mesh-1613510
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
