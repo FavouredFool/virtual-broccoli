@@ -10,7 +10,7 @@ public class WheelLever : MonoBehaviour
     [SerializeField] private int _delayTimeInSeconds;
     private int _blockedPeriodEnd = 0;
     private bool _rotating;
-    private float _rotationEnd;
+    [SerializeField] private float _rotationEnd;
 
     [Header("Lever settings")]
     [SerializeField] private GameObject _movableLever;
