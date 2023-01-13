@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class FinishTrigger : MonoBehaviour
 {
-
-    [SerializeField]
-    private OpenBoxController _openBoxController;
+    //[SerializeField] private OpenBoxController openBoxController;
+    [SerializeField] private RoomClearController roomClearController;
 
     private BoxLabController _boxLabController;
 
@@ -19,8 +18,9 @@ public class FinishTrigger : MonoBehaviour
     {
         if (other.gameObject.Equals(_boxLabController.getSphere()))
         {
-            _openBoxController.setOpen(true);
-            _boxLabController.sphereReset();
+            roomClearController.ClearLight("marblebox");
+            //_openBoxController.setOpen(true);
+            _boxLabController.sphereReset();  
         }
     }
 }

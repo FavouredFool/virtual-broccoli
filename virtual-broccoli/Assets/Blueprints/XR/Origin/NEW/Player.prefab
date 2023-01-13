@@ -2790,7 +2790,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2992,7 +2992,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_System: {fileID: 4088888618463088872}
-  characterController: {fileID: 1275277407787733650}
 --- !u!1 &5383111837271854455
 GameObject:
   m_ObjectHideFlags: 0

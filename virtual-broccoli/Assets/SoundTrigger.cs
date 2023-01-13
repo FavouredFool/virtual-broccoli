@@ -13,7 +13,6 @@ public class SoundTrigger : MonoBehaviour
 
         if (other.CompareTag("Player") && !string.IsNullOrEmpty(roomName))
         {
-            Debug.Log("Entered " + roomName);
 
             AudioManager.Instance.PlayBackground(roomName);
 
@@ -27,7 +26,6 @@ public class SoundTrigger : MonoBehaviour
 
         if (other.CompareTag("Player") && ambient)
         {
-            Debug.Log("Exited " + roomName);
             RenderSettings.ambientLight = Color.white;
         }
         

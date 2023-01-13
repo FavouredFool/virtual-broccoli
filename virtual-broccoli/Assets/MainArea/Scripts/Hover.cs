@@ -36,6 +36,6 @@ public class Hover : MonoBehaviour
     public void SetStop(bool stop)
     {
         _stop = stop;
-        if (_stop) SetStart();
+        if (!_stop) SetStart();
     }
 }
