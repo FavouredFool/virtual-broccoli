@@ -17556,6 +17556,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1233484814}
     m_Modifications:
+    - target: {fileID: 1115483421, guid: 79fee2343f1069945991d15dbe3c0fa1, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1115483422, guid: 79fee2343f1069945991d15dbe3c0fa1, type: 3}
       propertyPath: m_Height
       value: 1.01
@@ -17662,7 +17666,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-700606
+  m_Name: pb_Mesh-1566066
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
