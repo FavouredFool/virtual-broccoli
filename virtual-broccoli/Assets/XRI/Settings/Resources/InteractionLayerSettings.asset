@@ -17,9 +17,9 @@ MonoBehaviour:
   - Interactable
   - Teleport
   - Crystal
-  - 
-  - 
-  - 
+  - MoveablePipe
+  - RotateOnlyPipe
+  - Key
   - 
   - 
   - 

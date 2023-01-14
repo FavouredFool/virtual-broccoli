@@ -61,6 +61,18 @@ public class ColorMachine : StateMachine
         }
     }
 
+    public void ResetMixButton()
+    {
+        if (_state is not AwaitCrystalState)
+        {
+            SetResetMix(true);
+        }
+        else
+        {
+            SetResetMachine(true);
+        }
+    }
+
 
     public CrystalColor GetActiveCrystal()
     {
@@ -124,6 +136,11 @@ public class ColorMachine : StateMachine
     public void SetResetMix(bool resetMix)
     {
         _resetMix = resetMix;
+    }
+
+    public void SetResetMachine(bool resetMachine)
+    {
+        _resetMachine = resetMachine;
     }
 
     public SmokeEmittor GetSmokeEmittor()

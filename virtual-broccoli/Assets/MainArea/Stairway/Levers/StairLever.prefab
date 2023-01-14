@@ -4518,7 +4518,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 25a9fb42d361f46ad89221f6d301e96e, type: 2}
+  - {fileID: 2100000, guid: c3e4c2946b986184ea62c46843282fbb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4834,7 +4834,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 25a9fb42d361f46ad89221f6d301e96e, type: 2}
+  - {fileID: 2100000, guid: c3e4c2946b986184ea62c46843282fbb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4926,9 +4926,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e710df1e17b11c4aacf27169ec450e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stairPos: 1
+  _stairLeft: 0
   _color: 1
   _movableLever: {fileID: 1031040528250063886}
+  _markerRenderer: {fileID: 4790873727895654996}
   handle: {fileID: 1489268242}
   start: {fileID: 855125057}
   end: {fileID: 1441557240}
@@ -5229,7 +5230,7 @@ MonoBehaviour:
   - {x: 0.031249998, y: -0.056088403}
   - {x: -0.031249998, y: 0.22342007}
   - {x: 0.031250022, y: 0.22342007}
-  - {x: -0.1249928, y: -0.00022673607}
+  - {x: -0.12499279, y: -0.00022673607}
   - {x: 0.12500721, y: -0.00019788742}
   - {x: -0.000021621832, y: 0.24977326}
   - {x: -0.031250022, y: -0.05610773}
@@ -5268,9 +5269,9 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 1, w: -1}
   - {x: 0, y: 0, z: 1, w: -1}
   - {x: 0, y: 0, z: 1, w: -1}
-  - {x: 1, y: 0.0000000066583397, z: 0, w: -1}
-  - {x: 1, y: 0.0000000066583397, z: 0, w: -1}
-  - {x: 1, y: 0.0000000066583397, z: 0, w: -1}
+  - {x: 1, y: 0.00000000665834, z: 0, w: -1}
+  - {x: 1, y: 0.00000000665834, z: 0, w: -1}
+  - {x: 1, y: 0.00000000665834, z: 0, w: -1}
   - {x: 0, y: 0, z: -1, w: -1}
   - {x: 0, y: 0, z: -1, w: -1}
   - {x: 0, y: 0, z: -1, w: -1}

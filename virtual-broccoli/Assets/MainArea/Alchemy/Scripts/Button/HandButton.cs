@@ -8,6 +8,8 @@ public class HandButton : XRBaseInteractable
 {
     [SerializeField]
     private UnityEvent OnPress = null;
+    [SerializeField]
+    private UnityEvent OnRelease = null;
 
     private float _yMin = 0.0f;
     private float _yMax = 0.0f;
@@ -47,15 +49,15 @@ public class HandButton : XRBaseInteractable
 
         _previousPress = false;
         SetYPosition(_yMax);
+        if (OnRelease != null) OnRelease.Invoke();
     }
 
     private void SetMinMax()
     {
         Collider collider = GetComponent<Collider>();
-
         Vector3 localBounds = transform.InverseTransformVector(collider.bounds.size);
-        
-        _yMin = transform.localPosition.y - (localBounds.y * 0.75f);
+
+        _yMin = transform.localPosition.y - (Mathf.Abs(localBounds.y) * 0.75f);
         _yMax = transform.localPosition.y;
     }
 

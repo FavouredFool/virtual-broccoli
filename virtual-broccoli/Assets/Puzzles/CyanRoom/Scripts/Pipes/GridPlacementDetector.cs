@@ -14,7 +14,7 @@ public class GridPlacementDetector : MonoBehaviour
 
     private void OnTriggerStay(Collider collider)
     {
-        if (collider.CompareTag("Pipe"))
+        if (collider.tag.Contains("Pipe"))
         {
             GameObject colliderObject = collider.gameObject;
             Pipe pipeComponent = colliderObject.GetComponent<Pipe>();

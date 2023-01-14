@@ -9,6 +9,7 @@ public class StairLever : MonoBehaviour
     [SerializeField] private bool _stairLeft;
     [SerializeField] private StairColor _color;
     [SerializeField] private GameObject _movableLever;
+    [SerializeField] private MeshRenderer _markerRenderer;
 
     [SerializeField] private XRBaseInteractable handle = null;
     [SerializeField] private Transform start = null;
@@ -111,7 +112,6 @@ public class StairLever : MonoBehaviour
     private void UpdateLever()
     {
         float newPercentage = startingPercentage + FindPercentageDifference();
-        Debug.Log(newPercentage);
 
         Quaternion setRotation = Quaternion.Slerp(Quaternion.Euler(new Vector3(0f, 0f, 45f)), Quaternion.Euler(new Vector3(0f, 0f, -45f)), newPercentage);
 
@@ -142,6 +142,11 @@ public class StairLever : MonoBehaviour
     private void ChangeStairPositions()
     {
         if (!_stairManager)
+        {
+            return;
+        }
+
+        if (_markerRenderer.material.color == Color.white)
         {
             return;
         }
