@@ -36,20 +36,20 @@ public class TpRestrict : MonoBehaviour
 
 
 
-    BaseTeleportationInteractable _tpInteractable;
+
 
 
     void Start()
     {
-        _tpInteractable = GetComponent<BaseTeleportationInteractable>();
-        _tpInteractable.enabled = false;
+        SetSocketTP(gameObject, false);
+
+        if (_middleStair)
+        {
+            SetStairTP(_middleStair, false);
+        }
+        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     void SetStairTP(StairRotationScript stair, bool allowed)
     {
@@ -229,7 +229,13 @@ public class TpRestrict : MonoBehaviour
                 }
             }
         }
-       
+    }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            UpdateTPs();
+        }
     }
 }
