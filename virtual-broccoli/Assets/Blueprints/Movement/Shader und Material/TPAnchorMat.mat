@@ -80,8 +80,8 @@ Material:
     m_Ints: []
     m_Floats:
     - _Alpha: 0.1
-    - _AlphaArea: 0.1
-    - _AlphaBorder: 0.75
+    - _AlphaArea: 0.02
+    - _AlphaBorder: 0.1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
