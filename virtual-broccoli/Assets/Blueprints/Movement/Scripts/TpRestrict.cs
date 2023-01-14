@@ -5,6 +5,9 @@ using static StairManager;
 
 public class TpRestrict : MonoBehaviour
 {
+    [SerializeField]
+    bool _initialStart;
+
     [Header("Stairs")]
     [SerializeField]
     StairRotationScript _middleStair;
@@ -41,7 +44,15 @@ public class TpRestrict : MonoBehaviour
 
     void Start()
     {
-        SetSocketTP(gameObject, false);
+        if (!_initialStart)
+        {
+            SetSocketTP(gameObject, false);
+        }
+        else
+        {
+            SetSocketTP(gameObject, true);
+        }
+        
 
         if (_middleStair)
         {
@@ -53,6 +64,10 @@ public class TpRestrict : MonoBehaviour
 
     void SetStairTP(StairRotationScript stair, bool allowed)
     {
+        if (!stair)
+        {
+            return;
+        }
         foreach (BaseTeleportationInteractable tpInteractable in stair.GetComponentsInChildren<BaseTeleportationInteractable>())
         {
             tpInteractable.enabled = allowed;
@@ -61,11 +76,17 @@ public class TpRestrict : MonoBehaviour
 
     void SetSocketTP(GameObject socket, bool allowed)
     {
+        if (!socket)
+        {
+            return;
+        }
         socket.GetComponent<BaseTeleportationInteractable>().enabled = allowed;
     }
 
     void UpdateTPs()
     {
+        SetSocketTP(gameObject, true);
+
         if (_middleStair)
         {
             int result = EvaluateMiddleStair();
@@ -162,6 +183,7 @@ public class TpRestrict : MonoBehaviour
         {
             StairRotation lowerRightRot = _lowerStairRight.GetStairRotation();
 
+            Debug.Log("lower right rotation: " + lowerRightRot);
             if (lowerRightRot == StairRotation.RIGHT)
             {
                 return false;
@@ -231,11 +253,34 @@ public class TpRestrict : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("stay " + gameObject.name);
+
+            UpdateTPs();
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            UpdateTPs();
+
+            Debug.Log("entered " + gameObject.name);
+            SetStairTP(_middleStair, false);
+            SetStairTP(_lowerStairLeft, false);
+            SetStairTP(_lowerStairRight, false);
+            SetStairTP(_upperStairLeft, false);
+            SetStairTP(_upperStairRight, false);
+
+
+            SetSocketTP(gameObject, false);
+            SetSocketTP(_lowerSocketLeft, false);
+            SetSocketTP(_lowerSocketRight, false);
+            SetSocketTP(_upperSocketLeft, false);
+            SetSocketTP(_upperSocketRight, false);
         }
     }
 }
