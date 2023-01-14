@@ -10,7 +10,7 @@ public class EndSceneManager : MonoBehaviour
     [SerializeField] private Transform _attachment;
     [SerializeField] private Transform _door;
     [SerializeField] private GameObject _playerCanvas;
-    //[SerializeField] private bool test;
+    [SerializeField] private bool test;
 
     [SerializeField] private IXRSelectInteractable _keyXR;
     private RotationController _rotationControllerKey;
@@ -75,6 +75,7 @@ public class EndSceneManager : MonoBehaviour
 
     private void Update()
     {
+        if (test);
         if(_startEnding)
         {
             if (_rotationControllerKey.GetRotationCheck())
@@ -85,6 +86,7 @@ public class EndSceneManager : MonoBehaviour
                 _completeEnding = true;
             }
         }
+
         if(_completeEnding)
         {
             _canvasImage.color += new Color(0, 0, 0, 0.001f);
