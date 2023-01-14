@@ -102,4 +102,17 @@ public class StairRotationScript : MonoBehaviour
     {
         _stairManager = stairManager;
     }
+
+    public StairRotation GetStairRotation()
+    {
+        if (_t <= 0.5f)
+        {
+            return StairRotation.LEFT;
+        }
+        else
+        {
+            return StairRotation.RIGHT;
+        }
+
+    }
 }
