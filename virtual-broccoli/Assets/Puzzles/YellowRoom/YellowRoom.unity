@@ -5714,7 +5714,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &143987430
 Transform:
   m_ObjectHideFlags: 0
@@ -6073,8 +6073,8 @@ Transform:
   - {fileID: 133248343}
   - {fileID: 1464164852}
   - {fileID: 1442216297}
-  - {fileID: 940038086}
   - {fileID: 1311343383}
+  - {fileID: 940038086}
   m_Father: {fileID: 1579790898}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10927,7 +10927,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh51178
+  m_Name: pb_Mesh749324
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

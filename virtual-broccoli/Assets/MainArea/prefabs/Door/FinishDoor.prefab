@@ -79,19 +79,7 @@ MonoBehaviour:
         m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4347157137898064770}
-        m_TargetAssemblyTypeName: EndSceneManager, Assembly-CSharp
-        m_MethodName: SetKey
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_OnHoverEntered:
@@ -2233,7 +2221,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 7987
+  m_VersionIndex: 7999
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2438,9 +2426,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotate: 0
-  _forward: 0
-  _speed: 150
-  _rotation: {x: 0, y: -90, z: 0}
+  _forward: 1
+  _speed: 120
+  _rotation: {x: 0, y: 0, z: -90}
 --- !u!1 &176396856802791664
 GameObject:
   m_ObjectHideFlags: 0
@@ -4580,7 +4568,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 10184
+  m_VersionIndex: 10196
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -4764,4 +4752,3 @@ MonoBehaviour:
   _attachment: {fileID: 176396856802791679}
   _door: {fileID: 176396856505747434}
   _playerCanvas: {fileID: 0}
-  test: 0

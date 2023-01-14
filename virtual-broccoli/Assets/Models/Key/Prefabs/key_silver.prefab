@@ -287,8 +287,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotate: 0
-  _speed: 170
-  _rotation: {x: 0, y: 0, z: 0}
+  _forward: 1
+  _speed: 150
+  _rotation: {x: 0, y: -170, z: 0}
 --- !u!1 &323136009
 GameObject:
   m_ObjectHideFlags: 0
