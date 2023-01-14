@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2527719303437217068}
   - component: {fileID: 3025493502050915172}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1184308527096002930}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: AttachTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 7342904258251975121}
   - component: {fileID: 7342904258251975120}
   - component: {fileID: 7342904258251975132}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: InnerBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34178,7 +34178,7 @@ GameObject:
   - component: {fileID: 7342904258424848356}
   - component: {fileID: 7342904258424848347}
   - component: {fileID: 5917173015087920379}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39881,7 +39881,7 @@ GameObject:
   - component: {fileID: 7342904258991917659}
   - component: {fileID: 7342904258991917658}
   - component: {fileID: 7342904258991917657}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cork
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42692,7 +42692,7 @@ GameObject:
   - component: {fileID: -4999548303797396161}
   - component: {fileID: 4377998429924135969}
   - component: {fileID: 348250651257705789}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Potion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42944,7 +42944,7 @@ GameObject:
   - component: {fileID: 7342904259196359427}
   - component: {fileID: 7342904259196359426}
   - component: {fileID: 7342904259196359437}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
