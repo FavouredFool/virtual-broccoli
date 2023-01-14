@@ -8,6 +8,9 @@ public class TpRestrict : MonoBehaviour
     [SerializeField]
     bool _initialStart;
 
+    [SerializeField]
+    StairManager _stairManager;
+
     [Header("Stairs")]
     [SerializeField]
     StairRotationScript _middleStair;
@@ -267,20 +270,20 @@ public class TpRestrict : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            TurnOffAllTPs();
+        }
+    }
 
-            Debug.Log("entered " + gameObject.name);
-            SetStairTP(_middleStair, false);
-            SetStairTP(_lowerStairLeft, false);
-            SetStairTP(_lowerStairRight, false);
-            SetStairTP(_upperStairLeft, false);
-            SetStairTP(_upperStairRight, false);
+    void TurnOffAllTPs()
+    {
+        foreach (Transform stair in _stairManager.GetStairParent())
+        {
+            SetStairTP(stair.GetComponent<StairRotationScript>(), false);
+        }
 
-
-            SetSocketTP(gameObject, false);
-            SetSocketTP(_lowerSocketLeft, false);
-            SetSocketTP(_lowerSocketRight, false);
-            SetSocketTP(_upperSocketLeft, false);
-            SetSocketTP(_upperSocketRight, false);
+        foreach (Transform notch in _stairManager.GetNotchParent())
+        {
+            SetSocketTP(notch.gameObject, false);
         }
     }
 }
