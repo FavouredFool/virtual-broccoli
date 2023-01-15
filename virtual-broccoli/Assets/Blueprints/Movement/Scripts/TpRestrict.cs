@@ -42,9 +42,6 @@ public class TpRestrict : MonoBehaviour
 
 
 
-
-
-
     void Start()
     {
         if (!_initialStart)
@@ -75,6 +72,10 @@ public class TpRestrict : MonoBehaviour
         {
             tpInteractable.enabled = allowed;
         }
+        foreach (MeshRenderer renderer in stair.GetTPAnchorParent().GetComponentsInChildren<MeshRenderer>())
+        {
+            renderer.enabled = allowed;
+        }
     }
 
     void SetSocketTP(GameObject socket, bool allowed)
@@ -84,6 +85,8 @@ public class TpRestrict : MonoBehaviour
             return;
         }
         socket.GetComponent<BaseTeleportationInteractable>().enabled = allowed;
+
+        socket.transform.GetChild(1).GetComponentInChildren<MeshRenderer>().enabled = allowed;
     }
 
     void UpdateTPs()
@@ -186,7 +189,6 @@ public class TpRestrict : MonoBehaviour
         {
             StairRotation lowerRightRot = _lowerStairRight.GetStairRotation();
 
-            Debug.Log("lower right rotation: " + lowerRightRot);
             if (lowerRightRot == StairRotation.RIGHT)
             {
                 return false;
@@ -260,8 +262,6 @@ public class TpRestrict : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("stay " + gameObject.name);
-
             UpdateTPs();
         }
     }

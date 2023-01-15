@@ -5,6 +5,9 @@ using static StairManager;
 public class StairRotationScript : MonoBehaviour
 {
     [SerializeField]
+    private GameObject _tpAnchorParent;
+
+    [SerializeField]
     private StairRotation _goalRotationEnum;
 
     [SerializeField]
@@ -48,6 +51,10 @@ public class StairRotationScript : MonoBehaviour
 
     public void Start()
     {
+        if (!_stairManager)
+        {
+            return;
+        }
         foreach(MeshRenderer renderer in _rightMarkers)
         {
             renderer.sharedMaterial = _stairManager.StairColorToMaterial(_firstColor);
@@ -114,5 +121,10 @@ public class StairRotationScript : MonoBehaviour
             return StairRotation.RIGHT;
         }
 
+    }
+
+    public GameObject GetTPAnchorParent()
+    {
+        return _tpAnchorParent;
     }
 }
