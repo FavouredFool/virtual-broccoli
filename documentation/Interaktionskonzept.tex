@@ -2,23 +2,16 @@
 \chapter{Interaktionskonzept}
 %Es zeigt sowohl den inhaltlichen und strukturellen Aufbau einer Anwendung als auch dessen Funktionsumfang. Wichtige Inhalte sind dabei die Informations- und Navigationsstruktur, das Verhalten und die Reaktionsweise von Interaktionselementen und Fehlermeldungen sowie grundlegende Interaktionsprinzipien.
 
-% Aufbau, Funktionales, Interaktion	
 Genau wie in der realen Welt, muss man sich in virtuellen Welten mit unterschiedlichen Interaktionsformen auseinandersetzen. Besonders für Videospiele in der virtuellen Realität kann man sich umso mehr mit diesem Thema beschäftigen, da die Sinne der Spieler hierbei deutlich intensiver angesprochen werden.
 \section{Interaktionstypen}
 Gemäß des definierten Ziels ist die Interaktion innerhalb von VR der Schwerpunkt einer Software. Um auf die einzelnen Interaktionstypen einzugehen, wurden diese im Projekt in drei Subgruppen aufgeteilt.
 
-%________________________________________________________________________________________________________________________________________________________________________________
-
 \subsection{Visuelle Interaktion}
 Ein Nutzer interagiert immer visuell mit der Welt, solange die Sicht in der VR-Brille nicht deutlich eingeschränkt wird. Während Sicht in VR als selbstverständlich angesehen wird, kann sie genutzt werden um die Erfahrung eines Nutzers deutlich zu verändern.\\
-Durch Verbesserungen in den Bereichen Auflösung, Sichtweite und weitere Hardware-spezifische Eigenschaften einer VR-Brille, jedoch auch an softwaretechnischen Gegebenheiten wie beispielsweise der Eigenart der Render-Pipeline oder Qualität von 3D-Modellen, wird versucht die Erfahrung innerhalb einer virtuellen Welt möglichst realistisch darzustellen. Jedoch ist der Spielraum an Veränderungen jeglicher Form in einer virtuellen Welt deutlich weitreichender als in der Realität. Dies bietet ein großes Repertoire an visuellen Interaktionsmöglichkeiten. Im Bereich der Augmented-Reality (AR) wird geforscht, um die Flexibilität der virtuellen Welt in die echte Welt einzubinden. Die Interaktionsmöglichkeiten sind dabei deutlich geringer als in einer virtuellen Welt. Allerdings wurden in dieser Branche bereits sehr interessante und hilfreiche Features entwickelt.\\
-
-%________________________________________________________________________________________________________________________________________________________________________________
+Durch Verbesserungen in den Bereichen Auflösung, Sichtweite und weitere Hardware-spezifische Eigenschaften einer VR-Brille, jedoch auch an softwaretechnischen Gegebenheiten wie beispielsweise der Eigenart der Render-Pipeline oder Qualität von 3D-Modellen, wird versucht die Erfahrung innerhalb einer virtuellen Welt möglichst realistisch darzustellen. Jedoch ist der Spielraum an Veränderungen jeglicher Form in einer virtuellen Welt deutlich weitreichender als in der Realität. Dies bietet ein großes Repertoire an visuellen Interaktionsmöglichkeiten. Im Bereich der Augmented-Reality (AR) wird geforscht, um die Flexibilität der virtuellen Welt in die echte Welt einzubinden. Die Interaktionsmöglichkeiten sind dabei deutlich geringer als in einer virtuellen Welt. Allerdings wurden in dieser Branche bereits sehr interessante und hilfreiche Features entwickelt.
 
 \subsection{Interaktion mit der Umgebung}
 Dieser Interaktionstyp basiert auf jeglichem Feedback, mit welchem die umliegende Welt auf direkte Aktionen eines Nutzers reagiert. Dies zeigt sich in subtilen Details, wie Fußabdrücken, die ein Charakter im Schnee hinterlässt, oder in offensichtlichen Auswirkungen auf die virtuelle Umgebung, wie beispielsweise ein umfallender Baum, nachdem ein Charakter ihn gefällt hat. Hierbei ist wichtig, dass dieser Interaktionstyp nicht den Akt des Baumfällens begutachtet, sondern sich vielmehr auf die darauf folgende Reaktion der Spielwelt, nämlich dass der Baum umfällt, fokussiert. Die Interaktion ist nicht auf eine virtuelle Umgebung beschränkt, wird jedoch vom Gefühl verstärkt, selbst in dieser lebendigen Welt zu stehen, da man es selbst direkt mitbekommt, anstatt sie nur auf einem 2D Bildschirm zu sehen.
-
-%________________________________________________________________________________________________________________________________________________________________________________
 \newpage
 \noindent
 \subsection{Haptische Interaktion}
@@ -26,12 +19,10 @@ Hingegen zu den obigen Interaktionsformen, welche auch in virtuellen Welten übl
 Diese Form der Interaktion spricht den Tastsinn an. Dadurch wirken virtuelle Gegenstände, Wände und weitere Objekte deutlich realer und die Immersion in die virtuelle Welt wird enorm verbessert. Wenn sich diese Welt nahezu realistisch anfühlt, können Nutzer schnell vergessen, dass sie sich im Moment nicht in der Realität befinden.\\
 Das Gefühl der haptischer Interaktion kann mit verschiedenen Wegen hervorgerufen werden. Letztendlich sind alle Umsetzungen auf Stimulierungen der Haut zurückzuführen. Dabei werden die Finger als primäre Körperteile zur Interaktion am häufigsten angesprochen. Vibration, Druck, Elektrizität, Hitze und Kälte, aber auch das physische Festsetzen einzelner Finger kann genutzt werden, um die virtuelle Welt darzustellen. Diese Gefühle können weiterhin auf verschiedene Teile des Körpers übertragen werden. Selbst die Verringerung der Temperatur eines Raumes, kann dabei helfen die Immersion in eine virtuelle Eislandschaft zu verbessern. An diesem Beispiel zeigt sich deutlich, dass haptischen Erfahrungen nicht nur positiver Natur sein müssen, um die Realität darzustellen.
 
-%________________________________________________________________________________________________________________________________________________________________________________
-
 \section{Technische Voraussetzung}
 Wie bereits in der Einleitung erwähnt, sollte sich im Rahmen dieses Projekt mit unterschiedlichen Interaktionsformen in virtuellen Welten befasst werden. Hierbei benötigt es verständlicherweise Hardware, die für eine solche Welt ausgelegt ist. Hierzu verwendeten wir neben einer Valve Index, zwei HTC VIVE Focus 3, welche uns im Laufe des Projekts zur Verfügung gestellt wurden. Doch um sich mit der oben erwähnten haptischen Interaktion beschäftigt beschäftigen und haptisches Feedback zu ermöglichen, verwendeten wir die \dq SenseGloves \dq. 
 
 \subsubsection{SenseGloves und Tracker}
 Diese Handschuhe bieten eine eigene Software an, um die Inversion virtueller Realitäten durch haptisches Feedback zu intensivieren. Die Software ist jedoch nur geringfügig mit dem XR Interaction Toolkit von Unity kompatibel, wodurch es im Laufe des Projekts zu zahlreiche Hindernissen und Problemen kam, welche in kommenden Abschnitten etwas genauer erläutert werden.\\ 
-Da Die SenseGloves nur ihre relative Position zu sich selbst bestimmen können, benötigte es Unterstützung von externen Trackern, welche die Position und Rotation der Handschuhe im Raum erkennen. Hierbei verwendeten wir die\dq HTC VIVE Tracker 3.0\dq, welche über ein Verbindungsstück auf die Handschuhe gesetzt wurden.\\
+Da Die SenseGloves nur ihre relative Position zu sich selbst bestimmen können, benötigte es Unterstützung von externen Trackern, welche die Position und Rotation der Handschuhe im Raum erkennen. Hierbei verwendeten wir die \dq HTC VIVE Tracker 3.0\dq, welche über ein Verbindungsstück auf die Handschuhe gesetzt wurden.\\
 
