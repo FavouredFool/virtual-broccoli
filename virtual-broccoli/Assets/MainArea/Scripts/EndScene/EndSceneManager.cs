@@ -11,7 +11,7 @@ public class EndSceneManager : MonoBehaviour
     [SerializeField] private Transform _door;
     [SerializeField] private GameObject _playerFadeQuad;
     [SerializeField] private GameObject _QuadText;
-    [SerializeField] private bool test;
+    //[SerializeField] private bool test;
 
     [SerializeField] private IXRSelectInteractable _keyXR;
     [SerializeField] private RotationController _rotationControllerKey;
@@ -26,6 +26,10 @@ public class EndSceneManager : MonoBehaviour
 
     public void SetKey()
     {
+        /*if(test)
+        {
+
+        }*/
         _keyXR = _socket.GetOldestInteractableSelected();
         //_keyXR.transform.position = _attachment.position;
         //_keyXR.transform.localRotation = Quaternion.Euler(new Vector3(0, -90, 90));
