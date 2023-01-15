@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 9160399460857383680}
   - component: {fileID: 9075754481942304592}
   - component: {fileID: 2221822918501570843}
+  - component: {fileID: 1580569177141732558}
   m_Layer: 0
   m_Name: Stair Notch Prefab
   m_TagString: Untagged
@@ -552,7 +553,7 @@ MeshCollider:
   m_GameObject: {fileID: 2603415266638806988}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -647,6 +648,19 @@ MonoBehaviour:
   m_Teleporting:
     m_PersistentCalls:
       m_Calls: []
+--- !u!65 &1580569177141732558
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2603415266638806988}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 16.366056, y: 3.0103626, z: 14.761795}
+  m_Center: {x: 1.6013174, y: 0.36159992, z: 0.027113914}
 --- !u!1 &2821114236665310726
 GameObject:
   m_ObjectHideFlags: 0
