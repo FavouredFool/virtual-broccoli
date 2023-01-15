@@ -50,8 +50,8 @@ public class SlotScript : MonoBehaviour
 
         _crystal = crystalXR.transform.GetComponent<CrystalObject>();
 
-        XRGrabInteractable grabInteractable = _crystal.GetComponent<XRGrabInteractable>();
-        grabInteractable.enabled = false;
+        /*XRGrabInteractable grabInteractable = _crystal.GetComponent<XRGrabInteractable>();
+        grabInteractable.enabled = false;*/
 
         
 
