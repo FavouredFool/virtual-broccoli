@@ -12,6 +12,9 @@ public class StairManager : MonoBehaviour
     private Transform _stairParent;
 
     [SerializeField]
+    private Transform _notchParent;
+
+    [SerializeField]
     private Transform _leverParent;
 
     [SerializeField]
@@ -91,5 +94,15 @@ public class StairManager : MonoBehaviour
     public Material GetMaterialByIndex(int index)
     {
         return _materials[index];
+    }
+
+    public Transform GetStairParent()
+    {
+        return _stairParent;
+    }
+
+    public Transform GetNotchParent()
+    {
+        return _notchParent;
     }
 }
