@@ -9,91 +9,64 @@ public class EndSceneManager : MonoBehaviour
     [SerializeField] private XRSocketInteractor _socket;
     [SerializeField] private Transform _attachment;
     [SerializeField] private Transform _door;
-    [SerializeField] private GameObject _playerCanvas;
+    [SerializeField] private GameObject _playerFadeQuad;
+    [SerializeField] private GameObject _QuadText;
     [SerializeField] private bool test;
 
     [SerializeField] private IXRSelectInteractable _keyXR;
-    private RotationController _rotationControllerKey;
-    private Image _canvasImage;
-    private GameObject _canvasText;
-    private bool _startEnding;
-    private bool _completeEnding;
+    [SerializeField] private RotationController _rotationControllerKey;
+    
+    private FadeScreen _fadeScreen;
 
     private void Start()
     {
-        _canvasImage = _playerCanvas.transform.GetChild(0).GetComponent<Image>();
-        _canvasText = _playerCanvas.transform.GetChild(1).gameObject;
-        _canvasImage.color = new Color(0, 0, 0, 0);
-        _playerCanvas.SetActive(false);
-        _canvasText.SetActive(false);
-        _startEnding = false;
-        _completeEnding = false;
+        _fadeScreen = _playerFadeQuad.GetComponent<FadeScreen>();
+        _QuadText.SetActive(false);
     }
 
     public void SetKey()
     {
-
         _keyXR = _socket.GetOldestInteractableSelected();
-        _keyXR.transform.position = _attachment.position;
-        _keyXR.transform.localRotation = Quaternion.Euler(new Vector3(0, -90, 90));
+        //_keyXR.transform.position = _attachment.position;
+        //_keyXR.transform.localRotation = Quaternion.Euler(new Vector3(0, -90, 90));
 
         XRGrabInteractable grabInteractable = _keyXR.transform.GetComponent<XRGrabInteractable>();
         grabInteractable.enabled = false;
 
-        _rotationControllerKey = _keyXR.transform.GetComponent<RotationController>();
         _rotationControllerKey.setOpen(true);
 
-
-        _startEnding = true;
-        //StartCoroutine(CheckKeyRotationUpdate());
+        StartCoroutine(CheckKeyRotationUpdate());
     }
 
-    /*IEnumerator CheckKeyRotationUpdate()
+    IEnumerator CheckKeyRotationUpdate()
     {
-        _rotationControllerKey.setOpen(true);
-        while (true)
+        
+        while (!_rotationControllerKey.GetRotationCheck())
         {
-            if (_rotationControllerKey.GetRotationCheck())
-            {
-                _door.GetComponent<RotationController>().setOpen(true);
-                break;
-            }
+            yield return null;
         }
 
-        _playerCanvas.SetActive(true);
-        while (true)
+        yield return new WaitForSeconds(1f);
+        _door.GetComponent<RotationController>().setOpen(true);
+        _fadeScreen.gameObject.SetActive(true);
+        _fadeScreen.FadeIn();
+
+        while (!_fadeScreen.GetFaded())
         {
-            _canvasImage.color += new Color(0, 0, 0, 0.05f);
-            if (_canvasImage.color == Color.black)
-            {
-                _canvasText.SetActive(true);
-                break;
-            }
+            yield return null;
         }
+
+        _QuadText.SetActive(true);
+
         yield break;
-    }*/
-
-    private void Update()
-    {
-        if (test);
-        if(_startEnding)
-        {
-            if (_rotationControllerKey.GetRotationCheck())
-            {
-                _door.GetComponent<RotationController>().setOpen(true);
-                _playerCanvas.SetActive(true);
-                _startEnding = false;
-                _completeEnding = true;
-            }
-        }
-
-        if(_completeEnding)
-        {
-            _canvasImage.color += new Color(0, 0, 0, 0.001f);
-            if (_canvasImage.color == Color.black)
-            {
-                _canvasText.SetActive(true);
-            }
-        }
     }
+
+    /*private void Update()
+    {
+        if (test)
+        {
+            test = false;
+            SetKey();
+        }
+    }*/
 }
