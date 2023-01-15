@@ -10,39 +10,18 @@ public class OpenBoxController : MonoBehaviour
     private Vector3 _rotation;
 
     private Quaternion _startRotation;
-    private bool _closing;
-    private enum BLOCKED { TOP, BOT, NOT };
-    private BLOCKED _blocked;
+
     private enum STATE { OPEN, CLOSING, CLOSED};
     private STATE _state;
 
     private void Start()
     {
         _startRotation = transform.localRotation;
-        _blocked = BLOCKED.NOT;
     }
 
     public void setOpen(bool open)
     {
         _rotate = open;
-    }
-
-    public void callBlocked(string trigger)
-    {
-        switch (trigger)
-        {
-            case "topTrigger":
-                _blocked = BLOCKED.TOP;
-                break;
-
-            case "botTrigger":
-                _blocked = BLOCKED.BOT;
-                break;
-
-            default:
-                _blocked = BLOCKED.NOT;
-                break;
-        }
     }
 
     // Update is called once per frame
