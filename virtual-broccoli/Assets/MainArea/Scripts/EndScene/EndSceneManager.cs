@@ -31,11 +31,11 @@ public class EndSceneManager : MonoBehaviour
 
         }*/
         _keyXR = _socket.GetOldestInteractableSelected();
-        //_keyXR.transform.position = _attachment.position;
-        //_keyXR.transform.localRotation = Quaternion.Euler(new Vector3(0, -90, 90));
+        /*_keyXR.transform.position = _attachment.position;
+        _keyXR.transform.localRotation = _attachment.rotation;
 
         XRGrabInteractable grabInteractable = _keyXR.transform.GetComponent<XRGrabInteractable>();
-        grabInteractable.enabled = false;
+        grabInteractable.enabled = false;*/
 
         _rotationControllerKey.setOpen(true);
 

@@ -78,7 +78,19 @@ MonoBehaviour:
         m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_OnHoverEntered:
@@ -4632,8 +4644,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 176396857154740052}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.123, y: 0.09224703, z: 0.94396836}
+  m_LocalRotation: {x: 0.7791262, y: 0, z: 0, w: 0.6268671}
+  m_LocalPosition: {x: -1.123, y: 0.118, z: 0.94396836}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4708,5 +4720,4 @@ MonoBehaviour:
   _door: {fileID: 176396856505747434}
   _playerFadeQuad: {fileID: 0}
   _QuadText: {fileID: 0}
-  test: 0
   _rotationControllerKey: {fileID: 2468304906545046226}
