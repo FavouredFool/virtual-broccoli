@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5270618083083258981}
   - component: {fileID: 5846330841823009355}
   - component: {fileID: 6304610359420789882}
-  - component: {fileID: 7554863158199427506}
   m_Layer: 0
   m_Name: Fingerhole
   m_TagString: Untagged
@@ -3033,20 +3032,6 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6890127738251661051}
-  m_Mesh: {fileID: 0}
---- !u!64 &7554863158199427506
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6890127738251661051}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!1 &7558484554829988386
 GameObject:
