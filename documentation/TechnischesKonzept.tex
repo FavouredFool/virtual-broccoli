@@ -1,79 +1,47 @@
 % !TEX root = Konzept.tex
 \chapter{Technisches Konzept}
 %Es enthält Aussagen über Informationen, Regeln, Funktionen und Verarbeitungsschritte, die das zukünftige System enthalten muss. Es können auch nichtfunktionale Anforderungen wie Gebrauchstauglichkeit, Bedienbarkeit, Nachvollziehbarkeit der Verarbeitungsschritte und Testbarkeit gestellt werden.
+In diesem Kapitel werden bestimmte Technologien, sowie dazugehörige technische Entscheidungen, nochmals aufgegriffen und erläutert.
+\section{Weitere Technologien}
+\subsection{SteamVR}
+Die Videospiel-Vertriebsplattform \dq Steam\dq bietet eine eigene Softwarelösung \dq SteamVR\dq an, welche es ermöglicht verschiedene Geräte miteinander zu verbinden, damit diese beim Ausführen einer Software zusammenarbeiten. Es muss SteamVR genutzt werden, da dies die einzige Softwarelösung ist, welche die HTC VIVE Tracker 3.0 und somit das Tracken der SenseGloves im realen Raum unterstützt.
+\subsection{SenseCom}
+Um die SenseGloves nutzen zu können, muss zunächst eine Bluetooth-Verbindung mit dem Computer aufgebaut werden. Wenn auf diesem eine Anwendung ausgeführt wird, welche die SenseGloves unterstützt, wird die Software \dq SenseCom\dq automatisch ausgeführt. Diese ermöglicht es, die SenseGloves zu kalibrieren und daraufhin über die Anwendung zu nutzen.
 
-\section{Vorbereitung}
+\section{Entwicklungsprozess}
+Während es mit der im Projekt genutzten Valve Index problemlos möglich war, das Spiel in Unity direkt auszuführen, zu debuggen und sich entsprechende Logs in der Konsole anzeigen zu lassen, musste der Entwicklungsprozess für die Focus 3 etwas angepasst werden. Da sie eine Standalone VR-Brille ist, erforderte das Testen von implementierten Funktionalitäten einen neuen Android-Build des Projekts, welches den Fortschritt der Entwicklung teilweise einschränkte.
+
+\section{Technische Entscheidungen}
+\subsection{Teleportationsbereich}
+Wie bereits angedeutet, wurde entschieden, die Anzahl der Teleportationsbereiche einzuschränken, um den Spieler durch die wichtigen Bereiche des Spiels zu lenken. Innerhalb dieses Bereichs können sich Spieler bewegen, jedoch kann es, dass die tatsächliche Spielfläche etwas kleiner als erwartet ausfallen kann, wodurch wir uns zusätzlich entschieden, die Teleportation in Bereichen so zu verändern, dass nicht die Mitte des Bereichs, sondern das exakt anvisierte Ziel als Position genutzt wird. Ohne diese Änderung hätte es für manche Spieler z.B. nicht möglich sein können, Tränke in den Kessel des Alchemie-Puzzles zu werfen.
+\subsubsection{Ausrichtung der Türen}
+Aus einem ähnlichen Grund passten wir die Richtung an in welche die Türen der Farbräume geöffnet werden müssen. Eine Tür zum Körper zu ziehen, war vor der oben erwähnten Anpassung für alle Spieler problemlos möglich, während das Öffnung in die entgegengesetzte Richtung außerhalb des Teleportationsbereich aus Platzgründen nicht möglich war. Folglich entschieden wir uns dazu beide Anpassungen zu vereinen, um ein optimales Gefühl zu bekommen.
+\subsection{Umgebung Einfärben}
+Da sich die Veränderung des Zustands von Materialien während des Spiels, auch nach Beendigung sich permanent auswirkt, musste ein Skript geschrieben werden, welches sich beim Starten des Spiels innerhalb der Methode \textit{Awake} sämtliche referenzierten Materialien merkt und anschließend weiß färbt. Nach Beendigung des Spiels würden über die Methode \textit{OnExit} eben diese Materialien wieder ihren Anfangszustand vor Spielstart einnehmen. Damit dies aber mit allen Materialien möglich ist, benötigten sie einen speziellen Shader, der über das Attribut \textit{\_Color} verfügt, sodass die Materialien umgefärbt werden können.
+\subsection{Steuerung Murmelbox}
+Die Steuerung der Murmelbox erfolgt wie bereits erwähnt über zwei Hebel, die sich direkt neben der Box befinden. Diese Form der Steuerung wurde gewählt, da die SenseGloves eine solch hohe Anzahl an Meshes in der Box nicht verarbeiten konnte. Weiterhin ist es seit Unity 5 nicht mehr möglich, nicht kinematische RigidBodies mit MeshCollidern zu verwenden. Da die Box eine Vielzahl an diesen verbaut hat, war es nicht möglich die Box direkt mit den VR-Controllern zu bewegen.
+\subsection{Rätseltisch: Part 1}
+Während das erste Rätsel des Rätseltischs den Spieler aktuell dazu auffordert, ein Tischbein auf die Fingerlöcher zu legen, bestand die vorherige Lösung dieses Rätsels daraus, dass sich die linke Kiste nach rechts öffnen würde und man somit beide Kisten gleichzeitig offen halten könnte, indem man die zuerst geöffnete Klappe über die andere offen hält. Anschließend sollten Spieler die Lichter mit der freien Hand aktivieren. 
+
+\newpage
+\noindent
+\section{Vorbereitung des Projekts}
 Da das Spiel viele verschiedene Hardware- und Softwarelösungen nutzt, ist die Vorbereitung vor Start des Spiels verhältnismäßig aufwendig.
 
 \begin{itemize}
 	\item Die VR-Brille, sowie alle Controller und gegebenenfalls weitere Hardware wie \dq Base Stations\dq, müssen angeschaltet und in dem Programm SteamVR erkannt werden.
 	\item Die HTC VIVE Tracker müssen angeschaltet und in SteamVR erkannt werden.
-	\item Der rechte SenseGlove muss angeschaltet, angezogen und über Bluetooth mit dem Computer verbunden werden.
+	\item Der rechte SenseGlove muss aktiviert, angezogen und über Bluetooth mit dem Computer verbunden werden.
 	\item Der Build des Projekts muss gestartet werden.
-	\item In der SenseCom-Anwendung, welche sich zu Start des Projekts öffnet, muss der angezogenene SenseGlove kalibriert werden.
-	\item Die VR-Brille muss aufgesetzt werden und in die freie Hand muss der VR-Controller genommen werden.
-	\item Das Spiel sollte spielbar sein.
+	\item In der SenseCom-Anwendung, welche sich zu Start des Projekts öffnet, muss der angezogene SenseGlove kalibriert werden.
+	\item Die VR-Brille muss aufgesetzt und der VR-Controller in die freie Hand genommen werden.
 \end{itemize}
+\noindent Dieser Aufwand ist für ein kundenfreundliches Spiel nur schlecht vertretbar und müsste signifikant verändert werden, sobald es veröffentlicht werden sollte. Dieses Problem ist aus der Position eines Spieleentwicklers jedoch nicht lösbar und nur schlecht umgehbar, da besonders der Bereich der Haptic Gloves noch keine allgemeine Schnittstelle bietet. Für VR-Brillen gibt es OpenXR zur gemeinsamen Input-Verarbeitung, jedoch sind Haptic Gloves noch so tief in der Entwicklung, dass nicht einmal bekannt ist, welche Form von VR-Gloves (faden-basiert, vibrations-basiert, Hitze-Kälte-sensibel) sich durchsetzen wird. Ohne diese grundlegenden Informationen kann keine allgemeine Grundlage geschaffen werden, weshalb Software-Unterstützung für jede Art von haptischen Handschuhen einzeln eingebaut werden muss.\\
+\noindent Um den Aufwand teilweise zu verringern, arbeitet SenseGlove an einer Lösung, mit welcher die haptischen Handschuhe sich selbst im realen Raum tracken. Dies würde HTC VIVE Tracker obsolet machen und somit einen Schritt in Richtung eines reduzierten Setups bieten.
 
-Dieser Aufwand ist für ein kundenfreundliches Spiel nur schlecht vertretbar und müsste signifikant verändert werden, sobald es veröffentlicht werden sollte. Dieses Problem ist aus der Position eines Spieleentwicklers jedoch nicht lösbar und nur schlecht umgehbar, da besonders der Bereich der Haptic Gloves noch keine allgemeine Schnittstelle bietet. Für VR-Brillen gibt es OpenXR zur gemeinsamen Input-Verarbeitung, jedoch sind Haptic Gloves noch so tief in der Entwicklung, dass nicht einmal bekannt ist, welche Form von VR-Glove (faden-basiert, vibrations-basiert, Hitze-Kälte-sensibel) sich durchsetzen wird. Ohne diese grundlegenden Informationen kann keine allgemeine Grundlage geschaffen werden, weshalb Software-Unterstützung für jede Art von haptischen Handschuhen einzeln eingebaut werden muss.\\
+\section{Interaktion mit Haptic-Gloves}
+Bei der Implementierung des Projekts fiel eine weitere visuelle Interaktionsform mit den SenseGloves eher zufällig auf. Durch diese werden die Hände in der echten Welt exakt auf die virtuelle Realität abgebildet. Wegen der in Abschnitt \dq Technisches Konzept\dq beschriebenen technischen Schwierigkeiten, muss ein Spieler gleichzeitig einen SenseGloves-Handschuh und einen VR-Controller in jeweils einer Hand halten. Durch diese zwei verschiedenen Geräte werden die Unterschiede der Darstellungen von Händen sehr schnell deutlich. Die Hand-Augen-Koordination, welche die SenseGloves einem Spieler bieten, führen zu deutlicher stärkerer Immersion als die grobe Annäherung, welche ein einfacher VR-Controller bietet. Besonders bei Aufgaben die Fingerfertigkeit benötigten, wie der bereits beschriebene Rätseltisch, war neben dem haptischen das visuelle Feedback der virtuellen Hände ein wichtiges Merkmal für verstärkte Immersion.
+\subsubsection{Haptik}
+Haptische Interaktion wurde in diesem Projekt besonders durch die \dq SenseGloves\dq realisiert. Diese Handschuhe sind in der Lage die Bewegung der Finger einer Hand festzusetzen. Diese Eigenschaft wurde im Spiel in verschiedenen Darstellungsformen genutzt. Besonders der Rätseltisch profitierte stark von den Fähigkeiten der haptischen Handschuhe, indem...
 
-Um den Aufwand teilweise zu verringern, arbeitet SenseGlove zurzeit an einer Lösung, mit welcher die haptischen Handschuhe sich selbst im realen Raum tracken. Dies würde HTC VIVE Tracker obsolet machen und somit einen Schritt in Richtung eines reduzierten Setups bieten.
-
-
-\section{Lösungskonflikte}
-Die hohe Menge verschiedener Hardware führt zu signifikanten Problemen in den Interaktionen zwischen den jeweiligen Softwarelösungen. Um diese Probleme zu lösen oder umgehen, mussten einige Kompromisse in der Entwicklung des Spiels gemacht werden, welche im Folgenden aufgezeigt werden.
-
-\subsection{Verschiedene Headmounts}
-TODO: Hier was zu verschiedenen Headmounts sagen? 
-
-\subsection{Das Unity Input System}
-In 2019 veröffentlichte Unity ein neues Input-System, welches vom Unity-eigenen XR Interaction Toolkit genutzt wurde. Das XR Interaction Toolkit bietet eine Vielzahl an simplen Interaktionen in VR wie Bewegungstypen, Greifen, Werfen, und vielem Weiteren. Dies bildet eine gute Grundlage für die Entwicklung in VR, da fundamentale Features nicht selbst entwickelt werden müssen. Die Anbindung an das Input-System erfolgt im Einklang mit OpenXR. OpenXR setzt für alle unterstützten VR-Controller gemeinsame Aktionen fest und händelt die gerätspezifische Ausführung selbst. Das Input-System muss sich somit ausschließlich an Funktionalität wie \dq Select\dq, oder \dq Trigger\dq anharken anstatt die Buttons der einzelnen Geräte anzusprechen. Dies ist ein sehr simples und dynamisches System, welches es VR-Entwicklern leicht macht, Inputs aller unterstützten VR-Controller zu verarbeiten ohne signifikanten Extraaufwand. \\
-
-Während dieses System sehr gut für den gewollten Nutzen funktioniert, ist es nicht gut erweiterbar. Wenn sich ein weiteres Gerät an die genannten Grundfunktionalitäten wie \dq Select\dq und \dq Trigger\dq anbieten möchte, wird das System sehr schnell sehr kompliziert. In unserem Beispiel äußerte sich dies darin, dass wir die SenseGloves nutzen wollten, um mit einer speziellen Finger-Geste ein Teleportationsfeature des XR Interaction Toolkits auszulösen. Während die Auswertung einer Geste durch die SenseGlove-eigene Softwarelösung trivial ist, ist das Unity Input-System so verschlossen gegenüber externer Anbindung, dass eine Anbindung an das XR Interaction Toolkit nicht möglich ist.\\
-
-Dass es eine theoretisch mögliche Lösung für dieses Problem gibt, zeigt sich darin, dass ein Unity-Mitarbeiter in seiner eigenen Zeit ein Skript veröffentlicht hat, welches ein Input-System Profil für die HTC VIVE Tracker erstellt. Dieses Profil bietet Funktionalität zum Abgreifen der realen Position und Rotation der Tracker an und half enorm dabei, die SenseGloves in Raum bewegbar zu machen. Dieses Skript ist jedoch für solch eine simple Hardware schon sehr komplex. Eine Anbindung der SenseGloves an das Input-System ist ein zu großes Unterfangen für dieses Projekt. \\
-
-Somit sind VR-Grundfunktionen nur über VR-Controller ansprechbar. Anstatt zu versuchen die gesamten Funktionalitäten neu zu schreiben, entschlossen wir uns dafür, einen Spieler sowohl einen VR-Controller, als auch einen SenseGlove an jeweils einer Hand nutzen zu lassen. Indem wir die gesamt-nötige Grundfunkionalität auf einen VR-Controller setzen, steht uns frei die haptischen Handschuhe vorzuzeigen ohne einen Durchlauf des Spiels unmöglich zu machen.
-
-
-\section{Motion Sickness}
-Motion Sickness ist ein wichtiges Thema in der VR-Entwicklung. Manche Probleme können durch verbesserte Hardware gelöst werden, indem beispielsweise die Bildschirmauflösung erhöht wird, jedoch müssen viele sensible Entscheidungen in der Software selbst getroffen werden. Dabei ist die Art der Bewegung im Raum (auch genannt: \dq Locomotion\dq) eine sehr grundlegende Richtungsentscheidung.
-
-\subsection{Verschiedene Arten von Locomotion}
-Locomotion teilt sich in zwei Subgruppen auf: Fortbewegung und Drehung. Dabei kann ein Spieler sich immer physisch im Raum bewegen und seinen Kopf drehen, um eine eins-zu-eins Übertragung dieser Bewegung in die virtuelle Welt zu erhalten. Ein Spieler kann sich somit ohne Knopf-Inputs hinhocken, umschauen und jegliche andere Aktivitäten vollführen, die innerhalb des kleinen Play-spaces möglich sind.\\
-
-Sollte das Spiel jedoch weitlaufendere Bewegungen fordern, wird dies zu einem Problem. Ein Spieler darf den Playspace in der echten Welt natürlich nicht verlassen, während Spiele sich nicht auf diesen Bereich begrenzen wollen. Spiele bieten einem Spieler somit die Option an, sich durch Knopf-Inputs fortzubewegen und zu drehen.
-
-\subsubsection{Fortbewegung}
-Fortbewegung kann \dq continuous\dq oder via \dq teleportation\dq passieren. Ersteres nutzt einen Joystick um den Spieler in eine Richtung zu bewegen. Diese Bewegung ist fortwährend in Echtzeit. Dadurch bewegt der virtuelle Körper sich, der echte jedoch nicht. Viele Nutzer erfahren zumindest initial das Gefühl, dass ihr Körper unter ihnen weg gezogen wird. Dies führt zu Motion Sickness. Hingegen ist diese Art der Fortbewegung sehr schnell und präzise und somit in einem schnellen Spiel vorteilhaft.\\
-
-Teleportation kann vom Spieler per Knopfdruck aktiviert werden. Daraufhin zeigt das Programm einen Strahl an, mit welchem eine Zielposition auf einem Untergrund bestimmt werden kann, zu welchem der Spieler sich teleportieren möchte. Da diese Positionsänderung sehr schnell und oftmals mit einem kurzen fade-to-black passiert, wird hierbei Motion Sickness für die meisten Nutzer vermieden. Diese Art der Fortbewegung ist hingegen langsamer und in manchen Spielen störend.
-
-\subsubsection{Drehung}
-Damit ein Spieler sich nicht in der echten Welt um sich selbst drehen muss, kann diese Rotation auch per Knopfdruck erledigt werden. Erneut gibt es zwei Lösungen: \dq continuous\dq und \dq snapping\dq. Continuous stellt hierbei erneut eine konstante Drehung in Echtzeit mit einer festgelegten Geschwindigkeit dar, sollte ein Joystick in die jeweilige Richtung bewegt werden. Ebenso wie bei der Fortbewegung führt diese Form der Drehung oftmals zu Motion Sickness, da die Augen eine Drehung erfahren die der Körper selbst nicht vollführt.\\
-
-Die snapping-Option dreht den Blick eines Spielers in der virtuellen Welt auf Knopfdruck um einen festgelegten Winkel. Dies vermeidet Motion Sickness, indem keine Bewegung simuliert wird sondern sich der Blick direkt ändert.
-
-
-\subsection{Anforderung an Locomotion}
-Unser Projekt legt keinen Wert auf schnelle Bewegung, sondern vielmehr auf ein gutes Spielgefühl und das Lösen von Rätseln ohne Zeitdruck. Deswegen haben wir uns bei der Entwicklung für die Teleport-Fortbewegung und das Snap-Drehen entschieden. Des Weiteren wurden die teleportierbaren Bereiche stark reduziert um die Bewegung eines Spielers durch die jeweiligen Räume zu kontrollieren und somit sicherzustellen, dass ein Spieler die relevanten Bereiche eines Raumes erkennt und nicht zu stark von der Umgebung abgelenkt und verwirrt wird.
-
-
-
-
-
-% Nicht-funktionale Anforderungen, Erklärung von Algorithmen und technischen Entscheidungen
-\subsection{Technologie}
-\subsection{Technische Entscheidungen und ggf. Probleme / Umgang?}
-
-\subsubsection{Entwicklungsengine}
-Die technische Umsetzung des Projekts erfolgte in der Game Engine \dq Unity\dq. Dies ist eine der derzeit populärsten Game Engines auf dem Markt und stellt den Industrie-Standard für Spielentwicklung in virtueller Realität dar. Darüber hinaus bietet Unity eine offiziell unterstützte Erweiterung namens \dq XR Interaction Toolkit\dq an, welche viele grundlegende VR-Funktionalitäten in ein Unity Projekt integriert und somit den Entwicklungsprozess deutlich beschleunigt. Des Weiteren unterstützt das XR Interaction Toolkit die externe Software \dq OpenXR\dq.
-
-\subsubsection{Open XR}
-OpenXR stellt eine allgemeine Schnittstelle für eine Vielzahl von VR-Brillen dar, indem es allgemeine Aktionen definiert mit welchen das XR Interaction Toolkit und weitere Software arbeiten kann. Die device-basierten Mappings werden von OpenXR übernommen.
-
-\subsubsection{SteamVR}
-Die Videospiel-Vertriebsplattform \dq Steam\dq bietet eine eigene Softwarelösung \dq SteamVR\dq an, welche es ermöglicht verschiedene Geräte miteinander zu verbinden, damit diese beim Ausführen einer Software zusammenarbeiten. Es muss SteamVR genutzt werden, da dies die einzige Softwarelösung ist, die die HTC VIVE Tracker 3.0 unterstützt, welche genutzt werden um die SenseGloves im realen Raum zu tracken.
-
-\subsubsection{SenseCom}
-Um die SenseGloves zu nutzen muss erst eine Bluetooth-Verbindung mit einem Computer aufgebaut werden. Wenn auf diesem Computer eine Anwendung, welche die SenseGloves unterstützt, ausgeführt wird, wird automatisch die \dq SenseCom\dq Software ausgeführt, welche es ermöglicht die SenseGloves zu kalibrieren und daraufhin in der Anwendung zu nutzen.
+%TODO: Erklären, warum Leiter nicht mit Haptic Gloves funktioniert
