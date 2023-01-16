@@ -22,7 +22,6 @@ public class EndSceneManager : MonoBehaviour
     {
         _fadeScreen = _playerFadeQuad.GetComponent<FadeScreen>();
         _QuadText.SetActive(false);
-        _QuadText.SetActive(true);
     }
 
     public void SetKey()
