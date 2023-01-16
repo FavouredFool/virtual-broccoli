@@ -273,6 +273,8 @@ GameObject:
   - component: {fileID: 4276008287158655711}
   - component: {fileID: 9214232739838801574}
   - component: {fileID: 2728344281071400471}
+  - component: {fileID: 912542664538363756}
+  - component: {fileID: 4473808213773048865}
   m_Layer: 0
   m_Name: StraightPipe 1
   m_TagString: StraightPipe
@@ -22171,6 +22173,50 @@ CapsuleCollider:
   m_Height: 7.7711105
   m_Direction: 1
   m_Center: {x: -0.000007663454, y: -0.0071016946, z: 0.00000028383164}
+--- !u!114 &912542664538363756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3912172475998338454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb79c54106a7c8f42bbd7e30991b639a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialProperties: {fileID: 11400000, guid: 3d02f076c5716794eb4889492f1f53ef, type: 2}
+  breakable: 0
+  yieldDistance: 0.03
+  mustBeGrabbed: 0
+  requiresThumb: 0
+  minimumFingers: 1
+--- !u!114 &4473808213773048865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3912172475998338454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aeddf9e1ae3cd74e9a853213bd6c691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseTransform: {fileID: 6994561817718372838}
+  physicsBody: {fileID: 9214232739838801574}
+  allowedHands: 0
+  debugTxt: {fileID: 0}
+  ObjectGrabbed:
+    m_PersistentCalls:
+      m_Calls: []
+  ObjectReleased:
+    m_PersistentCalls:
+      m_Calls: []
+  moveSpeed: 100
+  rotateSpeed: 900
+  snapOptions: {fileID: 0}
+  alwaysTrackVelocity: 0
 --- !u!1 &6638072452851270947
 GameObject:
   m_ObjectHideFlags: 0
