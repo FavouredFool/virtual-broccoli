@@ -26,16 +26,9 @@ public class EndSceneManager : MonoBehaviour
 
     public void SetKey()
     {
-        /*if(test)
-        {
-
-        }*/
         _keyXR = _socket.GetOldestInteractableSelected();
-        /*_keyXR.transform.position = _attachment.position;
-        _keyXR.transform.localRotation = _attachment.rotation;
-
-        XRGrabInteractable grabInteractable = _keyXR.transform.GetComponent<XRGrabInteractable>();
-        grabInteractable.enabled = false;*/
+        /* XRGrabInteractable grabInteractable = _keyXR.transform.GetComponent<XRGrabInteractable>();
+        grabInteractable.enabled = false; */
 
         _rotationControllerKey.setOpen(true);
 
@@ -64,13 +57,4 @@ public class EndSceneManager : MonoBehaviour
 
         yield break;
     }
-
-    /*private void Update()
-    {
-        if (test)
-        {
-            test = false;
-            SetKey();
-        }
-    }*/
 }
