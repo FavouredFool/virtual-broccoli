@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8973005240799827317}
   m_Layer: 8
   m_Name: Golf_ball
-  m_TagString: Untagged
+  m_TagString: Golfball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
