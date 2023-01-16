@@ -4466,7 +4466,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 974
+  m_VersionIndex: 1049
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -4576,6 +4576,7 @@ GameObject:
   - component: {fileID: 1031040528250063875}
   - component: {fileID: 1031040528250063884}
   - component: {fileID: 1647588819}
+  - component: {fileID: 599289613}
   m_Layer: 0
   m_Name: Movable Lever
   m_TagString: Untagged
@@ -4782,7 +4783,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 983
+  m_VersionIndex: 1058
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -4877,6 +4878,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0625, y: 0.44125104, z: 0.031250075}
   m_Center: {x: -0.00000023841858, y: 0.7799541, z: 0.000000022351742}
+--- !u!114 &599289613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031040528250063886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb79c54106a7c8f42bbd7e30991b639a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialProperties: {fileID: 11400000, guid: 3d02f076c5716794eb4889492f1f53ef, type: 2}
+  breakable: 0
+  yieldDistance: 0.03
+  mustBeGrabbed: 0
+  requiresThumb: 0
+  minimumFingers: 1
 --- !u!1 &1031040528635391958
 GameObject:
   m_ObjectHideFlags: 0
@@ -4926,7 +4945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e710df1e17b11c4aacf27169ec450e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stairLeft: 0
+  _stairLeft: 1
   _color: 1
   _movableLever: {fileID: 1031040528250063886}
   _markerRenderer: {fileID: 4790873727895654996}
@@ -5289,7 +5308,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1504
+  m_VersionIndex: 1573
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
