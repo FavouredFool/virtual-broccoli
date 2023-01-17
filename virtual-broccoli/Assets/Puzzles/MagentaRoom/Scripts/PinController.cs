@@ -47,6 +47,6 @@ public class PinController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(!_openController.getClosed()) setActive(!_active);
+        if(!_openController.GetClosed()) setActive(!_active);
     }
 }

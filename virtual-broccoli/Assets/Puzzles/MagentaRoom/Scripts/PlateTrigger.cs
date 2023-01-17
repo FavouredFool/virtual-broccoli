@@ -1,25 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class PlateTrigger : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    [SerializeField] private XRSocketInteractor _socket;
+    private IXRSelectInteractable _otherXR;
+
+    //TODO test this
+    public void TriggerEnter()
     {
-        Debug.Log(other.name);
-        if (other.CompareTag("Plate"))
-        {
-            other.transform.position = transform.position;
-            SendCompareInfo(other.name);
-        } 
-            
-            
+        _otherXR = _socket.GetOldestInteractableSelected();
+        SendCompareInfo(_otherXR.transform.gameObject.name);
     }
 
-    private void OnTriggerExit(Collider other)
+    public void TriggerExit()
     {
-        Debug.Log(other.name);
-        if (other.CompareTag("Plate")) SendCompareInfo("");
+        SendCompareInfo("");
     }
 
     private void SendCompareInfo(string comparement)

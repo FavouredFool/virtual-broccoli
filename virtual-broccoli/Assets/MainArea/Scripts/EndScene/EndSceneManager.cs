@@ -1,22 +1,17 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class EndSceneManager : MonoBehaviour
 {
     [SerializeField] private XRSocketInteractor _socket;
-    [SerializeField] private Transform _attachment;
     [SerializeField] private Transform _door;
     [SerializeField] private GameObject _playerFadeQuad;
     [SerializeField] private GameObject _QuadText;
-    //[SerializeField] private bool test;
-
-    [SerializeField] private IXRSelectInteractable _keyXR;
     [SerializeField] private RotationController _rotationControllerKey;
     
     private FadeScreen _fadeScreen;
+    private IXRSelectInteractable _keyXR;
 
     private void Start()
     {

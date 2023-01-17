@@ -14,7 +14,7 @@ public class Puzzle1_Manager : PuzzleTableManager
         foreach (Transform childTransform in _boxes)
         {
             Transform child = childTransform.GetChild(0);
-            state = child.GetChild(0).GetComponent<OpenBoxController>().getClosed();
+            state = child.GetChild(0).GetComponent<OpenBoxController>().GetClosed();
             if (state)
             {
                 foreach (Transform pin in child.GetChild(1))
