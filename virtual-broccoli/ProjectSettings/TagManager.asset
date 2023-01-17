@@ -12,11 +12,11 @@ TagManager:
   - HeightIndex
   - Plate
   - Wood
-  - Drag
   - AngledPipeRotateOnly
   - StraightPipeRotateOnly
   - AngledPipe
   - StraightPipe
+  - Golfball
   layers:
   - Default
   - TransparentFX
