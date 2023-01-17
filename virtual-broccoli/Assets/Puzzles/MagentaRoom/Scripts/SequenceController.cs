@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,34 +9,29 @@ public class SequenceController : MonoBehaviour
     private void Start()
     {
         _letterSeq = new Dictionary<string, bool>();
-        foreach (Transform childTrnasform in transform)
+        foreach (Transform childTransform in transform)
         {
-            _letterSeq.Add(childTrnasform.name, false);
+            if (!childTransform.name.StartsWith("Trigger"))
+            {
+                _letterSeq.Add(childTransform.name, false);
+            }
         }
     }
 
     public void CompareTriggerPlate(string triggerName, string plateName)
     {
-        string check = "";
-        switch (triggerName)
+        if (!_letterSeq.ContainsKey(triggerName))
         {
-            case "Space - Trigger":
-            case "Space2 - Trigger":
-                check = "Space";
-                break;
-
-            case "P - Trigger":
-                check = "P";
-                break;
-
-            case "N - Trigger":
-                check = "N";
-                break;
-
-            default:
-                check = "WrongName";
-                break;
+            return;
         }
+
+        string check = triggerName switch
+        {
+            "Space - Trigger" or "Space2 - Trigger" => "Space",
+            "P - Trigger" => "P",
+            "N - Trigger" => "N",
+            _ => "WrongName",
+        };
 
         _letterSeq[triggerName] = plateName.Equals(check);
         if (!_triggered) SetTriggered(true);
