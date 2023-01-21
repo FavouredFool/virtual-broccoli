@@ -1,30 +1,34 @@
 % !TEX root = Konzept.tex
 \chapter{Technisches Konzept}
 %Es enthält Aussagen über Informationen, Regeln, Funktionen und Verarbeitungsschritte, die das zukünftige System enthalten muss. Es können auch nichtfunktionale Anforderungen wie Gebrauchstauglichkeit, Bedienbarkeit, Nachvollziehbarkeit der Verarbeitungsschritte und Testbarkeit gestellt werden.
-In diesem Kapitel werden bestimmte Technologien sowie dazugehörige technische Entscheidungen nochmals aufgegriffen und erläutert.
-\section{Weitere Technologien}
-\subsection{SteamVR}
+In diesem Kapitel werden technische Voraussetzungen zum Nutzen der Software erläutert und Entscheidungen in der Entwicklung aufgegriffen.
+
+\section{Technische Voraussetzung}
+
+\subsection{Hardware}
+\subsubsection{Headmounts}
+Wir verwendeten in der Entwicklung der VR-Umgebung eine Valve Index und zwei HTC VIVE Focus 3.
+
+Während es mit der Valve Index problemlos möglich war, das Spiel in Unity direkt auszuführen, zu debuggen und sich entsprechende Logs in der Konsole anzeigen zu lassen, musste der Entwicklungsprozess für die Focus 3 etwas angepasst werden. Da sie eine Standalone VR-Brille ist, erforderte das Testen von implementierten Funktionalitäten einen neuen Android-Build des Projekts, welches den Fortschritt der Entwicklung teilweise einschränkte.
+
+\subsubsection{Haptic Gloves und Tracker}
+Um haptische Interaktion zu verstärken indem wir haptisches Feedback ermöglichen, verwendeten wir die \dq SenseGloves\dq. Diese Handschuhe bieten eine eigene Software an, um die Inversion virtueller Realitäten durch haptisches Feedback zu intensivieren. Die Software ist jedoch nur geringfügig mit dem XR Interaction Toolkit von Unity kompatibel, wodurch es im Laufe des Projekts zu zahlreiche Hindernissen und Problemen kam.  
+\subsubsection{Tracker}
+\noindent Da die SenseGloves nur ihre relative Position zu sich selbst bestimmen können, benötigte es Unterstützung von externen Trackern, welche die Position und Rotation der Handschuhe im Raum erkennen. Hierbei wurden die \dq HTC VIVE Tracker 3.0\dq, welche über ein Verbindungsstück auf die Handschuhe gesetzt wurden, als solche Tracker verwendet.
+
+\subsection{Software}
+\subsubsection{Unity}
+Die Umsetzung des Projekts erfolgte in der Game Engine \dq Unity\dq. Dies ist eine der derzeit populärsten Game Engines auf dem Markt und stellt den Industrie-Standard für Spielentwicklung in virtueller Realität dar. Darüber hinaus bietet Unity eine offiziell unterstützte Erweiterung namens \dq XR Interaction Toolkit\dq an, welche viele grundlegende VR-Funktionalitäten in ein Unity Projekt integriert und somit den Entwicklungsprozess deutlich beschleunigt. Des Weiteren unterstützt das Toolkit die externe Software \dq OpenXR\dq.
+
+\subsubsection{Open XR}
+OpenXR stellt eine allgemeine Schnittstelle für eine Vielzahl von VR-Brillen dar, indem es allgemeine Aktionen definiert, mit welchen das XR Interaction Toolkit und weitere Software arbeiten kann. Die device-basierten Mappings werden hierbei von OpenXR übernommen.
+
+\subsubsection{SteamVR}
 Die Videospiel-Vertriebsplattform \dq Steam\dq bietet eine eigene Softwarelösung \dq SteamVR\dq an, welche es ermöglicht, verschiedene Geräte miteinander zu verbinden, damit diese beim Ausführen einer Software zusammenarbeiten. Es muss SteamVR genutzt werden, da dies die einzige Softwarelösung ist, welche die HTC VIVE Tracker 3.0 und somit das Tracken der SenseGloves im realen Raum unterstützt.
-\subsection{SenseCom}
+
+\subsubsection{SenseCom}
 Um die SenseGloves nutzen zu können, muss zunächst eine Bluetooth-Verbindung mit dem Computer aufgebaut werden. Wenn auf diesem eine Anwendung ausgeführt wird, welche die SenseGloves unterstützt, wird die Software \dq SenseCom\dq automatisch ausgeführt. Diese ermöglicht es, die SenseGloves zu kalibrieren und daraufhin über die Anwendung zu nutzen.
 
-\section{Entwicklungsprozess}
-Während es mit der im Projekt genutzten Valve Index problemlos möglich war, das Spiel in Unity direkt auszuführen, zu debuggen und sich entsprechende Logs in der Konsole anzeigen zu lassen, musste der Entwicklungsprozess für die Focus 3 etwas angepasst werden. Da sie eine Standalone VR-Brille ist, erforderte das Testen von implementierten Funktionalitäten einen neuen Android-Build des Projekts, welches den Fortschritt der Entwicklung teilweise einschränkte.
-
-\section{Technische Entscheidungen}
-\subsection{Teleportationsbereich}
-Wie bereits angedeutet, wurde entschieden, die Anzahl der Teleportationsbereiche einzu-schränken, um den Spieler durch die wichtigen Bereiche des Spiels zu lenken. Innerhalb dieses Bereichs können sich Spieler bewegen, jedoch kann es, dass die tatsächliche Spielfläche etwas kleiner als erwartet ausfallen kann, wodurch wir uns zusätzlich entschieden, die Teleportation in Bereichen so zu verändern, dass nicht die Mitte des Bereichs, sondern das exakt anvisierte Ziel als Position genutzt wird. Ohne diese Änderung hätte es für manche Spieler z. B. nicht möglich sein können, Tränke in den Kessel des Alchemie-Puzzles zu werfen.
-\subsubsection{Ausrichtung der Türen}
-Aus einem ähnlichen Grund passten wir die Richtung an, in welche die Türen der Farbräume geöffnet werden müssen. Eine Tür zum Körper zu ziehen, war vor der oben erwähnten Anpassung für alle Spieler problemlos möglich, während das Öffnung in die entgegengesetzte Richtung außerhalb des Teleportationsbereichs aus Platzgründen nicht möglich war. Folglich entschieden wir uns dazu, beide Anpassungen zu vereinen, um ein optimales Gefühl zu bekommen.
-\subsection{Umgebung Einfärben}
-Da sich die Veränderung des Zustands von Materialien während des Spiels auch nach Beendigung sich permanent auswirkt, musste ein Skript geschrieben werden, welches sich beim Starten des Spiels innerhalb der Methode \textit{Awake} sämtliche referenzierten Materialien merkt und anschließend weiß färbt. Nach Beendigung des Spiels würden über die Methode \textit{OnExit} eben diese Materialien wieder ihren Anfangszustand vor Spielstart einnehmen. Damit dies aber mit allen Materialien möglich ist, benötigten sie einen speziellen Shader, der über das Attribut \textit{\_Color} verfügt, sodass die Materialien umgefärbt werden können.
-\subsection{Steuerung Murmelbox}
-Die Steuerung der Murmelbox erfolgt wie bereits erwähnt über zwei Hebel, die sich direkt neben der Box befinden. Diese Form der Steuerung wurde gewählt, da die SenseGloves eine solch hohe Anzahl an Meshes in der Box nicht verarbeiten konnte. Weiterhin ist es seit Unity 5 nicht mehr möglich, nicht kinematische RigidBodies mit MeshCollidern zu verwenden. Da die Box eine Vielzahl an diesen verbaut hat, war es nicht möglich, die Box direkt mit den VR-Controllern zu bewegen.
-\subsection{Rätseltisch: Part 1}
-Während das erste Rätsel des Rätseltischs den Spieler aktuell dazu auffordert, ein Tischbein auf die Fingerlöcher zu legen, bestand die vorherige Lösung dieses Rätsels daraus, dass sich die linke Kiste nach rechts öffnen würde und man somit beide Kisten gleichzeitig offen halten könnte, indem man die zuerst geöffnete Klappe über die andere offen hält. Anschließend sollten Spieler die Lichter mit der freien Hand aktivieren. 
-
-\newpage
-\noindent
 \section{Vorbereitung des Projekts}
 Da das Spiel viele verschiedene Hardware- und Softwarelösungen nutzt, ist die Vorbereitung vor Start des Spiels verhältnismäßig aufwendig.
 
@@ -39,9 +43,32 @@ Da das Spiel viele verschiedene Hardware- und Softwarelösungen nutzt, ist die V
 \noindent Dieser Aufwand ist für ein kundenfreundliches Spiel nur schlecht vertretbar und müsste signifikant verändert werden, sobald es veröffentlicht werden sollte. Dieses Problem ist aus der Position eines Spieleentwicklers jedoch nicht lösbar und nur schlecht umgehbar, da besonders der Bereich der Haptic Gloves noch keine allgemeine Schnittstelle bietet. Für VR-Brillen gibt es OpenXR zur gemeinsamen Input-Verarbeitung, jedoch sind Haptic Gloves noch so tief in der Entwicklung, dass nicht einmal bekannt ist, welche Form von VR-Gloves (faden-basiert, vibrations-basiert, Hitze-Kälte-sensibel) sich durchsetzen wird. Ohne diese grundlegenden Infor-mationen kann keine allgemeine Grundlage geschaffen werden, weshalb Software-Unterstützung für jede Art von haptischen Handschuhen einzeln eingebaut werden muss.\\
 \noindent Um den Aufwand teilweise zu verringern, arbeitet SenseGlove an einer Lösung, mit welcher die haptischen Handschuhe sich selbst im realen Raum tracken. Dies würde HTC VIVE Tracker obsolet machen und somit einen Schritt in Richtung eines reduzierten Setups bieten.
 
-\section{Interaktion mit Haptic-Gloves}
-Bei der Implementierung des Projekts fiel eine weitere visuelle Interaktionsform mit den Sense-Gloves eher zufällig auf. Durch diese werden die Hände in der echten Welt exakt auf die virtuelle Realität abgebildet. Wegen der in Abschnitt \dq Technisches Konzept\dq beschriebenen technischen Schwierigkeiten muss ein Spieler gleichzeitig einen SenseGloves-Handschuh und einen VR-Controller in jeweils einer Hand halten. Durch diese zwei verschiedenen Geräte werden die Unterschiede der Darstellungen von Händen sehr schnell deutlich. Die Hand-Augen-Koordination, welche die SenseGloves einem Spieler bieten, führen zu deutlicher stärkerer Immersion als die grobe Annäherung, welche ein einfacher VR-Controller bietet. Besonders bei Aufgaben, die Fingerfertigkeit benötigten, wie der bereits beschriebene Rätseltisch, war neben dem haptischen das visuelle Feedback der virtuellen Hände ein wichtiges Merkmal für verstärkte Immersion.
-\subsubsection{Haptik}
-Haptische Interaktion wurde in diesem Projekt besonders durch die \dq SenseGloves\dq realisiert. Diese Handschuhe sind in der Lage, die Bewegung der Finger einer Hand festzusetzen. Diese Eigenschaft wurde im Spiel in verschiedenen Darstellungsformen genutzt. Besonders der Rätseltisch profitierte stark von den Fähigkeiten der haptischen Handschuhe, indem...
 
-%TODO: Erklären, warum Leiter nicht mit Haptic Gloves funktioniert?
+
+\section{Technische Entscheidungen}
+
+\subsection{Controller und Haptic-Glove Interaktion}
+In 2019 veröffentlichte Unity ein neues Input-System, welches vom Unity-eigenen XR Interaction Toolkit genutzt wurde. Dieses bietet eine Vielzahl an simplen Interaktionen in VR und ist deshalb eine essenzielle Grundlage. Die Anbindung an das Input-System erfolgt im Einklang mit OpenXR. Dies setzt für alle unterstützten VR-Controller gemeinsame Aktionen fest und spricht die gerätespezifische Ausführung pro Controller seperat an.\\
+
+Das System erfüllt zwar den gewollten Nutzen sehr gut, ist jedoch schlecht erweiterbar. Deshalb können die SenseGloves nicht an das XR Interaction Toolkit angebunden werden. \\
+
+Dieses Problem hat zwei mögliche Lösungen. Entweder wird das XR Interaction Toolkit schlichtweg nicht genutzt und Funktionalität muss ausschließlich über das SenseCom-System entwickelt werden, oder es wird ein eigenens Input-Profil erstellt, welches an das Unity-Input-System angebunden wird. Da wir die SenseGloves erst nutzen konnten als das Projekt schon zur Hälfte vollendet war, mussten wir das Unity-System weiterhin nutzen. Das Erstellen eines eigenen Input-Profils für eine komplexe Hardware wie den Haptic Gloves ist jedoch ein zu großes Unterfangen für den Umfang des Objekts gewesen.\\
+
+Daraus resultiert, dass das Projekt zwei miteinander nicht kompatible Systeme unterstützt und deshalb die meiste Funktionalität des der Rätsel im Spiel nicht von den Haptic Gloves genutzt werden kann.
+
+\subsection{Teleportationsbereich}
+Wie bereits angedeutet, wurde entschieden, die Anzahl der Teleportationsbereiche einzu-schränken, um den Spieler durch die wichtigen Bereiche des Spiels zu lenken. Innerhalb dieses Bereichs können sich Spieler bewegen, jedoch kann es, dass die tatsächliche Spielfläche etwas kleiner als erwartet ausfallen kann, wodurch wir uns zusätzlich entschieden, die Teleportation in Bereichen so zu verändern, dass nicht die Mitte des Bereichs, sondern das exakt anvisierte Ziel als Position genutzt wird. Ohne diese Änderung hätte es für manche Spieler z. B. nicht möglich sein können, Tränke in den Kessel des Alchemie-Puzzles zu werfen.
+\subsubsection{Ausrichtung der Türen}
+Aus einem ähnlichen Grund passten wir die Richtung an, in welche die Türen der Farbräume geöffnet werden müssen. Eine Tür zum Körper zu ziehen, war vor der oben erwähnten Anpassung für alle Spieler problemlos möglich, während das Öffnung in die entgegengesetzte Richtung außerhalb des Teleportationsbereichs aus Platzgründen nicht möglich war. Folglich entschieden wir uns dazu, beide Anpassungen zu vereinen, um ein optimales Gefühl zu bekommen.
+\subsection{Umgebung Einfärben}
+Da sich die Veränderung des Zustands von Materialien während des Spiels auch nach Beendigung sich permanent auswirkt, musste ein Skript geschrieben werden, welches sich beim Starten des Spiels innerhalb der Methode \textit{Awake} sämtliche referenzierten Materialien merkt und anschließend weiß färbt. Nach Beendigung des Spiels würden über die Methode \textit{OnExit} eben diese Materialien wieder ihren Anfangszustand vor Spielstart einnehmen. Damit dies aber mit allen Materialien möglich ist, benötigten sie einen speziellen Shader, der über das Attribut \textit{\_Color} verfügt, sodass die Materialien umgefärbt werden können.
+\subsection{Steuerung Murmelbox}
+Die Steuerung der Murmelbox erfolgt wie bereits erwähnt über zwei Hebel, die sich direkt neben der Box befinden. Diese Form der Steuerung wurde gewählt, da die SenseGloves eine solch hohe Anzahl an Meshes in der Box nicht verarbeiten konnte. Weiterhin ist es seit Unity 5 nicht mehr möglich, nicht kinematische RigidBodies mit MeshCollidern zu verwenden. Da die Box eine Vielzahl an diesen verbaut hat, war es nicht möglich, die Box direkt mit den VR-Controllern zu bewegen.
+\subsection{Rätseltisch: Part 1}
+Während das erste Rätsel des Rätseltischs den Spieler aktuell dazu auffordert, ein Tischbein auf die Fingerlöcher zu legen, bestand die vorherige Lösung dieses Rätsels daraus, dass sich die linke Kiste nach rechts öffnen würde und man somit beide Kisten gleichzeitig offen halten könnte, indem man die zuerst geöffnete Klappe über die andere offen hält. Anschließend sollten Spieler die Lichter mit der freien Hand aktivieren. 
+
+\newpage
+\chapter{Fazit}
+Die Entwicklung unseres Projekts folgte einem sehr iterativen Prozess. Wir entwarfen Ideen, entwickelten diese, und betrachteten den Effekt der verschiedenen Rätsel und Scenarien. Dabei versuchten wir zu verstehen was in virtueller Realität funktioniert und was eher scheitert. Diese Vorgehensweise half uns ein intuitiveres Verständnis für die Entwicklung innerhalb von VR aufzubauen, während wir die nötigen Tools für die VR-Entwicklung lernten und die VR zugrunde liegende Software- und Hardwarearchitektur aufarbeiteten.\\ 
+
+Während die Forschung zu Interaktion mit haptischen Handschuhen aufgrund technischer Gegebenheiten nur in grundlegenden Zügen ausgearbeitet werden konnte, eröffneten sich alternative Formen der Interaktion, die auch ohne weitere Hardware erforschbar sind. Das Projekt zeigt eine Vielzahl von Interaktionsmöglichkeiten in VR auf, verdeutlicht jedoch auch, dass noch sehr viel kreatives Potential in dem Umgang mit diesem virtuellen Medium steckt.
