@@ -19,7 +19,7 @@ Der Cyan-Raum verkörpert als erster Farbraum des Spiels das Thema \dq Werkstatt
 Im Magenta-Raum befinden sich Bücher, Leitern und große Tische. Diese Kombination von Objekten soll das Thema \dq Bibliothek\dq betonen. Der Raum bietet zwei Minispiele: im ersten Minispiel fordert es Geschick und Können, da der Spieler hier eine Murmel in einer Box durch Neigung in ein Loch navigieren muss. Im zweiten Minispiel wird ein Rätseltisch thematisiert, dessen Tricks ein  Spieler verstehen muss um den Farbkristall zu erhalten.
 
 \subsection{Gelb-Raum}
-Der letzte Raum des Spiels ist der Gelb-Raum. Um in diesem Raum für Abwechslung zu sorgen, fehlt hier die Beleuchtung fast vollständig. Der Raum befasst sich mit Astronomie, Astrologie und arcanen Künsten. Mithilfe von Leuchtstäben muss ein Spieler hier selbst für Licht sorgen, um die Geheimnisse des Raums zu lüften und damit das Rätsel zu lösen.
+Der letzte Raum des Spiels ist der Gelb-Raum. Um in diesem Raum für Abwechslung zu sorgen, fehlt hier die Beleuchtung fast vollständig. Der Raum befasst sich mit Astronomie, Astrologie und arkanen Künsten. Mithilfe von Leuchtstäben muss ein Spieler hier selbst für Licht sorgen, um die Geheimnisse des Raums zu lüften und damit das Rätsel zu lösen.
 
 \newpage
 \noindent
@@ -32,14 +32,14 @@ Der letzte Raum des Spiels ist der Gelb-Raum. Um in diesem Raum für Abwechslung
 	\label{fig:spielwelt-beginn}
 \end{wrapfigure}
 
-Zum Spielbeginn befindet sich der Spieler in der Lobby, welche den Hauptbereich des Spiels darstellt. Hier wird dem Spieler ein erster Eindruck von dem erdrückenden weiß aufgrund fehlender Farbe, sowie der Größe des Turms gegeben. Der Raum enthält außerdem direkt den ersten schwarzen Farbkristall, welcher als eine Einführung in die Mechaniken des Spiels dient. Dieser kann also direkt im Alchemie-Rätsel benutzt werden. Dazu aber in einem späteren Kapitel mehr.\\
+Zum Spielbeginn befindet sich der Spieler in der Lobby, welche den Hauptbereich des Spiels darstellt. Hier wird dem Spieler aufgrund fehlender Farbe ein erster Eindruck vom erdrückenden Weiß, sowie der Größe des Turms gegeben. Der Raum enthält außerdem direkt den ersten schwarzen Farbkristall, welcher als eine Einführung in die Mechaniken des Spiels dient. Dieser kann also direkt im Alchemie-Rätsel benutzt werden. Dazu aber in einem späteren Kapitel mehr.\\
 
 \section{Spielfortschritt}
 Um im Spiel Fortschritt zu erzielen, muss ein Spieler die Rätsel der einzelnen Farbräume lösen und die daraus gewonnenen Farbkristalle im oben erwähnten Alchemie-Rätsel in der Lobby in Farbe konvertieren, um so die verschiedenen Farben in die Spielwelt zurückzubringen.
 Aufgrund des Aufbaus des Treppenrätsels müssen die Räume in einer festgesetzten Reihenfolge durchgespielt werden. Die Treppen sind durch Farben markiert, welche freigesetzt werden müssen, bevor eine jeweilige Treppe bewegt werden kann.
 
 \section{Spielende}
-Sobald alle Farben in die Welt freigelassen wurden, ist die Lobby vollends eingefärbt. Damit können auch alle Treppen bewegt werden, welche in einem letzten Rätsel in einer speziellen Reihenfolge angeordnet werden können um dem Spieler zu ermöglichen höher zu klettern als er je zuvor konnte. Sobald der Spieler oben angekommen ist und eine letzte Leiter erklummen hat, kann er einen Schlüssel greifen und mit diesem die Eingangstür zum Turm öffnen. In diesem Zuge erkommt der Spieler aus dem Turm und hat das Spiel vollendet.
+Sobald alle Farben in die Welt freigelassen wurden, ist die Lobby vollends eingefärbt. Damit können auch alle Treppen bewegt werden, welche in einem letzten Rätsel in einer speziellen Reihenfolge angeordnet werden können, um es dem Spieler zu ermöglichen höher zu klettern als er je zuvor konnte. Sobald der Spieler oben angekommen ist und eine letzte Leiter erklommen hat, kann er einen Schlüssel greifen und mit diesem die Eingangstür des Turms öffnen. In diesem Zuge entkommt der Spieler aus dem Turm und hat das Spiel vollendet.
 
 
 \chapter{Umsetzung}
@@ -63,20 +63,17 @@ Da die Erreichbarkeit von Treppen im Treppenrätsel von der Position der Treppe 
 	\vspace*{-0.5cm}
 	\includegraphics[width=5.9cm]{Pictures/Treppenhaus}
 	\caption{Treppenhaus}
-	\vspace*{-0.5cm}
+	\vspace*{-1cm}
 	\label{fig:treppenhaus}
 \end{wrapfigure}
 \subsubsection{Erläuterung}
-Die Treppen der Lobby sind markiert durch bis zu zwei verschiedene Farben in Form von Farbkristallen. Des Weiteren sind in diesem Treppenhaus Hebel verteilt, welche ebenfalls die Farbe eines Farbkristalls auf sich markiert haben. Sobald die Farbe eines Farbkristalls in die Welt zurückgebracht wurde, werden die Markierungen eingefärbt und die Funktionalität der Hebel und Treppen wird aktiviert. Wenn ein Hebel benutzt wird, werden alle Treppen die die Farbe dieses Hebels tragen von ihrer aktiven Position in die anliegende Position bewegt. Jede Treppe hat dabei zwei Position, eine linke und eine rechte Position. Die Ziele, die über die Veränderung der Treppen errecht werden sollen, sind die farbigen Türen. Aufgrund der Positionierung und Farbgebung der Treppen, gibt es nur einen möglichen Ablauf durch das Treppenhaus. Erst muss die Farbe Schwarz in die Welt gelassen werden um daraufhin den Cyan-Raum zu erreichen. Mit der Cyan-Farbe kann der Magenta-Raum erreicht werden und daraufhin mit der Magenta-Farbe der Gelb-Raum. Mit allen Farben kann letztendlich der Schlüssel erreicht werden, mit welchem das Spiel beendet werden kann.
+Die Treppen der Lobby sind durch bis zu zwei verschiedene Farben in Form von Farbkristallen markiert. Des Weiteren sind in diesem Treppenhaus Hebel verteilt, welche ebenfalls die Farbe eines Farbkristalls auf sich markiert haben. Sobald die Farbe eines Kristalls in die Welt zurückgebracht wurde, werden die Markierungen eingefärbt und die Funktionalität der Hebel und Treppen wird aktiviert. Wenn ein Hebel benutzt wird, werden alle Treppen, welche die Farbe dieses Hebels tragen von ihrer aktiven Position in die anliegende Position bewegt. Jede Treppe hat dabei eine linke und eine rechte Position. Die Ziele, welche über die Veränderungen von Treppen erreicht werden sollen, sind die farbigen Türen. Aufgrund der Positionierung und Farbgebungen der Treppen, gibt es nur einen möglichen Ablauf durch das Treppenhaus. Erst muss die Farbe Schwarz in die Welt gelassen werden, um daraufhin den Cyan-Raum zu erreichen. Mit der Cyan-Farbe kann der Magenta-Raum erreicht werden und daraufhin mit der Magenta-Farbe der Gelb-Raum. Mit allen Farben kann letztendlich der Schlüssel erreicht werden, mit welchem das Spiel beendet werden kann.
 
 
 \subsubsection{Interaktion}
 \noindent Die Aktion des Ziehens eines farbigen Hebels führt direkt zu der Reaktion einer Auswahl gleichfarbiger Treppen, welche im Treppenhaus zu neuen Positionen rotieren. Hier zeigt sich die Stärke des Interaktion mit einer VR-Umgebung besonders, da ein Spieler nach dem Benutzen eines Hebels direkt um ihn herum die Auswirkungen dieser Aktion spürt. Verstärkt durch das Gefühl der Höhe, welche sich zuspitzt je höher das Treppenhaus erklungen wird, ist es ein sehr imposantes und emotional ergreifendes Minispiel.
 
 \newpage
-
-
-
 
 \section{Alchemie-Puzzle}
 \subsubsection{Erläuterung}
@@ -87,30 +84,20 @@ Die Treppen der Lobby sind markiert durch bis zu zwei verschiedene Farben in For
 	\vspace*{-0.5cm}
 	\label{fig:alchemie_start}
 \end{wrapfigure}
-Wie bereits in einem oberen Kapitel erwähnt, beschäftigt sich die Lobby mit dem Alchemie-Thema und bringt dabei ein Rätsel mit sich, welches der Spieler immer dann spielen wird, wenn er einen Kristall in die installierte Maschine platziert. Sobald das Spiel beginnt, wird der Kessel vor dem Spieler mit der Farbe des jeweiligen Farbkristalls gefüllt. Rechts und links vom Spieler sind Tränke in greifbarer Nähe. Insgesamt gibt es 12 Tränke welche im Verlauf des Spiels verschiedene Farben annehmen werden. Im ersten Spieldurchlauf mit dem schwarzen Farbkristall, sind ausschließlich weiße und ein schwarzer Trank vorhanden. Sobald ein Trank in den Kessel geworfen wird, färbt sich die Farbe innerhalb des Kessels zu einer Mischfarbe zwischen der vorherigen Kesselfarbe und der Trankfarbe. Die CMYK-Werte dieser Mixtur werden in der Nähe des Kessels in Form von Prozentualwerten dargestellt.\\
-Das Ziel des Spiels ist es, die Tränke zu nutzen um eine Kesselfarbe zu mischen, die mit einer im Blickfeld des Spielers dargestellten Farbe übereinstimmt. Es müssen insgesamt pro Farbkristall 3 Farben gemischt werden. Sobald dies geschafft ist, entleert der Kessel sich und die Farbe des Farbkristalls wird mit einer großen farbigen Rauchwolke in die Welt geschossen. Diese Rauchwolke färbt nicht nur die umliegende Lobby und die Elemente des Treppenrätsels ein, sondern auch drei der vorerst weißen Tränke. Die Farbe jedes Farbkristalls hat 3 Tränke: die Originalfarbe, eine hellere Farbe, und eine dunklere Farbe, welche in späteren Iterationen des Alchemie-Rätsels genutzt werden müssen um komplexere Farbkombinationen zu mischen.\\
-
-\newpage
-
-
+Wie bereits in einem oberen Kapitel erwähnt, beschäftigt sich die Lobby mit dem Alchemie-Thema und bringt dabei ein Rätsel mit sich, welches der Spieler immer dann spielen wird, wenn er einen Kristall in die installierte Maschine platziert. Sobald das Spiel beginnt, wird der Kessel vor dem Spieler mit der Farbe des jeweiligen Farbkristalls gefüllt. Rechts und links vom Spieler sind Tränke in greifbarer Nähe. Insgesamt gibt es zwölf Tränke welche im Verlauf des Spiels verschiedene Farben annehmen werden. Im ersten Spieldurchlauf mit dem schwarzen Farbkristall, sind ausschließlich weiße und ein schwarzer Trank vorhanden. Sobald ein Trank in den Kessel geworfen wird, färbt sich die Farbe innerhalb des Kessels zu einer Mischfarbe zwischen der vorherigen Kesselfarbe und der Trankfarbe. Die CMYK-Werte dieser Mixtur werden in der Nähe des Kessels in Form von prozentualen Werten dargestellt.\\
+Das Ziel des Spiels ist es, die Tränke zu nutzen um eine Kesselfarbe zu mischen, die mit einer im Blickfeld des Spielers dargestellten Farbe übereinstimmt. Es müssen insgesamt pro Farbkristall drei Farben gemischt werden. Sobald dies geschafft ist, entleert der Kessel sich und die Farbe des Farbkristalls wird mit einer großen farbigen Rauchwolke in die Welt geschossen. Diese Rauchwolke färbt nicht nur die umliegende Lobby und die Elemente des Treppenrätsels ein, sondern auch drei der vorerst weißen Tränke. Die Farbe jedes Farbkristalls hat drei Tränke: die Originalfarbe, eine hellere Farbe, und eine dunklere Farbe, welche in späteren Iterationen des Alchemie-Rätsels genutzt werden müssen um komplexere Farbkombinationen zu mischen.
 \subsubsection{Interaktion}
-
 \begin{wrapfigure}{r}{6cm}
 	\vspace*{-0.5cm}
 	\includegraphics[width=5.9cm]{Pictures/Alchemie_Magenta}
-	\caption{Alchemie-Puzzle in magenta Iteration}
+	\caption{Alchemie-Puzzle in Magenta Iteration}
 	\vspace*{-0.5cm}
-	\label{fig:alchemie_start}
+	\label{fig:alchemie_magenta}
 \end{wrapfigure}
-
 In diesem Rätsel werden alle drei bereits erläuterten Formen der Interaktion verwendet um ein ansprechendes Rätsel zu erschaffen.\\
-
 Die visuelle Interaktion zeigt sich in den Farben der Kesselflüssigkeit, des Displays und der Tränke. Ein Spieler muss die Trankfarben nutzen um die Farbe der Kesselflüssigkeit auf die Farbe des Displays anzugleichen.\\
-
-Sobald ein Trank in den Kessel geworfen wird, werden die Farben von Trank und Kesselinhalt vermischt. Sollte die Farbe korrekt, oder der \dq Reset\dq-Button gedrückt worden sein, aktiviert die Maschine sich automatisch und setzt die Kesselfarbe zurück. Diese Form der Interaktion wird abgerundet, sobald eine Iteration des Rätsels gelößt wurde und die Farbe in die Welt zurück kommt. Erst wird der Spieler von einem Farbrauch umgeben, der ihn komplett umhüllt und sobald der Rauch schwindet wird der Spieler herausfinden, dass die Umgebung sich entsprechend neu eingefärbt hat. Das Rätsel zu lösen hat somit direkten greifbaren Einfluss auf die Umgebung des Spielers.\\
-
-Die haptische Interaktion wird durch das greifen und werfen der Tränke dargestellt. Anstatt Farben auszuwählen und beispielsweise durch einen einfachen Knopfdruck hinzuzufügen, wird hierbei Wert darauf gelegt, dass ein Spieler das Gefühl bekommt selbst die Tränke zu werfen und zu mixen. Dies bietet eine weitaus stärkere Integration des Spielers in die Mechaniken des Rätsels.
-
+Sobald ein Trank in den Kessel geworfen wird, werden die Farben von Trank und Kesselinhalt vermischt. Sollte die Farbe korrekt, oder der \dq Reset\dq-Button gedrückt worden sein, aktiviert die Maschine sich automatisch und setzt die Kesselfarbe zurück. Diese Form der Interaktion wird abgerundet, sobald eine Iteration des Rätsels gelöst wurde und die Farbe in die Welt zurück kommt. Erst wird der Spieler von einem Farbrauch umgeben, der ihn komplett umhüllt und sobald der Rauch schwindet wird der Spieler herausfinden, dass die Umgebung sich entsprechend neu eingefärbt hat. Das Rätsel zu lösen hat somit direkten greifbaren Einfluss auf die Umgebung des Spielers.\\ \newpage
+\noindent Die haptische Interaktion wird durch das greifen und werfen der Tränke dargestellt. Anstatt Farben auszuwählen und beispielsweise durch einen einfachen Knopfdruck hinzuzufügen, wird hierbei Wert darauf gelegt, dass ein Spieler das Gefühl bekommt selbst die Tränke zu werfen und zu mixen. Dies bietet eine weitaus stärkere Integration des Spielers in die Mechaniken des Rätsels.\\
 Sollte ein Spieler das Gefühl haben, einen falschen Trank benutzt zu haben, so hat er die Möglichkeit, das aktuelle Gemisch über einen Reset-Button auf der rechten Seite zurückzusetzen.\\
 Da man im Spiel vier Kristalle findet, kann man dieses Minispiel bis zu vier Mal spielen, bis man die gesamte Umgebung vollständig eingefärbt hat und das Endziel erreichen kann.
 
@@ -122,15 +109,17 @@ Da man im Spiel vier Kristalle findet, kann man dieses Minispiel bis zu vier Mal
 \end{figure}\newpage \noindent
 
 \section{Röhren-Puzzle}
-Nachdem ein Spieler das erste Alchemie-Rätsel absolviert hat, ist er in der Lage, den Cyan-Raum zu erreichen. In diesem befindet sich eine Vorrichtung aus ein paar wenigen Röhren. Durch eine leichte transparente Gitter-Struktur in der Wand soll dem Spieler vermittelt werden, dass herumliegende Röhren in dieser zu platzieren sind. Die Objekte befinden sich beim ersten Berührungspunkt mit dem Spieler in einer Kiste, aus welcher sie dann aufgehoben werden können. Da Anfang und Ende des Puzzles bereits fest installiert sind, sollte der Spieler eine Auffangschale rechts neben dem Start bemerken. In der Nähe dieser wird über einen Hinweis bereits angedeutet, dass hier ein Gegenstand empfangen werden kann. Beim genaueren Verfolgen der Röhren sollte man schlussfolgern, dass sich der blaue Kristall in den waagerechten Röhren oberhalb des Spielers befindet. Um ihn zu erreichen, muss man also einen Durchfluss ermöglichen. Dazu hat man jedoch nur begrenzt viele Rohre. Diese lassen sich dabei in zwei Kategorien mit je zwei Variationen unterscheiden. In der Vorrichtung befinden sich nämlich gewinkelte sowie gerade Röhren, welche frei bewegt und platziert werden können. Hinzu kommen bereits fest installierte, welche lediglich hinsichtlich ihrer Rotation angepasst werden können. Dies wird dem Spieler über Rotationspfeile auf den Gegenständen präsentiert. Wenn eine Röhre in die Gitterstruktur gehalten wird, erscheint dem Spieler eine transparente und korrekt positionierte Preview der Röhre, an welcher sie platziert werden würde, sollte man sie loslassen. Die Preview hat dabei eine von vier möglichen Rotationen, welche anhand der Rotation des Rohrs ermittelt wird. Jedes Mal, wenn eine Röhre platziert wurde, nimmt eine Röhre die Position und Rotation der zuvor sichtbaren Preview ein. Weiterhin prüft der Manager des Rätsels, ob das Ende der Röhren vom Start ausgegangen ohne Lücken erreicht werden kann. Dabei schaltet sich bei allen Röhren, welche den weiteren Durchfluss gewährleisten, ein Licht an, um dem Spieler Feedback darüber zu geben, ob er die Verbindung richtig gesetzt hat. Technisch betrachtet lässt sich sagen, dass ein Rohr in diesem Spiel bis zu zwei Nachbarn haben kann, welche über Collider gesetzt werden können. Somit lässt sich die Iteration über platzierte Röhren als verkettete Liste betrachten, da ein Rohr seine Nachbarn kennt. Der Trick an diesem Rätsel ist die Begrenzung der Möglichkeiten durch die feste Anzahl an zu platzierenden Röhren und der Variation aller zuvor platzierten Rohre, welche lediglich rotiert werden können. Dadurch ergibt sich nach genaueren Überlegungen anhand gegebener Mittel eine einzige Lösung, zu welcher man nur durch Überlegen und Ausprobieren kommt.\\
-Sollte der Durchfluss vollständig sein, aktiviert sich theoretisch betrachtet die Farbe im Rohr-system, wodurch die Farbe den Kristall herausströmt.
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth/2]{Pictures/Roehren}
-	\caption{Röhren-Puzzle}
+\subsubsection{Erläuterung}
+Nachdem ein Spieler das erste Alchemie-Rätsel absolviert hat, ist er in der Lage, den Cyan-Raum zu erreichen. In diesem befindet sich eine Vorrichtung aus ein paar wenigen Röhren. Durch eine leichte transparente Gitter-Struktur in der Wand soll dem Spieler vermittelt werden, dass herumliegende Röhren in dieser zu platzieren sind. Die Objekte befinden sich beim ersten Berührungspunkt mit dem Spieler in einer Kiste, aus welcher sie dann aufgehoben werden können. Da Anfang und Ende des Puzzles bereits fest installiert sind, sollte der Spieler eine Auffangschale rechts neben dem Start bemerken. In der Nähe dieser wird über einen Hinweis bereits angedeutet, dass hier ein Gegenstand empfangen werden kann. Beim genaueren Verfolgen der Röhren sollte man schlussfolgern, dass sich der blaue Kristall in den waagerechten Röhren oberhalb des Spielers befindet. Um ihn zu erreichen, muss man also einen Durchfluss ermöglichen. Dazu hat man jedoch nur begrenzt viele Rohre. Diese lassen sich dabei in zwei Kategorien mit je zwei Variationen unterscheiden. In der Vorrichtung befinden sich nämlich gewinkelte sowie gerade Röhren, welche frei bewegt und platziert werden können. Hinzu kommen bereits fest installierte, welche lediglich hinsichtlich ihrer Rotation angepasst werden können. Dies wird dem Spieler über Rotationspfeile auf den Gegenständen präsentiert. Nach jeder Platzierung prüft der Manager des Rätsels, ob das Ende der Röhren vom Start ausgegangen ohne Lücken erreicht werden kann. Technisch betrachtet lässt sich sagen, dass ein Rohr in diesem Spiel bis zu zwei Nachbarn haben kann, welche über Collider gesetzt werden können. Somit lässt sich die Iteration über platzierte Röhren als verkettete Liste betrachten, da ein Rohr seine Nachbarn kennt.\\
+\begin{wrapfigure}{r}{6cm}
+	\includegraphics[width=5.9cm]{Pictures/Roehren}
+	\caption{Murmelbox}
+	\vspace*{-1cm}
 	\label{fig:cyan}
-\end{figure}\\
-
+\end{wrapfigure}
+\subsubsection{Interaktion}
+Wenn eine Röhre in die Gitterstruktur gehalten wird, erscheint dem Spieler eine transparente und korrekt positionierte Preview der Röhre, an welcher sie platziert werden würde, sollte man sie loslassen. Die Preview hat dabei eine von vier möglichen Rotationen, welche anhand der Rotation des Rohrs ermittelt wird. Diese Reaktion der Umgebung vermittelt dem Spieler direkt, dass Röhren exakt hier platziert werden können. Analog dazu nimmt eine Röhre die Position und Rotation der zuvor sichtbaren Preview ein, sobald sie platziert wurde. Außerdem schaltet sich bei allen Röhren, welche den weiteren Durchfluss gewährleisten, ein Licht an, um dem Spieler Feedback darüber zu geben, ob er die Verbindung richtig gesetzt hat. 
+\\ \noindent Der Trick an diesem Rätsel ist die Begrenzung der Möglichkeiten durch die feste Anzahl an zu platzierenden Röhren und der Variation aller zuvor platzierten Rohre, welche lediglich rotiert werden können. Dadurch ergibt sich nach genaueren Überlegungen anhand gegebener Mittel eine einzige Lösung, zu welcher man nur durch Überlegen und Ausprobieren kommt. Dieses Konzept beschreibt eine weitere visuelle Interaktion, da man nur durch Betrachten seiner Mittel und der Gitter-Struktur auf eine Lösung kommen kann. Umgebungsinteraktion erfährt der Spieler außerdem dadurch, dass sich beim Abschluss des Rätsels, wenn der Durchfluss vollständig ist, die Farbe im Rohr\-system aktiviert, wodurch die Farbe den Kristall herausströmt.
 \newpage
 
 \section{Murmelbox}
@@ -166,7 +155,7 @@ Der Rätseltisch bildet das zweite Rätsel des Magenta Raums und lässt sich in 
 	\vspace*{-0.5cm}
 	\label{fig:tisch1}
 \end{wrapfigure}
-Das erste Rätsel des Tischs enthält zwei nebeneinander-liegende Kisten und zwei zugehörige Fingerpodeste, die bei Interaktion den Deckel der entsprechenden Box öffnen. Sobald nicht mehr mit dem Podest interagiert wird, schließt sich die Box jedoch wieder. Jede Kiste beinhaltet jeweils 3 Lichter, die vom Spieler angeschaltet werden können und beim Schließen des Deckels der zugehörigen Box wieder ausgehen. Ziel des Spiels ist alle sechs Lichter gleichzeitig zum Leuchten zu bringen, wobei der Spieler versuch muss beide Boxen gleichzeitig offen zu halten und währenddessen die Lichter anzuschalten. Um dem Spieler noch etwas an die Hand zu geben wird er hier außerdem darauf hingewiesen, etwas anderes statt nur seine Hände zu verwenden um das Rätsel zu lösen. Sobald das Spiel beendet wird öffnet sich kurz darauf die kleinere Box daneben um das Abschließen des Spiels zu signalisieren und dem Spieler ein hölzernes Plättchen mit der Aufschrift \dq P\dq zu präsentieren.\\
+Das erste Rätsel des Tischs enthält zwei nebeneinander-liegende Kisten und zwei zugehörige Fingerpodeste, die bei Interaktion den Deckel der entsprechenden Box öffnen. Sobald nicht mehr mit dem Podest interagiert wird, schließt sich die Box jedoch wieder. Jede Kiste beinhaltet jeweils drei Lichter, die vom Spieler angeschaltet werden können und beim Schließen des Deckels der zugehörigen Box wieder ausgehen. Ziel des Spiels ist alle sechs Lichter gleichzeitig zum Leuchten zu bringen, wobei der Spieler versuch muss beide Boxen gleichzeitig offen zu halten und währenddessen die Lichter anzuschalten. Um dem Spieler noch etwas an die Hand zu geben wird er hier außerdem darauf hingewiesen, etwas anderes statt nur seine Hände zu verwenden um das Rätsel zu lösen. Sobald das Spiel beendet wird öffnet sich kurz darauf die kleinere Box daneben um das Abschließen des Spiels zu signalisieren und dem Spieler ein hölzernes Plättchen mit der Aufschrift \dq P\dq zu präsentieren.\\
 
 \subsubsection{Erläuterung Rätsel 2}
 \begin{wrapfigure}{r}{6cm}
@@ -204,25 +193,29 @@ Der Rätseltisch hat viele klare Elemente in denen haptisches Feedback vermittel
 
 \noindent Visuelle Interaktion hat der Rätseltisch in Form des dritten Rätsels beim verschieben der Türme. Hierbei muss sich der Aufbau des Tischs und die entsprechenden Seiten genau angeschaut werden, um auf die korrekte Höhe und Position der Türme zu kommen.\\
 
-\noindent Die Reaktive Interaktion des Rätseltischs ist in jedem der vier Rätsel vereint. In Rätsel 1 gibt es beispielsweise Boxdeckel die durch Spielerinteraktion gesteuert werden können. In Rätsel 2 sorgt die sich sofortig anpassende Spielfortschrittsleiste dafür, dass jeder neue Knopfdruck direktes Feedback gibt und etwas verändert. Außerdem öffnet sich beim Abschließen jedes vorigen Rätsels eine kleine Box wodurch man erst dann Zugriff auf essentielle Gegenstände bekommt sowie beim Abschließen des finalen Rätsels die Glasbox, womit man das Rätsel abschließen kann und damit ebenfalls das Licht des Rätseltischs ausgeschalten wird.
+\noindent Die Reaktive Interaktion des Rätseltischs ist in jedem der vier Rätsel vereint. Im ersten gibt es beispielsweise Boxdeckel, die durch Spieler-Interaktionen gesteuert werden können. In Rätsel 2 sorgt die sich sofortig anpassende Spielfortschrittsleiste dafür, dass jeder neue Knopfdruck direktes Feedback gibt und etwas verändert. Außerdem öffnet sich beim Abschließen jedes vorigen Rätsels eine kleine Box, wodurch man erst dann Zugriff auf essentielle Gegenstände bekommt sowie beim Abschließen des finalen Rätsels die Glasbox, womit man das Rätsel abschließen kann und damit ebenfalls das Licht des Rätseltischs ausgeschaltet wird.
 \newpage
 \noindent
 \section{Gelb-Raum}
-\begin{wrapfigure}{r}{8cm}
-	\vspace*{-0.5cm}
-	\includegraphics[width=8cm]{Pictures/Gelb-Raum}
+\begin{wrapfigure}{r}{6cm}
+	\vspace*{-1cm}
+	\includegraphics[width=5.9cm]{Pictures/Gelb-Raum}
 	\caption{Gelb-Raum}
-	\vspace*{-0.5cm}
+	\vspace*{-1cm}
 	\label{fig:Gelb-Raum}
 \end{wrapfigure}
-Im letzten Farbraum des Spiels, dem Gelb-Raum, wird dem Spieler die Fähigkeit normal zu sehen, entzogen. Mithilfe eines leuchtenden Spenders, den ein Spieler im Raum durch das starke Leuchten finden wird, kann man den Raum durch greifbare Leuchtstäbe punktuell erhellen und erforschen. Das wird auch für die Lösung des Raums benötigt. Wie bereits in einem vorherigen Kapitel erwähnt, sind die Themen des Raums Astronomie, Astrologie, Mystik und Kunst. Diese Themen tragen zusammen zur Lösung eines verstellbaren Rads bei, welches in drei Sektionen unterteilt ist. Der äußere Ring zeigt hierbei die Symbole der zwölf Sternzeichen. Abgesehen von dem Spender und seinen Leuchtstäben leuchtet lediglich ein Sternbild an der Decke, welches eins dieser zwölf Sternzeichen darstellt. Um dem Sternbild ein Zeichen zuordnen zu können, muss man im Raum eine Legende finden, die diese Beziehung aufweist. Das mittlere Segment des Rads umfasst acht Tiere, u. a. Hirsch, Tiger, Nilpferd und Bär. Alle diese vier Tiere befinden sich in Form eines Kopfes als Trophäe im Raum wieder. Um die richtige Lösung zu finden, muss man die Tierköpfe mit den Leuchtstäben gründlich erforschen, da auf der Rückseite eines Kopfes das richtige Symbol versteckt ist. Dies mag zu Beginn etwas unscheinbar sein, jedoch handelt es sich bei diesem Spiel um ein Rätsel-Spiel und die Tierköpfe sind allesamt erreichbar und auf dem Rad zu finden. Daher sollte es naheliegend sein, zu versuchen, mit ihnen zu interagieren. Das letzte Segment des Rads umfasst acht verschiedene Symbole, die teilweise Anlehnungen an Namen von Tarotkarten sind. Sollte sich der Spieler im Raum gründlich genug umschauen, so findet er ein Schränkchen mit einer Schublade, in welcher sich zuzüglich zu einem Buch eine Tarotkarte befindet. Dessen Name lässt auf das korrekte Symbol auf dem Rad schließen. Wenn der Spieler nun mittels Hebel die drei Segmente auf ihre richtige Position bzw. Rotation bringt, leuchtet der Pfeil des Rads hell auf und eine versteckte Wand öffnet sich, sodass der darin liegende Kristall aufgesammelt werden kann.
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth/3, height=3cm]{Pictures/Gelb-Raum_Sternenkarte}
+\subsubsection{Erläuterung}
+Im letzten Farbraum des Spiels, dem Gelb-Raum, wird dem Spieler die Fähigkeit normal zu sehen, entzogen. Mithilfe eines leuchtenden Spenders, den ein Spieler im Raum durch das starke Leuchten finden wird, kann man den Raum durch greifbare Leuchtstäbe punktuell erhellen und erforschen. Das wird auch für die Lösung des Raums benötigt. Wie bereits in einem vorherigen Kapitel erwähnt, sind die Themen des Raums Astronomie, Astrologie, Mystik und Kunst. Diese Themen tragen zusammen zur Lösung eines verstellbaren Rads bei, welches in drei Sektionen unterteilt ist. Der äußere Ring zeigt hierbei die Symbole der zwölf Sternzeichen. Abgesehen von dem Spender und seinen Leuchtstäben leuchtet lediglich ein Sternbild an der Decke, welches eins dieser zwölf Sternzeichen darstellt. Um dem Sternbild ein Zeichen zuordnen zu können, muss man im Raum eine Legende finden, die diese Beziehung aufweist. Das mittlere Segment des Rads umfasst acht Tiere, u. a. Hirsch, Tiger, Nilpferd und Bär. Alle diese vier Tiere befinden sich in Form eines Kopfes als Trophäe im Raum wieder. Um die richtige Lösung zu finden, muss man die Tierköpfe mit den Leuchtstäben gründlich erforschen, da auf der Rückseite eines Kopfes das richtige Symbol versteckt ist. Dies mag zu Beginn etwas unscheinbar sein, jedoch handelt es sich bei diesem Spiel um ein Rätsel-Spiel und die Tierköpfe sind allesamt erreichbar und auf dem Rad zu finden. Daher sollte es naheliegend sein, zu versuchen, mit ihnen zu interagieren. Das letzte Segment des Rads umfasst acht verschiedene Symbole, die teilweise Anlehnungen an Namen von Tarotkarten sind. Sollte sich der Spieler im Raum gründlich genug umschauen, so findet er ein Schränkchen mit einer Schublade, in welcher sich zuzüglich zu einem Buch eine Tarotkarte befindet. Dessen Name lässt auf das korrekte Symbol auf dem Rad schließen.
+\begin{wrapfigure}{r}{6cm}
+	\vspace*{-1cm}
+	\includegraphics[width=5.9cm, height=3cm]{Pictures/Gelb-Raum_Sternenkarte}
 	\caption{Sternenkarte}
+	\vspace*{-1cm}
 	\label{fig:Gelb-Raum_sternenkarte}
-\end{figure}
-Wie zuvor erwähnt, ist die Einschränkung der Sicht auch ein gutes Mittel, um besondere Erfahrungen mit visuellen Interaktionen zu sammeln, da der Raum die Verantwortung der Sicht auf den Spieler legt. Im Gelb-Raum muss er Lichtquellen in den Raum werfen, um die allumfassende Dunkelheit des Raumes punktuell zu durchbrechen. So etwas Fundamentales wie die Lichtverhältnisse eines Raumes in die Hand der Spieler zu legen, führt zu einer deutlichen Erhöhung der Konzentration und Immersion. Dabei fiel auf, dass Spieler, die damit beschäftigt waren ihren Sichtsinn aufrechtzuerhalten, intensiver in das Spiel vertieft waren.
+\end{wrapfigure}
+\subsubsection{Interaktion}
+Wie zuvor erwähnt, ist die Einschränkung der Sicht auch ein gutes Mittel, um besondere Erfahrungen mit visuellen Interaktionen zu sammeln, da der Raum die Verantwortung der Sicht auf den Spieler legt. Im Gelb-Raum muss er Lichtquellen in den Raum werfen, um die allumfassende Dunkelheit des Raumes punktuell zu durchbrechen. So etwas Fundamentales wie die Lichtverhältnisse eines Raumes in die Hand der Spieler zu legen, führt zu einer deutlichen Erhöhung der Konzentration und Immersion. Dabei fiel uns auf, dass Spieler, die damit beschäftigt waren ihren Sichtsinn aufrechtzuerhalten, intensiver in das Spiel vertieft waren.
+Umgebungsinteraktionen zeigen sich, wie auch schon im Treppenhaus bei den Hebeln des Gelb-Raums wieder. Durch das Betätigen der Hebel, verstellt sich das entsprechende Segment des Rings. Weiterhin leuchtet der Pfeil des Rads hell auf und eine versteckte Wand öffnet sich, sodass der darin liegende Kristall aufgesammelt werden kann, sobald alle Segmente korrekt ausgerichtet wurden.
 
 \newpage \noindent
 
@@ -248,9 +241,9 @@ Anschließend muss der Spieler eine lange Leiter hochzuklettern, um den silberne
 In den vorherigen Abschnitten wurde nicht im Besonderen auf die Haptic Gloves eingegangen. Aufgrund technischer Probleme in der Anbindung der Haptic Gloves an die bereits bestehenden Funktionalitäten des Spiels, können diese Handschuhe nur an sehr wenigen Stellen zur Lösung der Rätsel genutzt werden. Haptic-Gloves wurden jedoch trotzdem in das Projekt implementiert und können in einer reduzierten Weise eingesetzt werden. Die Erkenntnisse daraus wurden hier aufgeführt.
 
 \subsection{Realistische Hände}
-Eine realistische Darstellung der eigenen Hände ist in virtueller Realität sehr hilfreich um Immersion zu stärken. Während Controller durch feinjustierte Touchpads die Möglichkeit besitzen eine grobe Annäherung der Fingerposition und Gestikulierung zu erfassen, können haptische Handschuhe die Darstellung von Händen sehr viel präziser wiedergeben. Dies führt zu einer weitaus verbesserten Hand-Augen-Koordination. Dieses visuelle Feedback ist zurückzuführen auf visuelle Interaktion, jedoch nicht im Bezug auf die virtuelle Umgebung, sondern auf die Darstellung der eigenen Gliedmaßen.
+Eine realistische Darstellung der eigenen Hände ist in virtueller Realität sehr hilfreich um Immersion zu stärken. Während Controller durch feinjustierte Touchpads die Möglichkeit besitzen eine grobe Annäherung der Fingerposition und Gestikulation zu erfassen, können haptische Handschuhe die Darstellung von Händen sehr viel präziser wiedergeben. Dies führt zu einer weitaus verbesserten Hand-Augen-Koordination. Dieses visuelle Feedback ist zurückzuführen auf visuelle Interaktion, jedoch nicht im Bezug auf die virtuelle Umgebung, sondern auf die Darstellung der eigenen Gliedmaßen.
 
 \subsection{Fühlbare Umgebung}
 Dieser Punkt konnte wie bereits erwähnt nur geringfügig in Kombination mit den bestehenden Rätseln getestet werden. Jedoch haben bereits kleine und scheinbar insignifikante haptische Interaktionen einen großen Effekt auf die Umgebung. Besonders die Treppengeländer im Treppenhaus stechen hierbei heraus. Die Höhe der Treppen kann einen Nutzer instinktiv nach einem der Treppengeländer greifen lassen um sich festzuhalten. Die Haptic Gloves liefern dem Nutzer keinen Halt, doch sie geben das Gefühl des Greifens eines Geländers akkurat wieder. Wenn ein Spieler sich zu sehr in der virtuellen Umgebung verliert, kann es sogar passieren, dass er die Balance verliert bei dem Versuch sich auf den Geländern abzustützen.\\
 
-Weiterhin wurden in der Lobby und besonders im Gelb-Raum einige Gegenstände platziert, die mit den Haptic Gloves gegriffen werden können. Besonders in der Dunkelheit ist der Effekt dieses Greifens bemerkbar, da der Körper sich bei fehlendem Licht auf andere Sinne verlässt. Auch das Material eines Objekts kann durch die haptischen Handschuhe bestimmt werden. Da die Druck-Kurve mit welcher ein Spieler auf ein Objekt bei einem Griff drücken kann, selbst bestimmbar ist, konnten Gummi-ähnliche eindrückbare Materialen erstellt werden. Diese Feinheiten in der haptischen Interaktion können ein Gefühl dafür geben, welches Objekt gerade abgetasted wird, ohne das Objekt zu sehen.\\
+\noindent Weiterhin wurden in der Lobby und besonders im Gelb-Raum einige Gegenstände platziert, die mit den Haptic Gloves gegriffen werden können. Besonders in der Dunkelheit ist der Effekt dieses Greifens bemerkbar, da der Körper sich bei fehlendem Licht auf andere Sinne verlässt. Auch das Material eines Objekts kann durch die haptischen Handschuhe bestimmt werden. Da die Druck-Kurve mit welcher ein Spieler auf ein Objekt bei einem Griff drücken kann, selbst bestimmbar ist, konnten Gummi-ähnliche Materialien erstellt werden. Diese Feinheiten in der haptischen Interaktion können ein Gefühl dafür geben, welches Objekt im Moment abgetastet wird, ohne es zu sehen.\\
