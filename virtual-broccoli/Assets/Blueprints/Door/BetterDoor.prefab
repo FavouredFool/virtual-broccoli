@@ -284,6 +284,7 @@ GameObject:
   - component: {fileID: 3388981176467645687}
   - component: {fileID: 3388981176467645686}
   - component: {fileID: 3388981176467645685}
+  - component: {fileID: 8392569151471017897}
   m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
@@ -518,7 +519,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1168
+  m_VersionIndex: 1171
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -570,7 +571,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1725f2456efa52d4fb06fbc21f38f17a, type: 2}
+  - {fileID: 2100000, guid: 5fc23b9fd75003c4f9f4cbe0c94ce330, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -611,9 +612,27 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &8392569151471017897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3388981176467645675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb79c54106a7c8f42bbd7e30991b639a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialProperties: {fileID: 11400000, guid: 3d02f076c5716794eb4889492f1f53ef, type: 2}
+  breakable: 0
+  yieldDistance: 0.03
+  mustBeGrabbed: 0
+  requiresThumb: 0
+  minimumFingers: 1
 --- !u!1 &3388981176513937101
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,6 +648,7 @@ GameObject:
   - component: {fileID: 3388981176513937096}
   - component: {fileID: 3388981176513937103}
   - component: {fileID: 3388981176513937108}
+  - component: {fileID: 1095360316312194515}
   m_Layer: 7
   m_Name: Handle
   m_TagString: Untagged
@@ -915,7 +935,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bac6915446091e943a1196d502528425, type: 2}
+  - {fileID: 2100000, guid: 500188134521e3c498843ae26c7b9b33, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1039,6 +1059,24 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1095360316312194515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3388981176513937101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb79c54106a7c8f42bbd7e30991b639a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialProperties: {fileID: 11400000, guid: 3d02f076c5716794eb4889492f1f53ef, type: 2}
+  breakable: 0
+  yieldDistance: 0.03
+  mustBeGrabbed: 0
+  requiresThumb: 0
+  minimumFingers: 1
 --- !u!1 &3388981176632278728
 GameObject:
   m_ObjectHideFlags: 0
@@ -1065,7 +1103,7 @@ Transform:
   m_GameObject: {fileID: 3388981176632278728}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3388981177086141661}
@@ -1107,6 +1145,7 @@ GameObject:
   - component: {fileID: 3388981176732959264}
   - component: {fileID: 3388981176732959271}
   - component: {fileID: 3388981176732959270}
+  - component: {fileID: 724977432660141623}
   m_Layer: 7
   m_Name: Door (1)
   m_TagString: Untagged
@@ -1395,7 +1434,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a2605181b55c8074b9d8582d15558f34, type: 2}
+  - {fileID: 2100000, guid: 527b18eeb70fa2b4d923518a4da2cde2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1466,6 +1505,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af018a83774a7374b9211e19f427c9e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &724977432660141623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3388981176732959268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb79c54106a7c8f42bbd7e30991b639a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialProperties: {fileID: 11400000, guid: 3d02f076c5716794eb4889492f1f53ef, type: 2}
+  breakable: 0
+  yieldDistance: 0.03
+  mustBeGrabbed: 0
+  requiresThumb: 0
+  minimumFingers: 1
 --- !u!1 &3388981177086141660
 GameObject:
   m_ObjectHideFlags: 0
@@ -1514,6 +1571,7 @@ GameObject:
   - component: {fileID: 3388981177158115328}
   - component: {fileID: 3388981177158115335}
   - component: {fileID: 3388981177158115334}
+  - component: {fileID: 2535111411799850931}
   m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -1748,7 +1806,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1171
+  m_VersionIndex: 1174
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1800,7 +1858,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1725f2456efa52d4fb06fbc21f38f17a, type: 2}
+  - {fileID: 2100000, guid: 5fc23b9fd75003c4f9f4cbe0c94ce330, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1841,9 +1899,27 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &2535111411799850931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3388981177158115332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb79c54106a7c8f42bbd7e30991b639a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialProperties: {fileID: 11400000, guid: 3d02f076c5716794eb4889492f1f53ef, type: 2}
+  breakable: 0
+  yieldDistance: 0.03
+  mustBeGrabbed: 0
+  requiresThumb: 0
+  minimumFingers: 1
 --- !u!1 &3388981177711955856
 GameObject:
   m_ObjectHideFlags: 0
@@ -1858,6 +1934,7 @@ GameObject:
   - component: {fileID: 3388981177711955868}
   - component: {fileID: 3388981177711955859}
   - component: {fileID: 3388981177711955858}
+  - component: {fileID: 664338499163724609}
   m_Layer: 8
   m_Name: Cube (2)
   m_TagString: Untagged
@@ -2092,7 +2169,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1249
+  m_VersionIndex: 1252
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2144,7 +2221,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1725f2456efa52d4fb06fbc21f38f17a, type: 2}
+  - {fileID: 2100000, guid: 5fc23b9fd75003c4f9f4cbe0c94ce330, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2188,6 +2265,24 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &664338499163724609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3388981177711955856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb79c54106a7c8f42bbd7e30991b639a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialProperties: {fileID: 11400000, guid: 3d02f076c5716794eb4889492f1f53ef, type: 2}
+  breakable: 0
+  yieldDistance: 0.03
+  mustBeGrabbed: 0
+  requiresThumb: 0
+  minimumFingers: 1
 --- !u!1 &3388981177904008096
 GameObject:
   m_ObjectHideFlags: 0

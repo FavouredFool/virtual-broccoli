@@ -361,6 +361,7 @@ GameObject:
   - component: {fileID: 1392204730397610872}
   - component: {fileID: 776430510841359762}
   - component: {fileID: -8882784100671258419}
+  - component: {fileID: -1821603329325459003}
   m_Layer: 2
   m_Name: Lightstick
   m_TagString: Untagged
@@ -633,6 +634,24 @@ MonoBehaviour:
   rotateSpeed: 900
   snapOptions: {fileID: 0}
   alwaysTrackVelocity: 0
+--- !u!114 &-1821603329325459003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5151301406389622985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb79c54106a7c8f42bbd7e30991b639a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialProperties: {fileID: 11400000, guid: 3d02f076c5716794eb4889492f1f53ef, type: 2}
+  breakable: 0
+  yieldDistance: 0.03
+  mustBeGrabbed: 0
+  requiresThumb: 0
+  minimumFingers: 1
 --- !u!1 &6182765564293349685
 GameObject:
   m_ObjectHideFlags: 0

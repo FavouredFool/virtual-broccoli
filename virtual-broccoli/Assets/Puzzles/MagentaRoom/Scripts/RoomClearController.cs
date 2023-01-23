@@ -34,7 +34,7 @@ public class RoomClearController : MonoBehaviour
 
         if(CheckGamesFinished())
         {
-            openBoxController.setOpen(true);
+            openBoxController.SetOpen(true);
             ActivateAmbientObjects(true);
         }
     }

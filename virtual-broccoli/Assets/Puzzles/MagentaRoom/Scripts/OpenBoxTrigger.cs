@@ -21,12 +21,12 @@ public class OpenBoxTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        _boxController.setOpen(true);
+        _boxController.SetOpen(true);
         _triggered = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        _boxController.setOpen(false);
+        _boxController.SetOpen(false);
     }
 }

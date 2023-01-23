@@ -12,10 +12,13 @@ public class Puzzle2ButtonController : MonoBehaviour
 
     private bool _triggered;
 
+    private bool _pressed;
+
     private void Start()
     {
         _active = false;
         _triggered = false;
+        _pressed = false;
     }
 
     public bool GetActive()
@@ -33,6 +36,23 @@ public class Puzzle2ButtonController : MonoBehaviour
         _progressController.ToggleButton(name, active);
     }
 
+    public void Press()
+    {
+        if (!_pressed)
+        {
+            _pressed = true;
+            Activate(true);
+        }
+    }
+
+    public void Release()
+    {
+        _pressed = false;
+        Activate(false);
+    }
+
+    /*
+
     private void Update()
     {
         if(!_triggered && _active)
@@ -46,5 +66,5 @@ public class Puzzle2ButtonController : MonoBehaviour
             _triggered = false;
             Activate(_active);
         }
-    }
+    }*/
 }
