@@ -9,6 +9,8 @@ public class CrystalHideoutController : MonoBehaviour
     [SerializeField] private GameObject movingObject;
     [SerializeField] private GameObject endpositionObject;
     [SerializeField] private GameObject crystal;
+    [SerializeField] private GameObject pLight;
+    [SerializeField] private GameObject sLight;
 
     private bool _move;
     private Vector3 _startposition;
@@ -21,6 +23,8 @@ public class CrystalHideoutController : MonoBehaviour
         _startposition = movingObject.transform.position;
         _endposition = endpositionObject.transform.position;
         crystal.SetActive(false);
+        pLight.SetActive(false);
+        sLight.SetActive(false);
     }
 
     private void Update()
@@ -38,6 +42,11 @@ public class CrystalHideoutController : MonoBehaviour
     public void ActivateMovement(bool move)
     {
         _move = move;
-        if (move) crystal.SetActive(true);
+        if (move)
+        {
+            pLight.SetActive(true);
+            sLight.SetActive(true);
+            crystal.SetActive(true);
+        }
     }
 }
